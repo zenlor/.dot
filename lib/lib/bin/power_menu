@@ -1,0 +1,20 @@
+#!/bin/zsh
+set -e
+
+CMDS="--
+Suspend
+Logout
+Shutdown"
+
+case $(echo "$CMDS" | rofi -dmenu) in
+    "Suspend")
+        systemctl suspend
+        ;;
+    "Logout")
+        bspc quit
+        ;;
+    "Shutdown")
+        systemctl shutdown
+        ;;
+    *) ;;
+esac

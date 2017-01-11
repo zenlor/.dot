@@ -1,0 +1,37 @@
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	type = cat-file -t
+	dump = cat-file -p
+        cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+        hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches
+	pullall = pull --recurse-submodules
+[format]
+	pretty = * %Cblue%h %Cgreen[%ar]%Creset (%an) %s
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	status = auto
+[user]
+	name = Lorenzo Giuliani
+	email = lorenzo@frenzart.com
+	signingkey = 8DA5DA1F
+[core]
+	excludesfile = ~/.gitignore
+	editor = emacs
+[merge]
+	keepBackup = true
+	tool = meld
+	stat = true
+[mergetool "ediff"]
+	cmd = emacsclient -c -a \"\"  --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\"
+[branch "master"]
+	mergeoptions = --no-commit --no-ff
+	rebase = true
+[commit]
+	gpgsign = true
+[gui]
+	editor = emacs

@@ -1,0 +1,3 @@
+#!/bin/zsh
+
+exec gpg --encrypt --sign -r lorenzo@frenzart.com $1

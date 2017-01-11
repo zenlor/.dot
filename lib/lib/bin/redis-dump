@@ -1,0 +1,21 @@
+#!/bin/sh
+
+PARALLEL=1
+
+while [[ $# > 0 ]]
+do
+    key="$1"
+
+    case $key in
+        -p|--parallel)
+            PARALLEL=$2
+            shift
+            ;;
+        *)
+            ;;
+    esac
+    shift
+done
+
+redis-cli KEYS * |\
+    xargs -n 1 -P$PARALLEL redis-cli get

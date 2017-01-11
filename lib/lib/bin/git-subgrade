@@ -1,0 +1,9 @@
+#!/bin/sh
+
+#
+# Update all git submodules
+#
+# from: http://stackoverflow.com/a/1032653/85159
+#
+
+git submodule foreach git pull origin master
