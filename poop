@@ -1,0 +1,21 @@
+#!/bin/sh
+
+if [ ! "$(which stow)" ]
+then
+    echo "stow not found. please install stow"
+fi
+
+_pkgs=$(ls -d */|sed 's|/||')
+case $1 in
+    "u"|"uninstall")
+        echo "unstowing"
+        echo -n $_pkgs | xargs stow -D \{\}
+        exit 0
+        ;;
+    *)
+        echo "restowing"
+        echo -n $_pkgs | xargs stow -R \{\}
+        exit 0
+        ;;
+esac
+
