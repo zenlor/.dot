@@ -11,7 +11,6 @@ source $HOME/.zsh/completion.zsh
 source $HOME/.zsh/config.zsh
 source $HOME/.zsh/keyboard.zsh
 source $HOME/.zsh/history.zsh
-source $HOME/.zsh/fuck.zsh
 source $HOME/.zsh/utils.zsh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/nvm.zsh
