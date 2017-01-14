@@ -1,8 +1,7 @@
-antibody
-
 pulseaudio
 pavucontrol
 pulseaudio-alsa
+pulseaudio-ctl
 
 lxsession-gtk3
 
@@ -27,3 +26,4 @@ docker
 chromium
 firefox-developer
 
+passwordstore
