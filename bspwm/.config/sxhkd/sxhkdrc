@@ -35,9 +35,6 @@ super + ctrl + space
     bspc node -p cancel
 
 # send node to desktop on current monitor index
-#super + {_,shift} + {1-9}
-#   bspc {desktop -f,node -d} focused:^{1-9}
-#
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} '^{1-9,10}'
 
@@ -63,10 +60,6 @@ super + shift + q
     for win in $(bspc query -N); do bspc node $win -c ; done; \
     bspc quit
 
-# toggle panel or gaps.
-super + {_,shift} + slash
-    ~/.wm/scripts/{gap,panel}t
-
 # }}}
 
 # wm independent hotkeys {{{
@@ -89,10 +82,10 @@ XF86AudioPlay
      mpc -q toggle
 
 XF86Audio{LowerVolume,RaiseVolume}
-    amixer -q set Master 3%{-,+}
+    pulseaudio-ctl {down,up} 10
 
 XF86AudioMute
-    amixer -q set Master toggle
+    pulseaudio-ctl M
 
 # make sxhkd reload its configuration files
 super + Escape
