@@ -2,4 +2,4 @@
 # toggle gaps on and off
 
 [ $(bspc config window_gap) -le 0 ] || export BSPWM_GAPS=false
-~/.wm/bspwmrc
+~/.config/bspwm/bspwmrc
