@@ -239,6 +239,19 @@ let g:syntastic_warning_symbol = '⚠️'
 let g:syntastic_style_warning_symbol = '💩'
 
 "
+" create directories with :mk
+"
+cnoremap mk. !mkdir -p <c-r>=expand("%:h")<cr>/
+
+"
+" save and reload positions of re-opened files
+"
+augroup resCur
+  autocmd!
+  autocmd BufReadPost * call setpos(".", getpos("'\""))
+augroup END
+
+"
 " theme
 "
 let g:gruvbox_italic = 1
