@@ -16,6 +16,7 @@ xrdb -load ~/.Xresources
 xsetroot -cursor_name left_ptr &
 conky -c $HOME/.config/conky/conkyrc -d
 gpg-agent &
+[ -f "~/.xsession" ] && source ~/.xsession
 
 export _JAVA_AWT_WM_NONREPARENTING=1
 export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
