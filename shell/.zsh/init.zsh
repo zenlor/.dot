@@ -15,3 +15,4 @@ source $HOME/.zsh/utils.zsh
 source $HOME/.zsh/alias.zsh
 source $HOME/.zsh/nvm.zsh
 source $HOME/.zsh/theme.zsh
+source $HOME/.zsh/keychain.zsh
