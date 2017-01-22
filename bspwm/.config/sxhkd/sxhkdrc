@@ -72,20 +72,20 @@ super + space
     rofi -show drun
 
 # A nice wrapper script for password store.
-super + shift + space
+super + alt + space
     passmenu
 
 XF86Audio{Prev,Next}
-     mpc -q {prev,next}
+    mpc -q {prev,next}
 
 XF86AudioPlay
-     mpc -q toggle
+    mpc -q toggle
 
 XF86Audio{LowerVolume,RaiseVolume}
-    pulseaudio-ctl {down,up} 10
+    vol.sh {down,up}
 
 XF86AudioMute
-    pulseaudio-ctl M
+    vol.sh mute
 
 # make sxhkd reload its configuration files
 super + Escape
