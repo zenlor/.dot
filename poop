@@ -9,12 +9,12 @@ _pkgs=$(ls -d */|sed 's|/||')
 case $1 in
     "u"|"uninstall")
         echo "unstowing"
-        echo -n $_pkgs | xargs stow -D \{\}
+        echo -n $_pkgs | xargs stow -D
         exit 0
         ;;
     *)
         echo "restowing"
-        echo -n $_pkgs | xargs stow -R \{\}
+        echo -n $_pkgs | xargs stow -R
         exit 0
         ;;
 esac
