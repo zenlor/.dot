@@ -51,6 +51,9 @@ if dein#load_state('~/.config/nvim')
   " lightline
   call dein#add('itchyny/lightline.vim')
 
+  " brackets and '
+  call dein#add('cohama/lexima.vim')
+
   """""""""""""
   " filetypes "
   """""""""""""
