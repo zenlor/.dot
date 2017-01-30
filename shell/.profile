@@ -42,3 +42,6 @@ if which npm &> /dev/null; then
 fi
 
 export PATH=$PATH:$HOME/bin:~/.local/bin
+
+# Window managers
+[[ "$XDG_CURRENT_DESKTOP" == "KDE" ]] || [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]] || export QT_QPA_PLATFORMTHEME="qt5ct"
