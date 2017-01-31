@@ -107,12 +107,9 @@ bspc wm -o
 
 # add scripts to $PATH for sxhkd
 export PATH=$PATH:$HOME/.config/bspwm/scripts
-export SXHKD_SHELL=/bin/dash
 
 # start
-if pgrep -u $USER sxhkd >/dev/null 2>&1
-then
-    true
-else
+if [ ! pgrep -u $USER sxhkd >/dev/null 2>&1 ];then
+    [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash 
     sxhkd &
 fi
