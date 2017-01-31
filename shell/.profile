@@ -11,6 +11,7 @@ mkdir -p $TMPDIR
 # Local binpaths
 [ -d "$HOME/bin" ] && export PATH=$HOME/bin:$PATH
 [ -d "$HOME/lib/bin" ] && export PATH=$HOME/lib/bin:$PATH
+[ -d "$HOME/.local/bin" ] && export PATH=$HOME/.local/bin:$PATH
 
 # Go
 [ -d "$HOME/lib" ] && export GOPATH=$HOME/lib
