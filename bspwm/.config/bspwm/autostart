@@ -73,3 +73,4 @@ conky -c $HOME/.config/conky/conkyrc -d
 
 # GNU Privacy Guard
 gpg-agent &
+busybox:uclibc,

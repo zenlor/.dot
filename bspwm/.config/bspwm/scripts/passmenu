@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/dash
 # This is a dmenu wrapper for http://www.passwordstore.org/
 
 shopt -s nullglob globstar

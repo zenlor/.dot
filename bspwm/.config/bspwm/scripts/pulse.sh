@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/dash
 # neeasade
 # depends on: colort, wmutils
 # pulse colors based around current bspwm color

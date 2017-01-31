@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/dash
 # depends on: jq, bc, bspc
 # resize windows or groups of windows in bspwm.
 # (percent of current monitor resolution to resize)

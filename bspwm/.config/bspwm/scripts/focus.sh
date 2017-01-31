@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/dash
 # todo: handle interop between floating and tiled better
 
 dir=$1

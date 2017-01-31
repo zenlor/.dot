@@ -1,4 +1,4 @@
-#!/usr/bin/env dash
+#!/bin/dash
 
 bspc config pointer_follows_focus true
 dir=$1

@@ -1,6 +1,6 @@
-#!/bin/zsh
+#!/bin/bash
 # set -e
-[[ "$TRACE" ]] && set -xv
+[ "$TRACE" ] && set -xv
 
 #   ___.
 #  \_ |__   ______________  _  _______
@@ -8,6 +8,10 @@
 #   | \_\ \\___ \ |  |_> >     /  Y Y  \
 #   |___  /____  >|   __/ \/\_/|__|_|  /
 #       \/     \/ |__|               \/
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+
 
 bspc config normal_border_color   '#282828'
 bspc config focused_border_color  '#d5c4a1'
@@ -24,8 +28,8 @@ bspc config window_gap		18
 bspc config split_ratio             0.50
 bspc config single_monocle          true
 bspc config gapless_monocle         true
-bspc config borderless_monocle      false
 bspc config paddingless_monocle     false
+bspc config borderless_monocle      false
 
 
 bspc config focus_follows_pointer   true
@@ -40,36 +44,36 @@ bspc config pointer_follows_monitor true
 # |_|_|_\___/_||_|_|\__\___/_|
 #                  configuration
 #
-_hostname="$(hostname)"
-case $_hostname in
-    "ink")
-        #  Thinkpad
-        bspc monitor -d \
-            $(echo -e '\uf109') $(echo -e '\uf121') $(echo -e '\uf120') $(echo -e '\uf07c') \
-            $(echo -e '\uf0ac') $(echo -e '\uf0c3') $(echo -e '\uf141') $(echo -e '\uf001')
-        ;;
-    "lorenzo.mb")
-        bspc monitor HDMI2 -d I  II  III  IV V
-        bspc monitor VGA1 -d VI VII VIII IX X
-        ;;
-    "meila")
-        bspc monitor ^1 -d 1 2 3 4 5
-        bspc monitor ^2 -d 6 7 8 9 0
-        ;;
-    *)
-        #  Anyone else
-        #  5 screens for each monitor
-        i=1
-        for monitor in $(bspc query -M); do
-            bspc monitor $monitor \
-                -n "$i" \
-                -a $i/{i,ii,iii,iv,v}
-            let i++
-        done
-        NMON=$i
-        unset i
-        ;;
-esac
+I=1
+M=$(bspc query -M | wc -l)
+if [[ "$M" == 1 ]]; then
+    bspc monitor -d I II III IV V
+elif [[ "$M" == 2 ]]; then
+    bspc monitor $(bspc query -M | awk NR==1) -d I II III IV V
+    bspc monitor $(bspc query -M | awk NR==2) -d VI VII VIII IX X
+elif [[ "$M" == 3 ]]; then
+    bspc monitor $(bspc query -M | awk NR==1) -d I II III IV
+    bspc monitor $(bspc query -M | awk NR==2) -d V VI VII
+    bspc monitor $(bspc query -M | awk NR==3) -d VIII IX X
+elif [[ "$M" == 4 ]]; then
+    bspc monitor $(bspc query -M | awk NR==1) -d I II III
+    bspc monitor $(bspc query -M | awk NR==2) -d IV V VI
+    bspc monitor $(bspc query -M | awk NR==3) -d VII VIII
+    bspc monitor $(bspc query -M | awk NR==4) -d IX X
+elif [[ "$M" == 5 ]]; then
+    bspc monitor $(bspc query -M | awk NR==1) -d I II
+    bspc monitor $(bspc query -M | awk NR==2) -d III IV
+    bspc monitor $(bspc query -M | awk NR==3) -d V VI
+    bspc monitor $(bspc query -M | awk NR==4) -d VII VIII
+    bspc monitor $(bspc query -M | awk NR==5) -d IX X
+else
+    for monitor in $(bspc query -M); do
+        bspc monitor $monitor \
+            -n "$I" \
+            -d $I/{a,b,c}
+        let I++
+    done
+fi
 
 #      node _
 #  _ _ _  _| |___ ___
@@ -81,26 +85,45 @@ while read -r rule _; do bspc rule -r "$rule"; done < <(bspc rule -l)
 
 bspc rule -a monitor=0 split_dir=east
 
-bspc rule -a pcmanfm    desktop=^4 follow=off floating=off
-bspc rule -a Gimp       desktop=^6 follow=on floating=on
-bspc rule -a Chrome     desktop=^5 follow=on floating=off
-bspc rule -a xmessage           floating=on --center --focus
-bspc rule -a Dialog             floating=on --center --focus
-bspc rule -a htop               floating=on --center
-bspc rule -a display            floating=on --center
-bspc rule -a display.im6        floating=on --center
-bspc rule -a xev                floating=on --center
-bspc rule -a orage              floating=on --center
-bspc rule -a trayer             floating=on --sticky
-bspc rule -a lxpolkit           sticky=on locked=on
-bspc rule -a 'Copying files'    floating=on
-bspc rule -a git-cola           floating=on
-bspc rule -a mpv                floating=on sticky=on --center --focus
-
 bspc rule -a GtkFileChooserDialog   floating=on --center --focus
-bspc rule -a '_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' floating=on --center --focus
-bspc rule -a '_NET_WM_WINDOW_TYPE_DIALOG' floating=on --center --focus
-bspc rule -a '_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' floating=on --center --focus
+
+bspc rule -a screenkey --unmanage
+bspc rule -a gcolor2 state=floating center=true
+bspc rule -a lxappearance state=floating center=true
+bspc rule -a gmrun state=floating center=true
+bspc rule -a lxterminal state=floating center=true sticky=true
+#bspc rule -a urxvt state=floating center=true
+bspc rule -a viewnior state=floating center=true
+bspc rule -a file-roller state=floating center=true
+bspc rule -a floaterm state=floating center=true
+bspc rule -a spotify state=pseudo_tiled
+#bspc rule -a nautilus state=pseudo_tiled
+#bspc rule -a skype state=pseudo_tiled
+bspc rule -a file-roller state=pseudo_tiled
+bspc rule -a transmission-gtk state=pseudo_tiled
+bspc rule -a conky sticky=on manage=off lower=on
+bspc rule -a astime sticky=on
+bspc rule -a yad state=floating
+bspc rule -a Docky layer=above border=off manage=on
+bspc rule -a Plank layer=above border=off manage=on
+bspc rule -a wbar layer=above
+bspc rule -a dockbarx layer=above
+bspc rule -a google-chrome-unstable private=on
+bspc rule -a google-chrome-stable private=on
+bspc rule -a chromium private=on
+bspc rule -a firefox private=on
+bspc rule -a midori private=on
+bspc rule -a gnome-pie border=off manage=off
+bspc rule -a wpa_gui state=pseudo_tiled
+#bspc rule -a firefox desktop=I
+#bspc rule -a calibre desktop=II
+#bspc rule -a geany desktop=II
+#bspc rule -a deluge desktop=III
+bspc rule -a 9menu border=off manage=off
+bspc rule -a tint2 border=off manage=off
+
+# Monitor rules
+bspc desktop I --layout monocle
 
 # reclaim orphan windows
 bspc wm -o
