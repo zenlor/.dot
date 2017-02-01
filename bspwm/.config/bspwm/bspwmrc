@@ -12,7 +12,6 @@
 bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 
-
 bspc config normal_border_color   '#282828'
 bspc config focused_border_color  '#d5c4a1'
 bspc config active_border_color   '#1d2021'
@@ -28,8 +27,8 @@ bspc config window_gap		18
 bspc config split_ratio             0.50
 bspc config single_monocle          true
 bspc config gapless_monocle         true
-bspc config paddingless_monocle     false
-bspc config borderless_monocle      false
+bspc config paddingless_monocle     true
+bspc config borderless_monocle      true
 
 
 bspc config focus_follows_pointer   true
@@ -136,3 +135,6 @@ if [ ! pgrep -u $USER sxhkd >/dev/null 2>&1 ];then
     [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash 
     sxhkd &
 fi
+
+$HOME/.config/bspwm/scripts/euclid_balancer &
+
