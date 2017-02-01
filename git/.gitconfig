@@ -35,3 +35,4 @@
 	gpgsign = true
 [gui]
 	editor = emacs
+	recentrepo = /home/cli/lib/src/git.mobilebridge.io/lorenzo/aggro

@@ -5,7 +5,6 @@ pulseaudio-ctl
 
 lxsession-gtk3
 
-slock
 rofi
 slop
 
@@ -15,10 +14,8 @@ ttf-iosevka
 ttf-iosevka-term
 ttf-iosevka-slab
 
-
 neovim
 emacs
-vim-sensible
 
 docker
 
@@ -26,3 +23,6 @@ chromium
 firefox-developer
 
 pass
+
+compton
+redshift
