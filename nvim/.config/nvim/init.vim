@@ -54,6 +54,9 @@ if dein#load_state('~/.config/nvim')
   " brackets and '
   call dein#add('cohama/lexima.vim')
 
+  " golder ratio splits
+  call dein#add('roman/golden-ratio')
+
   """""""""""""
   " filetypes "
   """""""""""""
