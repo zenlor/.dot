@@ -135,3 +135,6 @@ if [ ! pgrep -u $USER sxhkd >/dev/null 2>&1 ];then
     [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash 
     sxhkd &
 fi
+
+# autostart
+source $HOME/.config/bspwm/autostart &
