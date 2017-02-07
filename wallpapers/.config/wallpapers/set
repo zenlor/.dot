@@ -9,5 +9,6 @@ case "$(hostname)" in
         exec feh --bg-scale $HOME/.config/wallpapers/wallhaven-391944.jpg
         ;;
     *)
+        exec feh --bg-scale $HOME/.config/wallpapers/wallhaven-338666.jpg
         ;;
 esac
