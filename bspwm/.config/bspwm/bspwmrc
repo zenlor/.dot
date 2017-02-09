@@ -33,6 +33,9 @@ bspc config borderless_monocle      true
 
 bspc config focus_follows_pointer   true
 bspc config pointer_follows_monitor true
+
+bspc config click_to_focus          true
+bspc config swallow_first_click     true
 #
 # * this creates a LOT of unexpected behaviors
 # bspc config pointer_follows_focus   true
