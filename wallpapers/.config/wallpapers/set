@@ -3,10 +3,10 @@ set -e
 
 case "$(hostname)" in
     "meila")
-        exec feh --bg-scale $HOME/.config/wallpapers/wallhaven-155493.jpg
+        exec feh --bg-tile $HOME/.config/wallpapers/portal2.jpg
         ;;
     "lorenzo.mb")
-        exec feh --bg-scale $HOME/.config/wallpapers/wallhaven-391944.jpg
+        exec feh --bg-tile $HOME/.config/wallpapers/portal2.jpg
         ;;
     *)
         exec feh --bg-scale $HOME/.config/wallpapers/wallhaven-338666.jpg
