@@ -19,10 +19,6 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     go
-     php
-     csv
-     sql
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
@@ -33,6 +29,7 @@ values."
      git
      markdown
      org
+     csv
 
      docker
 
@@ -40,13 +37,17 @@ values."
      c-c++
      clojure
      emacs-lisp
+     go
      javascript
      (typescript :variables
 		 typescript-fmt-on-save t)
      lua
      nim
+     php
      python
      shell-scripts
+     (typescript :variables
+                 typescript-fmt-on-save t)
      sql
      yaml
 
