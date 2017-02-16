@@ -66,6 +66,12 @@ if dein#load_state('~/.config/nvim')
   "" javascript
   call dein#add('othree/yajs')
   call dein#config('yajs', { 'lazy': 1, 'on_ft': 'javascript' })
+  "" typescript
+  call dein#add('leafgarland/typescript-vim')
+  call dein#config('typescript-vim', { 'lazy': 1, 'on_ft': 'typescript' })
+  " "" javascript + typescript
+  " call dein#add('jason0x43/vim-js-indent')
+  " call dein#config('vim-js-indent', { 'lazy': 1, 'on_ft': ['typescript', 'javascript'] })
   "" toml
   call dein#add('cespare/vim-toml')
   call dein#config('vim-toml', { 'lazy': 1, 'on_ft': 'toml' })
@@ -278,6 +284,11 @@ endfunction
 function! WizEncoding()
   return winwidth(0) > 70 ? (strlen(&fenc) ? &enc : &enc) : ''
 endfunction
+
+"
+" Typescript
+"
+let g:typescript_indent_disable = 1
 
 "
 " Syntastic
