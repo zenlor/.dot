@@ -46,8 +46,6 @@ values."
      php
      python
      shell-scripts
-     (typescript :variables
-                 typescript-fmt-on-save t)
      sql
      yaml
 
