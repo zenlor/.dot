@@ -40,7 +40,7 @@ values."
      go
      javascript
      (typescript :variables
-		 typescript-fmt-on-save t)
+                 typescript-fmt-on-save t)
      lua
      nim
      php
@@ -56,6 +56,7 @@ values."
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
+            shell-enable-smart-eshell t
             shell-default-shell 'eshell)
 
      ;; spell-checking
@@ -324,72 +325,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  ;; Flow (JS) flycheck config (http://flowtype.org)
-  ;; from https://github.com/bodil/emacs.d/blob/master/bodil/bodil-js.el
-  (require 'f)
-  (require 'json)
-  (require 'flycheck)
-
-  (defun flycheck-parse-flow (output checker buffer)
-    (let ((json-array-type 'list))
-      (let ((o (json-read-from-string output)))
-        (mapcar #'(lambda (errp)
-                    (let ((err (cadr (assoc 'message errp))))
-                      (flycheck-error-new
-                       :line (cdr (assoc 'line err))
-                       :column (cdr (assoc 'start err))
-                       :level 'error
-                       :message (cdr (assoc 'descr err))
-                       :filename (f-relative
-                                  (cdr (assoc 'path err))
-                                  (f-dirname (file-truename
-                                              (buffer-file-name))))
-                       :buffer buffer
-                       :checker checker)))
-                (cdr (assoc 'errors o))))))
-
-  (flycheck-define-checker javascript-flow
-    "Javascript type checking using Flow."
-    :command ("flow" "--json" source-original)
-    :error-parser flycheck-parse-flow
-    :modes react-mode
-    :next-checkers ((error . javascript-eslint))
-    )
-  (add-to-list 'flycheck-checkers 'javascript-flow)
+  (custom-set-variables
+   '(js2-mode-show-strict-warnings nil)
+   '(js2-strict-inconsistent-return-warning nil))
   )
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(js2-mode-show-strict-warnings nil)
- '(js2-strict-inconsistent-return-warning nil)
- '(package-selected-packages
-   (quote
-    (tide typescript-mode autothemer darktooth-theme powerline org alert log4e gntp commenter epc ctable concurrent deferred markdown-mode skewer-mode simple-httpd js2-mode parent-mode projectile request gitignore-mode pos-tip flycheck flx magit git-commit with-editor iedit smartparens anzu evil goto-chg undo-tree php-mode json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diminish dash-functional tern go-mode company inflections edn multiple-cursors paredit peg eval-sexp-fu highlight cider seq spinner queue pkg-info clojure-mode epl bind-map bind-key yasnippet packed anaconda-mode pythonic f s markup-faces avy helm-core async auto-complete popup package-build helm hydra yapfify yaml-mode xterm-color ws-butler window-numbering which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org sql-indent spacemacs-theme spaceline smeargle shell-pop restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nim-mode neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint js2-refactor js-doc insert-shebang info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-nim flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump drupal-mode dockerfile-mode docker disaster define-word cython-mode csv-mode company-tern company-statistics company-shell company-go company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adoc-mode adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (winum helm-purpose window-purpose imenu-list darktooth-theme powerline org alert log4e gntp commenter epc ctable concurrent deferred markdown-mode skewer-mode simple-httpd js2-mode parent-mode projectile request gitignore-mode pos-tip flycheck flx magit git-commit with-editor iedit smartparens anzu evil goto-chg undo-tree php-mode json-mode tablist magit-popup docker-tramp json-snatcher json-reformat diminish dash-functional tern go-mode company inflections edn multiple-cursors paredit peg eval-sexp-fu highlight cider seq spinner queue pkg-info clojure-mode epl bind-map bind-key yasnippet packed anaconda-mode pythonic f s markup-faces avy helm-core async auto-complete popup package-build helm hydra yapfify yaml-mode xterm-color ws-butler window-numbering which-key web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org sql-indent spacemacs-theme spaceline smeargle shell-pop restart-emacs rainbow-delimiters quelpa pyvenv pytest pyenv-mode py-isort popwin pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-plus-contrib org-download org-bullets open-junk-file nim-mode neotree multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lua-mode lorem-ipsum livid-mode live-py-mode linum-relative link-hint js2-refactor js-doc insert-shebang info+ indent-guide ido-vertical-mode hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag gruvbox-theme google-translate golden-ratio go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md flycheck-pos-tip flycheck-nim flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-snipe evil-search-highlight-persist evil-numbers evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eshell-z eshell-prompt-extras esh-help elisp-slime-nav editorconfig dumb-jump drupal-mode dockerfile-mode docker disaster define-word cython-mode csv-mode company-tern company-statistics company-shell company-go company-c-headers company-anaconda column-enforce-mode color-theme-sanityinc-tomorrow coffee-mode cmake-mode clojure-snippets clj-refactor clean-aindent-mode clang-format cider-eval-sexp-fu auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adoc-mode adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)

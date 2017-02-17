@@ -4,14 +4,15 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim
+set runtimepath+=/home/cli/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-if dein#load_state('~/.config/nvim')
-  call dein#begin('~/.config/nvim')
+if dein#load_state('/home/cli/.cache/dein')
+  call dein#begin('/home/cli/.cache/dein')
 
   " Let dein manage dein
-  call dein#add('~/.config/nvim/repos/github.com/Shougo/dein.vim')
+  " Required:
+  call dein#add('/home/cli/.cache/dein/repos/github.com/Shougo/dein.vim')
 
   " The Dark (n)vimLord
   call dein#add('Shougo/unite.vim')
@@ -22,6 +23,7 @@ if dein#load_state('~/.config/nvim')
   call dein#add('Shougo/vimshell', { 'rev': '3787e5' })
   call dein#add('Shougo/neomru.vim')
   call dein#add('Shougo/neoyank.vim')
+  call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
   " tpope
   call dein#add('tpope/vim-sensible')
@@ -78,7 +80,11 @@ if dein#load_state('~/.config/nvim')
   "" go
   call dein#add('fatih/vim-go')
   call dein#config('vim-go', { 'lazy': 1, 'on_ft': 'go' })
-
+  "" typescript
+  call dein#add('leafgarland/typescript-vim')
+  call dein#config('typescript-vim', { 'lazy': 1, 'on_ft': 'typescript' })
+  call dein#add('Quramy/tsuquyomi')
+  call dein#config('tsuquyomi', { 'lazy': 1, 'on_ft': 'typescript' })
 
   " Required:
   call dein#end()

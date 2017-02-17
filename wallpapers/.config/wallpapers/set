@@ -5,7 +5,7 @@ case "$(hostname)" in
     "meila")
         exec feh --bg-tile $HOME/.config/wallpapers/portal2.jpg
         ;;
-    "lorenzo.mb")
+    "cli.mb")
         exec feh --bg-tile $HOME/.config/wallpapers/portal2.jpg
         ;;
     *)
