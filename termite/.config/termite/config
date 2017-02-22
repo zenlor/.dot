@@ -1,4 +1,5 @@
 [options]
+font = Luculent 13
 font = Iosevka Term 13
 # PragmataPro 12
 browser = qutebrowser
