@@ -2,7 +2,6 @@
 export EDITOR='nvim'
 export GIT_EDITOR='/usr/bin/nvim'
 export BROWSER="$HOME/lib/bin/browser"
-export TERMINAL=termite
 
 # export TMPDIR
 export TMPDIR=/tmp/$USER

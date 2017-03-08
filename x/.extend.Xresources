@@ -24,8 +24,7 @@ rofi.location: 2
 rofi.padding: 100
 rofi.fuzzy: false
 
-URxvt.font: xft:Pragmata\ Pro:size=12
-URxvt.letterSpace: -2
+URxvt.font: xft:Iosevka\ Term:size=12
 URxvt*termName:         rxvt-unicode-256color
 URxvt*scrollBar:        false
 URxvt*perl-lib:         /usr/lib/urxvt/perl/

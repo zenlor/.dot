@@ -229,8 +229,9 @@ augroup END
 "
 " █▓▒░ wizard status line https://p.iotek.org/s7e
 set laststatus=2
+
+ " \ 'colorscheme': 'gruvbox',
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [ [ 'filename' ],
   \             [ 'readonly', 'fugitive' ] ],
@@ -334,4 +335,6 @@ let g:gruvbox_italic = 1
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme gruvbox
+colorscheme darktooth
+" colorscheme gruvbox
+" colorscheme reykjavik
