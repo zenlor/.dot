@@ -7,3 +7,4 @@
 /nvim/.config/nvim/cache_nvim
 /nvim/.config/nvim/repos
 /nvim/.config/nvim/state_nvim.vim
+nvim/.cache/dein/repos
