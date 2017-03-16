@@ -322,6 +322,11 @@ let g:syntastic_style_warning_symbol = '💩'
 cnoremap mk. !mkdir -p <c-r>=expand("%:h")<cr>/
 
 "
+" Save with sudo tee ...
+"
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
+"
 " save and reload positions of re-opened files
 "
 augroup resCur
