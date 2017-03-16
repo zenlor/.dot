@@ -33,6 +33,7 @@ if dein#load_state('/home/cli/.cache/dein')
   call dein#add('tpope/vim-ragtag')
   call dein#add('tpope/vim-vinegar')
   call dein#add('tpope/vim-sleuth')
+  call dein#add('tpope/vim-surround')
 
   " rainbows everywhere
   call dein#add('kien/rainbow_parentheses.vim')
@@ -230,8 +231,8 @@ augroup END
 " █▓▒░ wizard status line https://p.iotek.org/s7e
 set laststatus=2
 
- " \ 'colorscheme': 'gruvbox',
 let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [ [ 'filename' ],
   \             [ 'readonly', 'fugitive' ] ],
@@ -335,6 +336,4 @@ let g:gruvbox_italic = 1
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme darktooth
-" colorscheme gruvbox
-" colorscheme reykjavik
+colorscheme gruvbox

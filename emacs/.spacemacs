@@ -74,7 +74,6 @@ values."
    dotspacemacs-additional-packages '(dash
                                       autothemer
                                       gruvbox-theme
-                                      darktooth-theme
                                       editorconfig)
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -130,7 +129,6 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         darktooth
                          gruvbox
                          leuven
                          spacemacs-dark
