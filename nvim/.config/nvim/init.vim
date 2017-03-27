@@ -64,6 +64,10 @@ if dein#load_state('$HOME/.cache/dein')
   " filetypes "
   """""""""""""
 
+  "" clojure
+  call dein#add('tpope/vim-fireplace')
+  call dein#config('vim-fireplace', { 'lazy': 1, 'on_ft': 'clojure' })
+  
   "" rust
   call dein#add('rust-lang/rust.vim', { 'lazy': 1, 'on_ft': 'rust' })
   "" javascript
@@ -72,7 +76,7 @@ if dein#load_state('$HOME/.cache/dein')
   "" typescript
   call dein#add('leafgarland/typescript-vim')
   call dein#config('typescript-vim', { 'lazy': 1, 'on_ft': 'typescript' })
-  " "" javascript + typescript
+  """ javascript + typescript
   " call dein#add('jason0x43/vim-js-indent')
   " call dein#config('vim-js-indent', { 'lazy': 1, 'on_ft': ['typescript', 'javascript'] })
   "" toml
