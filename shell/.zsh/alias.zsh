@@ -13,3 +13,5 @@ alias timestamp="date +'%Y%m%d%H%M%S'"
 alias o="open"
 alias _=sudo
 
+# emacsclient
+alias ec="emacsclient -n"
