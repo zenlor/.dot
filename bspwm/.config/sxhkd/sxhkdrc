@@ -12,11 +12,11 @@ super + {_,shift} + w
 
 # set the window state
 super + {t,shift + t,f}
-   bspc node -t {tiled,pseudo_tiled,fullscreen}
+    bspc node -t {tiled,pseudo_tiled,fullscreen}
 super + s
-   bspc node -t $(bspc query -N -n -n .tiled >/dev/null && echo floating || echo tiled)
+    bspc node -t $(bspc query -N -n -n .tiled >/dev/null && echo floating || echo tiled)
 super + alt + s
-   bspc node -g sticky
+    bspc node -g sticky
 
 # if the current node is automatic, send it to the last manual, otherwise pull the last leaf
 super + y
@@ -90,5 +90,9 @@ XF86AudioMute
 # make sxhkd reload its configuration files
 super + Escape
     pkill -USR1 -x sxhkd
+
+# clipmenu
+super + c
+    clipmenu
 
 # }}}
