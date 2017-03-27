@@ -73,3 +73,7 @@ conky -c $HOME/.config/conky/conkyrc -d
 
 # GNU Privacy Guard
 gpg-agent &
+
+# clipboard menu
+export CM_LAUNCHER="rofi"
+clipmenud &
