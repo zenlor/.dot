@@ -11,8 +11,9 @@ slop
 noto-fonts-emoji
 font-mathematica
 ttf-iosevka
-ttf-iosevka-term
 ttf-iosevka-slab
+ttf-iosevka-term
+ttf-iosevka-term-slab
 ttf-monoid
 
 neovim
