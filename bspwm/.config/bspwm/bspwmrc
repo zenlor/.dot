@@ -109,9 +109,6 @@ bspc rule -a wpa_gui state=pseudo_tiled
 bspc rule -a 9menu border=off manage=off
 bspc rule -a tint2 border=off manage=off
 
-# Monitor rules
-bspc desktop I --layout monocle
-
 # reclaim orphan windows
 bspc wm -o
 
