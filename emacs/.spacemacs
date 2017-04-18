@@ -35,7 +35,7 @@ values."
      auto-completion
      ;; better-defaults
      git
-     markdown
+     (markdown :variables markdown-live-preview-engine 'vmd)
      org
      csv
 
@@ -62,10 +62,7 @@ values."
      evil-snipe
 
      (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom
-            shell-enable-smart-eshell t
-            shell-default-shell 'eshell)
+            shell-default-term-shell "/bin/bash")
 
      ;; spell-checking
      syntax-checking
@@ -82,8 +79,7 @@ values."
    dotspacemacs-additional-packages '(dash
                                       autothemer
                                       gruvbox-theme
-                                      editorconfig
-                                      speed-type)
+                                      editorconfig)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -119,7 +115,7 @@ values."
    ;; when the current branch is not `develop'. Note that checking for
    ;; new versions works via git commands, thus it calls GitHub services
    ;; whenever you start Emacs. (default nil)
-   dotspacemacs-check-for-update nil
+   dotspacemacs-check-for-update t
    ;; If non-nil, a form that evaluates to a package directory. For example, to
    ;; use different package directories for different Emacs versions, set this
    ;; to `emacs-version'.
@@ -406,4 +402,4 @@ you should place your code here."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(default ((((class color) (min-colors 16777215)) (:background "#282828" :foreground "#fdf4c1")) (((class color) (min-colors 255)) (:background "#262626" :foreground "#ffffaf")))))
