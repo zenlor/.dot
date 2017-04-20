@@ -1,5 +1,5 @@
 [options]
-font = Iosevka Term Slab 11
+font = Iosevka Term Slab 12
 browser = qutebrowser
 clickable_url = true
 dynamic_title = true
@@ -9,42 +9,39 @@ scroll_on_output = false
 urgent_on_bell = true
 
 
-# vim: ft=dosini cms=#%s
 [colors]
-# hard contrast: background = #1d2021
-background = #282828
-# soft contrast: background = #32302f
-foreground = #ebdbb2
-foreground_bold = #ebdbb2
+# Base16 Spacemacs
+# Scheme: Nasser Alshammari (https://github.com/nashamri/spacemacs-theme)
 
-# dark0 + gray
-color0 = #282828
-color8 = #928374
+foreground      = #a3a3a3
+foreground_bold = #a3a3a3
+cursor          = #a3a3a3
+background      = #1f2022
 
-# neurtral_red + bright_red
-color1 = #cc241d
-color9 = #fb4934
+# 16 color space
+color0  = #1f2022
+color1  = #f2241f
+color2  = #67b11d
+color3  = #b1951d
+color4  = #4f97d7
+color5  = #a31db1
+color6  = #2d9574
+color7  = #a3a3a3
+color8  = #585858
+color9  = #f2241f
+color10 = #67b11d
+color11 = #b1951d
+color12 = #4f97d7
+color13 = #a31db1
+color14 = #2d9574
+color15 = #f8f8f8
 
-# neutral_green + bright_green
-color2 = #98971a
-color10 = #b8bb26
+# 256 color space
+color16 = #ffa500
+color17 = #b03060
+color18 = #282828
+color19 = #444155
+color20 = #b8b8b8
+color21 = #e8e8e8
 
-# neutral_yellow + bright_yellow
-color3 = #d79921
-color11 = #fabd2f
-
-# neutral_blue + bright_blue
-color4 = #458588
-color12 = #83a598
-
-# neutral_purple + bright_purple
-color5 = #b16286
-color13 = #d3869b
-
-# neutral_aqua + faded_aqua
-color6 = #689d6a
-color14 = #8ec07c
-
-# light4 + light1
-color7 = #a89984
-color15 = #ebdbb2
+# vim: ft=dosini cms=#%s

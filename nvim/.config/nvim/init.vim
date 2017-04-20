@@ -236,7 +236,6 @@ augroup END
 set laststatus=2
 
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [ [ 'filename' ],
   \             [ 'readonly', 'fugitive' ] ],
@@ -345,4 +344,4 @@ let g:gruvbox_italic = 1
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme gruvbox
+colorscheme spacemacs
