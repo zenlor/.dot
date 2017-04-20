@@ -51,8 +51,8 @@ if dein#load_state('$HOME/.cache/dein')
   call dein#add('scrooloose/syntastic')
   call dein#config('syntastic', { 'lazy': 1, 'on_i': 1 })
 
-  " lightline
-  call dein#add('itchyny/lightline.vim')
+  " eleline
+  call dein#add('liuchengxu/eleline.vim')
 
   " brackets and '
   call dein#add('cohama/lexima.vim')
@@ -186,19 +186,19 @@ nnoremap <Leader>sc :noh<CR>
 
 "
 " file types
-" {{{
+"{{{
 autocmd FileType c setlocal noet ts=8 sw=8 tw=80
 autocmd FileType h setlocal noet ts=8 sw=8 tw=80
 autocmd FileType s setlocal noet ts=8 sw=8
 autocmd FileType go setlocal noet ts=4 sw=4
 autocmd FileType hy setlocal filetype=lisp
 autocmd BufRead,BufNewFile *.js setlocal et ts=4 sw=4
-" }}}
+"}}}
 
 "
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff
-" {{{
+"{{{
 augroup encrypted
   au!
 
@@ -227,74 +227,6 @@ augroup encrypted
   autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
 " }}}
-
-
-"
-" Lightline
-"
-" █▓▒░ wizard status line https://p.iotek.org/s7e
-set laststatus=2
-
-let g:lightline = {
-  \ 'active': {
-  \   'left': [ [ 'filename' ],
-  \             [ 'readonly', 'fugitive' ] ],
-  \   'right': [ [ 'percent', 'lineinfo' ],
-  \              [ 'fileencoding', 'filetype' ],
-  \              [ 'fileformat', 'syntastic' ] ]
-  \ },
-  \ 'component_function': {
-  \   'modified': 'WizMod',
-  \   'readonly': 'WizRO',
-  \   'fugitive': 'WizGit',
-  \   'filename': 'WizName',
-  \   'filetype': 'WizType',
-  \   'fileformat' : 'WizFormat',
-  \   'fileencoding': 'WizEncoding',
-  \   'mode': 'WizMode',
-  \ },
-  \ 'component_expand': {
-  \   'syntastic': 'SyntasticStatuslineFlag',
-  \ },
-  \ 'component_type': {
-  \   'syntastic': 'error',
-  \ },
-  \ 'separator': { 'left': '▊▋▌▍▎', 'right': '▎▍▌▋▊' },
-  \ 'subseparator': { 'left': '▒', 'right': '░' }
-  \ }
-"\ 'separator': { 'left': '▓▒░', 'right': '░▒▓' },
-
-function! WizMod()
-  return &ft =~ 'help\|vimfiler' ? '' : &modified ? '»' : &modifiable ? '' : ''
-endfunction
-
-function! WizRO()
-  return &ft !~? 'help\|vimfiler' && &readonly ? 'x' : ''
-endfunction
-
-function! WizGit()
-  if &ft !~? 'help\|vimfiler' && exists("*fugitive#head")
-    return fugitive#head()
-  endif
-  return ''
-endfunction
-
-function! WizName()
-  return ('' != WizMod() ? WizMod() . ' ' : '') .
-        \ ('' != expand('%:t') ? expand('%:t') : '[none]') 
-endfunction
-
-function! WizType()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : '') : ''
-endfunction
-
-function! WizFormat()
-  return ''
-endfunction
-
-function! WizEncoding()
-  return winwidth(0) > 70 ? (strlen(&fenc) ? &enc : &enc) : ''
-endfunction
 
 "
 " Typescript
@@ -344,4 +276,4 @@ let g:gruvbox_italic = 1
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme spacemacs
+colorscheme spacevim
