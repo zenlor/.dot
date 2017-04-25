@@ -120,7 +120,9 @@ function minimal_magic_enter {
 
     local job_n="$(jobs | wc -l)"
 
-    local iline="[$user_host_pwd] [$_grey$v_files$w ($_grey$h_files$w)]"
+    local timedate="$(date +%R)"
+
+    local iline="[$user_host_pwd] [$timedate] [$_grey$v_files$w ($_grey$h_files$w)]"
     [ "$job_n" -gt 0 ] && iline="$iline [$_grey$job_n$w&]"
 
     if [ "$last_err" != "0" ]; then

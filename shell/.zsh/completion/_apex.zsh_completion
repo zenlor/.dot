@@ -1,0 +1,10 @@
+#compdef apex
+#description manage lambda applications with ease
+
+_apex {
+	apex autocomplete
+}
+
+compdef _apex apex
+
+# vim: ft=sh

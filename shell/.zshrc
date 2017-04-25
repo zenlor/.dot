@@ -8,3 +8,5 @@ then
 else
     source "${HOME}/.zsh/noninteractive.zsh"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

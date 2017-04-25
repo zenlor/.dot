@@ -7,3 +7,5 @@ antigen bundles < ~/.zsh/plugins.conf
 
 # Tell Antigen that we're done.
 antigen apply
+
+# Configure plugins if needed
