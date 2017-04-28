@@ -1,9 +1,8 @@
 slaps $nick around a bit with a large trout!
-slaps $nick with a large smelly trout!
-slaps $nick a few times!
 would slap $nick, but is not being violent today!
 gives $nick a hearty slap!
-slaps $nick with a large A1000!
 slaps $nick around a bit with a large blitter!
-tests $nick with the infamous South Park alien anal probe.
-slaps $nick around a bit with a scriptkid script!
+pats $nick with a little stick.
+steals $nick's secret stash
+(conj [:marrano] :$nick)
+((juxt #(print (str "marrano " % "!"))) "$nick")
