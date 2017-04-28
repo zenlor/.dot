@@ -270,6 +270,12 @@ augroup resCur
 augroup END
 
 "
+" Clipboard
+"
+" copy to system clipboard with C-c in visual mode
+vnoremap <C-c> "*y
+
+"
 " theme
 "
 let g:gruvbox_italic = 1

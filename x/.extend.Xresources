@@ -1,10 +1,10 @@
-Xft.dpi: 96
-Xft.antialias: true
-Xft.hinting: true
-Xft.rgba: rgb
-Xft.autohint: false
-Xft.hintstyle: hintfull
+Xft.dpi:       96
+Xft.autohint:  false
+Xft.antialias: 1
+Xft.hinting:   1
+Xft.hintstyle: hintmedium
 Xft.lcdfilter: lcddefault
+Xft.rgba:      rgb
 Xcursor.theme: Vanilla-DMZ-AA
 
 ! rofi
@@ -88,3 +88,5 @@ URxvt*matcher.button:   1
 *.color19:      base02
 *.color20:      base04
 *.color21: 	base06
+
+! vim: ft=xdefaults
