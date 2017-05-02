@@ -370,6 +370,11 @@ before packages are loaded. If you are unsure, you should try in setting them in
    web-mode-code-indent-offset 4
    web-mode-attr-indent-offset 4)
 
+  ;; TypeScript hook
+  (add-hook 'typescript-mode-hook
+            (lambda ()
+              (local-set-key "\M-j" 'js2-line-break)))
+
   ;; Visual line navigation for textual modes
   (add-hook 'text-mode-hook
             'spacemacs/toggle-visual-line-navigation-on)
