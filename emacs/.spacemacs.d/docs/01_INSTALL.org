@@ -1,0 +1,140 @@
+* Requirements Before You Begin
+
+** Source Code Pro Font
+
+   Download the font release file and install all of the OTF (/not/ TTF)
+   fonts from https://github.com/adobe-fonts/source-code-pro.
+
+** Homebrew
+
+   Install homebrew from http://brew.sh.
+
+** Node + NPM
+
+   Use homebrew to install the latest Node and NPM (which is yet another package
+   manager). Lots of important utilities for programming are written in Node
+   and will be installed via NPM.
+
+   We must upgrade to the latest NPM after installation, since it gets updated
+   and fixed more frequently than the Node version it's bundled with.
+
+   #+BEGIN_EXAMPLE
+   brew install node
+   npm install npm@latest -g
+   #+END_EXAMPLE
+
+   You should use https://www.npmjs.com if you ever want to search for packages,
+   because the command-line search is terribly slow in NPM.
+
+** Latest Git
+
+   #+BEGIN_EXAMPLE
+   brew install git
+   #+END_EXAMPLE
+
+** External tools required by Spacemacs packages
+
+   Run all of these commands unless you're /sure/ what you're doing. All of
+   these are required for normal operation of multiple Spacemacs layers.
+
+   #+BEGIN_EXAMPLE
+   brew install multimarkdown # provides "markdown" binary
+   brew install shellcheck # needed for linting in "shell-scripts"
+   npm install -g tern # needed for javascript auto-completion
+   npm install -g js-beautify # needed for javascript auto-formatting
+   npm install -g jshint # needed for javascript error checking
+   brew install fzf # needed for fzf (fuzzy find)
+   brew install ag # needed for helm-ag (source greping)
+   brew install editorconfig # core library needed for support
+   #+END_EXAMPLE
+
+
+* Spacemaxed
+
+** Delete or move any existing "~/.spacemacs" file or "~/.spacemacs.d" folder
+
+** Place my "spacemaxed" dotfolder on the hard disk as "~/.spacemacs.d/"
+
+   #+BEGIN_EXAMPLE
+   git clone https://github.com/SteveJobzniak/spacemaxed.git ~/spacemaxed
+   mv ~/spacemaxed/spacemaxed ~/.spacemacs.d
+   rm -rf ~/spacemaxed # delete temporary folder
+   #+END_EXAMPLE
+
+** Install YAMAMOTO Mitsuharu (railwaycat)'s Enhanced Emacs for macOS
+
+   This will install the latest Emacs for macOS with all required addons, a nice
+   Spacemacs icon and a link in /Applications. This version is far better than
+   "vanilla" Emacs. It's built on the latest GNU Emacs sources, but adds tons of
+   Mac-specific enhancements, bugfixes, performance and stability improvements.
+   And it has built-in SVG support via WebKit.
+
+   The command below takes a very long time to install. Wait for it.
+
+   #+BEGIN_EXAMPLE
+   brew tap railwaycat/emacsmacport
+   brew install emacs-mac --with-gnutls --with-imagemagick --with-modules --with-texinfo --with-xml2 --with-spacemacs-icon
+   brew linkapps emacs-mac
+   #+END_EXAMPLE
+
+** Install the development version of Spacemacs
+
+   The development version is very stable, and is always way ahead of the master
+   branch in terms of bugfixes.
+
+   #+BEGIN_EXAMPLE
+   # Install Spacemacs
+   rm -rf ~/.emacs.d
+   git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+
+   # Switch to development version
+   cd ~/.emacs.d && git checkout develop
+   #+END_EXAMPLE
+
+** Install the Paintvars layer for Spacemacs
+
+   Until my bugfixes have been merged into the official "colors" layer, just
+   install my alternative layer which contains the same code with a new name.
+
+   #+BEGIN_EXAMPLE
+   git clone https://github.com/SteveJobzniak/spacemacs-private-paintvars.git ~/.spacemacs.d/layers/paintvars
+   #+END_EXAMPLE
+
+** Launch Emacs (the GUI version) and let it install all packages
+
+** Restart Emacs to finalize the package installation
+
+
+* Updating Spacemacs in the future
+
+** First press "[Update Packages]" on the Spacemacs starting page
+
+** Then close Spacemacs and update the repository
+
+   #+BEGIN_EXAMPLE
+   cd ~/.emacs.d && git pull --rebase
+   #+END_EXAMPLE
+
+** Start Spacemacs again to complete the upgrade
+
+** Lastly, check for and merge any changes to the user-config template
+
+   First try pressing =SPC f e D= to diff your config against the built-in
+   template. If that fails, just use a manual diff and apply any important
+   changes:
+
+   #+BEGIN_EXAMPLE
+   diff -u ~/.emacs.d/core/templates/.spacemacs.template ~/.spacemacs.d/init.el
+   #+END_EXAMPLE
+
+
+* Uninstalling Spacemacs
+
+  Just do all of the steps in reverse. As follows.
+
+  #+BEGIN_EXAMPLE
+  brew unlinkapps emacs-mac
+  brew rm emacs-mac
+  brew untap railwaycat/emacsmacport
+  rm -rf ~/.emacs.d
+  #+END_EXAMPLE

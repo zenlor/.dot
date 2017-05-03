@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#orgaac2dd4">1. Terminal Mode</a></li>
+<li><a href="#org12a4094">2. Avoiding long freezes in the app GUI after inactivity</a></li>
+<li><a href="#orgcf08cd0">3. Native keybindings in Emacs for macOS</a></li>
+<li><a href="#orgbe4c177">4. Font Antialiasing Tweaks</a>
+<ul>
+<li><a href="#orgdb7037a">4.1. Explaining Apple's font antialiasing</a></li>
+<li><a href="#orga6ef13e">4.2. Changing the antialiasing settings</a>
+<ul>
+<li><a href="#org892a030">4.2.1. Option 1: Only for Emacs.app (leaves the rest of the system as normal)</a></li>
+<li><a href="#orgff2c480">4.2.2. Option 2: Globally for the whole operating system</a></li>
+</ul>
+</li>
+<li><a href="#orgec14f3b">4.3. Bonus: Completely disabling antialiasing for Emacs.app</a></li>
+</ul>
+</li>
+<li><a href="#org57fb508">5. Previews of Apple's Subpixel Antialiasing algorithms</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgaac2dd4" class="outline-2">
+<h2 id="orgaac2dd4"><span class="section-number-2">1</span> Terminal Mode</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+By default, Apple's Terminal binds <code>Option</code> (Alt) to just sending alternative
+characters. If you want to use it as an actual Meta-key in Emacs, you have to
+go into Terminal Preferences, Profiles, Keyboard and "Use Option as Meta-key".
+</p>
+
+<p>
+It's also a very good idea to go into the Advanced tab and setting the
+Terminfo declaration to "xterm-256color" to enable more colors.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-org12a4094" class="outline-2">
+<h2 id="org12a4094"><span class="section-number-2">2</span> Avoiding long freezes in the app GUI after inactivity</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+There is a severe bug in Emacs for macOS, wherein Apple's "App Nap" will put
+Emacs to sleep whenever it's in the background or covered by another window.
+As soon as you attempt to use Emacs again, there will be a ~10 second delay
+before it recovers and becomes responsive.
+</p>
+
+<p>
+You can track the bug here:
+<a href="https://github.com/syl20bnr/spacemacs/issues/5413">https://github.com/syl20bnr/spacemacs/issues/5413</a>
+</p>
+
+<p>
+The solution for now is to disable "App Nap" for Emacs, by running the
+following command in a terminal:
+</p>
+
+<pre class="example">
+defaults write org.gnu.Emacs NSAppSleepDisabled -bool YES
+</pre>
+
+<p>
+Disabling "App Nap" will also be the official Emacs code solution later.
+</p>
+
+<p>
+Furthermore, you may sometimes experience brief "pauses" in execution where
+Emacs seems to stall. But if you press <code>Ctrl-g</code>, you can tell Emacs to abort
+the function it's currently executing, which is a great way to regain
+responsiveness whenever Emacs slows down due to some misbehaving function.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgcf08cd0" class="outline-2">
+<h2 id="orgcf08cd0"><span class="section-number-2">3</span> Native keybindings in Emacs for macOS</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The "osx" Spacemacs layer has been enabled, which adds various compatibility
+features and sets up standard system keybindings, such as <code>Command-z</code> to undo.
+</p>
+
+<p>
+The full list of keybindings can be seen here:
+<a href="http://spacemacs.org/layers/+os/osx/README.html#key-bindings">http://spacemacs.org/layers/+os/osx/README.html#key-bindings</a>
+</p>
+
+<p>
+However, I've disabled the <code>Command-q</code> shortcut, since it's too easy to hit by
+accident and instantly quitting Emacs with one wrong move. If you try the key,
+a message will tell you to press <code>SPC q q</code> if you <i>really</i> want to quit.
+</p>
+</div>
+</div>
+
+
+<div id="outline-container-orgbe4c177" class="outline-2">
+<h2 id="orgbe4c177"><span class="section-number-2">4</span> Font Antialiasing Tweaks</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-orgdb7037a" class="outline-3">
+<h3 id="orgdb7037a"><span class="section-number-3">4.1</span> Explaining Apple's font antialiasing</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The choice of "thick" antialiasing on macOS was made by Apple as a way to
+stay truthful to the real shapes of the actual font. However, the blurriness
+is annoying for small fonts and programming.
+</p>
+
+<p>
+Luckily there is a way to manually configure their antialiasing algorithm.
+</p>
+
+<p>
+There are four different algorithms (0 to 3):
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-right" />
+
+<col  class="org-left" />
+
+<col  class="org-left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-right">int</th>
+<th scope="col" class="org-left">Algorithm</th>
+<th scope="col" class="org-left">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-right">0</td>
+<td class="org-left">No Subpixels. Blurry.</td>
+<td class="org-left">Antialiases using only shades of gray.</td>
+</tr>
+
+<tr>
+<td class="org-right">1</td>
+<td class="org-left">Thin/Crisp Subpixels</td>
+<td class="org-left">Clean and crisp subpixel antialiasing.</td>
+</tr>
+
+<tr>
+<td class="org-right">2</td>
+<td class="org-left">Medium Subpixels</td>
+<td class="org-left">macOS &gt;=10.11 default. Pretty clean.</td>
+</tr>
+
+<tr>
+<td class="org-right">3</td>
+<td class="org-left">Heavy/Fuzzy Subpixels</td>
+<td class="org-left">macOS &lt;=10.10 default. Very ugly.</td>
+</tr>
+
+<tr>
+<td class="org-right">4+</td>
+<td class="org-left">Falls back to int 0</td>
+<td class="org-left">There are no settings from 4 and up.</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Subpixels refer to the fact that LCD pixels are divided into 3 colors. By
+antialiasing the fonts using LCD-aware subpixels, it is possible to render
+"1/2 pixels" and "1/3" pixels to help out with much crisper antialiasing.
+</p>
+
+<p>
+You should <i>never</i> set this value to zero (disabled) since it then falls
+back to old-school pre-LCD techniques of using shades of gray "whole-pixel"
+antialiasing, which gives <i>extremely</i> blurry, distorted font shapes.
+</p>
+
+<p>
+The recommended value for programming is 1, the crispest subpixel mode.
+It looks pretty much like 0, but with much crisper font edges.
+</p>
+
+<p>
+There are preview images of all modes in the final section of this document.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga6ef13e" class="outline-3">
+<h3 id="orga6ef13e"><span class="section-number-3">4.2</span> Changing the antialiasing settings</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="outline-container-org892a030" class="outline-4">
+<h4 id="org892a030"><span class="section-number-4">4.2.1</span> Option 1: Only for Emacs.app (leaves the rest of the system as normal)</h4>
+<div class="outline-text-4" id="text-4-2-1">
+<pre class="example">
+# Enabling antialiasing method override for Emacs
+defaults write org.gnu.Emacs AppleFontSmoothing -int 1
+
+# Checking the current value (if no value, OS defaults are used)
+defaults read org.gnu.Emacs AppleFontSmoothing
+
+# Deleting the Emacs antialiasing method override
+defaults delete org.gnu.Emacs AppleFontSmoothing
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgff2c480" class="outline-4">
+<h4 id="orgff2c480"><span class="section-number-4">4.2.2</span> Option 2: Globally for the whole operating system</h4>
+<div class="outline-text-4" id="text-4-2-2">
+<pre class="example">
+# Enabling a global override for all applicatons on the system
+defaults write -g AppleFontSmoothing -int 1
+
+# This second line is also necessary, to take care of windows
+# shown by processes owned by root, such as the Force Quit window
+sudo defaults write -g AppleFontSmoothing -int 1
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgec14f3b" class="outline-3">
+<h3 id="orgec14f3b"><span class="section-number-3">4.3</span> Bonus: Completely disabling antialiasing for Emacs.app</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+This can be very useful if you want to use sharp, pixel-based fonts.
+</p>
+
+<pre class="example">
+# Completely disables antialiasing for font sizes 25 and below
+defaults write org.gnu.Emacs AppleAntiAliasingThreshold -int 25
+
+# Checking the current value (if no value, OS default of "4" is used)
+defaults read org.gnu.Emacs AppleAntiAliasingThreshold
+
+# Deleting the Emacs size antialiasing override
+defaults delete org.gnu.Emacs AppleAntiAliasingThreshold
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-org57fb508" class="outline-2">
+<h2 id="org57fb508"><span class="section-number-2">5</span> Previews of Apple's Subpixel Antialiasing algorithms</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+If you are viewing this document within Emacs, click on the images below and
+then press <code>f</code> or <code>b</code> to switch between the frames of the GIF animations, to
+see previews of all available antialiasing methods.
+</p>
+
+<p>
+In Emacs:
+</p>
+
+<p>
+<i>Image created by me using Emacs 25 and the font settings in the screenshot.</i>
+</p>
+
+
+<div class="figure">
+<p><img src="img/lcd_emacsanim.gif" alt="lcd_emacsanim.gif" />
+</p>
+</div>
+
+<p>
+In General Web Browser:
+</p>
+
+<p>
+<i>This image was created by someone else and contains misinformation in the</i>
+<i>text labels. All modes from 1-3 use subpixels, as seen by zooming with an</i>
+<i>image editor. Other than that mistake, this is a good comparison of what</i>
+<i>your system might look like if you globally change the setting.</i>
+</p>
+
+
+<div class="figure">
+<p><img src="img/lcd_webanim.gif" alt="lcd_webanim.gif" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: SteveJobzniak</p>
+</div>
+</body>
+</html>
