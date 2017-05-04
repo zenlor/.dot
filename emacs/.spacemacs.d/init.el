@@ -52,6 +52,7 @@ values."
      shell-scripts
      sql
      vimscript
+     yaml
 
      ;; General layers
      helm
