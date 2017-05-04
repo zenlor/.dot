@@ -4,6 +4,7 @@ if &compatible
 endif
 
 " Required:
+set runtimepath+=/usr/share/vim/vimfiles/
 set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
