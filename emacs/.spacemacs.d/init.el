@@ -51,6 +51,8 @@ values."
      python
      shell-scripts
      sql
+     (typescript :variables
+                 typescript-fmt-on-save t)
      vimscript
      yaml
 
