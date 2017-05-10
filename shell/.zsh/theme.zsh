@@ -1,160 +1,176 @@
-# https://github.com/subnixr/minimal license: GPL (https://github.com/subnixr/minimal/blob/master/LICENSE)
+#              _                 _
+#   __ _  __ _| | _____ ______ _| | __
+#  / _` |/ _` | |/ / _ \_  / _` | |/ /
+# | (_| | (_| |   < (_) / / (_| |   <
+#  \__,_|\__, |_|\_\___/___\__,_|_|\_\
+  #        |___/
 #
-# enable/disable switches
-MINIMAL_PROMPT="${MINIMAL_PROMPT:-yes}"
-MINIMAL_RPROMPT="${MINIMAL_RPROMPT:-yes}"
-MINIMAL_MAGIC_ENTER="${MINIMAL_MAGIC_ENTER:-yes}"
+# A dynamic color prompt for zsh with Git, vi mode, and exit status indicators
+#
+# Copyright (C) 2017 Alexandros Kozák
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software Foundation,
+# Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301  USA
+#
+# https://github.com/agkozak/agkozak-zsh-theme
+#
 
-# customization parameters
-MINIMAL_OK_COLOR="${MINIMAL_OK_COLOR:-2}"
-MINIMAL_USER_CHAR="${MINIMAL_USER_CHAR:-λ}"
-MINIMAL_INSERT_CHAR="${MINIMAL_INSERT_CHAR:-›}"
-MINIMAL_NORMAL_CHAR="${MINIMAL_NORMAL_CHAR:-·}"
+# shellcheck disable=SC2148
 
-# necessary
-autoload -U colors && colors
-setopt prompt_subst
+# $psvar[] Usage
+#
+# $psvar Index  Prompt String Equivalent    Usage
+#
+# $psvar[1]     %1v                         Hostname/abbreviated hostname (only
+#                                           displayed for SSH connections)
+# $psvar[2]     %2v                         Working directory or abbreviation
+#                                           thereof
+# $psvar[3]     %3v                         Current working Git branch, along
+#                                           with indicator of changes made
 
-_grey="\e[38;5;244m"
-_greyp="%{$_grey%}"
+setopt PROMPT_SUBST
 
-# os detection, linux as default
-function minimal_ls {
-  ls -C --color="always" -w $COLUMNS
-}
-
-if [[ "$(uname)" = "Darwin" ]] && ! ls --version &> /dev/null; then
-  function minimal_ls {
-    ls -C -G
-  }
-fi
-
-function minimal_git {
-  local statc="%{\e[0;3${MINIMAL_OK_COLOR}m%}" # assumes is clean
-  local bname="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-
-  if [ -n "$bname" ]; then
-    [ -n "$(git status --porcelain 2> /dev/null)" ] && statc="%{\e[0;31m%}"
-    echo " $statc$bname%{\e[0m%}"
+_is_ssh() {
+  if [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]; then
+    true
+  else
+    case "$EUID" in
+      0)
+        case $(ps -o comm= -p $PPID) in
+          sshd|*/sshd) true ;;
+        esac
+        ;;
+      *) false;
+    esac
   fi
 }
 
-function minimal_path {
-  local w="%{\e[0m%}"
-  local cwd="%2~"
-  local pi=""
-  cwd="${(%)cwd}"
-  cwd=("${(@s:/:)cwd}")
+_has_colors() {
+  [[ $(tput colors) -ge 8 ]]
+}
 
-  for i in {1..${#cwd}}; do
-    pi="$cwd[$i]"
-    [ "${#pi}" -gt 10 ] && cwd[$i]="${pi:0:4}$w..$_greyp${pi: -4}"
+# Display current branch and status
+_branch_status() {
+  local ref branch
+  ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
+  case $? in        # See what the exit code is.
+    0) ;;           # $ref contains the name of a checked-out branch.
+    128) return ;;  # No Git repository here.
+    # Otherwise, see if HEAD is in detached state.
+    *) ref=$(git rev-parse --short HEAD 2> /dev/null) || return ;;
+  esac
+  branch=${ref#refs/heads/}
+  printf ' (%s%s)' "$branch" "$(_branch_changes)"
+}
+
+# Display symbols representing the current branch's status
+_branch_changes() {
+  local git_status symbols
+
+  git_status=$(command git status 2>&1)
+
+  # $messages is an associative array whose keys are text to be looked for in
+  # $git_status and whose values are symbols used in the prompt to represent
+  # changes to the working branch
+  declare -A messages
+
+  # shellcheck disable=SC2190
+  messages=(
+  'renamed:'                '>'
+  'Your branch is ahead of' '*'
+  'new file:'               '+'
+  'Untracked files'         '?'
+  'deleted'                 'x'
+  'modified:'               '!'
+  )
+
+  # shellcheck disable=SC2154
+  for k in ${(@k)messages}; do
+    case "$git_status" in
+      *${k}*) symbols="${messages[$k]}${symbols}" ;;
+    esac
   done
 
-  echo "$_greyp${(j:/:)cwd//\//$w/$_greyp}$w"
+  [[ ! -z "$symbols" ]] && printf '%s' " $symbols"
 }
 
-function minimal_lprompt {
-  local _venv=""
-  if [ -n "$VIRTUAL_ENV" ]; then
-    _venv="$(basename $VIRTUAL_ENV)"
-    _venv="${_venv%%.*} "
-  fi
-  local user_status="%{\e[%(1j.4.0);3%(0?.$MINIMAL_OK_COLOR.1)m%}%(!.#.$MINIMAL_USER_CHAR)"
-  local viins="$MINIMAL_INSERT_CHAR "
-  [ "$KEYMAP" = 'vicmd' ] && viins="$MINIMAL_NORMAL_CHAR "
-
-  echo "$_venv$user_status%{\e[0m%} $viins"
+# precmd() runs before each prompt is drawn
+#
+# Emulate bash's PROMPT_DIRTRIM behavior by prepending `~` before
+# abbreviated paths in the $HOME directory
+#
+# Calculate working Git branch and branch status
+precmd() {
+  case "$PWD" in
+    $HOME*)
+      psvar[2]=$(print -P "%(4~|.../%2~|%~)")
+      case ${psvar[2]} in
+        '.../'*)
+          # shellcheck disable=SC2088
+          psvar[2]=$(printf '~/%s' "${psvar[2]}")
+          ;;
+      esac
+      ;;
+    *) psvar[2]=$(print -P "%(3~|.../%2~|%~)") ;;
+  esac
+  psvar[3]=$(_branch_status)
 }
 
-function minimal_ps2 {
-  local _venv=""
-  if [ -n "$VIRTUAL_ENV" ]; then
-    _venv="$(basename $VIRTUAL_ENV)"
-    _venv="${_venv%%.*} "
-  fi
-  local viins="$MINIMAL_INSERT_CHAR "
-  local offset="$((${#_venv} + 2))"
-  [ "$KEYMAP" = 'vicmd' ] && viins="$MINIMAL_NORMAL_CHAR "
-
-  printf " %.0s" {1..$offset}
-  echo "$viins"
+# When the user enters vi command mode, the % or # in the prompt changes into
+# a colon
+_vi_mode_indicator() {
+  case "$KEYMAP" in
+    vicmd) printf '%s' ':' ;;
+    *) printf '%s' '%#' ;;
+  esac
 }
 
-if [ "$MINIMAL_PROMPT" = "yes" ]; then
-  # prompt redraw on vimode change
-  function zle-line-init zle-keymap-select {
-    zle reset-prompt
-  }
+# Redraw prompt when vi mode changes
+zle-keymap-select() {
+zle reset-prompt
+zle -R
+}
 
-  zle -N zle-line-init
-  zle -N zle-keymap-select
+# Redraw prompt when terminal size changes
+TRAPWINCH() {
+  zle && zle -R
+}
 
-  # prompts are set if not already set
-  PROMPT='$(minimal_lprompt) '
-  PS2='$(minimal_ps2) '
-  if [ "$MINIMAL_RPROMPT" = "yes" ]; then
-    RPROMPT='$(minimal_path)$(minimal_git)'
-  else
-    PROMPT='$(minimal_path)$(minimal_git)•$(minimal_lprompt)'
-  fi
+zle -N zle-keymap-select
+
+if _is_ssh; then
+  psvar[1]=$(print -P "@%m")
+else
+  psvar[1]=''
 fi
 
-
-# MAGIC ENTER
-# magic enter: if no command is written,
-# hitting enter will display some info
-function minimal_magic_enter {
-  local last_err="$?"
-
-  if [ -z "$BUFFER" ] && [ "$CONTEXT" != "cont" ]; then
-    local w="\e[0m"
-    local rn="\e[0;31m"
-    local rb="\e[1;31m"
-
-    local user_host_pwd="$_grey%n$w@$_grey%m$w:$_grey%~$w"
-    user_host_pwd="${${(%)user_host_pwd}//\//$w/$_grey}"
-
-    local v_files="$(ls -1 | wc -l)"
-    local h_files="$(ls -1A | wc -l)"
-
-    local job_n="$(jobs | wc -l)"
-
-    local timedate="$(date +%R)"
-
-    local iline="[$user_host_pwd] [$timedate] [$_grey$v_files$w ($_grey$h_files$w)]"
-    [ "$job_n" -gt 0 ] && iline="$iline [$_grey$job_n$w&]"
-
-    if [ "$last_err" != "0" ]; then
-      iline="$iline \e[1;31m[\e[0;31m$last_err\e[1;31m]$w"
-    fi
-
-    printf "$iline\n"
-
-    # listing
-    local output="$(minimal_ls)"
-
-    # git status
-    local git_status="$(git -c color.status=always status -s 2> /dev/null)"
-    if [ -n "$git_status" ]; then
-      output="$output\n$git_status"
-    fi
-
-    local output_len="$(echo "$output" | wc -l)"
-    if [ -n "$output" ]; then
-      if [ "$output_len" -gt "$((LINES - 2))" ]; then
-        printf "$output\n" | "$PAGER" -R
-      else
-        printf "$output\n"
-      fi
-    fi
-    zle redisplay
-  else
-    zle accept-line
+if _has_colors; then
+  # Autoload zsh colors module if it hasn't been autoloaded already
+  if ! whence -w colors > /dev/null 2>&1; then
+    autoload -Uz colors
+    colors
   fi
-}
 
-if [ "$MINIMAL_MAGIC_ENTER" = "yes" ]; then
-  zle -N minimal_magic_enter
-  bindkey "^M" minimal_magic_enter
+  # shellcheck disable=SC2154
+  # PS1='%{$fg_bold[green]%}%n%1v%{$reset_color%} %{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
+  PS1='%{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
+
+  # The right prompt will show the exit code if it is not zero.
+  RPS1="%(?..%{$fg_bold[red]%}(%?%)%{$reset_color%})"
+else
+  PS1='%n%1v %2v%3v $(_vi_mode_indicator) '
+  # shellcheck disable=SC2034
+  RPS1="%(?..(%?%))"
 fi
+
+# vim: tabstop=4 expandtab:
