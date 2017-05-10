@@ -3,7 +3,7 @@
 #  / _` |/ _` | |/ / _ \_  / _` | |/ /
 # | (_| | (_| |   < (_) / / (_| |   <
 #  \__,_|\__, |_|\_\___/___\__,_|_|\_\
-  #        |___/
+#        |___/
 #
 # A dynamic color prompt for zsh with Git, vi mode, and exit status indicators
 #
@@ -24,8 +24,6 @@
 #
 # https://github.com/agkozak/agkozak-zsh-theme
 #
-
-# shellcheck disable=SC2148
 
 # $psvar[] Usage
 #
@@ -55,9 +53,7 @@ _is_ssh() {
   fi
 }
 
-_has_colors() {
-  [[ $(tput colors) -ge 8 ]]
-}
+_haz_colors=$(tput colors)
 
 # Display current branch and status
 _branch_status() {
@@ -84,7 +80,6 @@ _branch_changes() {
   # changes to the working branch
   declare -A messages
 
-  # shellcheck disable=SC2190
   messages=(
   'renamed:'                '>'
   'Your branch is ahead of' '*'
@@ -94,7 +89,6 @@ _branch_changes() {
   'modified:'               '!'
   )
 
-  # shellcheck disable=SC2154
   for k in ${(@k)messages}; do
     case "$git_status" in
       *${k}*) symbols="${messages[$k]}${symbols}" ;;
@@ -116,7 +110,6 @@ precmd() {
       psvar[2]=$(print -P "%(4~|.../%2~|%~)")
       case ${psvar[2]} in
         '.../'*)
-          # shellcheck disable=SC2088
           psvar[2]=$(printf '~/%s' "${psvar[2]}")
           ;;
       esac
@@ -154,14 +147,13 @@ else
   psvar[1]=''
 fi
 
-if _has_colors; then
+if [[ $_haz_colors -ge 8 ]]; then
   # Autoload zsh colors module if it hasn't been autoloaded already
   if ! whence -w colors > /dev/null 2>&1; then
     autoload -Uz colors
     colors
   fi
 
-  # shellcheck disable=SC2154
   # PS1='%{$fg_bold[green]%}%n%1v%{$reset_color%} %{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
   PS1='%{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
 
@@ -169,7 +161,6 @@ if _has_colors; then
   RPS1="%(?..%{$fg_bold[red]%}(%?%)%{$reset_color%})"
 else
   PS1='%n%1v %2v%3v $(_vi_mode_indicator) '
-  # shellcheck disable=SC2034
   RPS1="%(?..(%?%))"
 fi
 
