@@ -94,6 +94,8 @@ values."
             shell-default-position 'bottom)
      semantic
      syntax-checking
+
+     evil-snipe
      )
   ;; List of additional packages that will be installed without being
   ;; wrapped in a layer. If you need some configuration for these
@@ -229,7 +231,7 @@ values."
                                :size 15
                                :weight semi-bold
                                :width normal
-                               :powerline-scale 1.4)
+                               :powerline-scale 1.6)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -404,7 +406,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq custom-file "~/.spacemacs.d/custom.el")
 
   ;; Default all new frames to 90x40 to fit line number + 80 columns of text.
-  (add-to-list 'default-frame-alist '(width . 90))
+  (add-to-list 'default-frame-alist '(width . 80))
   (add-to-list 'default-frame-alist '(height . 40))
   )
 
@@ -565,7 +567,7 @@ and which action they replaced (if any)."
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
 
   ;; Prevent vim visual mode selection from overriding macOS system clipboard.
-  (fset 'evil-visual-update-x-selection 'ignore)
+  ; (fset 'evil-visual-update-x-selection 'ignore)
 
   ;; The "osx" layer adds a mentally insane Command-q shortcut by default, which
   ;; quits the application. If all of your buffers have been saved to disk, it
@@ -817,32 +819,11 @@ and which action they replaced (if any)."
 
   ;; ------- FINISH WITH ALL CRITICALLY IMPORTANT TEXT SETTINGS -------
 
-  ;; Automatically configure buffer-local text display settings for all text
-  ;; and programming language buffers. We don't affect `special-mode' buffers.
-  (setq-default fill-column 80) ; default to max 80-character lines
-  (defun my/default-text-setup ()
-    "Configures the current buffer for proper text display."
-    (interactive)
-    ;; Display the 80th column via a faint line, to let you see it visually.
-    ;; Tip: You can easily change the column at runtime by pressing <C-x f>.
-    (spacemacs/toggle-fill-column-indicator-on)
-    ;; Automatically break lines that go past the 80th column as you write.
-    (spacemacs/toggle-auto-fill-mode-on)
-    ;; Forcibly enable the long line warning since global enable isn't reliable.
-    (column-enforce-n 80)
-    ;; Disallow lines from being truncated at the right; this enables wrapping.
-    ;; This is a visual hard-wrapping. But lines on-disk won't be affected.
-    ;; Note that we must set this option LAST, since the prior ones reset it!
-    ;; Tip: You can toggle this at runtime via <SPC t l>.
-    (spacemacs/toggle-truncate-lines-off))
-  (add-hook 'text-mode-hook 'my/default-text-setup)
-  (add-hook 'prog-mode-hook 'my/default-text-setup)
-
   ;; Globally enable the long line warning for lines 80 chars or longer. This
   ;; ensures that you'll never again write/miss long lines by accident.
   ;; Tip: <Alt-Shift-Q> reflows comments to fit within those requirements.
   (setq-default column-enforce-column 80) ; highlight column 80 globally
-  (spacemacs/toggle-highlight-long-lines-globally-on)
+  ;;(spacemacs/toggle-highlight-long-lines-globally-on)
 
   ;; Change backspace behavior from "del 1 char, if tab then convert to spaces
   ;; and del 1 space", into "delete all whitespace before cursor on line". This
