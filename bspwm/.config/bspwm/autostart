@@ -19,6 +19,17 @@ fi
 #
 xrdb -load ~/.Xresources
 
+
+#
+# Polkit agent
+#
+lxpolkit &
+
+#
+# LXSession for the rest
+#
+lxsession &
+
 #
 # Wallpaper set
 #

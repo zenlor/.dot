@@ -116,10 +116,10 @@ bspc wm -o
 export PATH=$PATH:$HOME/.config/bspwm/scripts
 
 # start
-if [ ! pgrep -u $USER sxhkd >/dev/null 2>&1 ];then
+# if [ ! pgrep -u $USER sxhkd >/dev/null 2>&1 ];then
     [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash 
     sxhkd &
-fi
+#fi
 
 # autostart
-source $HOME/.config/bspwm/autostart &
+$HOME/.config/bspwm/autostart &
