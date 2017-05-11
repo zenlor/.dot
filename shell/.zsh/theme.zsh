@@ -193,7 +193,7 @@ function magic_enter {
       iline="$iline \e[1;31m[\e[0;31m$last_err\e[1;31m]$w"
     fi
 
-    printf "$iline\n"
+    printf "\n$iline\n"
 
     # listing
     local output="$(ls -C --color="always" -w $COLUMNS)"
