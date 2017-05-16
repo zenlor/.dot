@@ -1,6 +1,4 @@
 #!/bin/dash
-set -e
-
 case "$1" in
     "up")
         pulseaudio-ctl up
