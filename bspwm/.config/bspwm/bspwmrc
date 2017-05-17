@@ -26,9 +26,9 @@ bspc config window_gap		18
 
 bspc config split_ratio             0.50
 bspc config single_monocle          true
-bspc config gapless_monocle         true
-bspc config paddingless_monocle     true
-bspc config borderless_monocle      true
+bspc config gapless_monocle         false
+bspc config paddingless_monocle     false
+bspc config borderless_monocle      false
 
 
 bspc config focus_follows_pointer   true
@@ -79,13 +79,10 @@ bspc rule -a gcolor2 state=floating center=true
 bspc rule -a lxappearance state=floating center=true
 bspc rule -a gmrun state=floating center=true
 bspc rule -a lxterminal state=floating center=true sticky=true
-#bspc rule -a urxvt state=floating center=true
 bspc rule -a viewnior state=floating center=true
 bspc rule -a file-roller state=floating center=true
 bspc rule -a floaterm state=floating center=true
 bspc rule -a spotify state=pseudo_tiled
-#bspc rule -a nautilus state=pseudo_tiled
-#bspc rule -a skype state=pseudo_tiled
 bspc rule -a file-roller state=pseudo_tiled
 bspc rule -a transmission-gtk state=pseudo_tiled
 bspc rule -a conky sticky=on manage=off lower=on
@@ -102,10 +99,6 @@ bspc rule -a firefox private=on
 bspc rule -a midori private=on
 bspc rule -a gnome-pie border=off manage=off
 bspc rule -a wpa_gui state=pseudo_tiled
-#bspc rule -a firefox desktop=I
-#bspc rule -a calibre desktop=II
-#bspc rule -a geany desktop=II
-#bspc rule -a deluge desktop=III
 bspc rule -a 9menu border=off manage=off
 bspc rule -a tint2 border=off manage=off
 
