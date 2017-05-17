@@ -2,6 +2,7 @@
 export EDITOR='nvim'
 export GIT_EDITOR='/usr/bin/nvim'
 export BROWSER="$HOME/lib/bin/browser"
+export PAGER='/usr/bin/most'
 
 # export TMPDIR
 export TMPDIR=/tmp/$USER
