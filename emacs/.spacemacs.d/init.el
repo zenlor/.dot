@@ -816,6 +816,10 @@ and which action they replaced (if any)."
     (bind-key "C-h" 'evil-delete-backward-word helm-map)
     (bind-key "C-u" 'evil-delete-whole-line helm-map))
 
+  ;; -- Mode settings
+  (add-hook 'typescript-mode-hook
+            (lambda ()
+              (local-set-key "\M-j" 'js2-line-break)))
 
   ;; ------- FINISH WITH ALL CRITICALLY IMPORTANT TEXT SETTINGS -------
 
