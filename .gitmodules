@@ -2,5 +2,5 @@
 	path = nvim/.cache/dein/repos/github.com/Shougo/dein.vim
 	url = https://github.com/Shougo/dein.vim.git
 [submodule "emacs/.spacemacs.d/layers/paintvars"]
-	path = emacs/.spacemacs.d/layers/paintvars
+	path = spacemacs/.spacemacs.d/layers/paintvars
 	url = https://github.com/SteveJobzniak/spacemacs-private-paintvars.git
