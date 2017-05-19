@@ -11,3 +11,4 @@
 /nvim/.cache/dein/repos
 /nvim/.cache/dein/cache_*
 /nvim/.cache/dein/state_*
+*.elc
