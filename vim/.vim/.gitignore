@@ -1,0 +1,8 @@
+autoload/plug.vim
+plugged
+tmp/*
+bundle/*
+tags
+init.vim
+.DS_Store
+.netrwhist

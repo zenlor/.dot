@@ -12,3 +12,4 @@
 /nvim/.cache/dein/cache_*
 /nvim/.cache/dein/state_*
 *.elc
+vim/.vim/bundle
