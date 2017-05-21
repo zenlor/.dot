@@ -15,6 +15,8 @@ ttf-iosevka-slab
 ttf-iosevka-term
 ttf-iosevka-term-slab
 ttf-monoid
+otf-fira-mono
+otf-fira-sans
 
 neovim
 emacs
