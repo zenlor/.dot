@@ -1,5 +1,5 @@
 [options]
-font = Iosevka Term Slab 13
+font = Iosevka Term Slab 12
 browser = qutebrowser
 clickable_url = true
 dynamic_title = true
