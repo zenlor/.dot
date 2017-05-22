@@ -7,6 +7,7 @@ lxsession-gtk3
 
 rofi
 slop
+slip
 
 noto-fonts-emoji
 font-mathematica
@@ -33,9 +34,9 @@ clipmenu
 compton
 redshift
 
+wmname
+
 git
 
 zsh
 zsh-completions
-
-slip
