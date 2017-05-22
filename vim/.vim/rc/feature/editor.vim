@@ -6,6 +6,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+Plug 'vim-scripts/emodeline'      " read emacs modelines
+
 Plug 'szw/vim-maximizer'          " toggling maximizing of a buffer
 Plug 'justinmk/vim-sneak'         " 2-character search motions
 Plug 'Raimondi/delimitMate'       " autoclose delimiters
@@ -51,5 +53,8 @@ let g:gitgutter_eager = 0
 "
 au FileType text setl wrap linebreak formatoptions-=atc formatoptions+=l
 au FileType snippet let b:endwise_addition='end&' | let b:endwise_words='snippet' | let b:endwise_syngroups='snippets,snipStart,snipKeyword'
+
+"
+au! BufNewFile,BufRead .spacemacs setf lisp
 
 " vim:set ft=vim:
