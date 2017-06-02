@@ -12,6 +12,7 @@ source $HOME/.zsh/keychain.zsh
 source $HOME/.zsh/tmux.zsh
 source $HOME/.zsh/theme.zsh
 source $HOME/.zsh/magic_enter.zsh
+source $HOME/.zsh/fzf.zsh
 
 # more environment config
 
