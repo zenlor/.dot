@@ -6,9 +6,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'scrooloose/nerdtree'            " file explorer sidebar
-Plug 'jistr/vim-nerdtree-tabs'
-
 Plug 'kien/ctrlp.vim'                 " Go-to-anything/Command-T
 Plug 'tacahiroy/ctrlp-funky'          " extension for jumping to functions
 Plug 'jasoncodes/ctrlp-modified.vim'  " extension for listing git modified files
@@ -20,14 +17,15 @@ elseif executable('ack')
     Plug 'mileszs/ack.vim'
 endif
 
+Plug 'Shougo/denite.vim'              " Dark powered asynchronous unite all interfaces for Neovim/Vim8
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" NERDTree
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden = 1
-let NERDTreeIgnore = ['\~$', '\.swo$', '\.swp$', '\.git$', '\.hg', '\.svn', '\.bzr', '\.settings', '\.project', '\.DS_Store']
+
+" Denite
+if executable('fzf')
+endif
 
 " ctrlp
 if executable('ag')
