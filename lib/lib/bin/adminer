@@ -1,5 +1,0 @@
-#!/bin/sh
-set -e
-
-
-docker run aliem/adminer
