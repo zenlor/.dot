@@ -1,0 +1,7 @@
+#!/bin/sh
+
+while true
+do
+	sleep $(($RANDOM/1000))
+	beep -f 2000 -l $(($RANDOM/100))
+done
