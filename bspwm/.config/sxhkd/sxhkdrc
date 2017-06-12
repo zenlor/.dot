@@ -1,9 +1,9 @@
 #                 .__     __       .___
 #    _________  __|  |__ |  | __ __| _/
-#   /  ___/\  \/  /  |  \|  |/ // __ | 
-#   \___ \  >    <|   Y  \    </ /_/ | 
-#  /____  >/__/\_ \___|  /__|_ \____ | 
-#       \/       \/    \/     \/    \/ 
+#   /  ___/\  \/  /  |  \|  |/ // __ |
+#   \___ \  >    <|   Y  \    </ /_/ |
+#  /____  >/__/\_ \___|  /__|_ \____ |
+#       \/       \/    \/     \/    \/
 #
 
 # bspwm hotkeys {{{
@@ -35,8 +35,8 @@ super + ctrl + space
     bspc node -p cancel
 
 # send node to desktop on current monitor index
-super + {_,shift + }{1-6}
-    bspc {desktop -f,node -d} '^{1-6}'
+super + {_,shift + }{1-9}
+    bspc {desktop -f,node -d} '^{1-9}'
 
 # insert receptacle, or clear receptacles on current desktop
 super + {_,shift} + r
