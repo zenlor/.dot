@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+FILE="$1"
+
+PROCESSOR=`which marked`
+$PROCESSOR $1 | w3m -T text/html
