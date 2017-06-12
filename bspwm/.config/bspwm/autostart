@@ -33,7 +33,7 @@ lxsession &
 #
 # Wallpaper set
 #
-[ -x $HOME/.config/wallpapers/set ] && $HOME/.config/wallpapers/set &
+[ -x "$HOME/.config/wallpapers/set" ] && $HOME/.config/wallpapers/set &
 
 #
 # Java - try to fix swing UIs
@@ -46,7 +46,7 @@ wmname compiz
 # Pointer settings
 #
 xsetroot -cursor_name left_ptr &
-if [ "$(hostname)" == "meila" ]; then
+if [ "$(hostname)" = "meila" ]; then
 	# pesky left-handed gaming mouse
 	for i in $(xinput --list | sed -n '/Razer Razer Naga 2014.*pointer/s/.*=\([0-9]\+\).*/\1/p')
 	do
