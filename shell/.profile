@@ -41,7 +41,11 @@ if which npm &> /dev/null; then
   eval "$(npm completion -)"
 fi
 
-export PATH=$PATH:$HOME/bin:~/.local/bin
+# PHP ... when I need to do crap
+export PATH="$PATH:$HOME/.config/composer/vendor/bin"
+
+# Local env
+export PATH="$PATH:$HOME/bin:~/.local/bin"
 
 # Window managers
 [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]] || [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]] || export QT_QPA_PLATFORMTHEME="qt5ct"
