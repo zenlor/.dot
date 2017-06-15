@@ -9,6 +9,8 @@ Plug 'tpope/vim-salve',                 { 'for': 'clojure' }
 Plug 'tpope/vim-projectionist',         { 'for': 'clojure' }
 Plug 'tpope/vim-dispatch',              { 'for': 'clojure' }
 
+Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
