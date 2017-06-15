@@ -4,7 +4,7 @@ if [ -n "$Z_TMUX" ]; then
   test -z "$TMUX" && (tmux attach || tmux new-session)
 fi
 
-[ -z "$TMUX" ] && export TERM=xterm-256color
+#[ -z "$TMUX" ] && export TERM=xterm-256color
 
 if [ -n "$TMUX" ]; then
   TMUX_SESSION=`tmux display-message -p '#S'`

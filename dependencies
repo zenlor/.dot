@@ -38,5 +38,8 @@ wmname
 
 git
 
+termite
+rxvt-unicode
+
 zsh
 zsh-completions

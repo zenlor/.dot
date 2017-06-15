@@ -65,7 +65,7 @@ super + shift + q
 # wm independent hotkeys {{{
 
 super + {o,e,Return}
-    {firefox-developer,thunar,termite}
+    {firefox-developer,thunar,~/lib/bin/urxvt.sh} #termite
 
 # launch a program, ensure GTK3 theme.
 super + space
