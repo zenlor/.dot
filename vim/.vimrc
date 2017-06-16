@@ -16,8 +16,6 @@ set nocompatible
     " Communicating with Tmux
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'benmills/vimux'
-    " Colorscheme
-    Plug 'joshdick/onedark.vim'
     " Custom code
     runtime! rc/*/*.vim
 
@@ -38,7 +36,7 @@ set nocompatible
 
     " Appearance {{{
         set background=dark
-        colorscheme onedark
+        colorscheme arch
 
         set number                   " Line numbers
         set showcmd                  " Show command issued
