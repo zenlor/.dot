@@ -11,10 +11,8 @@ slip
 
 noto-fonts-emoji
 font-mathematica
-ttf-iosevka
-ttf-iosevka-slab
-ttf-iosevka-term
-ttf-iosevka-term-slab
+ttf-iosevka-ss05
+ttf-iosevka-term-ss05
 ttf-monoid
 otf-fira-mono
 otf-fira-sans
