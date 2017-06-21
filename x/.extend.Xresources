@@ -36,14 +36,15 @@ URxvt*letterSpace:     -1
 
 URxvt*scrollBar:        false
 URxvt*internalBorder:   8
-URxvt*visualBell:       false
+URxvt*visualBell:       true
 
- URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
- URxvt.url-select.launcher:  qutebrowser
- URxvt.url-select.underline: true
- URxvt.keysym.M-u:           perl:url-select:select_next
- URxvt.keysym.M-Escape:      perl:keyboard-select:activate
- URxvt.keysym.M-s:           perl:keyboard-select:search
+!URxvt.bell-command:         notify-send "rxvt-unicode: bell!"
+URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
+URxvt.url-select.launcher:  qutebrowser
+URxvt.url-select.underline: true
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
 
 !! URxvt Keybindings
 ! Act more like XTerm :-)
