@@ -1,7 +1,8 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+Plug 'leafgarland/typescript-vim',      { 'for': 'typescript' }
+Plug 'HerringtonDarkholme/yats.vim',    { 'for': 'typescript' }
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Settings
