@@ -11,11 +11,11 @@ Xcursor.theme: Vanilla-DMZ-AA
 rofi.font:            Monoid 16
 rofi.terminal:        termite
 rofi.separator-style: solid
-rofi.lines:           6
+rofi.lines:           8
 rofi.line-margin:     10
 rofi.hide-scrollbar:  true
 rofi.scroll-method:   0
-rofi.width:           28
+rofi.width:           36
 rofi.padding:         30
 rofi.bw:              0
 rofi.eh:              1
