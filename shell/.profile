@@ -36,11 +36,6 @@ if [ -d $HOME/.jenv ]; then
   eval "$(jenv init -)"
 fi
 
-# Node Project Manager Init
-if which npm &> /dev/null; then
-  eval "$(npm completion -)"
-fi
-
 # PHP ... when I need to do crap
 export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 

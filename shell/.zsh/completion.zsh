@@ -147,3 +147,8 @@ zstyle ':completion:*' insert-tab pending
 
 # menu if nb items > 2
 zstyle ':completion:*' menu select=2
+
+###
+# Load external completions
+###
+source $HOME/.zsh/completion/*

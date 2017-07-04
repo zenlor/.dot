@@ -1,6 +1,6 @@
 # fzf
 #
-[ ! `which fzf` ] && return 0
+[ ! "$(which fzf)" ] && return 0
 
 #
 # Key Bindings

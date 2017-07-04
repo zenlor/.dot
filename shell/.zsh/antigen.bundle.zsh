@@ -9,3 +9,8 @@ antigen bundles < ~/.zsh/plugins.conf
 antigen apply
 
 # Configure plugins if needed
+#
+#
+# ManyDots
+autoload -Uz manydots-magic
+manydots-magic
