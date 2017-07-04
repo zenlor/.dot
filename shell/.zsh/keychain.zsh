@@ -1,2 +1,2 @@
 # start keychain
-eval `keychain --quiet --eval id_rsa`
+[ -x "$(which keychain)" ] && eval `keychain --quiet --eval id_rsa`

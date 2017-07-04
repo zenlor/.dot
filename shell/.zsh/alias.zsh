@@ -8,8 +8,8 @@ alias lla="ls -la"
 
 alias timestamp="date +'%Y%m%d%H%M%S'"
 
-[ -x $(which nvim) ] && alias vim="nvim"
-[ -x $(which exo-open) ] && alias open="exo-open"
+[ -x "$(which nvim)" ] && alias vim="nvim"
+[ -x "$(which exo-open)" ] && alias open="exo-open"
 alias o="open"
 alias _=sudo
 
