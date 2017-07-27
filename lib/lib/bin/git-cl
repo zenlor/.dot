@@ -1,0 +1,7 @@
+#!/bin/sh
+
+LIBFOLDER=$HOME/lib/src
+REPO=$1
+TARGET=`echo $1 | sed 's|^.*://||' | sed 's|\.git$||' | sed 's|git@||' | sed 's|:|/|'`
+
+git clone $REPO $LIBFOLDER/$TARGET
