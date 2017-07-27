@@ -93,14 +93,15 @@ else
     set go-=m
     set novisualbell
 
-    " For gvim
-    set guifont=Monospace\ 10
-
     " Commenting using Ctrl+/
     map <C-/> gcc
 
     " Textmate-like CMD+Enter
     inoremap <C-CR> <C-O>o
     inoremap <S-C-CR> <C-O>O
-
 endif
+
+set guifont=Iosevka\ 12
+
+set background=dark
+colorscheme hybrid
