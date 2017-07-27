@@ -40,7 +40,7 @@ URxvt*visualBell:       true
 
 !URxvt.bell-command:         notify-send "rxvt-unicode: bell!"
 URxvt.perl-ext-common:      default,clipboard,url-select,keyboard-select
-URxvt.url-select.launcher:  qutebrowser
+URxvt.url-select.launcher:  xdg-open
 URxvt.url-select.underline: true
 URxvt.keysym.M-u:           perl:url-select:select_next
 URxvt.keysym.M-Escape:      perl:keyboard-select:activate

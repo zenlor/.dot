@@ -25,7 +25,7 @@ super + y
 alt + {_,shift} + Tab
     bspc node -f {next,prev}.local
 
-super + t
+super + n
     bspc desktop -l next
 
 super + {_,shift,alt,ctrl} + {h,j,k,l}
@@ -65,7 +65,7 @@ super + shift + q
 # wm independent hotkeys {{{
 
 super + {o,e,Return}
-    {firefox-developer,thunar,~/lib/bin/urxvt.sh} #termite
+    {qutebrowser,thunar,~/lib/bin/urxvt.sh} # web browser, file browser, terminal
 
 # launch a program, ensure GTK3 theme.
 super + space

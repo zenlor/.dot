@@ -1,4 +1,4 @@
-alias pac=yaourt
+alias pac=pacaur
 
 alias ls="ls --color=auto"
 alias l="ls -l"
