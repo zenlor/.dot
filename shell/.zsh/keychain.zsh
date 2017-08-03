@@ -1,2 +1,5 @@
 # start keychain
-[ -x "$(which keychain)" ] && eval `keychain --quiet --eval id_rsa`
+if [ -x "$(which keychain)" ]; then
+  keys="$(find ~/.ssh/ -type f -name 'id_*' ! -name '*.p*')"
+  eval `keychain --quiet --eval $keys`
+fi
