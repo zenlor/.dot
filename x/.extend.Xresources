@@ -26,7 +26,6 @@ rofi.color-urgent: #282828, #ebdbb2, #282828, #ebdbb2, #282828
 rofi.color-active: #282828, #ebdbb2, #282828, #ebdbb2, #282828
 rofi.color-window: #282828, #282828
 
-!URxvt.font:             xft:Iosevka\ Term:size=12
 URxvt*font:            xft:Iosevka:size=12
 URxvt*boldFont:        xft:Iosevka:bold:size=12
 URxvt*italicFont:      xft:Iosevka:italic:autohint=true:size=12
