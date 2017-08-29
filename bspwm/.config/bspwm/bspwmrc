@@ -73,6 +73,7 @@ while read -r rule _; do bspc rule -r "$rule"; done < <(bspc rule -l)
 bspc rule -a monitor=0 split_dir=east
 
 bspc rule -a GtkFileChooserDialog   floating=on --center --focus
+bspc rule -a pinentry floating=on --center --focus
 
 bspc rule -a screenkey --unmanage
 bspc rule -a gcolor2 state=floating center=true
