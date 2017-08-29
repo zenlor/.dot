@@ -103,5 +103,6 @@ endif
 
 set guifont=Iosevka\ 12
 
+set t_Co=88
 set background=dark
-colorscheme hybrid
+colorscheme torte
