@@ -7,7 +7,7 @@ Xft.rgba:      rgb
 Xcursor.theme: Vanilla-DMZ-AA
 
 ! rofi
-rofi.font:            Monoid 16
+rofi.font:            Input Sans 16
 rofi.terminal:        termite
 rofi.separator-style: solid
 rofi.lines:           8
@@ -25,10 +25,14 @@ rofi.color-urgent: #282828, #ebdbb2, #282828, #ebdbb2, #282828
 rofi.color-active: #282828, #ebdbb2, #282828, #ebdbb2, #282828
 rofi.color-window: #282828, #282828
 
-URxvt*font:            xft:Iosevka:size=12
-URxvt*boldFont:        xft:Iosevka:bold:size=12
-URxvt*italicFont:      xft:Iosevka:italic:autohint=true:size=12
-URxvt*boldItalicFont:  xft:Iosevka:bold:italic:autohint=true:size=12
+! URxvt*font:            xft:Iosevka:size=12
+! URxvt*boldFont:        xft:Iosevka:bold:size=12
+! URxvt*italicFont:      xft:Iosevka:italic:autohint=true:size=12
+! URxvt*boldItalicFont:  xft:Iosevka:bold:italic:autohint=true:size=12
+URxvt*font:            xft:Input Mono Light:size=11
+URxvt*boldFont:        xft:Input Mono Light:size=11
+URxvt*italicFont:      xft:Input Mono Light:italic:autohint=true:size=11
+URxvt*boldItalicFont:  xft:Input Mono Light:italic:autohint=true:size=10
 ! Decrease the letter space by one pixel
 URxvt*letterSpace:     -1
 
