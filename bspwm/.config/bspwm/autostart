@@ -81,7 +81,7 @@ thunar --daemon &
 redshift &
 
 # Conky
-conky -c $HOME/.config/conky/conkyrc -d
+conky -c $HOME/.config/bspwm/conkyrc -d
 
 # GNU Privacy Guard
 gpg-agent &
