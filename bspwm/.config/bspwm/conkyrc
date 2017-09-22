@@ -28,7 +28,7 @@ conky.config = {
   -- font
   use_xft = true,
   xftalpha = .8,
-  font = 'profont:size=10',
+  font = 'Input Mono Narrow:size=11',
 };
 
 conky.text = [[\
@@ -40,4 +40,3 @@ conky.text = [[\
 
 -- -*- mode: lua -*-
 -- vim: ft=lua
-

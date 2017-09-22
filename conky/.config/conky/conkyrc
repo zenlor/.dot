@@ -1,43 +1,17 @@
+background no
+cpu_avg_samples 2
+net_avg_samples 2
+no_buffers yes
+out_to_stderr no
+update_interval 1.0
+uppercase no
+use_spacer none
 
-conky.config = {
-  alignment = 'bottom_left',
-  -- Anton: These three cannot all be zero using the current build, see: https://github.com/brndnmtthws/conky/issues/12
-  border_inner_margin = 1,
-  border_outer_margin = 0,
-  border_width = 0,
-
-  default_color = '#ebdbb2',
-  double_buffer = true,
-  draw_borders = false,
-  draw_graph_borders = false,
-  draw_shades = false,
-  gap_x = 6,
-  gap_y = 3,
-
-  own_window = true,
-  own_window_argb_visual = true,
-  own_window_argb_value = 255,
-  own_window_transparent = true,
-
-  own_window_type = 'desktop',
-  own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
-
-  pad_percents = 2,
-  update_interval = 1,
-  use_spacer = 'left',
-
-  -- font
-  use_xft = true,
-  xftalpha = .8,
-  font = 'profont:size=10',
-};
-
-conky.text = [[\
-  ${offset -5}${time %H}:${time %M} | ${time %D}\
-  ${offset 85}CPU ${cpugraph 9,95 a89984 ebdbb2 5}\
-  ${offset 85}MEM ${memgraph 9,95 a89984 ebdbb2 5}\
-  ${offset 85}HDD ${fs_bar 3,95}\
-]]
-
--- -*- mode: lua -*-
--- vim: ft=lua
+TEXT
+Load Average: ${loadavg 1 2}
+Uptime: $uptime
+CPU: $cpu%
+RAM: $memperc%
+Swap: $swapperc%
+Up: ${upspeed venet0}
+Down: ${downspeed venet0}
