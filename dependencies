@@ -16,6 +16,8 @@ ttf-iosevka-term-ss05
 ttf-monoid
 otf-fira-mono
 otf-fira-sans
+fonts-meta-extended-lt
+ttf-input
 
 neovim
 emacs
