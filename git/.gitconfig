@@ -36,3 +36,5 @@
 [gui]
 	editor = emacs
 	recentrepo = /home/lor/lib/src/git.mobilebridge.io/lorenzo/smallpox
+[cola]
+	spellcheck = false
