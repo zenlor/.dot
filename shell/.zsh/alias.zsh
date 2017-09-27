@@ -5,6 +5,7 @@ alias l="ls -l"
 alias ll="ls -lah"
 alias la="ls -a"
 alias lla="ls -la"
+alias ks="ls"
 
 alias timestamp="date +'%Y%m%d%H%M%S'"
 
