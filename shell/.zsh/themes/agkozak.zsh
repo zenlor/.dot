@@ -142,7 +142,7 @@ TRAPWINCH() {
 zle -N zle-keymap-select
 
 if _is_ssh; then
-  psvar[1]=$(print -P "@%m")
+  psvar[1]="$(print -P "@%m")"
 else
   psvar[1]=''
 fi
@@ -154,8 +154,8 @@ if [[ $_haz_colors -ge 8 ]]; then
     colors
   fi
 
-  # PS1='%{$fg_bold[green]%}%n%1v%{$reset_color%} %{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
-  PS1='%{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
+  PS1='%{$fg_bold[green]%}%n%1v%{$reset_color%} %{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
+  # PS1='%{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
 
   # The right prompt will show the exit code if it is not zero.
   RPS1="%(?..%{$fg_bold[red]%}(%?%)%{$reset_color%})"
