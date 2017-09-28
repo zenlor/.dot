@@ -9,7 +9,7 @@ conky.config = {
   double_buffer = true,
   draw_borders = false,
   draw_graph_borders = false,
-  draw_shades = false,
+  draw_shades = true,
   gap_x = 6,
   gap_y = 3,
 
@@ -22,13 +22,13 @@ conky.config = {
   own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
 
   pad_percents = 2,
-  update_interval = 1,
+  update_interval = 2,
   use_spacer = 'left',
 
   -- font
   use_xft = true,
-  xftalpha = .8,
-  font = 'Input Mono Narrow:size=11',
+  xftalpha = 1,
+  font = 'ProFont:size=7',
 };
 
 conky.text = [[\
