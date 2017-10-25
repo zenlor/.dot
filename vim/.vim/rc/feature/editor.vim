@@ -26,6 +26,8 @@ Plug 'thinca/vim-visualstar'      " smarter * and #
 
 Plug 'vim-scripts/PickAColor.vim' " Color picker pop-up
 
+Plug 'editorconfig/editorconfig-vim' " editorconfig
+
 " Dash.app documentation (mac only)
 if has('macunix')
     Plug 'rizzatti/dash.vim'
@@ -67,5 +69,8 @@ au FileType snippet let b:endwise_addition='end&' | let b:endwise_words='snippet
 
 "
 au! BufNewFile,BufRead .spacemacs setf lisp
+
+" Editorconfig excludes
+let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 
 " vim:set ft=vim:
