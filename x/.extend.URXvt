@@ -1,11 +1,11 @@
-! URxvt*font:            xft:Iosevka:size=12
-! URxvt*boldFont:        xft:Iosevka:bold:size=12
-! URxvt*italicFont:      xft:Iosevka:italic:autohint=true:size=12
-! URxvt*boldItalicFont:  xft:Iosevka:bold:italic:autohint=true:size=12
-URxvt*font:            xft:Input Mono Light:size=10
-URxvt*boldFont:        xft:Input Mono Light:size=10
-URxvt*italicFont:      xft:Input Mono Light:italic:autohint=true:size=10
-URxvt*boldItalicFont:  xft:Input Mono Light:italic:autohint=true:size=10
+URxvt*font:            xft:Iosevka:size=11
+URxvt*boldFont:        xft:Iosevka:bold:size=11
+URxvt*italicFont:      xft:Iosevka:italic:autohint=true:size=11
+URxvt*boldItalicFont:  xft:Iosevka:bold:italic:autohint=true:size=11
+! URxvt*font:            xft:Input Mono Light:size=9
+! URxvt*boldFont:        xft:Input Mono Light:size=9
+! URxvt*italicFont:      xft:Input Mono Light:italic:autohint=true:size=9
+! URxvt*boldItalicFont:  xft:Input Mono Light:italic:autohint=true:size=9
 ! Decrease the letter space by one pixel
 URxvt*letterSpace:     -1
 

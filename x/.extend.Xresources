@@ -1,7 +1,7 @@
 Xft.autohint:  false
 Xft.antialias: 1
 Xft.hinting:   1
-Xft.hintstyle: hintmedium
+Xft.hintstyle: full
 Xft.lcdfilter: lcddefault
 Xft.rgba:      rgb
 Xcursor.theme: Vanilla-DMZ-AA

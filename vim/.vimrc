@@ -36,7 +36,7 @@ set nocompatible
 
     " Appearance {{{
         set background=dark
-        colorscheme gruvbox
+        colorscheme Tomorrow-Night
 
         set number                   " Line numbers
         set showcmd                  " Show command issued
