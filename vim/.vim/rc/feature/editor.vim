@@ -17,8 +17,9 @@ Plug 'tomtom/tcomment_vim'        " comment out code with native comment syntax
 Plug 'tpope/vim-endwise'          " auto-end code blocks (e.g. for ruby or viml)
 Plug 'tpope/vim-surround'         " manipulation of surrounding delimiters
 Plug 'tpope/vim-sleuth'           " Heuristically set buffer options
-Plug 'tpope/vim-flagship'         " Configurable and extensible tab line and status line
 Plug 'AndrewRadev/switch.vim'     " switching between true/false, yes/no, etc
+
+Plug 'itchyny/lightline.vim'      " simple statusbar
 
 Plug 'tpope/vim-fugitive'         " a Git wrapper so awesome, it should be illegal
 Plug 'airblade/vim-gitgutter'     " visual git diffs in the gutter
@@ -55,13 +56,18 @@ let g:tcomment_types = {'blade': '{-- %s --}', 'twig': '{# %s #}'}
 " gitgutter
 let g:gitgutter_eager = 0
 
-" flagship.vim
+" lightline
 set laststatus=2
-set showtabline=1
-set guioptions-=e
-autocmd User Flags call Hoist("buffer", "fugitive#statusline")
-autocmd User Flags call Hoist("window", "SyntasticStatuslineFlag")
-autocmd User Flags call Hoist("global", "%{&ignorecase ? '[IC]' : ''}")
+let g:lightline = {
+      \ 'colorscheme': 'molokai',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
 
 "
 au FileType text setl wrap linebreak formatoptions-=atc formatoptions+=l

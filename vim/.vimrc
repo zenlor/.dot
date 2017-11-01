@@ -100,18 +100,6 @@ set nocompatible
     " StatusBar {{{
         set ruler                                      " Show line/col no in statusline
         set rulerformat=%30(%=%y%m%r%w\ %l,%c%V\ %P%)
-
-        if has('statusline')
-            set laststatus=1
-            set statusline=\ %F
-            set statusline+=\ %W%H%M%R                     " Options
-            set statusline+=%=                             " left/right separator
-            set statusline+=\ %{fugitive#statusline()}     " Git Hotness
-            set statusline+=\ %c                           " cursor column
-            set statusline+=\ %l/%L                        " cursor line/total lines
-            set statusline+=\ \:%P                         " percent through file
-            set statusline+=\ %Y                           " filetype
-        endif
     " }}}
 
     " Movement & search {{{

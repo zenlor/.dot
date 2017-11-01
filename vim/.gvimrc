@@ -101,8 +101,8 @@ else
     inoremap <S-C-CR> <C-O>O
 endif
 
-set guifont=Iosevka\ 12
+set guifont=Iosevka\ 11
 
-set t_Co=88
+set t_Co=256
 set background=dark
-colorscheme torte
+colorscheme arch
