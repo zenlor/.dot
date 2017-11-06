@@ -1,0 +1,6 @@
+#!/bin/dash
+
+qutebrowser \
+    --backend webengine \
+    $@
+wait $!
