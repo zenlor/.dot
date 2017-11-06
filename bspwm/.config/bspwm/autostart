@@ -28,7 +28,7 @@ lxpolkit &
 #
 # LXSession for the rest
 #
-lxsession &
+# lxsession &
 
 #
 # Wallpaper set

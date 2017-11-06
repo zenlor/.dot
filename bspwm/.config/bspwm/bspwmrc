@@ -67,8 +67,8 @@ fi
 # | '_| || | / -_|_-<
 # |_|  \_,_|_\___/__/
 
-# Clear the rules before adding any
-while read -r rule _; do bspc rule -r "$rule"; done < <(bspc rule -l)
+# Reset
+bspc rule -r '*'
 
 bspc rule -a monitor=0 split_dir=east
 
