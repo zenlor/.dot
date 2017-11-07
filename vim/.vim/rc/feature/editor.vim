@@ -6,26 +6,26 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Plugins
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-Plug 'vim-scripts/emodeline'      " read emacs modelines
+Plug 'vim-scripts/emodeline'         " read emacs modelines
 
-Plug 'szw/vim-maximizer'          " toggling maximizing of a buffer
-Plug 'justinmk/vim-sneak'         " 2-character search motions
-Plug 'Raimondi/delimitMate'       " autoclose delimiters
+Plug 'szw/vim-maximizer'             " toggling maximizing of a buffer
+Plug 'justinmk/vim-sneak'            " 2-character search motions
+Plug 'Raimondi/delimitMate'          " autoclose delimiters
 
-Plug 'godlygeek/tabular'          " for aligning text
-Plug 'tomtom/tcomment_vim'        " comment out code with native comment syntax
-Plug 'tpope/vim-endwise'          " auto-end code blocks (e.g. for ruby or viml)
-Plug 'tpope/vim-surround'         " manipulation of surrounding delimiters
-Plug 'tpope/vim-sleuth'           " Heuristically set buffer options
-Plug 'AndrewRadev/switch.vim'     " switching between true/false, yes/no, etc
+Plug 'godlygeek/tabular'             " for aligning text
+Plug 'tomtom/tcomment_vim'           " comment out code with native comment syntax
+Plug 'tpope/vim-endwise'             " auto-end code blocks (e.g. for ruby or viml)
+Plug 'tpope/vim-surround'            " manipulation of surrounding delimiters
+Plug 'tpope/vim-sleuth'              " Heuristically set buffer options
+Plug 'AndrewRadev/switch.vim'        " switching between true/false, yes/no, etc
 
-Plug 'itchyny/lightline.vim'      " simple statusbar
+Plug 'itchyny/lightline.vim'         " simple statusbar
 
-Plug 'tpope/vim-fugitive'         " a Git wrapper so awesome, it should be illegal
-Plug 'airblade/vim-gitgutter'     " visual git diffs in the gutter
-Plug 'thinca/vim-visualstar'      " smarter * and #
+Plug 'tpope/vim-fugitive'            " a Git wrapper so awesome, it should be illegal
+Plug 'airblade/vim-gitgutter'        " visual git diffs in the gutter
+Plug 'thinca/vim-visualstar'         " smarter * and #
 
-Plug 'vim-scripts/PickAColor.vim' " Color picker pop-up
+Plug 'vim-scripts/PickAColor.vim'    " Color picker pop-up
 
 Plug 'editorconfig/editorconfig-vim' " editorconfig
 
@@ -55,11 +55,11 @@ let g:tcomment_types = {'blade': '{-- %s --}', 'twig': '{# %s #}'}
 
 " gitgutter
 let g:gitgutter_eager = 0
+set signcolumn=yes
 
 " lightline
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive'],[ 'filename' ] ]
