@@ -15,6 +15,3 @@ Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
 " Settings
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
-
-" vim:set ft=vim:
-
