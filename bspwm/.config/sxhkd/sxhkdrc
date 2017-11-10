@@ -73,7 +73,7 @@ super + space
 
 # A nice wrapper script for password store.
 super + alt + space
-    passmenu
+    rofi-pass
 
 XF86Audio{Prev,Next}
     mpc -q {prev,next}
