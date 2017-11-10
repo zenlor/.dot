@@ -1,1 +1,1 @@
-setlocal wrap
+call pencil#init()
