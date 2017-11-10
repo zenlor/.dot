@@ -8,11 +8,16 @@ else
   Plug 'roxma/nvim-yarp'
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
+" Completion integration with nvim-completion-manager.
+Plug 'roxma/nvim-completion-manager'
+" Showing function signature and inline doc.
+Plug 'Shougo/echodoc.vim'
 
 " languages
 "
 " generic
 Plug 'Shougo/neco-syntax'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " vimL
 Plug 'Shougo/neco-vim'
 " clojure
