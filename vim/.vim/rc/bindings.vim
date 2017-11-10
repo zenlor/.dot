@@ -144,10 +144,6 @@ nnoremap <leader>h :<C-u>h
     nnoremap <silent> <leader>] :CtrlPBufTag<CR>
     nnoremap <silent> <leader>} :CtrlPBufTagAll<CR>
 
-    " NERDTree
-    map <localleader>\ :NERDTree <C-r>=FindRootDirectory()<CR><CR>
-    map <localleader>. :NERDTreeFind<CR>
-
     " Tabularize
     nmap <leader>= :Tabularize /
     vmap <leader>= :Tabularize /
@@ -179,11 +175,6 @@ nnoremap <leader>h :<C-u>h
     xmap T <Plug>Sneak_T
     omap t <Plug>Sneak_t
     omap T <Plug>Sneak_T
-
-    " YCM
-    map g] :YcmCompleter GoToDefinitionElseDeclaration<CR>
-    let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-    let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
     " vim-switch
     nnoremap ! :Switch<CR>
