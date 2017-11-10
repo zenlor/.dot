@@ -98,11 +98,6 @@ set nocompatible
         augroup END
     " }}}
 
-    " StatusBar {{{
-        set ruler                                      " Show line/col no in statusline
-        set rulerformat=%30(%=%y%m%r%w\ %l,%c%V\ %P%)
-    " }}}
-
     " Movement & search {{{
         set nostartofline
         set sidescrolloff=5
@@ -111,6 +106,9 @@ set nocompatible
         set ignorecase           " case insensitive search
         set smartcase            " case sensitive when uc present
         set gdefault             " global flag for substitute by default
+
+        " clean searches using <CR> in normal mode
+        nnoremap <CR> :noh<CR><CR>
 
         if executable('ag')
             let g:ackprg = 'ag --nogroup --nocolor --column'
