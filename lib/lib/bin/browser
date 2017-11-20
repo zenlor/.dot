@@ -1,6 +1,3 @@
-#!/bin/dash
+#!/bin/sh
 
-qutebrowser \
-    --backend webengine \
-    $@
-wait $!
+exec qutebrowser --backend webengine ${@}
