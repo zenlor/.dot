@@ -29,6 +29,10 @@ rofi.color-window: #282827, #282828
 #include ".extend.URXvt"
 #endif
 
+#if __has_include(".extend.xst")
+#include ".extend.xst"
+#endif
+
 #if __has_include(".extend.colors")
 #include ".extend.colors"
 #endif

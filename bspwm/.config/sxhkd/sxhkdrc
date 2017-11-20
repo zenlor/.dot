@@ -65,7 +65,7 @@ super + shift + q
 # wm independent hotkeys {{{
 
 super + {o,e,Return}
-    {qutebrowser,thunar,~/lib/bin/urxvt.sh} # web browser, file browser, terminal
+    {qutebrowser,thunar,st} # web browser, file browser, terminal
 
 # launch a program, ensure GTK3 theme.
 super + space

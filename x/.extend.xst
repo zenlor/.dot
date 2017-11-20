@@ -1,0 +1,4 @@
+st.font:      Iosevka:pixelsize=15:antialias=true:autohint=false;
+st.borderpx:  10
+
+! vim: ft=xdefaults
