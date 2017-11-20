@@ -36,6 +36,9 @@ set nocompatible
 
     " Appearance {{{
         set t_Co=256
+        " molokai
+        let g:rehash256 = 1
+
         set background=dark
         colorscheme arch
 
