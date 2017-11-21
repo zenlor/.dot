@@ -1,39 +1,15 @@
 set nocompatible
-filetype off
-
-call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
-" Plugins {{{
-    " Essentials
-    Plug 'Shougo/vimproc', { 'do': 'make' }
-    Plug 'editorconfig/editorconfig-vim'
-    Plug 'tpope/vim-fugitive'       " git in vim
-    Plug 'notalex/vim-run-live'     " Running code inline
-    Plug 'sheerun/vim-polyglot'     " support for a variety of languages
-    " Vim functionality fixes/enhancements
-    Plug 'tpope/vim-repeat'         " better repeat compatibility ('.')
-    Plug 'tpope/vim-commentary'     " comment things
-    Plug 'vim-scripts/vis'          " improved visual commands
-    Plug 'moll/vim-bbye'            " kill buffers without affecting window layout
-    Plug 'justinmk/vim-sneak'       " 2-character search motions
-    Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
-    " Communicating with Tmux
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'benmills/vimux'
-    " Theme
-    Plug 'tomasr/molokai'
-" }}}
-call plug#end()
+source ~/.vim/bundle.vim
 
 " Custom code & extra configuration
 runtime! rc/*/*.vim
 runtime! rc/*.vim
 
-syntax on
 
 """"""""""""""""""""""""""""""""""""""""
 " Settings                             "
 """"""""""""""""""""""""""""""""""""""""
-filetype plugin indent on
+syntax on
 
 set encoding=utf-8
 set fileencoding=utf-8
