@@ -7,11 +7,11 @@ call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
     Plug 'Shougo/vimproc', { 'do': 'make' }
     Plug 'editorconfig/editorconfig-vim'
     Plug 'tpope/vim-fugitive'       " git in vim
-    Plug 'tpope/vim-flagship'       " flagship statusbar vim
     Plug 'notalex/vim-run-live'     " Running code inline
     Plug 'sheerun/vim-polyglot'     " support for a variety of languages
     " Vim functionality fixes/enhancements
     Plug 'tpope/vim-repeat'         " better repeat compatibility ('.')
+    Plug 'tpope/vim-commentary'     " comment things
     Plug 'vim-scripts/vis'          " improved visual commands
     Plug 'moll/vim-bbye'            " kill buffers without affecting window layout
     Plug 'justinmk/vim-sneak'       " 2-character search motions
@@ -20,14 +20,14 @@ call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'benmills/vimux'
     " Theme
-    Plug 'joshdick/onedark.vim'
+    Plug 'tomasr/molokai'
 " }}}
+call plug#end()
 
 " Custom code & extra configuration
 runtime! rc/*/*.vim
 runtime! rc/*.vim
 
-call plug#end()
 syntax on
 
 """"""""""""""""""""""""""""""""""""""""
@@ -120,40 +120,6 @@ augroup vimrc-remember-cursor-position
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 augroup END
 
-" UI/Appearance {{{
-    set background=dark
-    set number           " Line numbers
-    set showcmd          " Show command issued
-    set fillchars=vert:│
-    set list
-    set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-    set textwidth=81
-    " set cursorline     " Line highlight
-
-    " StatusBar
-    set ruler  " Show line/col no in statusline
-    set rulerformat=%30(%=%y%m%r%w\ %l,%c%V\ %P%)
-    if has('statusline')
-        set laststatus=2
-        set statusline=\ %F
-        set statusline+=\ %W%H%M%R                     " Options
-        set statusline+=%=                             " left/right separator
-        set statusline+=\ %{fugitive#statusline()}     " Git Hotness
-        set statusline+=\ %c                           " cursor column
-        set statusline+=\ %l/%L                        " cursor line/total lines
-        set statusline+=\ \:%P                         " percent through file
-        set statusline+=\ %Y                           " filetype
-    endif
-
-    " No background in terminal
-    if has("autocmd") && !has("gui_running")
-        let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-        autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " No `bg` setting
-    end
-
-    colorscheme onedark
-" }}}
-
 " Movement & search {{{
     set nostartofline
     set sidescrolloff=5
@@ -207,19 +173,6 @@ augroup END
         let startcol = &columns < endcol ? &columns-4 : endcol
         return indent . substitute(line,"^ *","",1)
     endfunction
-" }}}
-
-" Omnicomplete + wild settings {{{
-    set tags=./tags,./../tags,./../../tags,./../../../tags,tags
-
-    set complete-=i
-    set completeopt=menu
-    set wildmenu                    " Show menu instead of auto-complete
-    set wildmode=list:longest,full  " command <Tab> completion: list
-                                    " matches -> longest common -> then
-                                    " all.
-    set wildignore+=*.swp,*.log,.sass-cache,.codekit-cache,config.codekit
-    set wildignore+=*.class,*.o,*.pyc,*.obj,*DS_Store*
 " }}}
 
 " vim:set fdl=0 fdm=marker:
