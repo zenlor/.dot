@@ -15,3 +15,4 @@
 vim/.vim/bundle
 /qtile/.config/qtile/__pycache__
 /vim/.vim/plugged
+/vim/.config/nvim/bundle
