@@ -8,7 +8,6 @@ call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
 
     " Git
     Plug 'tpope/vim-fugitive'       " git in vim
-    Plug 'airblade/vim-gitgutter'
 
     Plug 'notalex/vim-run-live'     " Running code inline
     Plug 'sheerun/vim-polyglot'     " support for a variety of languages
@@ -21,11 +20,24 @@ call plug#begin(has('nvim') ? '~/.config/nvim/bundle' : '~/.vim/bundle')
     Plug 'moll/vim-bbye'            " kill buffers without affecting window layout
     Plug 'justinmk/vim-sneak'       " 2-character search motions
     Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
+    Plug 'tpope/vim-vinegar'        " vinegar dressing for netrw
 
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " tagbar
+
+    " fzf
+    Plug 'junegunn/fzf', { 'do': './install --all' }
+    Plug 'junegunn/fzf.vim'
 " }}}
 
-" Omnicompletion
+" Vim visuals {{{
+    " rainbows
+    Plug 'junegunn/rainbow_parentheses.vim'
+    " Git
+    Plug 'airblade/vim-gitgutter'
+" }}}
+
+" Omnicompletion {{{
+" }}}
 
 " lang {{{
     " Clojure

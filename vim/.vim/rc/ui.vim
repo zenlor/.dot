@@ -5,7 +5,7 @@ set fillchars=vert:│
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
-" set cursorline     " Line highlight
+set cursorline     " Line highlight
 
 " No background in terminal
 if has("autocmd") && !has("gui_running")
@@ -84,7 +84,8 @@ end
         hi User8 guifg=#000000 guibg=#00ffff gui=bold ctermfg=0 ctermbg=51 cterm=bold
     endfunction
 
-    "au ColorScheme * call SetUserColors()
+    " set user colors
+    " au ColorScheme * call SetUserColors()
 
     set laststatus=2
     set statusline=
@@ -101,4 +102,8 @@ end
     set statusline+=%2*\ %{AleInfo()}
 " }}}
 
-colorscheme molokai
+" Colors {{{
+    colorscheme molokai
+" }}}
+
+" vim:set fdl=0 fdm=marker:
