@@ -21,6 +21,7 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'justinmk/vim-sneak'       " 2-character search motions
     Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
     Plug 'tpope/vim-vinegar'        " vinegar dressing for netrw
+    Plug 'junegunn/vim-easy-align'
 
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " tagbar
 
@@ -94,5 +95,11 @@ call plug#begin('~/.cache/vim/bundle')
 Plug 'tomasr/molokai'
 
 call plug#end()
+
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
 filetype plugin indent on
 
