@@ -1,4 +1,7 @@
-st.font:      Iosevka:pixelsize=15:antialias=true:autohint=false;
-st.borderpx:  10
+st.font:        Iosevka:pixelsize=15:antialias=true:autohint=false;
+st.borderpx:    5
+
+! disable bell
+st.bellvolume:  0
 
 ! vim: ft=xdefaults
