@@ -46,10 +46,6 @@ super + {_,shift} + r
 super + {_,shift} + semicolon
     bspc node $(bspc query -N -n -n .!leaf || echo @/) {-R 90,-B}
 
-# hide current node, or restore a queried hidden node
-super + {_,shift} + minus
-    bspc node {,$(bspc query -N -d -n .hidden | head -n 1)} -g hidden
-
 # focus the node for the given path jump
 super + {p,b,comma,period}
     bspc node -f @{parent,brother,first,second}
@@ -65,7 +61,7 @@ super + shift + q
 # wm independent hotkeys {{{
 
 super + {o,e,Return}
-    {qutebrowser,thunar,st} # web browser, file browser, terminal
+    {qutebrowser,thunar,termite} # web browser, file browser, terminal
 
 # launch a program, ensure GTK3 theme.
 super + space

@@ -78,7 +78,8 @@ bspc rule -a GtkFileChooserDialog       state=floating --center --focus
 bspc rule -a Pinentry                   state=floating --center --focus
 bspc rule -a gcolor2                    state=floating center=true
 bspc rule -a lxappearance               state=floating center=true
-bspc rule -a file-roller                state=pseudo_tiled
+bspc rule -a file-roller                state=tiled
+bspc rule -a Emacs                      state=tiled -o
 bspc rule -a conky                      sticky=on manage=off lower=on
 bspc rule -a Docky                      layer=above border=off manage=on
 # Browsers
