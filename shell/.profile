@@ -1,3 +1,7 @@
+
+# Set pacman to powerpill
+pacman -Q powerpill >& /dev/null && export PACMAN=/usr/bin/powerpill
+
 export EDITOR='nvim'
 export GIT_EDITOR='/usr/bin/nvim'
 export BROWSER="$HOME/lib/bin/browser"
