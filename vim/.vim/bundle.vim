@@ -9,7 +9,6 @@ call plug#begin('~/.cache/vim/bundle')
     " Git
     Plug 'tpope/vim-fugitive'       " git in vim
 
-    Plug 'notalex/vim-run-live'     " Running code inline
     Plug 'sheerun/vim-polyglot'     " support for a variety of languages
 " }}}
 
