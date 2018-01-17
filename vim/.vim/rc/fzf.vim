@@ -24,6 +24,7 @@ command! -bang -nargs=? -complete=dir Files
 nnoremap <silent> <Leader><Leader> :Files<CR>
 nnoremap <silent> <Leader>C        :Colors<CR>
 nnoremap <silent> <Leader><Enter>  :Buffers<CR>
+nnoremap <silent> <Leader>bb       :Buffers<CR>
 nnoremap <silent> <Leader>l        :Lines<CR>
 nnoremap <silent> <Leader>ag       :Ag <C-R><C-W><CR>
 nnoremap <silent> <Leader>/        :Ag <C-R><C-W><CR>
