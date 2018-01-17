@@ -9,52 +9,45 @@ scroll_on_output = false
 urgent_on_bell = true
 
 [colors]
-# Base16 Monokai
-# Author: Wimer Hazenberg (http://www.monokai.nl)
+foreground = #657b83
+foreground_bold = #073642
+#foreground_dim = #888888
+background = #fdf6e3
+cursor = #586e75
 
-foreground      = #CCCCCC
-foreground_bold = #f5f4f1
-cursor          = #f5f4f1
-background      = #1B1D1E
-
-# 16 color space
+# if unset, will reverse foreground and background
+#highlight = #839496
 
 # Black, Gray, Silver, White
-color0  = #272822
-color8  = #75715e
-color7  = #f8f8f2
-color15 = #f9f8f5
+color0 = #073642
+color8 = #002b36
+color7 = #eee8d5
+color15 = #fdf6e3
 
 # Red
-color1  = #f92672
-color9  = #f92672
+color1 = #dc322f
+color9 = #cb4b16
 
 # Green
-color2  = #a6e22e
-color10 = #a6e22e
+color2 = #859900
+color10 = #586e75
 
 # Yellow
-color3  = #f4bf75
-color11 = #f4bf75
+color3 = #b58900
 
 # Blue
-color4  = #66d9ef
-color12 = #66d9ef
+color4 = #268bd2
+color12 = #839496
+
+# colors from color0 to color254 can be set
+color11 = #657b83
 
 # Purple
-color5  = #ae81ff
-color13 = #ae81ff
+color5 = #d33682
+color13 = #6c71c4
 
 # Teal
-color6  = #a1efe4
-color14 = #a1efe4
-
-# Extra colors
-color16 = #fd971f
-color17 = #cc6633
-color18 = #383830
-color19 = #49483e
-color20 = #a59f85
-color21 = #f5f4f1
+color6 = #2aa198
+color14 = #93a1a1
 
 # vim: ft=dosini cms=#%s
