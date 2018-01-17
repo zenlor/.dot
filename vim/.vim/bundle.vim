@@ -90,9 +90,13 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'benmills/vimux'
 " }}}
 
+" LightLine
+Plug 'itchyny/lightline.vim'
+Plug 'romainl/flattened'
+
 " Theme
 Plug 'tomasr/molokai'
-Plug 'altercation/vim-colors-solarized'
+Plug 'lifepillar/vim-solarized8'
 
 call plug#end()
 
