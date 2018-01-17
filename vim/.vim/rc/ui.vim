@@ -1,4 +1,4 @@
-set background=dark
+set background=light
 set number           " Line numbers
 set showcmd          " Show command issued
 set fillchars=vert:│
@@ -102,8 +102,7 @@ end
     set statusline+=%2*\ %{AleInfo()}
 " }}}
 
-" Colors {{{
-    colorscheme molokai
-" }}}
+" Colors
+colorscheme solarized
 
 " vim:set fdl=0 fdm=marker:

@@ -92,6 +92,7 @@ call plug#begin('~/.cache/vim/bundle')
 
 " Theme
 Plug 'tomasr/molokai'
+Plug 'altercation/vim-colors-solarized'
 
 call plug#end()
 
