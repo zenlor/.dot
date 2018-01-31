@@ -15,21 +15,64 @@ end
 
 " LightLine
 let g:lightline = {
-      \ 'colorscheme': 'flattened_light',
+      \ 'colorscheme': 'quack',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename' ] ],
+      \             [ 'fugitive'],[ 'filename' ] ]
       \ },
       \ 'component_function': {
-      \   'filename': 'LightlineFilename',
-      \ },
+      \   'fugitive': 'LLFugitive',
+      \   'readonly': 'LLReadonly',
+      \   'modified': 'LLModified',
+      \   'filename': 'LLFilename',
+      \   'mode': 'LLMode'
+      \ }
       \ }
 
-function! LightlineFilename()
-  let filename = expand('%:t') !=# '' ? expand('%:t') : '[No Name]'
-  let modified = &modified ? ' +' : ''
-  return filename . modified
+function! LLMode()
+  let fname = expand('%:t')
+  return fname == '__Tagbar__' ? 'Tagbar' :
+        \ fname == 'ControlP' ? 'CtrlP' :
+        \ lightline#mode() == 'NORMAL' ? 'N' :
+        \ lightline#mode() == 'INSERT' ? 'I' :
+        \ lightline#mode() == 'VISUAL' ? 'V' :
+        \ lightline#mode() == 'V-LINE' ? 'V' :
+        \ lightline#mode() == 'V-BLOCK' ? 'V' :
+        \ lightline#mode() == 'REPLACE' ? 'R' : lightline#mode()
 endfunction
+
+function! LLModified()
+  if &filetype == "help"
+    return ""
+  elseif &modified
+    return "+"
+  elseif &modifiable
+    return ""
+  else
+    return ""
+  endif
+endfunction
+
+function! LLReadonly()
+  if &filetype == "help"
+    return ""
+  elseif &readonly
+    return "!"
+  else
+    return ""
+  endif
+endfunction
+
+function! LLFugitive()
+  return exists('*fugitive#head') ? fugitive#head() : ''
+endfunction
+
+function! LLFilename()
+  return ('' != LLReadonly() ? LLReadonly() . ' ' : '') .
+       \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+       \ ('' != LLModified() ? ' ' . LLModified() : '')
+endfunction
+
 
 " Colors
 colorscheme solarized8_flat

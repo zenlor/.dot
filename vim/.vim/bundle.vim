@@ -92,7 +92,7 @@ call plug#begin('~/.cache/vim/bundle')
 
 " LightLine
 Plug 'itchyny/lightline.vim'
-Plug 'romainl/flattened'
+Plug 'pearofducks/vim-quack-lightline'
 
 " Theme
 Plug 'tomasr/molokai'
