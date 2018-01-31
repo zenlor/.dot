@@ -10,3 +10,5 @@ else
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+echo $'\e[3mProgramming is not about typing, it\'s about thinking.\e[0m - Rich Hickey'
