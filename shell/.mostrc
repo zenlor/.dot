@@ -1,17 +1,17 @@
-% This is an example configuration file that provides a `less' emulation 
+% This is an example configuration file that provides a `less' emulation
 % for MOST.
 %
-% The format is simple: 
+% The format is simple:
 %       setkey <function-name> <key-name>
 %       unsetkey <key-name>
 %       color <object-name> <fg> <bg>
 %
 % Here <key-name> must be enclosed in double quotes.  '^' represents Ctrl.
 % The function name is not in double quotes.
-% 
 %
-% When MOST starts up, it looks for a keymap file given by the environment 
-% variable MOST_INITFILE.  If that environment variable does not exist, 
+%
+% When MOST starts up, it looks for a keymap file given by the environment
+% variable MOST_INITFILE.  If that environment variable does not exist,
 % MOST will look in the users HOME directory for .mostrc on Unix systems
 % and MOST.RC on VMS systems.
 %
@@ -19,10 +19,10 @@
 
 % Color settings
 
-color normal lightgray black
-color status yellow blue
-color underline brightgreen black
-color overstrike brightred black
+% color normal lightgray black
+color status white blue
+% color underline brightgreen black
+% color overstrike brightred black
 
 % Keybindings
 
