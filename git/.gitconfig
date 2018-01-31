@@ -39,3 +39,4 @@
 	recentrepo = /home/lor/lib/src/git.mobilebridge.io/lorenzo/smallpox
 [cola]
 	spellcheck = false
+	fontdiff = Fira Mono,10,-1,5,50,0,0,0,0,0
