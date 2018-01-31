@@ -1,5 +1,5 @@
 [options]
-font = Iosevka Term 11
+font = Iosevka Term 10
 browser = qutebrowser
 clickable_url = true
 dynamic_title = true
@@ -9,31 +9,52 @@ scroll_on_output = false
 urgent_on_bell = true
 
 [colors]
-foreground = #657b83
+# Base16 Solarized Light
+# Author: Ethan Schoonover (http://ethanschoonover.com/solarized)
+
+foreground      = #586e75
 foreground_bold = #073642
-#foreground_dim = #888888
-background = #fdf6e3
-cursor = #586e75
+cursor          = #073642
+background      = #fdf6e3
 
-# if unset, will reverse foreground and background
-#highlight = #839496
+# 16 color space
 
-# colors from color0 to color254 can be set
-color0 = #073642
-color1 = #dc322f
-color2 = #859900
-color3 = #b58900
-color4 = #268bd2
-color5 = #d33682
-color6 = #2aa198
-color7 = #eee8d5
-color8 = #002b36
-color9 = #cb4b16
-color10 = #586e75
-color11 = #657b83
-color12 = #839496
+# Black, Gray, Silver, White
+color0  = #fdf6e3
+color8  = #839496
+color7  = #586e75
+color15 = #002b36
+
+# Red
+color1  = #dc322f
+color9  = #dc322f
+
+# Green
+color2  = #859900
+color10 = #859900
+
+# Yellow
+color3  = #b58900
+color11 = #b58900
+
+# Blue
+color4  = #268bd2
+color12 = #268bd2
+
+# Purple
+color5  = #6c71c4
 color13 = #6c71c4
-color14 = #93a1a1
-color15 = #fdf6e3
+
+# Teal
+color6  = #2aa198
+color14 = #2aa198
+
+# Extra colors
+color16 = #cb4b16
+color17 = #d33682
+color18 = #eee8d5
+color19 = #93a1a1
+color20 = #657b83
+color21 = #073642
 
 # vim: ft=dosini cms=#%s
