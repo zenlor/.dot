@@ -39,7 +39,6 @@
     let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let']
 
     " let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-    let g:paredit_smartjump = 1
 
     " vim-cljfmt
     let g:clj_fmt_autosave = 0

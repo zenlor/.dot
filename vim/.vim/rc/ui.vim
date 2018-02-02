@@ -5,7 +5,6 @@ set fillchars=vert:│
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
-set cursorline     " Line highlight
 
 " No background in terminal
 if has("autocmd") && !has("gui_running")

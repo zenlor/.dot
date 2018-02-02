@@ -5,7 +5,6 @@ source ~/.vim/bundle.vim
 runtime! rc/*/*.vim
 runtime! rc/*.vim
 
-
 """"""""""""""""""""""""""""""""""""""""
 " Settings                             "
 """"""""""""""""""""""""""""""""""""""""

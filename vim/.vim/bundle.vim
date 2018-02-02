@@ -70,7 +70,7 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'guns/vim-clojure-static',         { 'for': 'clojure' }
     Plug 'guns/vim-clojure-highlight',      { 'for': 'clojure' }
     Plug 'venantius/vim-cljfmt',            { 'for': 'clojure' }
-    Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
+    "Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
 
     " Javascript
     Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
