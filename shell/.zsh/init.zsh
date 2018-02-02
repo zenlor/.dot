@@ -14,6 +14,9 @@ source $HOME/.zsh/theme.zsh
 source $HOME/.zsh/magic_enter.zsh
 source $HOME/.zsh/fzf.zsh
 
+# MOTD
+source $HOME/.zsh/motd.zsh
+
 # more environment config
 
 [[ -f "$HOME/.config/locale.conf" ]] && source $HOME/.config/locale.conf;
