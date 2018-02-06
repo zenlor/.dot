@@ -92,11 +92,10 @@ call plug#begin('~/.cache/vim/bundle')
 
 " LightLine
 Plug 'itchyny/lightline.vim'
-Plug 'pearofducks/vim-quack-lightline'
+Plug 'daviesjamie/vim-base16-lightline'
 
 " Theme
-Plug 'tomasr/molokai'
-Plug 'lifepillar/vim-solarized8'
+Plug 'chriskempson/base16-vim'
 
 call plug#end()
 

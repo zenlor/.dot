@@ -14,7 +14,7 @@ end
 
 " LightLine
 let g:lightline = {
-      \ 'colorscheme': 'quack',
+      \ 'colorscheme': 'base16',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'fugitive'],[ 'filename' ] ]
@@ -74,6 +74,6 @@ endfunction
 
 
 " Colors
-colorscheme solarized8_flat
+colorscheme base16-tomorrow-night
 
 " vim:set fdl=0 fdm=marker:
