@@ -5,6 +5,12 @@ hard() {
     docker rm $(docker ps -a -q)
     # Delete all images
     docker rmi $(docker images -q)
+
+    # delete network interfaces
+    docker network ls | awk '$3 == "bridge" && $2 != "bridge" { print $1 }'
+
+    # delete volumes
+    docker volume rm $(docker volume ls -qf dangling=true)
 }
 
 clean() {
