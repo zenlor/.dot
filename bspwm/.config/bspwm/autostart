@@ -92,7 +92,3 @@ clipmenud &
 
 # try to fix the damned QtPy using QT4
 export QT_API=pyqt4
-
-# Java settings
-export _JAVA_AWT_WM_NONREPARENTING=1
-export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dsun.java2d.opengl=true'
