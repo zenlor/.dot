@@ -18,3 +18,4 @@ vim/.vim/bundle
 /vim/.config/nvim/bundle
 vim/.vim/tmp
 weechat/.weechat/urlserver_list.txt
+*.pyc
