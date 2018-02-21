@@ -1,5 +1,5 @@
 set nocompatible
-source ~/.vim/bundle.vim
+source ~/.config/vim/bundle.vim
 
 " Custom code & extra configuration
 runtime! rc/*/*.vim
