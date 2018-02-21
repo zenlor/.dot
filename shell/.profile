@@ -46,5 +46,12 @@ export PATH="$PATH:$HOME/.config/composer/vendor/bin"
 # Local env
 export PATH="$PATH:$HOME/bin:~/.local/bin"
 
+# XDG DIR
+export XDG_CACHE_HOME=~/.cache
+export XDG_CONFIG_HOME=~/.config
+export XDG_DATA_HOME=~/.local/share
+export XDG_BIN_HOME=~/.local/bin
+
+
 # Window managers
 [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]] || [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]] || export QT_QPA_PLATFORMTHEME="qt5ct"
