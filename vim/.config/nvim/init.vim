@@ -5,8 +5,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 set ttyfast " Faster terminal
 
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
+set runtimepath^=~/.config/vim runtimepath+=~/.config/vim/after
 let &packpath = &runtimepath
-source ~/.vimrc
+source ~/.config/vim/init.vim
 
 " vim:set fdl=0 fdm=marker:
