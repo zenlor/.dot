@@ -37,31 +37,6 @@ call plug#begin('~/.cache/vim/bundle')
 " }}}
 
 " Omnicompletion {{{
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
-    " Completion integration with nvim-completion-manager.
-    Plug 'roxma/nvim-completion-manager'
-    " Showing function signature and inline doc.
-    Plug 'Shougo/echodoc.vim'
-
-    " languages
-    " generic
-    Plug 'Shougo/neco-syntax'
-    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-    " vimL
-    Plug 'Shougo/neco-vim'
-    " clojure
-    Plug 'clojure-vim/async-clj-omni',    { 'for': 'clojure' }
-    " javascript tern
-    Plug 'carlitux/deoplete-ternjs',      { 'for': 'javascript', 'do': 'npm install -g tern' }
-    " typescript tsserver
-    Plug 'mhartington/nvim-typescript',   { 'for': 'typescript' }
-
 " }}}
 
 " lang {{{
