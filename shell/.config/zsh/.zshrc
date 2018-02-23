@@ -1,3 +1,5 @@
+source ~/.profile
+
 export ZGEN_AUTOLOAD_COMPINIT=0
 AUTOPAIR_INHIBIT_INIT=1
 

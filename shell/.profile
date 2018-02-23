@@ -1,3 +1,4 @@
+#!/bin/zsh
 # Can be sourced by zsh/bash scripts
 
 export XDG_CACHE_HOME=~/.cache
@@ -14,40 +15,6 @@ for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME"
 done
 
 ## Library
-function _is_interactive { [[ $- == *i* ]]; }
-
-function _is_running {
-  for prc in "$@"; do
-    pgrep -x "$prc" >/dev/null || return 1
-  done
-}
-
-function _is_callable {
-  for cmd in "$@"; do
-    command -v "$cmd" >/dev/null || return 1
-  done
-}
-
-function _source {
-  [[ -f $1 ]] && source "$1"
-}
-
-function _load {
-  case $1 in
-    /*) source "$1" ;;
-    *)  source "$DOTFILES/$1" ;;
-  esac
-}
-
-function _load_all {
-  for file in "$DOTFILES_DATA"/*.topic/"$1"; do
-    [[ -e $file ]] && source "$file"
-  done
-}
-
-function _load_repo {
-  _ensure_repo "$1" "$2" && source "$2/$3" || >&2 echo "Failed to load $1"
-}
 
 function _ensure_repo {
   local target=$1
@@ -87,6 +54,41 @@ function _cache {
 
 function _cache_clear {
   command rm -rfv $XDG_CACHE_HOME/${SHELL##*/}/*;
+}
+
+function _is_interactive { [[ $- == *i* ]]; }
+
+function _is_running {
+  for prc in "$@"; do
+    pgrep -x "$prc" >/dev/null || return 1
+  done
+}
+
+function _is_callable {
+  for cmd in "$@"; do
+    command -v "$cmd" >/dev/null || return 1
+  done
+}
+
+function _source {
+  [[ -f $1 ]] && source "$1"
+}
+
+function _load {
+  case $1 in
+    /*) source "$1" ;;
+    *)  source "$DOTFILES/$1" ;;
+  esac
+}
+
+function _load_all {
+  for file in "$DOTFILES_DATA"/*.topic/"$1"; do
+    [[ -e $file ]] && source "$file"
+  done
+}
+
+function _load_repo {
+  _ensure_repo "$1" "$2" && source "$2/$3" || >&2 echo "Failed to load $1"
 }
 
 # vim:ft=sh

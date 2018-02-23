@@ -1,7 +1,7 @@
 # disable global zsh config; we'll handle it ourselves
 unsetopt GLOBAL_RCS
 
-[ -f "$HOME/.profile" ] && source $HOME/.profile
+source ~/.profile
 
 # Move ZDOTDIR from $HOME to reduce dotfile pollution.
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
@@ -17,5 +17,5 @@ export SHELL=$(command -v zsh)
 export LANG=${LANG:-en_US.UTF-8}
 export PAGER=less
 export LESS='-R -i -w -M -z-4'
-export LESSHISTFILE="$XDG_DATA_HOME/lesshst"
+export LESSHISTFILE="$XDG_DATA_HOME/lesshistory"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
