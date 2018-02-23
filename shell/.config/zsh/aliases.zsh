@@ -49,5 +49,8 @@ alias map="xargs -n1"
 # Vim/neovim
 alias vim=nvim
 
+# Pac(man|aur)
+alias pac=pacaur
+
 take() { mkdir "$1" && cd "$1"; }; compdef take=mkdir
 hex()  { echo -n $@ | xxd -psdu; }
