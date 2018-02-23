@@ -1,3 +1,0 @@
-[submodule "emacs/.spacemacs.d/layers/paintvars"]
-	path = spacemacs/.spacemacs.d/layers/paintvars
-	url = https://github.com/SteveJobzniak/spacemacs-private-paintvars.git
