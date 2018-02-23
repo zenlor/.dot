@@ -1,57 +1,92 @@
+# Can be sourced by zsh/bash scripts
 
-# Set pacman to powerpill
-pacman -Q powerpill >& /dev/null && export PACMAN=/usr/bin/powerpill
-
-export EDITOR='nvim'
-export GIT_EDITOR='/usr/bin/nvim'
-export BROWSER="$HOME/lib/bin/browser"
-export PAGER='/usr/bin/most'
-
-# export TMPDIR
-export TMPDIR=/tmp/$USER
-mkdir -p $TMPDIR
-
-# Local binpaths
-[ -d "$HOME/bin" ] && export PATH=$HOME/bin:$PATH
-[ -d "$HOME/lib/bin" ] && export PATH=$HOME/lib/bin:$PATH
-[ -d "$HOME/.local/bin" ] && export PATH=$HOME/.local/bin:$PATH
-
-# Go
-[ -d "$HOME/lib" ] && export GOPATH=$HOME/lib
-
-# N(ode version manager)
-export N_PREFIX=$HOME/lib/n
-[ -d "$N_PREFIX/bin" ] && export PATH=$N_PREFIX/bin:$PATH
-
-# if rbenv is present, configure it for use
-if [ -d $HOME/.rbenv ]; then
-  export PATH="$HOME/.rbenv/bin:${PATH}"
-  eval "$(rbenv init -)"
-fi
-
-# Add RVM to PATH for scripting, if rvm is present
-if which rvm-prompt &> /dev/null; then
-  export PATH="$HOME/.rvm/bin:$PATH"
-fi
-
-# If Jenv exists, add it to PATH and init
-if [ -d $HOME/.jenv ]; then
-  export PATH="$HOME/.jenv/bin:$PATH"
-  eval "$(jenv init -)"
-fi
-
-# PHP ... when I need to do crap
-export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-
-# Local env
-export PATH="$PATH:$HOME/bin:~/.local/bin"
-
-# XDG DIR
 export XDG_CACHE_HOME=~/.cache
 export XDG_CONFIG_HOME=~/.config
 export XDG_DATA_HOME=~/.local/share
 export XDG_BIN_HOME=~/.local/bin
 
+export DOTFILES="$(cd $(dirname "${BASH_SOURCE:-${(%):-%x}}") && pwd -P)"
+export DOTFILES_DATA="$XDG_DATA_HOME/dotfiles"
+export DOTFILES_ASSETS="$DOTFILES/assets"
 
-# Window managers
-[[ "$XDG_CURRENT_DESKTOP" == "KDE" ]] || [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]] || export QT_QPA_PLATFORMTHEME="qt5ct"
+for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME" "$DOTFILES_DATA"; do
+  [[ -d $dir ]] || mkdir -p "$dir"
+done
+
+## Library
+function _is_interactive { [[ $- == *i* ]]; }
+
+function _is_running {
+  for prc in "$@"; do
+    pgrep -x "$prc" >/dev/null || return 1
+  done
+}
+
+function _is_callable {
+  for cmd in "$@"; do
+    command -v "$cmd" >/dev/null || return 1
+  done
+}
+
+function _source {
+  [[ -f $1 ]] && source "$1"
+}
+
+function _load {
+  case $1 in
+    /*) source "$1" ;;
+    *)  source "$DOTFILES/$1" ;;
+  esac
+}
+
+function _load_all {
+  for file in "$DOTFILES_DATA"/*.topic/"$1"; do
+    [[ -e $file ]] && source "$file"
+  done
+}
+
+function _load_repo {
+  _ensure_repo "$1" "$2" && source "$2/$3" || >&2 echo "Failed to load $1"
+}
+
+function _ensure_repo {
+  local target=$1
+  local dest=$2
+  if [[ ! -d $dest ]]; then
+    if [[ $target =~ "^[^/]+/[^/]+$" ]]; then
+      url=https://github.com/$target
+    elif [[ $target =~ "^[^/]+$" ]]; then
+      url=git@github.com:$USER/$target.git
+    fi
+    [[ -n ${dest%/*} ]] && mkdir -p ${dest%/*}
+    git clone --recursive "$url" "$dest" || return 1
+  fi
+}
+
+function _os {
+  case $OSTYPE in
+    linux*) if   [[ -f /etc/arch-release   ]]; then echo arch
+            elif [[ -f /etc/debian_version ]]; then echo debian
+            fi ;;
+    darwin*) echo macos ;;
+    cygwin*) echo cygwin ;;
+  esac
+}
+
+function _cache {
+  _is_interactive || return 1
+  local cache_dir="$XDG_CACHE_HOME/${SHELL##*/}"
+  local cache="$cache_dir/$1"
+  if [[ ! -f $cache || ! -s $cache ]]; then
+    echo "Caching $1"
+    mkdir -p $cache_dir
+    "$@" >$cache
+  fi
+  source $cache
+}
+
+function _cache_clear {
+  command rm -rfv $XDG_CACHE_HOME/${SHELL##*/}/*;
+}
+
+# vim:ft=sh
