@@ -52,5 +52,11 @@ alias vim=nvim
 # Pac(man|aur)
 alias pac=pacaur
 
+# emacs
+alias ec="emacsclient -n"               # don't wait for emacs
+alias ecs="emacsclient -t"              # open in current emacs, wait for termination
+alias semac="sudo emacsclient -t"       # used to be "sudo emacs -nw"
+alias emacsc="emacsclient -c -a emacs"  # new - opens the GUI with alternate non-daemon
+
 take() { mkdir "$1" && cd "$1"; }; compdef take=mkdir
 hex()  { echo -n $@ | xxd -psdu; }

@@ -71,6 +71,7 @@ Plug 'daviesjamie/vim-base16-lightline'
 
 " Theme
 Plug 'chriskempson/base16-vim'
+Plug 'rakr/vim-one'
 
 call plug#end()
 

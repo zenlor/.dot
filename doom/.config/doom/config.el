@@ -41,7 +41,7 @@
     t))
 
 ;; theme
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-one-light)
 
 ;; host-specific settings
 (pcase (system-name)
