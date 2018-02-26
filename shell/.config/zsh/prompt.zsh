@@ -3,7 +3,7 @@
 #  / _` |/ _` | |/ / _ \_  / _` | |/ /
 # | (_| | (_| |   < (_) / / (_| |   <
 #  \__,_|\__, |_|\_\___/___\__,_|_|\_\
-  #        |___/
+    #        |___/
 #
 # A dynamic color prompt for zsh with Git, vi mode, and exit status indicators
 #
@@ -39,63 +39,63 @@
 setopt PROMPT_SUBST
 
 _is_ssh() {
-if [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]; then
-  true
-else
-  case "$EUID" in
-    0)
-      case $(ps -o comm= -p $PPID) in
-        sshd|*/sshd) true ;;
-      esac
-      ;;
-    *) false;
-  esac
-fi
+    if [[ -n $SSH_CLIENT ]] || [[ -n $SSH_TTY ]]; then
+        true
+    else
+        case "$EUID" in
+            0)
+                case $(ps -o comm= -p $PPID) in
+                    sshd|*/sshd) true ;;
+                esac
+                ;;
+            *) false;
+        esac
+    fi
 }
 
 _haz_colors=$(tput colors)
 
 # Display current branch and status
 _branch_status() {
-local ref branch
-ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
-case $? in        # See what the exit code is.
-  0) ;;           # $ref contains the name of a checked-out branch.
-  128) return ;;  # No Git repository here.
-  # Otherwise, see if HEAD is in detached state.
-  *) ref=$(git rev-parse --short HEAD 2> /dev/null) || return ;;
-esac
-branch=${ref#refs/heads/}
-printf ' (%s%s)' "$branch" "$(_branch_changes)"
+    local ref branch
+    ref=$(git symbolic-ref --quiet HEAD 2> /dev/null)
+    case $? in        # See what the exit code is.
+        0) ;;           # $ref contains the name of a checked-out branch.
+        128) return ;;  # No Git repository here.
+        # Otherwise, see if HEAD is in detached state.
+        *) ref=$(git rev-parse --short HEAD 2> /dev/null) || return ;;
+    esac
+    branch=${ref#refs/heads/}
+    printf ' (%s%s)' "$branch" "$(_branch_changes)"
 }
 
 # Display symbols representing the current branch's status
 _branch_changes() {
-local git_status symbols
+    local git_status symbols
 
-git_status=$(command git status 2>&1)
+    git_status=$(command git status 2>&1)
 
-# $messages is an associative array whose keys are text to be looked for in
-# $git_status and whose values are symbols used in the prompt to represent
-# changes to the working branch
-declare -A messages
+    # $messages is an associative array whose keys are text to be looked for in
+    # $git_status and whose values are symbols used in the prompt to represent
+    # changes to the working branch
+    declare -A messages
 
-messages=(
-'renamed:'                '>'
-'Your branch is ahead of' '*'
-'new file:'               '+'
-'Untracked files'         '?'
-'deleted'                 'x'
-'modified:'               '!'
-)
+    messages=(
+    'renamed:'                '>'
+    'Your branch is ahead of' '*'
+    'new file:'               '+'
+    'Untracked files'         '?'
+    'deleted'                 'x'
+    'modified:'               '!'
+    )
 
-for k in ${(@k)messages}; do
-  case "$git_status" in
-    *${k}*) symbols="${messages[$k]}${symbols}" ;;
-  esac
-done
+    for k in ${(@k)messages}; do
+        case "$git_status" in
+            *${k}*) symbols="${messages[$k]}${symbols}" ;;
+        esac
+    done
 
-[[ ! -z "$symbols" ]] && printf '%s' " $symbols"
+    [[ ! -z "$symbols" ]] && printf '%s' " $symbols"
 }
 
 # precmd() runs before each prompt is drawn
@@ -105,63 +105,63 @@ done
 #
 # Calculate working Git branch and branch status
 precmd() {
-  case "$PWD" in
-    $HOME*)
-      psvar[2]=$(print -P "%(4~|.../%2~|%~)")
-      case ${psvar[2]} in
-        '.../'*)
-          psvar[2]=$(printf '~/%s' "${psvar[2]}")
-          ;;
-      esac
-      ;;
-    *) psvar[2]=$(print -P "%(3~|.../%2~|%~)") ;;
-  esac
-  psvar[3]=$(_branch_status)
+    case "$PWD" in
+        $HOME*)
+            psvar[2]=$(print -P "%(4~|.../%2~|%~)")
+            case ${psvar[2]} in
+                '.../'*)
+                    psvar[2]=$(printf '~/%s' "${psvar[2]}")
+                    ;;
+            esac
+            ;;
+        *) psvar[2]=$(print -P "%(3~|.../%2~|%~)") ;;
+    esac
+    psvar[3]=$(_branch_status)
 }
 
 # When the user enters vi command mode, the % or # in the prompt changes into
 # a colon
 _vi_mode_indicator() {
-  case "$KEYMAP" in
-    vicmd) printf '%s' ':' ;;
-    *) printf '%s' '%#' ;;
-  esac
+    case "$KEYMAP" in
+        vicmd) printf '%s' ':' ;;
+        *) printf '%s' '%#' ;;
+    esac
 }
 
 # Redraw prompt when vi mode changes
 zle-keymap-select() {
-  zle reset-prompt
-  zle -R
+    zle reset-prompt
+    zle -R
 }
 
 # Redraw prompt when terminal size changes
 TRAPWINCH() {
-  zle && zle -R
+    zle && zle -R
 }
 
 zle -N zle-keymap-select
 
 if _is_ssh; then
-  psvar[1]="$(print -P "@%m")"
+    psvar[1]="$(print -P "@%m")"
 else
-  psvar[1]=''
+    psvar[1]=''
 fi
 
 if [[ $_haz_colors -ge 8 ]]; then
-  # Autoload zsh colors module if it hasn't been autoloaded already
-  if ! whence -w colors > /dev/null 2>&1; then
-    autoload -Uz colors
-    colors
-  fi
+    # Autoload zsh colors module if it hasn't been autoloaded already
+    if ! whence -w colors > /dev/null 2>&1; then
+        autoload -Uz colors
+        colors
+    fi
 
-  PS1='%{$fg_bold[green]%}%n%1v%{$reset_color%} %{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
-  # PS1='%{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
+    # PS1='%{$fg_bold[green]%}%n%1v%{$reset_color%} %{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
+    PS1='%{$fg_bold[blue]%}%2v%{$reset_color%}%{$fg[yellow]%}%3v%{$reset_color%} $(_vi_mode_indicator) '
 
-  # The right prompt will show the exit code if it is not zero.
-  RPS1="%(?..%{$fg_bold[red]%}(%?%)%{$reset_color%})"
+    # The right prompt will show the exit code if it is not zero.
+    RPS1="%(?..%{$fg_bold[red]%}(%?%)%{$reset_color%})"
 else
-  PS1='%n%1v %2v%3v $(_vi_mode_indicator) '
-  RPS1="%(?..(%?%))"
+    PS1='%n%1v %2v%3v $(_vi_mode_indicator) '
+    RPS1="%(?..(%?%))"
 fi
 
 # vim: tabstop=4 expandtab:
