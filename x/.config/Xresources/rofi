@@ -10,7 +10,6 @@ rofi.location:          0
 rofi.sidebar-mode:      true
 rofi.width:             45
 rofi.matching:          fuzzy
-rofi.terminal:          rofi-sensible-terminal
 rofi.hide-scrollbar:    true
 
 ! --- mode settings --- !

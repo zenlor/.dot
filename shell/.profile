@@ -14,6 +14,12 @@ for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME"
   [[ -d $dir ]] || mkdir -p "$dir"
 done
 
+## Go
+export GOPATH=$HOME/lib
+
+## PATH
+export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$PATH
+
 ## Library
 
 function _ensure_repo {
