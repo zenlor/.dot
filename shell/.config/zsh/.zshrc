@@ -30,6 +30,7 @@ source $ZDOTDIR/keybinds.zsh
 source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/magic_enter.zsh
 source $ZDOTDIR/git.zsh
+source $ZDOTDIR/keychain.zsh
 
 #
 export _FASD_DATA="$XDG_CACHE_HOME/fasd"
