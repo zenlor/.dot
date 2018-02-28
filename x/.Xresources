@@ -3,9 +3,9 @@
 ! ------------------------- !
 
 ! ----- import external settings ----- !
-#include    "~/.config/Xresources/term"
-#include    "~/.config/Xresources/rofi"
-#include    "~/.config/Xresources/misc"
-#include    "~/.config/Xresources/font"
+#include    ".config/Xresources/term"
+#include    ".config/Xresources/rofi"
+#include    ".config/Xresources/misc"
+#include    ".config/Xresources/fonts"
 
 ! vim: set syntax=xdefaults sw=4 ts=4 :

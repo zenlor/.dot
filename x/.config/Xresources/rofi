@@ -38,4 +38,14 @@ rofi.color-urgent: #282828, #ebdbb2, #282828, #ebdbb2, #282828
 rofi.color-active: #282828, #ebdbb2, #282828, #ebdbb2, #282828
 rofi.color-window: #282827, #282828
 
-! vim: syntax=xdefaults sw=4 ts=4 :
+! keybindings
+
+rofi.kb-remove-to-eol: Shift+D
+rofi.kb-accept-entry:  Control+m,Return,KP_Enter
+
+! modi switch
+rofi.kb-mode-next:      Shift+Right,Control+j
+rofi.kb-mode-previous:  Shift+Left,Control+k
+
+
+! vim: syntax=xdefaults sw=4 ts=4
