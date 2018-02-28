@@ -90,7 +90,7 @@ if (empty($TMUX))
 endif
 
 " Colors
-colorscheme one
+colorscheme base16-one-light
 set background=light " or dark
 
 " vim:set fdl=0 fdm=marker:
