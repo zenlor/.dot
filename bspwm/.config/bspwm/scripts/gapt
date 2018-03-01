@@ -1,5 +1,0 @@
-#!/bin/dash
-# toggle gaps on and off
-
-[ $(bspc config window_gap) -le 0 ] || export BSPWM_GAPS=false
-~/.config/bspwm/bspwmrc
