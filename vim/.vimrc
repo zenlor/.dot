@@ -1,2 +1,1 @@
-set nocompatible
-source ~/.config/vim/init.vim
+.config/nvim/init.vim
