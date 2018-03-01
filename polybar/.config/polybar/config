@@ -1,0 +1,264 @@
+#==================================================
+#
+#  INFO: https://github.com/jaagr/polybar
+#
+#===================================================
+
+#========================================
+# RESOURCES
+#========================================
+[res/colors]
+primary = ${xrdb:color12}
+alert = ${xrdb:color3}
+
+background = ${xrdb:background}
+background-alt = ${xrdb:color0}
+foreground = ${xrdb:color15}
+foreground-alt = ${xrdb:color10}
+
+[res/config]
+padding = 3
+
+[res/fonts]
+font-0 = "Helvetica CE:size=10;2"
+font-1 = "Material Design Icons:size=13;3"
+
+#========================================
+# BARS
+#========================================
+
+# TEMPLATE
+#====================
+
+[template/bar]
+# Rendering of the bar
+width = 40%
+height = 32
+offset-y = 10
+wm-restack = ${env:PB_WM_RESTACK:bspwm}
+bottom = true
+
+# Module padding and spacing
+padding = ${res/config.padding}
+module-margin = 2
+
+# Colors and Borders
+background = ${res/colors.background}
+foreground = ${res/colors.foreground}
+radius=4
+
+# Module fonts
+font-0 = ${res/fonts.font-0}
+font-1 = ${res/fonts.font-1}
+
+# BARS
+#====================
+[bar/primary-left]
+monitor = ${env:PB_MONITOR}
+inherit = template/bar
+offset-x = 5%
+
+modules-left = i3 bspwm
+modules-right = update-arch cpu memory fs-home
+
+[bar/primary-right]
+monitor = ${env:PB_MONITOR}
+inherit = template/bar
+offset-x = 55%
+
+modules-left = wlan
+modules-right = xbacklight volume battery date
+
+[bar/secondary]
+monitor = ${env:PB_MONITOR}
+inherit = template/bar
+width = 90%
+offset-x = 5%
+
+modules-left = i3 bspwm
+modules-right = xwindow
+
+#========================================
+# MODULES
+#========================================
+
+# BORDERS and WHITESPACE
+#====================
+[module/|]
+type = custom/text
+content = " "
+
+# OTHER
+#====================
+[module/bspwm]
+type = internal/bspwm
+format = <label-state>
+format-prefix = " "
+enable-scroll = false
+pin-workspaces = true
+
+label-focused = %name%
+label-focused-padding = ${res/config.padding}
+label-focused-foreground = ${res/colors.background}
+label-focused-background = ${res/colors.primary}
+
+label-dimmed = ${self.label-focused}
+label-dimmed-padding = ${res/config.padding}
+label-dimmed-foreground = ${self.label-focused-foreground}
+label-dimmed-background = ${res/colors.background-alt}
+
+label-urgent = ${self.label-focused}
+label-urgent-padding = ${res/config.padding}
+label-urgent-foreground = ${res/colors.alert}
+
+label-occupied = ${self.label-focused}
+label-occupied-padding = ${res/config.padding}
+
+label-empty = ${self.label-focused}
+label-empty-padding = ${res/config.padding}
+label-empty-foreground = ${res/colors.foreground-alt}
+
+[module/xworkspaces]
+type = internal/xworkspaces
+format = <label-state>
+format-prefix = " "
+enable-scroll = false
+pin-workspaces = true
+
+label-active = %name%
+label-active-padding = ${res/config.padding}
+label-active-foreground = ${res/colors.background}
+label-active-background = ${res/colors.primary}
+
+label-dimmed = ${self.label-active}
+label-dimmed-padding = ${res/config.padding}
+label-dimmed-foreground = ${self.label-active-foreground}
+label-dimmed-background = ${res/colors.foreground-alt}
+
+label-urgent = ${self.label-active}
+label-urgent-padding = ${res/config.padding}
+label-urgent-foreground = ${res/colors.alert}
+
+label-occupied = ${self.label-active}
+label-occupied-padding = ${res/config.padding}
+
+label-empty = ${self.label-active}
+label-empty-padding = ${res/config.padding}
+label-empty-foreground = ${res/colors.foreground-alt}
+
+[module/battery]
+type = internal/battery
+format-charging = <animation-charging> <label-charging>
+format-charging-foreground = ${res/colors.foreground-alt}
+format-discharging = <ramp-capacity> <label-discharging>
+format-full = <label-full>
+time-format = %H:%M
+full-at = 95
+interval = 15
+
+label-charging = %percentage%%
+label-discharging = %percentage%%
+label-full = 
+
+ramp-capacity-0= 
+ramp-capacity-1= 
+ramp-capacity-2= 
+ramp-capacity-3= 
+ramp-capacity-4= 
+ramp-capacity-5= 
+ramp-capacity-6= 
+ramp-capacity-7= 
+ramp-capacity-8= 
+ramp-capacity-9= 
+
+animation-charging-0 = ${self.ramp-capacity-0}
+animation-charging-1 = ${self.ramp-capacity-1}
+animation-charging-2 = ${self.ramp-capacity-2}
+animation-charging-3 = ${self.ramp-capacity-3}
+animation-charging-4 = ${self.ramp-capacity-4}
+animation-charging-5 = ${self.ramp-capacity-5}
+animation-charging-6 = ${self.ramp-capacity-6}
+animation-charging-7 = ${self.ramp-capacity-7}
+animation-charging-8 = ${self.ramp-capacity-8}
+animation-charging-9 = ${self.ramp-capacity-9}
+animation-charging-framerate = 500
+
+[module/cpu]
+type = internal/cpu
+format = <label>
+format-prefix = " "
+interval = 1
+
+label = %percentage%%
+label-background = ${res/colors.background}
+
+[module/date]
+type = internal/date
+format = <label>
+date = %a
+time = %I:%M %p
+interval = 30
+
+label = %date% %time%
+
+[module/fs-home]
+type = internal/fs
+format-mounted = <label-mounted>
+format-mounted-prefix = " "
+mount-0 = /home
+
+label-mounted = %percentage_used%%
+
+[module/memory]
+type = internal/memory
+format = <label>
+format-prefix = " "
+interval = 1
+
+label = %percentage_used%%
+
+[module/update-arch]
+type = custom/script
+exec = echo `checkupdates | wc -l`
+exec-if = wget -q --spider http://www.startpage.com/ && uname -r | grep -q "ARCH" && [ `checkupdates | wc -l` != 0 ]
+format-foreground = ${res/colors.alert}
+format-prefix = " "
+interval = 60
+
+[module/volume]
+type = internal/volume
+format-volume = <ramp-volume> <label-volume>
+format-muted = <label-muted>
+
+label-muted = 
+label-muted-foreground = ${res/colors.foreground-alt}
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+
+[module/wlan]
+type = internal/network
+format-connected = <label-connected>
+format-connected-prefix = " "
+format-disconnected = <label-disconnected>
+interface = wlp1s0
+
+label-connected = %essid%
+label-disconnected = 
+label-disconnected-foreground = ${res/colors.foreground-alt}
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label>
+format-prefix = " "
+
+label = %percentage%%
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 75
+label-ellipsis = true
+
+# vim:ft=dosini
