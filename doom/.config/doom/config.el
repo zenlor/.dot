@@ -55,10 +55,13 @@
    (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14))))
 
 ;; Custom bindings
-(map! (:leader
+(map! (:after clojure-mode
+       :localleader
+       :n  "e"  #'cider-enlighten-mode)
+      (:leader
         (:desc "Yank" :n "y" #'counsel-yank-pop)
         (:desc "buffer" :prefix "b"
-               :desc "Delete buffer" :n "d" #'doom/kill-this-buffer))
+         :desc "Delete buffer" :n "d" #'doom/kill-this-buffer))
       :nv "U" 'backward-up-list
       :nv "R" 'down-list
       :nv "L" 'sp-forward-sexp
