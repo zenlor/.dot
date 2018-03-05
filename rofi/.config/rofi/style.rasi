@@ -1,8 +1,19 @@
-/**
+/* vim: ft=css
+ *
  * Base16 OneDark ROFI Color theme
  * User: Lalit Magant (http://github.com/tilal6991)
  * Copyright: Andrea Scarpino
  */
+
+configuration {
+    display-ssh:   "  ";
+    display-run:   "  ";
+    display-drun:  "  ";
+    display-window:"  ";
+    display-combi: "  ";
+    show-icons:    false;
+}
+
 * {
     selected-normal-foreground:  @lightbg;
     foreground:                  rgba ( 171, 178, 191, 100 % );
@@ -36,11 +47,11 @@
 #window {
     background-color: @background;
     border:           1;
-    padding:          5;
+    padding:          15;
 }
 #mainbox {
-    border:  0;
-    padding: 0;
+    border:  1;
+    padding: 30;
 }
 #message {
     border:       1px dash 0px 0px ;
@@ -60,7 +71,7 @@
 }
 #element {
     border:  0;
-    padding: 1px ;
+    padding: 4px;
 }
 #element.normal.normal {
     background-color: @normal-background;
@@ -131,6 +142,6 @@
     text-color: @normal-foreground;
 }
 #prompt {
-    spacing:    0;
+    spacing:    10;
     text-color: @normal-foreground;
 }
