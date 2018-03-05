@@ -14,6 +14,11 @@ for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME"
   [[ -d $dir ]] || mkdir -p "$dir"
 done
 
+## source system profile
+for i in /etc/profile.d/*.sh; do
+    source $i
+done
+
 ## Go
 export GOPATH=$HOME/lib
 
