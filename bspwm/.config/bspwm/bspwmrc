@@ -90,6 +90,8 @@ bspc rule -a Firefox                    private=on
 bspc rule -a Firefox:SessionManager     state=floating layer=above
 bspc rule -a Toplevel:Firefox           state=floating
 bspc rule -a Firefox:Dialog             state=floating
+# tdrop dropdown
+bspc rule -a tdrop state=floating
 
 # reclaim orphan windows
 bspc wm -o

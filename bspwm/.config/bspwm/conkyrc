@@ -18,7 +18,7 @@ conky.config = {
     use_xft = true,
     font = 'Iosevka Term:size=37',
     xftalpha = 0.1,
-    update_interval = 15.0,
+    update_interval = 1.0,
     uppercase = true,
 
     draw_shades = true,
@@ -52,4 +52,8 @@ ${alignc}${if_match ${exec date +"%I"} == 3}${color}${else}${color1}${endif}F O 
 ${alignc}${if_match ${exec date +"%I"} == 7}${color}${else}${color1}${endif}E I G H T${if_match ${exec date +"%I"} == 10}${color}${else}${color1}${endif} E L E V E N
 ${alignc}${if_match ${exec date +"%I"} == 6}${color}${else}${color1}${endif}S E V E N${if_match ${exec date +"%I"} == 11}${color}${else}${color1}${endif} T W E L V E
 ${alignc}${if_match ${exec date +"%I"} == 9}${color}${else}${color1}${endif}T E N ${endif}${color1}S E ${if_match ${exec date +"%M"} < 5}${color}${endif}O C L O C K
+
+    ${execp echo "obase=2;`date +%H`" | bc | sed 's/^/00000/'  | sed 's/.*\(.....\)/\1/' | sed 's/0/\${color} •/g'  | sed 's/1/${color1} •/g'}${voffset -20}
+    ${execp echo "obase=2;`date +%M`" | bc | sed 's/^/000000/' | sed 's/.*\(......\)/\1/' | sed 's/0/\${color} •/g'  | sed 's/1/${color1} •/g'}${voffset -20}
+    ${execp echo "obase=2;`date +%S`" | bc | sed 's/^/000000/' | sed 's/.*\(......\)/\1/' | sed 's/0/\${color} •/g'  | sed 's/1/${color1} •/g'}
 ]]

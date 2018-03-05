@@ -60,6 +60,9 @@ super + shift + q
 
 # wm independent hotkeys {{{
 
+super + alt + Return
+    tdrop -ma -w -4 --class "tdrop" -f '--class "tdrop"' -s dropdown termite
+
 super + {o,e,Return}
     {qutebrowser,thunar,termite} # web browser, file browser, terminal
 
