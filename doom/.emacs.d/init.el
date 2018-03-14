@@ -65,6 +65,7 @@
       ;tabbar            ; FIXME an (incomplete) tab bar for Emacs
        vi-tilde-fringe   ; fringe tildes to mark beyond EOB
        window-select     ; visually switch windows
+      ;posframe          ; use child frames where possible (Emacs 26+ only)
 
        :tools
        dired             ; making dired pretty [functional]
@@ -90,7 +91,7 @@
        clojure           ; java with a lisp
        csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
-       elixir            ; erlang done right
+      ;elixir            ; erlang done right
        elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ess               ; emacs speaks statistics
@@ -130,7 +131,7 @@
        ;; toward a specific purpose. They may have additional dependencies and
        ;; should be loaded late.
        :app
-      (email +gmail)    ; emacs as an email client
+      ;(email +gmail)    ; emacs as an email client
       ;irc               ; how neckbeards socialize
       ;(rss +org)        ; emacs as an RSS reader
       ;twitter           ; twitter client https://twitter.com/vnought
