@@ -150,3 +150,12 @@ nnoremap <leader>h :<C-u>h
     " vim-switch
     nnoremap ! :Switch<CR>
 " }}}
+
+" Completion {{{
+    inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+            \ "\<lt>C-n>" :
+            \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+            \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+            \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+    imap <C-@> <C-Space>
+" }}}
