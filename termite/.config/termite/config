@@ -1,5 +1,5 @@
 [options]
-font = Iosevka Term 10
+font = Iosevka Term 13
 browser = qutebrowser
 clickable_url = true
 dynamic_title = true
