@@ -32,6 +32,9 @@ source $ZDOTDIR/magic_enter.zsh
 source $ZDOTDIR/git.zsh
 source $ZDOTDIR/keychain.zsh
 
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 #
 export _FASD_DATA="$XDG_CACHE_HOME/fasd"
 export _FASD_VIMINFO="$XDG_CACHE_HOME/viminfo"
