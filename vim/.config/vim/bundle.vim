@@ -22,6 +22,8 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'tpope/vim-vinegar'        " vinegar dressing for netrw
     Plug 'junegunn/vim-easy-align'
 
+    Plug 'jiangmiao/auto-pairs'
+
     Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' } " tagbar
 
     " fzf
