@@ -31,6 +31,7 @@ source $ZDOTDIR/prompt.zsh
 source $ZDOTDIR/magic_enter.zsh
 source $ZDOTDIR/git.zsh
 source $ZDOTDIR/keychain.zsh
+source $ZDOTDIR/fzf.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
