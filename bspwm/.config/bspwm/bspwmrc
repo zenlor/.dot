@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/dash
+# vim: ft=sh
 # set -e
 [ "$TRACE" ] && set -xv
 
@@ -21,14 +22,14 @@ bspc config left_padding    8
 bspc config right_padding   8
 bspc config bottom_padding  8
 
-bspc config border_width	3
-bspc config window_gap		18
+bspc config border_width    3
+bspc config window_gap      18
 
 bspc config split_ratio             0.50
-bspc config single_monocle          true
-bspc config gapless_monocle         true
-bspc config paddingless_monocle     true
-bspc config borderless_monocle      true
+bspc config single_monocle          false
+bspc config gapless_monocle         false
+bspc config paddingless_monocle     false
+bspc config borderless_monocle      false
 
 
 bspc config focus_follows_pointer   true
@@ -36,31 +37,9 @@ bspc config pointer_follows_monitor true
 
 bspc config click_to_focus          true
 bspc config swallow_first_click     true
-#
+
 # * this creates a LOT of unexpected behaviors
 # bspc config pointer_follows_focus   true
-
-#                 _ _
-#  _ __  ___ _ _ (_) |_ ___ _ _
-# | '  \/ _ \ ' \| |  _/ _ \ '_|
-# |_|_|_\___/_||_|_|\__\___/_|
-#                  configuration
-#
-I=1
-M=$(bspc query -M | wc -l)
-if [[ "$M" == 1 ]]; then
-    bspc monitor -d I II III IV V
-elif [[ "$M" == 2 ]]; then
-    bspc monitor $(bspc query -M | awk NR==1) -d I II III
-    bspc monitor $(bspc query -M | awk NR==2) -d IV V VI VII VIII IX
-else
-    for monitor in $(bspc query -M); do
-        bspc monitor $monitor \
-            -n "$I" \
-            -d $I/{a,b,c}
-        let I++
-    done
-fi
 
 #      node _
 #  _ _ _  _| |___ ___
@@ -81,7 +60,11 @@ bspc rule -a lxappearance               state=floating center=true
 bspc rule -a file-roller                state=tiled
 bspc rule -a Emacs                      state=tiled -o
 bspc rule -a conky                      sticky=on manage=off lower=on
-bspc rule -a Docky                      layer=above border=off manage=on
+bspc rule -a Docky                      manage=off      border=off  layer=above
+bspc rule -a Xfce4-panel                manage=true     border=off  layer=above
+bspc rule -a Wrapper-1.0                center=false    border=off
+bspc rule -a Xfdesktop                  manage=off      border=off  layer=below
+
 # Browsers
 bspc rule -a google-chrome-unstable     private=on
 bspc rule -a google-chrome-stable       private=on
@@ -96,14 +79,72 @@ bspc rule -a tdrop state=floating
 # reclaim orphan windows
 bspc wm -o
 
+#                 _ _
+#  _ __  ___ _ _ (_) |_ ___ _ _
+# | '  \/ _ \ ' \| |  _/ _ \ '_|
+# |_|_|_\___/_||_|_|\__\___/_|
+#                  configuration
+#
+I=1
+M=$(bspc query -M | wc -l)
+if [ "$M" = 1 ]; then
+	bspc monitor -d I II III IV V
+elif [ "$M" = 2 ]; then
+	bspc monitor $(bspc query -M | awk NR==1) -d I II III
+	bspc monitor $(bspc query -M | awk NR==2) -d IV V VI VII VIII IX
+else
+	for monitor in $(bspc query -M); do
+		bspc monitor $monitor \
+			-n "$I" \
+			-d $I/{a,b,c}
+		let I++
+	done
+fi
+
+#
+# Tweaks
+#
+
+# Set keymaps
+setxkbmap en
+setxkbmap -option ctrl:nocaps
+
+# Xresources
+xrdb -load ~/.Xresources
+
+# Java - try to fix swing UIs
+export _JAVA_AWT_WM_NONREPARENTING=1
+# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
+wmname compiz
+
+# try to fix the damned QtPy using QT4
+export QT_API=pyqt4
+export QT_STYLE_OVERRIDE=gtk2
+
+#
+# Pointer settings
+#
+xsetroot -cursor_name left_ptr &
+if [ "$(hostname)" = "meila" ]; then
+	# pesky left-handed gaming mouse
+	for i in $(xinput --list | sed -n '/Razer Razer Naga 2014.*pointer/s/.*=\([0-9]\+\).*/\1/p')
+	do
+		xinput set-prop $i 'Device Accel Profile' -1
+		xinput set-prop $i 'Device Accel Constant Deceleration' 2.5
+		xinput set-prop $i 'Device Accel Velocity Scaling' 1.0
+
+		xinput set-button-map $i 3 2 1 4 5 6 7 8 9
+	done
+fi
+
 # add scripts to $PATH for sxhkd
 export PATH=$PATH:$HOME/.config/bspwm/scripts
 
-# start
-# if [ ! pgrep -u $USER sxhkd >/dev/null 2>&1 ];then
-    [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash
-    sxhkd &
-#fi
+# start sxhkd
+[ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash
+sxhkd &
 
-# autostart
-$HOME/.config/bspwm/autostart &
+if [ ! $(pgrep -u $USER xfce4-session >/dev/null 2>&1) ]; then
+	# autostart
+	$HOME/.config/bspwm/autostart &
+fi

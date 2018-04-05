@@ -1,94 +1,53 @@
 #!/bin/dash
 # -*- sh -*-
+[ "$TRACE" ] && set -xv
+
+_run() {
+	name=$1
+	command=$@
+	if [ ! $(pgrep -u $USER $name >/dev/null 2>&1) ]; then
+		$command &
+	fi
+}
 
 #
-# Set keymaps
+# AutoStart
 #
-setxkbmap en
-setxkbmap -option ctrl:nocaps
 
 #
 # DBus - Start if not running
 #
 if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-    eval "$(dbus-launch --sh-syntax --exit-with-session)"
+	eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
 
-#
-# Xresources
-#
-xrdb -load ~/.Xresources
+# Notification Daemon
+_run dunst -conf $HOME/.config/dunst/dunstrc
 
+# Compositor
+_run compton --dbus --config $HOME/.config/compton/compton.conf -b
 
-#
-# Polkit agent
-#
-lxpolkit &
+# Conky
+_run conky -c $HOME/.config/bspwm/conkyrc -d
 
-#
-# LXSession for the rest
-#
-# lxsession &
+# GNU Privacy Guard
+_run gpg-agent
+
+# clipboard menu
+_run parcellite -d
 
 #
 # Wallpaper set
 #
 [ -x "$HOME/.config/wallpapers/set" ] && $HOME/.config/wallpapers/set &
 
-#
-# Java - try to fix swing UIs
-#
-export _JAVA_AWT_WM_NONREPARENTING=1
-# export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
-wmname compiz
 
 #
-# Pointer settings
+# Polkit agent
 #
-xsetroot -cursor_name left_ptr &
-if [ "$(hostname)" = "meila" ]; then
-	# pesky left-handed gaming mouse
-	for i in $(xinput --list | sed -n '/Razer Razer Naga 2014.*pointer/s/.*=\([0-9]\+\).*/\1/p')
-	do
-		xinput set-prop $i 'Device Accel Profile' -1
-		xinput set-prop $i 'Device Accel Constant Deceleration' 2.5
-		xinput set-prop $i 'Device Accel Velocity Scaling' 1.0
-
-		xinput set-button-map $i 3 2 1 4 5 6 7 8 9
-	done
-fi
+_run lxpolkit
 
 #
-# AutoStart more APPS
+# LXSession for the rest
 #
-
-# Notification Daemon
-dunst -conf $HOME/.config/dunst/dunstrc &
-
-# Compositor
-compton --dbus --config $HOME/.config/compton/compton.conf -b
-
-# Disk Daemon
-udiskie -2 &
-
-# LXSession
-lxsession &
-
-# Thunar daemon
-thunar --daemon &
-
-# Redshift - reduce eye strain
-redshift &
-
-# Conky
-conky -c $HOME/.config/bspwm/conkyrc -d
-
-# GNU Privacy Guard
-gpg-agent &
-
-# clipboard menu
-parcellite -d &
-
-# try to fix the damned QtPy using QT4
-export QT_API=pyqt4
-export QT_STYLE_OVERRIDE=gtk2
+_run lxsession

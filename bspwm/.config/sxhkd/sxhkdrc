@@ -28,8 +28,10 @@ alt + {_,shift} + Tab
 super + n
     bspc desktop -l next
 
-super + {_,shift,alt,ctrl} + {h,j,k,l}
-    ~/.config/bspwm/scripts/{focus,move,resize,presel}.sh {west,south,north,east}
+#super + {_,shift,alt,ctrl} + {h,j,k,l}
+#    ~/.config/bspwm/scripts/{focus,move,resize,presel}.sh {west,south,north,east}
+super + {_,shift + }{h,j,k,l}
+    bspc node -{f,s} {west,south,north,east}
 
 super + ctrl + space
     bspc node -p cancel

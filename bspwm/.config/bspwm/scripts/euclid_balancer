@@ -1,11 +1,12 @@
 #!/bin/dash
+# vim: ft=sh
 
-if [ "$(pgrep -cx euclid_balancer)" -gt 1 ] ; then 
-	killall euclid_balancer && exit 0
+if [ "$(pgrep -cx euclid_balancer)" -gt 1 ]; then
+    killall euclid_balancer && exit 0
 else
 
-bspc subscribe node_manage node_geometry | while read line; do
-	bspc node @/ -B
-done
+    bspc subscribe node_manage node_geometry | while read line; do
+        bspc node @/ -B
+    done
 
 fi
