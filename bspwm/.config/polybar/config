@@ -46,9 +46,9 @@ padding-right = 0
 module-margin-right = 1
 module-margin-left = 0
 
-modules-right = mpd volume battery date
-modules-center = menu-apps
 modules-left = bspwm xwindow
+modules-center = menu-apps
+modules-right = mpd volume battery date menu-user
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -259,8 +259,8 @@ animation-charging-framerate = 500
 type = custom/menu
 
 label-open = apps
-label-close = x
-label-separator = " | "
+label-close = 
+label-separator = " • "
 
 ; If true, <label-toggle> will be to the left of the menu items (default).
 ; If false, it will be on the right of all the items.
@@ -291,5 +291,15 @@ menu-2-0 = gimp
 menu-2-0-exec = gimp &
 menu-2-1 = scrot
 menu-2-1-exec = scrot &
+
+[module/menu-user]
+type = custom/text
+content = ${env:USER}
+
+content-background = ${colors.background}
+content-foreground = ${colors.gray}
+content-padding = 4
+
+click-middle = for win in $(bspc query -N); do bspc node $win -c ; done; bspc quit
 
 ; vim:ft=dosini
