@@ -2,13 +2,10 @@
 set -e
 
 case "$(hostname)" in
-    "meila")
-        exec feh --bg-tile $HOME/.config/wallpapers/portal2.jpg
-        ;;
     "cli.mb")
         exec feh --bg-tile $HOME/.config/wallpapers/giove2.jpg
         ;;
     *)
-        exec feh --bg-scale $HOME/.config/wallpapers/wallhaven-338666.jpg
+        exec feh --bg-tile $HOME/.config/wallpapers/wallhaven-29046.jpg
         ;;
 esac
