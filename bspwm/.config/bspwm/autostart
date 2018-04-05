@@ -1,5 +1,5 @@
 #!/bin/dash
-# -*- sh -*-
+# vim: ft=sh
 [ "$TRACE" ] && set -xv
 
 _run() {
@@ -41,7 +41,6 @@ _run parcellite -d
 #
 [ -x "$HOME/.config/wallpapers/set" ] && $HOME/.config/wallpapers/set &
 
-
 #
 # Polkit agent
 #
@@ -51,3 +50,8 @@ _run lxpolkit
 # LXSession for the rest
 #
 _run lxsession
+
+#
+# Polybar
+#
+_run polybar -r bar

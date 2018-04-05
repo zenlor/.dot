@@ -1,9 +1,8 @@
 ! initialize Xresources modules
 !
-#include    "~/.config/Xresources/fonts"
-#include    "~/.config/Xresources/misc"
-#include    "~/.config/Xresources/rofi"
-#include    "~/.config/Xresources/term"
-#include    "~/.config/Xresources/colors"
+#include    "./misc"
+#include    "./fonts"
+#include    "./term"
+#include    "./colors"
 
 ! vim: syntax=xdefaults sw=4 ts=4 :

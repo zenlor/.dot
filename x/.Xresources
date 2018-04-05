@@ -3,8 +3,6 @@
 ! ------------------------- !
 
 ! ----- import external settings ----- !
-#include    ".config/Xresources/term"
-#include    ".config/Xresources/misc"
-#include    ".config/Xresources/fonts"
+#include    ".config/Xresources/init"
 
 ! vim: set syntax=xdefaults sw=4 ts=4 :

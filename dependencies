@@ -30,18 +30,18 @@ firefox-developer
 
 pass
 
-clipmenu
-
 compton
 redshift
 
 wmname
+wmutils-git
+polybar
+bspwm
+sxhkd
 
-git
+parcellite
 
 termite
-rxvt-unicode
-xst-git
 
 zsh
 zsh-completions
