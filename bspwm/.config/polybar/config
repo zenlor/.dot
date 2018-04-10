@@ -41,8 +41,8 @@ offset-y = 0
 
 enable-ipc = true
 
-padding-left = 0
-padding-right = 0
+padding-left = 2
+padding-right = 2
 
 module-margin-right = 1
 module-margin-left = 0
@@ -66,13 +66,8 @@ tray-padding = 0
 tray-transparent = false
 tray-scale = 1.0
 
-;font-0 = "Liberation Sans:size=9;0"
-font-0 = "xos4 Terminus:size=8;0"
-;font-0 = "Hack:size=8;0"
-font-1 = "FontAwesome:size=10;0"
-font-2 = "Cousine:size=8;0"
-font-3 = "Artwiz Lemon:size=20;0"
-font-4 = "Roboto:size=4;0"
+font-0 = "FontAwesome:size=10;0"
+font-1 = "Iosevka Term Heavy:size=10;0"
 
 [module/xwindow]
 ;label-font = 3
@@ -82,7 +77,7 @@ label = %title%
 label-maxlen = 30
 
 
-[module/menu0]
+[module/menu-shutdown]
 type = custom/menu
 ;font = 3
 
@@ -98,7 +93,7 @@ menu-0-1-exec = systemctl reboot
 menu-0-2 =  logout
 menu-0-2-exec = bspc quit
 menu-0-3 =  suspend
-menu-0-3-exec = i3lock -i /home/davide/Immagini/rick_morty_lockscreen_laptop.png && systemctl suspend
+menu-0-3-exec = i3lock && systemctl suspend
 menu-0-4 =  cancel
 
 label-open =  
@@ -131,27 +126,27 @@ label-focused = %icon%
 label-focused-background = ${colors.background-alt}
 ;label-focused-underline= ${colors.primary}
 label-focused-underline= ${colors.orange}
-label-focused-padding = 1
+label-focused-padding = 3
 
 label-occupied = %icon%
-label-occupied-padding = 1
+label-occupied-padding = 3
 
 label-urgent = %icon%!
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-padding = 3
 
 label-empty = %icon%
 label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 1
+label-empty-padding = 3
 
-ws-icon-0 = 1;
-ws-icon-1 = 2;
+ws-icon-0 = 1;β
+ws-icon-1 = 2;ζ
 ws-icon-2 = 3;
-ws-icon-3 = 4;
+ws-icon-3 = 4;
 ws-icon-4 = 5;
 ws-icon-5 = 6;
-ws-icon-default = x
-
+ws-icon-6 = 7;
+ws-icon-default =
 
 [module/backlight]
 type = internal/backlight
@@ -260,8 +255,8 @@ animation-charging-framerate = 500
 type = custom/menu
 
 label-open = apps
-label-close = 
-label-separator = " • "
+label-close = " ✘ "
+label-separator = " ■ "
 
 ; If true, <label-toggle> will be to the left of the menu items (default).
 ; If false, it will be on the right of all the items.
@@ -278,8 +273,8 @@ expand-right = true
 menu-0-0 = rofi
 menu-0-0-exec = rofi -show combi &
 
-menu-0-1 = browsers
-menu-0-1-exec = menu-open-1
+menu-0-1 = randr
+menu-0-1-exec = dmenu-randr
 menu-0-2 = multimedia
 menu-0-2-exec = menu-open-2
 
