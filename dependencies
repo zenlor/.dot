@@ -1,3 +1,5 @@
+dash
+
 pulseaudio
 pavucontrol
 pulseaudio-alsa
@@ -26,7 +28,7 @@ emacs
 docker
 
 chromium
-firefox-developer
+firefox
 
 pass
 
