@@ -29,6 +29,7 @@ alert = #bd2c40
 
 
 [bar/bar]
+monitor = ${env:PRIMARY_MONITOR}
 bottom = false
 wm-restack = bspwm
 width = 100%

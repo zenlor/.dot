@@ -54,4 +54,11 @@ _run lxsession
 #
 # Polybar
 #
+# select primary monitor
+export PRIMARY_MONITOR="$(xrandr | grep primary | cut -d' ' -f1)"
 _run polybar -r bar
+
+#
+# Laptop Power management
+#
+[ "$(hostname)" = "red" ] && _run xfce4-power-management
