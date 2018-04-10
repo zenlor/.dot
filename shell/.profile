@@ -1,10 +1,10 @@
 #!/bin/zsh
 # Can be sourced by zsh/bash scripts
 
-export XDG_CACHE_HOME=~/.cache
-export XDG_CONFIG_HOME=~/.config
-export XDG_DATA_HOME=~/.local/share
-export XDG_BIN_HOME=~/.local/bin
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_BIN_HOME=$HOME/.local/bin
 
 export DOTFILES="$(cd $(dirname "${BASH_SOURCE:-${(%):-%x}}") && pwd -P)"
 export DOTFILES_DATA="$XDG_DATA_HOME/dotfiles"
