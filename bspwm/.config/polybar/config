@@ -254,7 +254,7 @@ animation-charging-framerate = 500
 [module/menu-apps]
 type = custom/menu
 
-label-open = apps
+label-open = " ■ "
 label-close = " ✘ "
 label-separator = " ■ "
 
