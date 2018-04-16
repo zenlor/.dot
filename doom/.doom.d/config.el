@@ -72,8 +72,7 @@
       :n "C-j"   #'evil-window-down
       :n "C-k"   #'evil-window-up
       :n "C-l"   #'evil-window-right)
-;; host-specific settings
-(load "~/.emacs.local.el" t t)
+
 
 (setq user-mail-address "lorenzo@giuliani.me"
       user-full-name    "Lorenzo Giuliani")
@@ -96,4 +95,5 @@
           (lambda ()
             (local-set-key (kbd "M-j") 'c-indent-new-comment-line)
             (local-set-key (kbd "RET") 'c-indent-new-comment-line)
-            (add-hook 'before-save-hook 'tide-format-before-save)))
+            (add-hook 'before-save-hook 'tide-format-before-save)
+            eldoc-mode))

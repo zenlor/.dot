@@ -4,7 +4,6 @@ unsetopt GLOBAL_RCS
 source ~/.profile
 
 # Move ZDOTDIR from $HOME to reduce dotfile pollution.
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export ZGEN_DIR="$XDG_CACHE_HOME/zgen"
 
 # paths
