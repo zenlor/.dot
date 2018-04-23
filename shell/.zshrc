@@ -9,6 +9,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/dotenv
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/asdf
     zgen oh-my-zsh plugins/fasd
     zgen oh-my-zsh plugins/vi-mode
     zgen oh-my-zsh plugins/command-not-found
@@ -16,13 +17,27 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/tmux
 
     zgen load eendroroy/alien-minimal
-    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load chrissicool/zsh-256color
+    zgen load zdharma/fast-syntax-highlighting
+    zgen load zsh-users/zsh-completions
 
     # generate the init script from plugins above
     zgen save
 fi
 
 #
+# Keychain
+#
+keychain --quiet id_rsa id_frenzart.com
+[ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
+[ -f $HOME/.keychain/$HOSTNAME-sh ] && \
+    . $HOME/.keychain/$HOSTNAME-sh
+[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && \
+    . $HOME/.keychain/$HOSTNAME-sh-gpg
+
+#
 # Aliases
 #
 alias pac=trizen
+alias htopu="htop -u $USER"
+alias ec="$ZSH/plugins/emacs/emacsclient.sh --no-wait"
