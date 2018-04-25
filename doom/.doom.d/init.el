@@ -1,4 +1,5 @@
-;;; init.example.el -*- lexical-binding: t; -*-
+;;; init.el -*- lexical-binding: t; -*-
+;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
 (doom! :feature
        (popup            ; tame sudden yet inevitable temporary windows
@@ -6,8 +7,7 @@
         +defaults)       ; default popup rules
       ;debugger          ; FIXME stepping through code, to help you add bugs
        eval              ; run code, run (also, repls)
-       evil
-      ;(evil +everywhere); come to the dark side, we have cookies
+       (evil +everywhere); come to the dark side, we have cookies
        file-templates    ; auto-snippets for empty files
        (lookup           ; helps you navigate your code and documentation
         +devdocs         ; ...on devdocs.io online
@@ -41,6 +41,7 @@
 
        :tools
        dired             ; making dired pretty [functional]
+       ein               ; tame Jupyter notebooks with emacs
        electric-indent   ; smarter, keyword-based electric-indent
        eshell            ; a consistent, cross-platform shell (WIP)
        gist              ; interacting with github gists
@@ -65,6 +66,7 @@
        clojure           ; java with a lisp
        csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
+      ;erlang            ; an elegant language for a more civilized age
        elixir            ; erlang done right
        elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
