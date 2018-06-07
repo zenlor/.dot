@@ -3,9 +3,9 @@
 [ "$TRACE" ] && set -xv
 
 _run() {
-	name=$1
+	program=$1
 	command=$@
-	if [ ! $(pgrep -u $USER $name >/dev/null 2>&1) ]; then
+	if [ ! $(pgrep -u $USER $program>/dev/null 2>&1) ]; then
 		$command &
 	fi
 }
@@ -68,3 +68,4 @@ _run polybar -r bar
 # mons daemon
 #
 [ "$(hostname)" = "red" ] && _run mons -a
+

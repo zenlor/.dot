@@ -2,11 +2,15 @@
 
 ARANDR_CONFIG=${ARANDR_CONFIG:-$HOME/.screenlayout}
 
-presets="$(find $ARANDR_CONFIG/ -maxdepth 1 -type f -printf '%f\n')\narandr"
+presets="$(find $ARANDR_CONFIG/ -maxdepth 1 -type f -printf '%f\n')\narandr\nextend bottom\nauto"
 choice="$(echo $presets | rofi -dmenu -p 'Screenlayout: ')"
 
 if [ "$choice" = "arandr"]; then
     arandr &
+elif [ "$choice" = "extend bottom" ]; then
+    mons -e bottom
+elif [ "$choice" = "auto" ]; then
+    mons -e right
 else
     $ARANDR_CONFIG/$choice
 fi

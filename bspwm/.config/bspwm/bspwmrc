@@ -88,7 +88,7 @@ bspc wm -o
 I=1
 M=$(bspc query -M | wc -l)
 if [ "$(hostname)" = "red" ]; then
-	bspc monitor -d 1 2 3 4 5 6
+	bspc monitor -d 1 2 3 4 5
 elif [ "$M" = 1 ]; then
 	bspc monitor -d I II III IV V
 elif [ "$M" = 2 ]; then
@@ -141,6 +141,9 @@ fi
 
 # add scripts to $PATH for sxhkd
 export PATH=$PATH:$HOME/.config/bspwm/scripts
+
+# Use qt5ct theme config
+export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # start sxhkd
 [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash
