@@ -6,6 +6,6 @@ case "$(hostname)" in
         exec feh --bg-tile $HOME/.config/wallpapers/giove2.jpg
         ;;
     *)
-        exec feh --bg-tile $HOME/.config/wallpapers/wallhaven-29046.jpg
+        exec feh --bg-tile $HOME/.config/wallpapers/pattern.jpg
         ;;
 esac
