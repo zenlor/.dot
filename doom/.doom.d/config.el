@@ -1,5 +1,7 @@
 ;;; private/cli/config.el -*- lexical-binding: t; -*-
 
+(load! "+bindings")
+
 (defvar xdg-data (getenv "XDG_DATA_HOME"))
 (defvar xdg-bin (getenv "XDG_BIN_HOME"))
 (defvar xdg-cache (getenv "XDG_CACHE_HOME"))
@@ -52,6 +54,10 @@
 ;; theme
 (setq doom-theme 'doom-one)
 
+;; Org
+(setq +org-dir (expand-file-name "~/Documents/org/"))
+
+
 ;; host-specific settings
 (pcase (system-name)
   ("cli.mb" ;; Low-dpi settings
@@ -61,27 +67,11 @@
   ("meila" ;; HiDPI (1440p monitor)
    (setq doom-font (font-spec :family "Monoid" :size 14))
    (setq doom-variable-font (font-spec :family "Monoid" :size 14))
+   (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14)))
+  ("red" ;; various monitors :/
+   (setq doom-font (font-spec :family "Iosevka" :size 14))
+   (setq doom-variable-font (font-spec :family "Iosevka" :size 14))
    (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14))))
-
-;; Custom bindings
-(map! (:after clojure-mode
-       :localleader
-       :n  "e"  #'cider-enlighten-mode)
-      (:leader
-        (:desc "Yank" :n "y" #'counsel-yank-pop)
-        (:desc "buffer" :prefix "b"
-         :desc "Delete buffer" :n "d" #'doom/kill-this-buffer))
-      :nv "U" 'backward-up-list
-      :nv "R" 'down-list
-      :nv "L" 'sp-forward-sexp
-      :nv "H" 'sp-backward-sexp
-
-      ;; Easier window navigation
-      :n "C-h"   #'evil-window-left
-      :n "C-j"   #'evil-window-down
-      :n "C-k"   #'evil-window-up
-      :n "C-l"   #'evil-window-right)
-
 
 (setq user-mail-address "lorenzo@giuliani.me"
       user-full-name    "Lorenzo Giuliani")
@@ -89,7 +79,7 @@
 ;; JS2-Mode
 (with-eval-after-load "js2-mode"
   (setq-default
-    js2-ignored-warnings '("msg.return.inconsistent" "msg.anon.no.return.value" "msg.no.return.value" "msg.no.side.effects"))
+   js2-ignored-warnings '("msg.return.inconsistent" "msg.anon.no.return.value" "msg.no.return.value" "msg.no.side.effects"))
   (setq js2-strict-trailing-comma-warning nil
         js2-strict-missing-semi-warning nil
         js2-strict-code-has-no-side-effects nil
@@ -105,4 +95,28 @@
             (local-set-key (kbd "M-j") 'c-indent-new-comment-line)
             (local-set-key (kbd "RET") 'c-indent-new-comment-line)
             (add-hook 'before-save-hook 'tide-format-before-save)
-            eldoc-mode))
+            eldoc-mode
+            flycheck-mode))
+
+
+;;
+;; Extra packages
+;;
+
+;;
+;; Terraform
+;;
+(def-package! terraform-mode
+  :mode "\\.tf$"
+  :mode "\\.tfvars$")
+
+
+;;
+;; Systemd
+;;
+(def-package! systemd-mode
+  :mode "\\.service$"
+  :config
+  (set! :company-backend 'systemd-mode '(systemd-mode-hook)))
+
+(require 'evil-mu4e)
