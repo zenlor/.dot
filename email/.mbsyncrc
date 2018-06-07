@@ -1,0 +1,128 @@
+#[work]#############################################################
+
+IMAPAccount     work-imap
+Host            outlook.office365.com
+User            lorenzo@mobilebridge.com
+Port            993
+PassCmd         "pass email/lorenzo@mobilebridge.com 2>/dev/null"
+SSLType         IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+#SSLVersions     TLSv1
+AuthMechs       LOGIN
+
+IMAPStore work-remote
+Account work-imap
+
+MaildirStore work-local
+Path        ~/Mail/work/
+Inbox       ~/Mail/work/Inbox/
+#Subfolders
+
+Channel work
+Master      :work-remote:
+Slave       :work-local:
+# Include everything
+Patterns    "INBOX" "*" !junk !Junk !Archive !archive !archived !Archived !Calendar
+# Automatically create missing mailboxes, both locally and on the server
+Create      Both
+Sync        All
+# Save the synchronization state files in the relevant directory
+SyncState   *
+
+#[gmail]#############################################################
+
+IMAPAccount gmail-imap
+Host            imap.gmail.com
+User            aliem13@gmail.com
+PassCmd         "pass email/aliem13@gmail.com.app 2>/dev/null"
+SSLType         IMAPS
+AuthMechs       LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail-imap
+
+MaildirStore gmail-local
+Path        ~/Mail/gmail/
+Inbox       ~/Mail/gmail/Inbox/
+#Subfolders
+
+Channel sync-gmail-default
+Master :gmail-remote:
+Slave  :gmail-local:
+# Select some mailboxes to sync
+Patterns "INBOX" ![Gmail]*
+
+Channel sync-gmail-archive
+Master :gmail-remote:"[Gmail]/Tutti i messaggi"
+Slave  :gmail-local:archive
+Create Both
+Expunge Both
+
+Channel sync-gmail-sent
+Master :gmail-remote:"[Gmail]/Posta inviata"
+Slave  :gmail-local:sent
+Create Both
+Expunge Both
+
+Channel sync-gmail-trash
+Master :gmail-remote:"[Gmail]/Cestino"
+Slave  :gmail-local:trash
+Create Both
+Expunge Both
+
+# Get all the channels together into a group.
+Group gmail
+Channel sync-gmail-default
+Channel sync-gmail-archive
+Channel sync-gmail-sent
+Channel sync-gmail-trash
+
+#[frenz]#############################################################
+
+IMAPAccount frenz-imap
+Host            imap.gmail.com
+User            lorenzo@frenzart.com
+PassCmd         "pass email/lorenzo@frenzart.com.app 2>/dev/null"
+SSLType         IMAPS
+AuthMechs       LOGIN
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore frenz-remote
+Account frenz-imap
+
+MaildirStore frenz-local
+Path        ~/Mail/frenz/
+Inbox       ~/Mail/frenz/Inbox/
+#Subfolders
+
+Channel sync-frenz-default
+Master :frenz-remote:
+Slave  :frenz-local:
+# Select some mailboxes to sync
+Patterns "INBOX"
+
+Channel sync-frenz-archive
+Master :frenz-remote:"[Gmail]/All Mail"
+Slave  :frenz-local:archive
+Create Both
+Expunge Both
+
+Channel sync-frenz-sent
+Master :frenz-remote:"[Gmail]/Sent Mail"
+Slave  :frenz-local:sent
+Create Both
+Expunge Both
+
+Channel sync-frenz-trash
+Master :frenz-remote:"[Gmail]/Trash"
+Slave  :frenz-local:trash
+Create Both
+Expunge Both
+
+# Get all the channels together into a group.
+Group frenz
+Channel sync-frenz-default
+Channel sync-frenz-archive
+Channel sync-frenz-sent
+Channel sync-frenz-trash

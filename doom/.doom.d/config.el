@@ -7,6 +7,7 @@
 
 ;; app/email
 (after! mu4e
+  (setq mu4e-maildir (expand-file-name "~/Mail"))
   (setq mu4e-bookmarks
         `(("\\\\Inbox" "Inbox" ?i)
           ("\\\\Draft" "Drafts" ?d)
@@ -21,24 +22,32 @@
         smtpmail-smtp-server "smtp.gmail.com"
         smtpmail-smtp-service 587)
 
-  (set! :email "gmail.com"
-    '((mu4e-sent-folder       . "/aliem13@gmail.com/Sent Mail")
-      (mu4e-drafts-folder     . "/aliem13@gmail.com/Drafts")
-      (mu4e-trash-folder      . "/aliem13@gmail.com/Trash")
-      (mu4e-refile-folder     . "/aliem13@gmail.com/All Mail")
+  (set! :email "gmail"
+    '((mu4e-sent-folder       . "/gmail/sent")
+      (mu4e-drafts-folder     . "/gmail/drafts")
+      (mu4e-trash-folder      . "/gmail/trash")
+      (mu4e-refile-folder     . "/gmail/archive")
       (smtpmail-smtp-user     . "aliem13@gmail.com")
       (user-mail-address      . "aliem13@gmail.com")
       (mu4e-compose-signature . "---\nLor")))
 
-  (set! :email "frenzart.com"
-    '((mu4e-sent-folder       . "/lorenzo@frenzart.com/Sent Mail")
-      (mu4e-drafts-folder     . "/lorenzo@frenzart.com/Drafts")
-      (mu4e-trash-folder      . "/lorenzo@frenzart.com/Trash")
-      (mu4e-refile-folder     . "/lorenzo@frenzart.com/All Mail")
-      (smtpmail-smtp-user     . "lorenzo@frenzart")
-      (user-mail-address      . "lorenzo@frenzart")
-      (mu4e-compose-signature . "---\nLorenzo Giuliani"))
-    t))
+  (set! :email "frenz"
+    '((mu4e-sent-folder       . "/frenz/sent")
+      (mu4e-drafts-folder     . "/frenz/drafts")
+      (mu4e-trash-folder      . "/frenz/trash")
+      (mu4e-refile-folder     . "/frenz/archive")
+      (smtpmail-smtp-user     . "lorenzo@frenzart.com")
+      (user-mail-address      . "lorenzo@frenzart.com")
+      (mu4e-compose-signature . "---\nLorenzo Giuliani")))
+
+  (set! :email "work"
+    '((mu4e-sent-folder       . "/work/sent")
+      (mu4e-drafts-folder     . "/work/drafts")
+      (mu4e-trash-folder      . "/work/trash")
+      (mu4e-refile-folder     . "/work/archive")
+      (smtpmail-smtp-user     . "lorenzo@mobilebridge.com")
+      (user-mail-address      . "lorenzo@mobilebridge.com")
+      (mu4e-compose-signature . "---\nLorenzo Giuliani"))))
 
 ;; theme
 (setq doom-theme 'doom-one)

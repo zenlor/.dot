@@ -5,15 +5,11 @@ pavucontrol
 pulseaudio-alsa
 pulseaudio-ctl
 
-lxsession-gtk3
-
 rofi
 slop
 slip
 tdrop-git
 
-noto-fonts-emoji
-font-mathematica
 ttf-iosevka-ss05
 ttf-iosevka-term-ss05
 ttf-monoid
@@ -31,6 +27,8 @@ chromium
 firefox
 
 pass
+
+isync
 
 compton
 redshift
