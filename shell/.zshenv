@@ -8,7 +8,7 @@ export ZGEN_DIR="$XDG_CACHE_HOME/zgen"
 
 # paths
 typeset -gU cdpath fpath mailpath path
-path=( $XDG_BIN_HOME $DOTFILES/bin $DOTFILES_DATA/*.topic/bin(N) $path )
+path=( $XDG_BIN_HOME $DOTFILES/bin $DOTFILES_DATA/*.topic/bin(N) $HOME/lib/bin $HOME/lib/n/bin $path )
 fpath=( $ZDOTDIR/functions $XDG_BIN_HOME $fpath )
 
 # envvars
