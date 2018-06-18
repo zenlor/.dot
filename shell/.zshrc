@@ -1,50 +1,112 @@
-# load zgen
-source "${HOME}/.zgen/zgen.zsh"
+# Check if zplug is installed
+if [[ ! -d "$HOME/.zgen" ]]; then
+    git clone https://github.com/tarjoilija/zgen.git "$HOME/.zgen"
+fi
 
-# if the init scipt doesn't exist
+# Load zplug
+source $HOME/.zgen/zgen.zsh
+
 if ! zgen saved; then
+    # prezto and modules
+    zgen prezto editor key-bindings 'vi'
+    zgen prezto editor dot-expansion 'yes'
+    zgen prezto prompt theme 'nicoulaj'
+    zgen prezto tmux:auto-start remote 'yes'
+    zgen prezto terminal auto-tile 'yes'
 
-    # specify plugins here
-    zgen oh-my-zsh
-    zgen oh-my-zsh plugins/dotenv
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/sudo
-    zgen oh-my-zsh plugins/asdf
-    zgen oh-my-zsh plugins/fasd
-    zgen oh-my-zsh plugins/pass
-    zgen oh-my-zsh plugins/vi-mode
-    zgen oh-my-zsh plugins/command-not-found
-    zgen oh-my-zsh plugins/history-substring-search
+    zgen prezto
+    zgen prezto git
+    zgen prezto command-not-found
+    zgen prezto syntax-highlighting
+    zgen prezto history
+    zgen prezto history-substring-search
+    zgen prezto utility
+    zgen prezto completion
+    zgen prezto fasd
+    zgen prezto tmux
+    zgen prezto terminal
 
-    zgen load eendroroy/alien-minimal
-    zgen load chrissicool/zsh-256color
-    zgen load zdharma/fast-syntax-highlighting
-    zgen load zsh-users/zsh-completions
+    zgen load "zsh-users/zaw"
+    zgen load "termoshtt/zaw-systemd"
 
-    # generate the init script from plugins above
     zgen save
 fi
 
-#
-# Keychain
-#
-keychain --quiet id_rsa id_frenzart.com
-[ -z "$HOSTNAME" ] && HOSTNAME=`uname -n`
-[ -f $HOME/.keychain/$HOSTNAME-sh ] && \
-    . $HOME/.keychain/$HOSTNAME-sh
-[ -f $HOME/.keychain/$HOSTNAME-sh-gpg ] && \
-    . $HOME/.keychain/$HOSTNAME-sh-gpg
+# Check if reboot is required for Ubuntu
+if [ -f /usr/lib/update-notifier/update-motd-reboot-required ]; then
+    function reboot-required() {
+        /usr/lib/update-notifier/update-motd-reboot-required
+    }
+fi
 
-#
-# Aliases
-#
-alias pac=yay
-alias htopu="htop -u $USER"
-alias ec="emacsclient --no-wait"
-alias vim=nvim
+# Enable keychain
+if command -v keychain &> /dev/null; then
+    eval `keychain --eval --quiet --agents ssh id_rsa`
+fi
 
-alias l='ls -lFh'     #size,show type,human readable
-alias la='ls -lAFh'   #long list,show almost all,show type,human readable
-alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
-alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
-alias ll='ls -l'      #long list
+# Set GOPATH for Go
+if command -v go &> /dev/null; then
+    [ -d "$HOME/lib" ] || mkdir "$HOME/lib"
+    export GOPATH="$HOME/lib"
+    export PATH="$PATH:$GOPATH/bin"
+fi
+
+# Bindkeys
+#
+# zaw
+bindkey '^R' zaw-history
+bindkey '^T' zaw-tmux
+
+# Define aliases
+# Enable color support
+ls --color -d . &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# Some more basic aliases
+alias ll='ls -lh'
+alias la='ls -lAh'
+alias l='ls -lah'
+alias md='mkdir -p'
+alias rd='rmdir'
+alias cd..='cd ..'
+alias cd...='cd ../..'
+alias cd....='cd ../../..'
+alias cd.....='cd ../../../..'
+alias cd......='cd ../../../../..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
+alias ......='cd ../../../../..'
+
+# Git
+alias git='noglob git'
+
+# Vim
+alias v='nvim'
+alias vi='vim'
+alias vim='nvim'
+
+# pacman
+alias pac='yay'
+
+# emacs client
+#   no wait
+alias ec='emacsclient -n'
+#   create new frame
+alias ecc='emacsclient -n -c'
+
+# Simple HTTP server
+function server() {
+    local port="${1:-8000}"
+    open "http://localhost:${port}/"
+    python -m SimpleHTTPServer "$port"
+}
+
+alias server=server
+
+# Source local zshrc
+if [ -f "$HOME/.zshrc.local" ]; then
+    source "$HOME/.zshrc.local"
+fi
