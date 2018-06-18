@@ -108,7 +108,10 @@
 ;;
 (def-package! terraform-mode
   :mode "\\.tf$"
-  :mode "\\.tfvars$")
+  :mode "\\.tfvars$"
+  :config
+  (custom-set-variables
+   '(terraform-indent-level 4)))
 
 
 ;;
