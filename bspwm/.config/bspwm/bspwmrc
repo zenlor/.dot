@@ -119,10 +119,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 # export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 wmname compiz
 
-# try to fix the damned QtPy using QT4
-export QT_API=pyqt4
-export QT_STYLE_OVERRIDE=gtk2
-
 #
 # Pointer settings
 #
