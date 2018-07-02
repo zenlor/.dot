@@ -25,11 +25,9 @@ super + y
 alt + {_,shift} + Tab
     bspc node -f {next,prev}.local
 
-super + n
-    bspc desktop -l next
-
 #super + {_,shift,alt,ctrl} + {h,j,k,l}
 #    ~/.config/bspwm/scripts/{focus,move,resize,presel}.sh {west,south,north,east}
+
 super + {_,shift + }{h,j,k,l}
     bspc node -{f,s} {west,south,north,east}
 
@@ -39,10 +37,6 @@ super + ctrl + space
 # send node to desktop on current monitor index
 super + {_,shift + }{1-9}
     bspc {desktop -f,node -d} '^{1-9}'
-
-# insert receptacle, or clear receptacles on current desktop
-super + {_,shift} + r
-    {bspc node -i,for win in `bspc query -N -d -n .leaf.!window`; do bspc node $win -k; done}
 
 # rotate, balance
 super + {_,shift} + semicolon
