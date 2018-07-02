@@ -24,7 +24,7 @@
         smtpmail-smtp-server "smtp.gmail.com"
         smtpmail-smtp-service 587)
 
-  (set! :email "gmail"
+  (set-email-account! "gmail"
     '((mu4e-sent-folder       . "/gmail/sent")
       (mu4e-drafts-folder     . "/gmail/drafts")
       (mu4e-trash-folder      . "/gmail/trash")
@@ -33,7 +33,7 @@
       (user-mail-address      . "aliem13@gmail.com")
       (mu4e-compose-signature . "---\nLor")))
 
-  (set! :email "frenz"
+  (set-email-account! "frenz"
     '((mu4e-sent-folder       . "/frenz/sent")
       (mu4e-drafts-folder     . "/frenz/drafts")
       (mu4e-trash-folder      . "/frenz/trash")
@@ -42,7 +42,7 @@
       (user-mail-address      . "lorenzo@frenzart.com")
       (mu4e-compose-signature . "---\nLorenzo Giuliani")))
 
-  (set! :email "work"
+  (set-email-account! "work"
     '((mu4e-sent-folder       . "/work/sent")
       (mu4e-drafts-folder     . "/work/drafts")
       (mu4e-trash-folder      . "/work/trash")
@@ -57,6 +57,9 @@
 ;; Org
 (setq +org-dir (expand-file-name "~/Documents/org/"))
 
+;; Markdown
+;; (add-hook 'markdown-mode-hook #')
+(setq markdown-command "marked")
 
 ;; host-specific settings
 (pcase (system-name)
