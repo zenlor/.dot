@@ -41,7 +41,7 @@ fi
 
 # Enable keychain
 if command -v keychain &> /dev/null; then
-    eval `keychain --eval --quiet --agents ssh id_rsa`
+    eval `keychain --eval --quiet --agents ssh id_rsa id_frenzart.com`
 fi
 
 # Set GOPATH for Go
