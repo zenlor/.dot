@@ -62,19 +62,10 @@
 (setq markdown-command "marked")
 
 ;; host-specific settings
-(pcase (system-name)
-  ("cli.mb" ;; Low-dpi settings
-   (setq doom-font (font-spec :family "Iosevka" :size 14))
-   (setq doom-variable-font (font-spec :family "Iosevka" :size 14))
-   (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14)))
-  ("meila" ;; HiDPI (1440p monitor)
-   (setq doom-font (font-spec :family "Monoid" :size 14))
-   (setq doom-variable-font (font-spec :family "Monoid" :size 14))
-   (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14)))
-  ("red" ;; various monitors :/
-   (setq doom-font (font-spec :family "Iosevka" :size 14))
-   (setq doom-variable-font (font-spec :family "Iosevka" :size 14))
-   (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14))))
+(setq doom-font (font-spec :family "Iosevka" :size 14))
+(setq doom-variable-font (font-spec :family "Iosevka" :size 14))
+(setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14))
+(setq doom-big-font (font-spec :family "Iosevka" :size 16))
 
 (setq user-mail-address "lorenzo@giuliani.me"
       user-full-name    "Lorenzo Giuliani")
