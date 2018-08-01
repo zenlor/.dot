@@ -49,7 +49,7 @@ module-margin-left = 0
 
 modules-left = bspwm xwindow
 modules-center = menu-apps
-modules-right = mpd volume temperature battery date menu-user
+modules-right = mpd volume temperature battery backlight date menu-user
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -152,20 +152,24 @@ ws-icon-default =
 type = internal/backlight
 card = intel_backlight
 
-format = <label> <bar>
-format-underline = ${colors.orange}
-label = 
+format = <ramp>
 
-bar-width = 8
-bar-indicator =
-bar-indicator-foreground = #ff
-;bar-indicator-font = 2
+; Available tokens:
+;   %percentage% (default)
+label = %percentage%%
+
+; Only applies if <ramp> is used
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+; Only applies if <bar> is used
+bar-width = 10
+bar-indicator = |
 bar-fill = ─
-;bar-fill-font = 2
-bar-fill-foreground = ${colors.orange}
 bar-empty = ─
-;bar-empty-font = 2
-bar-empty-foreground = #55
 
 
 [module/date]
@@ -249,14 +253,14 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-foreground = ${colors.foreground}
-animation-charging-framerate = 500
+animation-charging-framerate = 1000
 
 [module/temperature]
 type = internal/temperature
 
 ; Seconds to sleep between updates
 ; Default: 1
-interval = 0.5
+interval = 5
 
 ; Thermal zone to use
 ; To list all the zone types, run
