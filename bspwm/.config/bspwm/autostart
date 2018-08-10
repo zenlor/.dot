@@ -33,9 +33,6 @@ _run conky -c $HOME/.config/bspwm/conkyrc -d
 # GNU Privacy Guard
 _run gpg-agent
 
-# clipboard menu
-_run parcellite -d
-
 #
 # Wallpaper set
 #
