@@ -52,7 +52,7 @@
       (mu4e-compose-signature . "---\nLorenzo Giuliani"))))
 
 ;; theme
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-dracula)
 
 ;; Org
 (setq +org-dir (expand-file-name "~/Documents/org/"))
@@ -66,6 +66,9 @@
 (setq doom-variable-font (font-spec :family "Iosevka" :size 14))
 (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14))
 (setq doom-big-font (font-spec :family "Iosevka" :size 16))
+
+;; org-tree-slide font
+(setq +org-present-text-scale 5)
 
 (setq user-mail-address "lorenzo@giuliani.me"
       user-full-name    "Lorenzo Giuliani")
