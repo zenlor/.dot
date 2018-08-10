@@ -51,6 +51,11 @@ if command -v go &> /dev/null; then
     export PATH="$PATH:$GOPATH/bin"
 fi
 
+# Cargo/Rust PATH
+if command -v cargo &> /dev/null; then
+    [ -d "$HOME/.cargo" ] || mkdir -p "$HOME/.cargo/bin"
+    export PATH="$PATH:$HOME/.cargo/bin"
+fi
 # Bindkeys
 #
 # zaw
@@ -90,6 +95,9 @@ alias vim='nvim'
 
 # pacman
 alias pac='yay'
+
+# xdg-open
+alias open='xdg-open'
 
 # emacs client
 #   no wait
