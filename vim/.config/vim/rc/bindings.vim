@@ -159,3 +159,7 @@ nnoremap <leader>h :<C-u>h
             \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
     imap <C-@> <C-Space>
 " }}}
+
+
+
+nnoremap <silent> <Leader>bs :w<CR>
