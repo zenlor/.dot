@@ -64,6 +64,10 @@ bspc rule -a Docky                      manage=off      border=off  layer=above
 bspc rule -a Xfce4-panel                manage=true     border=off  layer=above
 bspc rule -a Wrapper-1.0                center=false    border=off
 bspc rule -a Xfdesktop                  manage=off      border=off  layer=below
+# libreoffice
+bspc rule -a '*:libreofficedev' state=tiled
+bspc rule -a '*:libreoffice' state=tiled
+bspc rule -a '*:soffice' state=tiled
 
 # Browsers
 bspc rule -a google-chrome-unstable     private=on
