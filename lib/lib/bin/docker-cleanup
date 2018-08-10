@@ -1,26 +1,40 @@
 #!/bin/bash
 
-hard() {
-    # Delete all containers
-    docker rm $(docker ps -a -q)
-    # Delete all images
-    docker rmi $(docker images -q)
+# hard() {
+#     # Delete all containers
+#     docker rm $(docker ps -a -q)
+#     # Delete all images
+#     docker rmi $(docker images -q)
 
-    # delete network interfaces
-    docker network ls | awk '$3 == "bridge" && $2 != "bridge" { print $1 }'
+#     # delete network interfaces
+#     docker network ls | awk '$3 == "bridge" && $2 != "bridge" { print $1 }'
 
-    # delete volumes
-    docker volume rm $(docker volume ls -qf dangling=true)
+#     # delete volumes
+#     docker volume rm $(docker volume ls -qf dangling=true)
+# }
+
+# clean() {
+#     docker rm $(docker ps -a -f status=exited -q)
+#     docker rmi $(docker images --no-trunc -q -f dangling=true)
+#     docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
+# }
+
+_clean() {
+    docker images --no-trunc | grep '<none>' | awk '{ print $3 }' \
+        | xargs -r docker rmi
+
+    docker ps --filter status=dead --filter status=exited -aq \
+        | xargs -r docker rm -v
 }
 
-clean() {
-    docker rm $(docker ps -a -f status=exited -q)
-    docker rmi $(docker images --no-trunc -q -f dangling=true)
-    docker run -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker:/var/lib/docker --rm martin/docker-cleanup-volumes
+_hard() {
+    docker volume ls -qf dangling=true | xargs -r docker volume rm
+
+    _clean
 }
 
 if [ "$1" = "hard" ]; then
-    hard
+    _hard
 else
-    clean
+    _clean
 fi
