@@ -9,98 +9,46 @@ scroll_on_output = false
 urgent_on_bell = true
 
 [colors]
-# Base16 OneDark
-# Author: Lalit Magant (http://github.com/tilal6991)
 
-foreground      = #abb2bf
-foreground_bold = #b6bdca
-cursor          = #b6bdca
-# background      = #282c34
-background      = rgba(40, 44, 52, 0.99)
-
-# 16 color space
-
-# Black, Gray, Silver, White
-color0  = #282c34
-color8  = #545862
-color7  = #abb2bf
-color15 = #c8ccd4
-
-# Red
-color1  = #e06c75
-color9  = #e06c75
-
-# Green
-color2  = #98c379
-color10 = #98c379
-
-# Yellow
-color3  = #e5c07b
-color11 = #e5c07b
-
-# Blue
-color4  = #61afef
-color12 = #61afef
-
-# Purple
-color5  = #c678dd
-color13 = #c678dd
-
-# Teal
-color6  = #56b6c2
-color14 = #56b6c2
-
-# Extra colors
-color16 = #d19a66
-color17 = #be5046
-color18 = #353b45
-color19 = #3e4451
-color20 = #565c64
-color21 = #b6bdca
-
-# Dracula theme for termite
-# https://github.com/dracula/termite
-# Copyright 2013-present, All rights reserved
-# Code licensed under the MIT license
-
-[colors]
+# based on `doom-city-light` theme
+# https://github.com/hlissner/emacs-doom-themes
 
 # special
-foreground      = #f8f8f2
-foreground_bold = #f8f8f2
-cursor          = #f8f8f2
-background      = #282a36
+foreground      = #A0B3C5
+foreground_bold = #A0B3C5
+cursor          = #A0B3C5
+background      = #1D252C
 
 # black
-color0  = #000000
-color8  = #4d4d4d
+color0  = #10151C
+color8  = #56697A
 
 # red
-color1  = #ff5555
-color9  = #ff6e67
+color1  = #D95468
+color9  = #D98E48
 
 # green
-color2  = #50fa7b
-color10 = #5af78e
+color2  = #8BD49C
+color10 = #4db5bd
 
 # yellow
-color3  = #f1fa8c
-color11 = #f4f99d
+color3  = #EBBF83
+color11 = #ECBE7B
 
 # blue
-color4  = #bd93f9
-color12 = #caa9fa
+color4  = #5C748E
+color12 = #5EC4FF
 
 # magenta
-color5  = #ff79c6
-color13 = #ff92d0
+color5  = #E27E8D
+color13 = #B62D65
 
 # cyan
-color6  = #8be9fd
-color14 = #9aedfe
+color6  = #70E1E8
+color14 = #41858C
 
 # white
-color7  = #bfbfbf
-color15 = #e6e6e6
+color7  = #728CA0
+color15 = #A0B3C5
 
 # vim: ft=dosini cms=#%s
