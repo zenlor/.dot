@@ -67,13 +67,6 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'benmills/vimux'
 " }}}
 
-" LightLine
-Plug 'itchyny/lightline.vim'
-Plug 'daviesjamie/vim-base16-lightline'
-
-" Theme
-Plug 'chriskempson/base16-vim'
-
 call plug#end()
 
 autocmd VimEnter *
