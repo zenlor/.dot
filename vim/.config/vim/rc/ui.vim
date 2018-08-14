@@ -6,7 +6,20 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
+augroup customize_colorscheme
+    autocmd!
+    autocmd Colorscheme nofrils-dark
+                \ hi PreCondit term=NONE cterm=NONE ctermfg=226 ctermbg=NONE gui=NONE guifg=#ffff00 guibg=NONE
+
+    autocmd Colorscheme nofrils-dark
+                \ hi Normal term=NONE cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=NONE
+augroup END
 colorscheme nofrils-dark
+
+" nofrils options
+let g:nofrils_strbackgrounds=1
+let g:nofrils_heavylinenumbers=0
+let g:nofrils_heavycomments=1
 
 " Status Line
 set laststatus=2                                " Enable the statusline
