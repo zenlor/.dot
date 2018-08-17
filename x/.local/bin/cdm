@@ -1,0 +1,218 @@
+#!/bin/bash
+#
+#   CDM: The Console Display Manager
+#
+#   Copyright (C) 2009-2012, Daniel J Griffiths <dgriffiths@ghost1227.com>
+#   Thanks to:
+#
+#       Andrwe          beta-testing and submitting the fix for the all
+#                       important X incrementation function
+#       brisbin33       code cleanup
+#       tigrmesh        finding a critical issue with the gnome-session handler
+#       Profjim         several incredibly useful patches
+#       lambchops468    consolekit and hibernation patches
+#       CasperVector    Massive rearchitecturing and code sanitation
+#       pale3           Forking to remove some shit not needed anymore
+#
+#   This program is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+#   MA 02110-1301, USA.
+
+name=$(basename "$0")
+longname='Console Display Manager'
+ver='0.7'
+
+trap '' SIGINT SIGTSTP
+
+# Helper functions.
+
+info() { printf ' \033[01;32m*\033[00m '; echo "$name: $*"; }
+warn() { (printf ' \033[01;33m*\033[00m '; echo "$name: $*") >&2 ; }
+error() { (printf ' \033[01;31m*\033[00m '; echo "$name: $*") >&2; }
+exitnormal() { exit 0; }
+exiterror() { sleep 1; exit 1; }
+exitcancel() { exit 2; }
+yesno()
+{
+    [ -z "$1" ] && return 1
+    eval value=\$${1}
+
+    case "$value" in
+        [Yy][Ee][Ss]|[Tt][Rr][Uu][Ee]|[Oo][Nn]|1) return 0;;
+        [Nn][Oo]|[Ff][Aa][Ll][Ss][Ee]|[Oo][Ff][Ff]|0) return 1;;
+        *) warn "invalid value for \`$1'; falling back to \`no' for now.";;
+    esac
+}
+
+# Source cdm configurations.
+
+if [[ -n "$1" ]]; then
+    if [[ -f "$1" ]]
+    then
+        source "$1"
+    else
+        error "config file \`$1' does not exist."
+        exiterror
+    fi
+elif [[ -f "$HOME/.cdmrc" ]]; then
+    source "$HOME/.cdmrc"
+elif [[ -f "$HOME/.local/etc/cdmrc" ]]; then
+    source "$HOME/.local/etc/cdmrc"
+elif [[ -f /etc/cdmrc ]]; then
+    source /etc/cdmrc
+fi
+
+# Default options.
+
+dialogrc=${dialogrc:-}
+countfrom=${countfrom:-0}
+display=${display:-0}
+locktty=${locktty:-no}
+timeout=${timeout:-30}
+startxlog="${startxlog:-/dev/null}"
+[[ -z "${binlist[*]}" ]] && binlist=()
+[[ -z "${namelist[*]}" ]] && namelist=()
+[[ -z "${flaglist[*]}" ]] && flaglist=()
+[[ -z "${serverargs[*]}" ]] && serverargs=(-nolisten tcp)
+
+# Offer all available sessions in /etc/X11/Sessions,
+# if $binlist if not explicitly set in cdmrc.
+
+if [[ "${#binlist[@]}" == 0 && -d /etc/X11/Sessions ]]; then
+    binlist=($(find /etc/X11/Sessions -maxdepth 1 -type f))
+    flaglist=($(sed 's/[[:digit:]]\+/X/g' <<< ${!binlist[@]}))
+    namelist=(${binlist[@]##*/})
+fi
+
+# If $binlist is not set in cdmrc or by files in /etc/X11/Sessions,
+# try .desktop files in /usr/share/xsessions/ .
+
+if [[ "${#binlist[@]}" == 0 && -d /usr/share/xsessions ]]; then
+    desktopsessions=($(find /usr/share/xsessions/ -regex .\*.desktop))
+    #TODO: allow full quoting and expansion according to desktop entry spec:
+    # http://standards.freedesktop.org/desktop-entry-spec/desktop-entry-spec-latest.html#exec-variables
+
+    for ((count=0; count < ${#desktopsessions[@]}; count++)); do
+        # TryExec key is there to determine if executable is present,
+        # but as we are going to test the Exec key anyway, we ignore it.
+        execkey=$(sed -n -e 's/^Exec=//p' <${desktopsessions[${count}]})
+        namekey=$(sed -n -e 's/^Name=//p' <${desktopsessions[${count}]})
+        if [[ -n ${execkey} && -n ${namekey} ]]; then
+            # The .desktop files allow there Exec keys to use $PATH lookup.
+            binitem="$(which $(cut -f 1 -d ' ' <<< ${execkey}))"
+            # If which fails to return valid path, skip to next .desktop file.
+            if [[ $? != 0 ]]; then continue; fi
+            binlist+=("${binitem} $(cut -s -f 2- -d ' ' <<< ${execkey})")
+            flaglist+=('X')
+            namelist+=("${namekey}")
+        fi
+    done
+fi
+
+case "${#binlist[@]}" in
+    0)
+        error "No programs found in cdm config file, /etc/X11/Sessions or /usr/share/xsessions."
+        exiterror
+        ;;
+    1)
+        # No need to call dialog AND clear, only one possible program
+        binindex=0
+        ;;
+    *)
+        menu=()
+        for ((count = 0; count < ${#namelist[@]}; count++)); do
+            menu=("${menu[@]}" "$((count+countfrom))" "${namelist[${count}]}")
+        done
+        binindex=$(
+        DIALOGRC="$dialogrc" dialog --colors --stdout \
+            --backtitle "$longname v$ver" --ok-label ' Select ' \
+            --cancel-label ' Exit ' --menu 'Select session' 0 0 0 "${menu[@]}"
+                    )
+                    if [[ $? != 0 ]]; then
+                        clear; exitcancel
+                    fi
+                    clear
+                    let binindex-=countfrom
+                    ;;
+            esac
+
+# Run $bin according to its flag.
+bin=($(eval echo "${binlist[${binindex}]}"))
+case ${flaglist[$binindex]} in
+    # *C*onsole programs.
+    [Cc])
+    # If $bin is a login shell, it might `exec' cdm again, causing an endless
+    # loop. To solve this problem, export $CDM_SPAWN when `exec'ing $bin and
+    # only let the shell automatically `exec' cdm when $CDM_SPAWN is not set.
+    # See also the example shell profile file shipped with the cdm package.
+
+        # Also untrap SIGINT and SIGTSTP before spawning process: If this is not
+        # done, any child process of any child (bash) shell will completely
+        # ignore SIGINT, which is rather confusing, and cannot be undone.
+
+        trap - SIGINT SIGTSTP
+        CDM_SPAWN=$$ exec "${bin[@]}"
+        ;;
+
+    # *X* programs.
+    [Xx])
+    # If X is already running and locktty=yes, activate it.
+    if $(yesno locktty) && xdpyinfo -display ":$display.0" &> /dev/null; then
+        chvt "$((display+xtty))"
+        exitnormal
+    fi
+
+        # Get the first empty display.
+        display=0
+        while ((display < 7)); do
+            if dpyinfo=$(xdpyinfo -display ":$display.0" 2>&1 1>/dev/null) ||
+               # Display is in use by another user.
+               [[ "$dpyinfo" == 'No protocol specified'* ]] ||
+               # Invalid MIT cookie.
+               [[ "$dpyinfo" == 'Invalid MIT'* ]]
+           then
+               let display+=1
+           else
+               break
+           fi
+        done
+
+        # Support for running X in current tty.
+        if [[ $xtty == 'keep' ]]; then
+            vt="$(tty)"
+            if [[ "$vt" != '/dev/tty'* ]]; then
+                error 'invalid TTY.'
+                exiterror
+            fi
+
+            vt="${vt#/dev/tty}"
+        fi
+
+        serverargs=(":${display}" "${serverargs[@]}" "vt$vt")
+        if exec startx -- "${serverargs[@]}" > "$startxlog" 2>&1
+        then
+            exitnormal
+        else
+            warn "\`cdm' exited unsuccessfully."
+            exiterror
+        fi
+        ;;
+
+    *)
+        error "unknown flag: \`${flaglist[$binindex]}'."
+        exiterror
+        ;;
+esac
+
+# vim:ts=4:sw=4:et
