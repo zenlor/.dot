@@ -6,15 +6,15 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
-augroup customize_colorscheme
-    autocmd!
-    autocmd Colorscheme nofrils-dark
-                \ hi PreCondit term=NONE cterm=NONE ctermfg=226 ctermbg=NONE gui=NONE guifg=#ffff00 guibg=NONE
-
-    autocmd Colorscheme nofrils-dark
-                \ hi Normal term=NONE cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=NONE
-augroup END
-colorscheme nofrils-dark
+" augroup customize_colorscheme
+"     autocmd!
+"     autocmd Colorscheme monochrome
+"                 \ hi PreCondit term=NONE cterm=NONE ctermfg=226 ctermbg=0 gui=NONE guifg=#ffff00 guibg=NONE
+"     autocmd Colorscheme monochrome
+"                 \ hi Normal term=NONE cterm=NONE ctermfg=255 ctermbg=0 gui=NONE guifg=#eeeeee guibg=NONE
+" augroup END
+let g:seiya_auto_enable=1
+colorscheme monochrome
 
 " nofrils options
 let g:nofrils_strbackgrounds=1

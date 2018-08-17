@@ -1,7 +1,12 @@
-" minimalistic configuration
-" http://www.guckes.net/vim/setup.html
-set ai nocp digraph ek hid ru sc vb wmnu   noeb noet nosol
-set bs=2 fo=cqrt ls=2 shm=at tw=72 ww=<,>,h,l 
-set comments=b:#,:%,n:>
-set list listchars=tab:»·,trail:·
-set viminfo=%,'50,\"100,:100,n~/.viminfo
+" Neovim configuration
+
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+set ttyfast " Faster terminal
+
+set runtimepath^=~/.config/vim runtimepath+=~/.config/vim/after
+let &packpath = &runtimepath
+source ~/.config/vim/init.vim
+
+" vim:set fdl=0 fdm=marker:

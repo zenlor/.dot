@@ -66,10 +66,6 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'benmills/vimux'
 " }}}
-"
-" Colors {{{
-    Plug 'robertmeta/nofrils'
-" }}}
 
 call plug#end()
 
