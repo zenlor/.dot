@@ -34,6 +34,8 @@
 	rebase = true
 [commit]
 	gpgsign = true
+[gpg]
+    program = gpg2
 [gui]
 	editor = emacs
 	recentrepo = /home/lor/lib/src/git.mobilebridge.io/lorenzo/smallpox
