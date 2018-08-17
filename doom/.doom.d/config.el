@@ -23,6 +23,6 @@
 
 
 (load! "+bindings")
-(load! "+email")
+;(load! "+email")
 (load! "+org")
 (load! "+lang")

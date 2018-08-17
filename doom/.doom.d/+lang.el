@@ -46,7 +46,7 @@
   :config
   (set! :company-backend 'systemd-mode '(systemd-mode-hook)))
 
-(require 'evil-mu4e)
+;(require 'evil-mu4e)
 
 ;;
 ;; Carp Lang

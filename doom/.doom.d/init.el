@@ -18,11 +18,11 @@
        :completion
        (company          ; the ultimate code completion backend
         +auto)           ; as-you-type code completion
-      ;(helm             ; the *other* search engine for love and life
-      ; +fuzzy)          ; enable fuzzy search backend for helm
+       (helm             ; the *other* search engine for love and life
+        +fuzzy)          ; enable fuzzy search backend for helm
       ;ido               ; the other *other* search engine...
-       (ivy              ; a search engine for love and life
-        +fuzzy)          ; enable fuzzy search backend for ivy
+      ;(ivy              ; a search engine for love and life
+      ; +fuzzy)          ; enable fuzzy search backend for ivy
 
        :ui
        doom              ; what makes DOOM look the way it does
@@ -47,6 +47,7 @@
        window-select     ; visually switch windows
 
        :editor
+       multiple-cursors  ; editing in many places at once
        parinfer          ; turn lisp into python, sort of
        rotate-text       ; cycle region at point between text candidates
 
@@ -77,20 +78,20 @@
 
        :lang
       ;assembly          ; assembly for fun or debugging
-       (cc +irony +rtags); C/C++/Obj-C madness
-       clojure           ; java with a lisp
-       common-lisp       ; if you've seen one lisp, you've seen them all
+      ;(cc +irony +rtags); C/C++/Obj-C madness
+      ;clojure           ; java with a lisp
+      ;common-lisp       ; if you've seen one lisp, you've seen them all
       ;crystal           ; ruby at the speed of c
       ;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
-       erlang            ; an elegant language for a more civilized age
-       elixir            ; erlang done right
+      ;erlang            ; an elegant language for a more civilized age
+      ;elixir            ; erlang done right
       ;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
       ;ess               ; emacs speaks statistics
        go                ; the hipster dialect
       ;(haskell +intero) ; a language that's lazier than I am
-       hy                ; readability of scheme w/ speed of python
+      ;hy                ; readability of scheme w/ speed of python
        (java +meghanada) ; the poster child for carpal tunnel syndrome
        javascript        ; all(hope(abandon(ye(who(enter(here))))))
       ;julia             ; a better, faster MATLAB
@@ -99,7 +100,7 @@
        lua               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        nim               ; python + lisp at the speed of c
-       nix               ; I hereby declare "nix geht mehr!"
+      ;nix               ; I hereby declare "nix geht mehr!"
       ;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         +attach          ; custom attachment system
@@ -110,15 +111,15 @@
       ;perl              ; write code no one else can comprehend
       ;php               ; perl's insecure younger brother
       ;plantuml          ; diagrams for confusing people more
-       purescript        ; javascript, but functional
-       python            ; beautiful is better than ugly
+      ;purescript        ; javascript, but functional
+      ;python            ; beautiful is better than ugly
       ;qt                ; the 'cutest' gui framework ever
       ;racket            ; a DSL for DSLs
-       rest              ; Emacs as a REST client
+      ;rest              ; Emacs as a REST client
       ;ruby              ; 1.step do {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
        rust              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-      ;scala             ; java, but good
-       sh                ; she sells (ba|z)sh shells on the C xor
+       scala             ; java, but good
+       (sh +fish)        ; she sells (ba|z)sh shells on the C xor
       ;solidity          ; do you need a blockchain? No.
       ;swift             ; who asked for emoji variables?
       ;web               ; the tubes
@@ -127,7 +128,7 @@
        ;; toward a specific purpose. They may have additional dependencies and
        ;; should be loaded late.
        :app
-       (email +gmail)    ; emacs as an email client
+      ;(email +gmail)    ; emacs as an email client
       ;irc               ; how neckbeards socialize
       ;(rss +org)        ; emacs as an RSS reader
       ;twitter           ; twitter client https://twitter.com/vnought
