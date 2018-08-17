@@ -23,50 +23,9 @@ done
 export GOPATH=$HOME/lib
 
 ## PATH
-export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$PATH
+export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
 
 ## Library
-
-function _ensure_repo {
-  local target=$1
-  local dest=$2
-  if [[ ! -d $dest ]]; then
-    if [[ $target =~ "^[^/]+/[^/]+$" ]]; then
-      url=https://github.com/$target
-    elif [[ $target =~ "^[^/]+$" ]]; then
-      url=git@github.com:$USER/$target.git
-    fi
-    [[ -n ${dest%/*} ]] && mkdir -p ${dest%/*}
-    git clone --recursive "$url" "$dest" || return 1
-  fi
-}
-
-function _os {
-  case $OSTYPE in
-    linux*) if   [[ -f /etc/arch-release   ]]; then echo arch
-            elif [[ -f /etc/debian_version ]]; then echo debian
-            fi ;;
-    darwin*) echo macos ;;
-    cygwin*) echo cygwin ;;
-  esac
-}
-
-function _cache {
-  _is_interactive || return 1
-  local cache_dir="$XDG_CACHE_HOME/${SHELL##*/}"
-  local cache="$cache_dir/$1"
-  if [[ ! -f $cache || ! -s $cache ]]; then
-    echo "Caching $1"
-    mkdir -p $cache_dir
-    "$@" >$cache
-  fi
-  source $cache
-}
-
-function _cache_clear {
-  command rm -rfv $XDG_CACHE_HOME/${SHELL##*/}/*;
-}
-
 function _is_interactive { [[ $- == *i* ]]; }
 
 function _is_running {
@@ -75,31 +34,14 @@ function _is_running {
   done
 }
 
-function _is_callable {
-  for cmd in "$@"; do
-    command -v "$cmd" >/dev/null || return 1
-  done
-}
-
 function _source {
   [[ -f $1 ]] && source "$1"
 }
 
-function _load {
-  case $1 in
-    /*) source "$1" ;;
-    *)  source "$DOTFILES/$1" ;;
-  esac
-}
+## CDM
+_source $HOME/.local/share/cdm/profile.sh
 
-function _load_all {
-  for file in "$DOTFILES_DATA"/*.topic/"$1"; do
-    [[ -e $file ]] && source "$file"
-  done
-}
-
-function _load_repo {
-  _ensure_repo "$1" "$2" && source "$2/$3" || >&2 echo "Failed to load $1"
-}
+## GPG tty fix
+export GPG_TTY=$(tty)
 
 # vim:ft=sh
