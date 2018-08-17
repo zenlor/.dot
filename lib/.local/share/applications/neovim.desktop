@@ -2,5 +2,6 @@
 Type=Application
 Version=1.0
 Name=neovim
-Comment=Neovim wrapped in Termite
-Exec=termite -e "nvim %F"
+Comment=Neovim wrapped in kittens
+Exec=kitty -e "vim %F"
+Categories=Development
