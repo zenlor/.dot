@@ -22,12 +22,12 @@ if ! zgen saved; then
     zgen prezto history-substring-search
     zgen prezto utility
     zgen prezto completion
-    zgen prezto fasd
+    #zgen prezto fasd
     zgen prezto tmux
     zgen prezto terminal
 
     zgen load "zsh-users/zaw"
-    zgen load "termoshtt/zaw-systemd"
+    zgen load "rupa/z"
 
     zgen save
 fi
@@ -87,11 +87,6 @@ alias ......='cd ../../../../..'
 
 # Git
 alias git='noglob git'
-
-# Vim
-alias v='nvim'
-alias vi='vim'
-alias vim='nvim'
 
 # pacman
 alias pac='yay'
