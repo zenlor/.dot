@@ -28,7 +28,7 @@ _run dunst -conf $HOME/.config/dunst/dunstrc
 _run compton --dbus --config $HOME/.config/compton/compton.conf -b
 
 # Conky
-_run conky -c $HOME/.config/bspwm/conkyrc -d
+#_run conky -c $HOME/.config/bspwm/conkyrc -d
 
 # GNU Privacy Guard
 _run gpg-agent
@@ -41,13 +41,14 @@ _run gpg-agent
 #
 # Polkit agent
 #
-_run lxpolkit
+# _run lxpolkit
 
 #
 # LXSession for the rest
 #
-_run lxsession
-/usr/lib/goa-daemon &
+# _run lxsession
+
+_run xfsettingsd
 
 #
 # Polybar
