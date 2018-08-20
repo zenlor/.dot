@@ -38,8 +38,10 @@ function _source {
   [[ -f $1 ]] && source "$1"
 }
 
-## CDM
-_source $HOME/.local/share/cdm/profile.sh
+## TDM
+[[ "$(tty)" == '/dev/tty1' ]] &&\
+    [[ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ]] &&\
+    exec tdm
 
 ## GPG tty fix
 export GPG_TTY=$(tty)
