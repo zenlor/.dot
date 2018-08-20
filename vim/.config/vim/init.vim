@@ -30,14 +30,14 @@ endif
     set nowritebackup
     set noswapfile
     if has('persistent_undo')
-        set undodir=~/.vim/tmp/undo
+        set undodir=~/.cache/vim/undo
         set undolevels=500
         set undoreload=500
     endif
     set history=5000
 
     " preserve buffer state (cursor location, folds, etc.)
-    set viewdir=~/.vim/tmp/views
+    set viewdir=~/.cache/vim/views
     set viewoptions=cursor,folds,unix,slash
     augroup vimrc-persistence
         au!

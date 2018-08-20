@@ -16,11 +16,9 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'tpope/vim-repeat'         " better repeat compatibility ('.')
     Plug 'tpope/vim-commentary'     " comment things
     Plug 'vim-scripts/vis'          " improved visual commands
-    Plug 'moll/vim-bbye'            " kill buffers without affecting window layout
     Plug 'justinmk/vim-sneak'       " 2-character search motions
     Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
     Plug 'tpope/vim-vinegar'        " vinegar dressing for netrw
-    Plug 'junegunn/vim-easy-align'
 
     Plug 'jiangmiao/auto-pairs'
 
@@ -46,8 +44,7 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
     Plug 'guns/vim-clojure-static',         { 'for': 'clojure' }
     Plug 'guns/vim-clojure-highlight',      { 'for': 'clojure' }
-    Plug 'venantius/vim-cljfmt',            { 'for': 'clojure' }
-    "Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
+    Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
 
     " Javascript
     Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
@@ -57,14 +54,6 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Data
     Plug 'honza/dockerfile.vim'
-
-    " Lint
-    Plug 'w0rp/ale'
-" }}}
-
-" Tmux {{{
-    Plug 'christoomey/vim-tmux-navigator'
-    Plug 'benmills/vimux'
 " }}}
 
 call plug#end()
