@@ -1,0 +1,49 @@
+#!/bin/bash
+binlist=(
+    '~/.xinitrc'
+    '/usr/bin/startxfce4'
+    '/usr/bin/fbterm'
+    '/usr/bin/reboot'
+    '/usr/bin/shutdown'
+    '/usr/bin/sudo /bin/zzz'
+#    '~/.local/bin/cdm ~/.local/share/cdm/power.cdmrc' # or go to a submenu :)
+)
+
+namelist=(
+    'xinit'
+    'xfce'
+    FBterm
+    reboot
+    shutdown
+    'sleep'
+#    'Sub-Menu'
+)
+
+# Type of the programs, one-by-one matched with $binlist.
+# `C' for *C*onsole programs, which would be `exec'ed.
+# `X' for *X* programs, which would be run with cdm-xlaunch(1).
+#
+# (Continued example:)
+flaglist=(
+    X
+    C
+    C
+    C
+    C
+    C
+)
+
+dialogrc=/home/$USER/.local/share/cdm/themes/elinks
+
+# Index of the first item in the menu.
+countfrom=0
+
+# Set default display.
+display=0
+
+# Should cdm(1) stick to the specified display?
+locktty=yes
+
+# Additional arguments to pass to X server, which is usually called as:
+#   /usr/bin/X :$display "${serverargs[@]}" vt$((xtty+display))
+serverargs=(-keeptty -nolisten tcp)
