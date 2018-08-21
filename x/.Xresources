@@ -81,7 +81,6 @@ URxvt.inLocale:             en_US.UTF-8
 URxvt.saveLines:            2048
 URxvt.cursorBlink:          false
 URxvt.urgentOnBell:         true
-URxvt.termName:             xterm-256color
 URxvt.geometry :            60x22
 
 ! cause shell to be started as login shell
@@ -115,11 +114,11 @@ URxvt.keysym.M-Delete:      perl:matcher:list
 
 URxvt.matcher.button:       1
 URxvt.matcher.rend.0:       Uline Bold
-
-! Comment this if you dont want copy when text is selected
-URxvt.keysym.C-C:           perl:clipboard:copy
-URxvt.keysym.C-V:           perl:clipboard:paste
-URxvt.clipboard.autocopy:   true
+! paste to/from system clipboard
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+! disable annoying C-S command (what does it do?)
+URxvt*iso14755:             False
 
 !!!
 !!! MISC
