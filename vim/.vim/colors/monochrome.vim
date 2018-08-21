@@ -13,16 +13,16 @@ endif
 
 let g:colors_name = 'monochrome'
 
-let s:white  = ['White', 15]
-let s:black  = ['#1D252C', 16]
-let s:bgray  = ['#56697A', 233]
-let s:lgray  = ['LightGray', 255]
-let s:cgray  = ['#737373', 243]
-let s:dgray  = ['DarkGray', 248]
-let s:sblue  = ['#778899', 67]
-let s:yellow = ['Yellow', 226]
-let s:red    = ['#b6403a', 160]
-let s:green  = ['#478226', 28]
+let s:white  = ['#C5C8C6',      5]
+let s:black  = ['#1D1F21',      0]
+let s:bgray  = ['#56697A',    233]
+let s:lgray  = ['LightGray',  255]
+let s:cgray  = ['#737373',    243]
+let s:dgray  = ['DarkGray',   248]
+let s:sblue  = ['#778899',     67]
+let s:yellow = ['Yellow',     226]
+let s:red    = ['#b6403a',    160]
+let s:green  = ['#478226',     28]
 
 let s:default_fg = s:lgray
 let s:default_bg = s:black
