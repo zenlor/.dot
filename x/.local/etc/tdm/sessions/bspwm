@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec bspwm
+exec bspwm -c $HOME/.config/bspwm/bspwmrc

@@ -1,4 +1,4 @@
-#!/bin/dash
+#!/bin/sh
 # vim: ft=sh
 # set -e
 [ "$TRACE" ] && set -xv
@@ -146,7 +146,7 @@ export PATH=$PATH:$HOME/.config/bspwm/scripts
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # start sxhkd
-[ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash
+[ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash || SXHKD_SHELL=/bin/sh
 sxhkd &
 
 if [ ! $(pgrep -u $USER xfce4-session >/dev/null 2>&1) ]; then
