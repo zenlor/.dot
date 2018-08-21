@@ -1,8 +1,0 @@
-! initialize Xresources modules
-!
-#include    "./misc"
-#include    "./fonts"
-#include    "./term"
-#include    "./colors"
-
-! vim: syntax=xdefaults sw=4 ts=4 :

@@ -2,7 +2,131 @@
 ! ----- ~/.Xresources ----- !
 ! ------------------------- !
 
-! ----- import external settings ----- !
-#include    ".config/Xresources/init"
+!!!
+!!! Colors
+!!!
+
+!
+! Base16 Tomorrow Night
+! Scheme: Chris Kempson (http://chriskempson.com)
+
+#define base00 #1d1f21
+#define base01 #282a2e
+#define base02 #373b41
+#define base03 #969896
+#define base04 #b4b7b4
+#define base05 #c5c8c6
+#define base06 #e0e0e0
+#define base07 #ffffff
+#define base08 #cc6666
+#define base09 #de935f
+#define base0A #f0c674
+#define base0B #b5bd68
+#define base0C #8abeb7
+#define base0D #81a2be
+#define base0E #b294bb
+#define base0F #a3685a
+
+!!!
+!!! xft
+!!!
+
+Xft.autohint:  0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting:   1
+Xft.antialias: 1
+Xft.rgba:      rgb
+
+Emacs.font: Iosevka Term 13
+st.font:    Iosevka:pixelsize=13:antialias=true:autohint=true
+st.opacity: 255
+
+!!!
+!!! URxvt Settings
+!!!
+
+! font
+URxvt.font:             xft:Iosevka:style=medium:size=13
+URxvt.boldFont:         xft:Iosevka:style=bold:size=13
+URxvt.italicFont:       xft:Iosevka:style=italic:size=13
+URxvt.boldItalicFont:   xft:Iosevka:style=medium:size=13
+
+! Colors
+
+URxvt*foreground:    base05
+URxvt*background:    base00
+URxvt*cursorColor:   base05
+
+URxvt*color0:        base00
+URxvt*color1:        base08
+URxvt*color2:        base0B
+URxvt*color3:        base0A
+URxvt*color4:        base0D
+URxvt*color5:        base0E
+URxvt*color6:        base0C
+URxvt*color7:        base05
+
+URxvt*color8:        base03
+URxvt*color9:        base09
+URxvt*color10:       base01
+URxvt*color11:       base02
+URxvt*color12:       base04
+URxvt*color13:       base06
+URxvt*color14:       base0F
+URxvt*color15:       base07
+
+! misc
+URxvt.inLocale:             en_US.UTF-8
+URxvt.saveLines:            2048
+URxvt.cursorBlink:          false
+URxvt.urgentOnBell:         true
+URxvt.termName:             xterm-256color
+URxvt.geometry :            60x22
+
+! cause shell to be started as login shell
+URxvt*loginShell:           true
+! do not scroll with output
+URxvt*scrollTtyOutput:      false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer:     true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress:    true
+
+URxvt.scrollBar:            false
+URxvt.scrollBar_right:      false
+URxvt.scrollBar_floating:   false
+URxvt.scrollstyle:          rxvt
+
+! Perl plugins
+
+URxvt.perl-ext-common:      default,clipboard,matcher
+
+! clickable URLs
+URxvt.url-launcher:         /usr/bin/xdg-open
+! yangable URLs
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.url-select.launcher:  /usr/bin/xdg-open
+URxvt.url-select.underline: true
+! open and last URL and list recent URLs
+! Ctrl-Delete opens last URL, Meta-Delete lists last 10 URLs
+URxvt.keysym.C-Delete:      perl:matcher:last
+URxvt.keysym.M-Delete:      perl:matcher:list
+
+URxvt.matcher.button:       1
+URxvt.matcher.rend.0:       Uline Bold
+
+! Comment this if you dont want copy when text is selected
+URxvt.keysym.C-C:           perl:clipboard:copy
+URxvt.keysym.C-V:           perl:clipboard:paste
+URxvt.clipboard.autocopy:   true
+
+!!!
+!!! MISC
+!!!
+
+! set Xcursor theme
+Xcursor.theme:  LeftyHackneyed
+Xcursor.size:   16
 
 ! vim: set syntax=xdefaults sw=4 ts=4 :
