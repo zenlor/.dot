@@ -15,7 +15,7 @@ super + @space
     rofi -show drun
 
 super + {o,e,Return}
-    {qutebrowser,thunar,termite} # web browser, file browser, terminal
+    {qutebrowser,thunar,~/lib/bin/urxvt.sh} # web browser, file browser, terminal
 
 XF86Audio{LowerVolume,RaiseVolume}
     vol.sh {down,up}
