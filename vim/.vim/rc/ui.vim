@@ -6,6 +6,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
+set t_Co=256
 colorscheme monochrome
 
 " nofrils options
