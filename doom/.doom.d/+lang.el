@@ -22,6 +22,8 @@
             eldoc-mode
             flycheck-mode))
 
+;; Markdown command
+(setq markdown-command "marked")
 
 ;;
 ;; Extra packages
