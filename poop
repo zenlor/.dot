@@ -5,7 +5,7 @@ then
     echo "stow not found. please install stow"
 fi
 
-_pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." -print )
+_pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." -print | sed 's|\./||' )
 case $1 in
     "u"|"uninstall")
         echo "unstowing"
@@ -19,6 +19,6 @@ case $1 in
         ;;
 esac
 
-if [ ! -d "${HOME}/.zgen" ]; then
-    git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-fi
+#if [ ! -d "${HOME}/.zgen" ]; then
+#    git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
+#fi
