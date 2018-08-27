@@ -65,8 +65,6 @@ alias egrep='egrep --color=auto'
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias l='ls -lah'
-alias md='mkdir -p'
-alias rd='rmdir'
 
 # Git
 alias git='noglob git'
