@@ -32,13 +32,6 @@ if ! zgen saved; then
     zgen save
 fi
 
-# Check if reboot is required for Ubuntu
-if [ -f /usr/lib/update-notifier/update-motd-reboot-required ]; then
-    function reboot-required() {
-        /usr/lib/update-notifier/update-motd-reboot-required
-    }
-fi
-
 # Enable keychain
 if command -v keychain &> /dev/null; then
     eval `keychain --eval --quiet --agents ssh id_rsa id_frenzart.com`
@@ -75,21 +68,9 @@ alias la='ls -lAh'
 alias l='ls -lah'
 alias md='mkdir -p'
 alias rd='rmdir'
-alias cd..='cd ..'
-alias cd...='cd ../..'
-alias cd....='cd ../../..'
-alias cd.....='cd ../../../..'
-alias cd......='cd ../../../../..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias ......='cd ../../../../..'
 
 # Git
 alias git='noglob git'
-
-# pacman
-alias pac='yay'
 
 # xdg-open
 alias open='xdg-open'
