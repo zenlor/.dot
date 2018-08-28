@@ -111,9 +111,9 @@ fi
 # Tweaks
 #
 
-# Set keymaps
-setxkbmap en
-setxkbmap -option ctrl:nocaps
+## Set keymaps
+# setxkbmap en
+# setxkbmap -option ctrl:nocaps
 
 # Xresources
 xrdb -load ~/.Xresources
@@ -149,7 +149,4 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash || SXHKD_SHELL=/bin/sh
 sxhkd &
 
-if [ ! $(pgrep -u $USER xfce4-session >/dev/null 2>&1) ]; then
-	# autostart
-	$HOME/.config/bspwm/autostart &
-fi
+$HOME/.config/bspwm/autostart &
