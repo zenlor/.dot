@@ -22,7 +22,6 @@ if ! zgen saved; then
     zgen prezto history-substring-search
     zgen prezto utility
     zgen prezto completion
-    #zgen prezto fasd
     zgen prezto tmux
     zgen prezto terminal
 
@@ -85,7 +84,7 @@ alias ecc='emacsclient -n -c'
 function server() {
     local port="${1:-8000}"
     open "http://localhost:${port}/"
-    python -m SimpleHTTPServer "$port"
+    python -m http.server "$port"
 }
 
 alias server=server
