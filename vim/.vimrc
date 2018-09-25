@@ -17,6 +17,7 @@ call plug#begin('~/.cache/vim/bundle')
 " Vim functionality fixes/enhancements {{{
     Plug 'tpope/vim-repeat'         " better repeat compatibility ('.')
     Plug 'tpope/vim-commentary'     " comment things
+    Plug 'tpope/vim-eunuch'         " sugar for clams
     Plug 'vim-scripts/vis'          " improved visual commands
     Plug 'justinmk/vim-sneak'       " 2-character search motions
     Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
