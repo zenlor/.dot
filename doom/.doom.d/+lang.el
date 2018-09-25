@@ -9,10 +9,9 @@
         js2-strict-code-has-no-side-effects nil
         js2-missing-semi-one-line-override nil))
 
-
 ;; Tide/TypeScript
 (setq company-tooltip-align-annotations t)
-(setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
+;(setq tide-tsserver-executable "node_modules/typescript/bin/tsserver")
 
 (add-hook 'typescript-mode-hook
           (lambda ()
