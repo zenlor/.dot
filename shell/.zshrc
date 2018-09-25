@@ -23,11 +23,13 @@ zpacker plugin zsh-users/zsh-completions src
 # 256 colors support
 zpacker plugin chrissicool/zsh-256color
 
+# Theme
+#
 # load git plugin from oh-my-zsh
 zpacker plugin 'robbyrussell/oh-my-zsh' lib/git.zsh
 
-# Theme
-zpacker theme happyslowly/clean
+#zpacker theme happyslowly/clean
+zpacker plugin andrepolischuk/min
 
 zpacker end
 
@@ -117,10 +119,15 @@ setopt share_history            # share command history data
 zmodload zsh/terminfo
 
 # History substring keybindings
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey -M emacs "\C-P" history-substring-search-up
+bindkey -M emacs "\C-N" history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+# up/down keys
+for keymap in 'emacs' 'viins'; do
+    bindkey -M "$keymap" "$terminfo[kcuu1]" history-substring-search-up
+    bindkey -M "$keymap" "$terminfo[kcud1]" history-substring-search-down
+done
 #
 
 # vi mode
@@ -160,6 +167,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 # Some more basic aliases
+alias sl=ls
 alias ll='ls -lh'
 alias la='ls -lAh'
 alias l='ls -lah'
@@ -183,6 +191,9 @@ function server() {
     python -m http.server "$port"
 }
 alias server=server
+
+# Pacman
+alias pac=yay
 
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
