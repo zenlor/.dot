@@ -3,12 +3,14 @@
 [ "$TRACE" ] && set -xv
 
 _run() {
-	program=$1
-	command=$@
-	if [ ! $(pgrep -u $USER $program>/dev/null 2>&1) ]; then
-		$command &
-	fi
+    program=$1
+    command=$@
+    if [ ! $(pgrep -u $USER $program>/dev/null 2>&1) ]; then
+        $command &
+    fi
 }
+
+HOSTNAME="$(hostname)"
 
 #
 # AutoStart
@@ -18,7 +20,7 @@ _run() {
 # DBus - Start if not running
 #
 if which dbus-launch >/dev/null && test -z "$DBUS_SESSION_BUS_ADDRESS"; then
-	eval "$(dbus-launch --sh-syntax --exit-with-session)"
+    eval "$(dbus-launch --sh-syntax --exit-with-session)"
 fi
 
 # Notification Daemon
@@ -47,23 +49,28 @@ _run gpg-agent
 # LXSession for the rest
 #
 # _run lxsession
-
 _run xfsettingsd
 
 #
 # Polybar
 #
 # select primary monitor
-export PRIMARY_MONITOR="$(xrandr | grep primary | cut -d' ' -f1)"
+case $HOSTNAME in
+    red)
+        export PRIMARY_MONITOR=eDP-1
+    *)
+        export PRIMARY_MONITOR="$(xrandr | grep primary | cut -d' ' -f1)"
+    ;;
+esac
 _run polybar -r bar
 
 #
 # Laptop Power management
 #
-[ "$(hostname)" = "red" ] && _run xfce4-power-management
+[ $HOSTNAME = "red" ] && _run xfce4-power-management
 
 #
 # mons daemon
 #
-[ "$(hostname)" = "red" ] && _run mons -a
+[ $HOSTNAME = "red" ] && _run mons -a
 
