@@ -21,7 +21,7 @@
 	signingkey = 8DA5DA1F
 [core]
 	excludesfile = ~/.gitignore
-	editor = emacs
+	editor = vim
 	autocrlf = input
 [merge]
 	keepBackup = true
