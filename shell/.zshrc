@@ -98,6 +98,12 @@ function server() {
 }
 alias server=server
 
+# ipaddresses
+function ipaddresses() {
+    ip addr | awk '/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\./ {sub(/addr:/,""); print $2 }'
+}
+alias ipaddresses=ipaddresses
+
 # Pacman
 alias pac=yay
 
