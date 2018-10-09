@@ -22,6 +22,11 @@ done
 ## Go
 export GOPATH=$HOME/lib
 
+## Cargo
+if [ -d "$HOME/.cargo" ]; then
+    export PATH=$HOME/.cargo/bin/:$PATH
+fi
+
 ## PATH
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
 
