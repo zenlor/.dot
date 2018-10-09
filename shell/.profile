@@ -19,13 +19,19 @@ for i in /etc/profile.d/*.sh; do
     source $i
 done
 
-## Go
-export GOPATH=$HOME/lib
-
-## Cargo
-if [ -d "$HOME/.cargo" ]; then
-    export PATH=$HOME/.cargo/bin/:$PATH
+# Set GOPATH for Go
+if command -v go &> /dev/null; then
+    [ -d "$HOME/lib" ] || mkdir "$HOME/lib"
+    export GOPATH="$HOME/lib"
+    export PATH="$PATH:$GOPATH/bin"
 fi
+
+# Cargo/Rust PATH
+if command -v cargo &> /dev/null; then
+    [ -d "$HOME/.cargo" ] || mkdir -p "$HOME/.cargo/bin"
+    export PATH="$PATH:$HOME/.cargo/bin"
+fi
+
 
 ## PATH
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH

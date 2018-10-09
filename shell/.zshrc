@@ -17,8 +17,9 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/command-not-found
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-history-substring-search
+    zgen oh-my-zsh plugins/syntax-highlighting
+    zgen oh-my-zsh plugins/history
+    zgen oh-my-zsh plugins/history-substring-search
 
     # completions
     zgen load zsh-users/zsh-completions src
@@ -47,19 +48,6 @@ KEYTIMEOUT=1
 # Enable keychain
 if command -v keychain &> /dev/null; then
     eval `keychain --eval --quiet --agents ssh id_rsa id_frenzart.com`
-fi
-
-# Set GOPATH for Go
-if command -v go &> /dev/null; then
-    [ -d "$HOME/lib" ] || mkdir "$HOME/lib"
-    export GOPATH="$HOME/lib"
-    export PATH="$PATH:$GOPATH/bin"
-fi
-
-# Cargo/Rust PATH
-if command -v cargo &> /dev/null; then
-    [ -d "$HOME/.cargo" ] || mkdir -p "$HOME/.cargo/bin"
-    export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
 ###########
@@ -106,6 +94,9 @@ alias ipaddresses=ipaddresses
 
 # Pacman
 alias pac=yay
+
+# htop
+alias htopu="htop -u $USER"
 
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
