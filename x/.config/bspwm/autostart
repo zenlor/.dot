@@ -82,9 +82,9 @@ _run polybar -r bar
 if [ $HOSTNAME = "red" ]; then
     $HOME/.cargo/bin/xidlehook \
         --time 5 \
-        --timer 'light -S 1; slock' \
+        --timer 'light -S 50; slock' \
         --notify 10 \
-        --notifier  'light -U 10' \
+        --notifier  'light -S 1' \
         --canceller 'light -S 50' \
         --not-when-fullscreen \
         --not-when-audio &
