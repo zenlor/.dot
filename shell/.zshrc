@@ -98,5 +98,10 @@ alias pac=yay
 # htop
 alias htopu="htop -u $USER"
 
+# neovim
+if command -v nvim &> /dev/null; then
+    alias vim=nvim
+fi
+
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
