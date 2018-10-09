@@ -5,7 +5,7 @@ then
     echo "stow not found. please install stow"
 fi
 
-_pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." -print | sed 's|\./||' )
+_pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "scripts" -print | sed 's|\./||' )
 case $1 in
     "u"|"uninstall")
         echo "unstowing"
