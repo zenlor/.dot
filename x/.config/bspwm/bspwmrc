@@ -149,4 +149,4 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash || SXHKD_SHELL=/bin/sh
 sxhkd &
 
-$HOME/.config/bspwm/autostart &
+$HOME/.config/bspwm/autostart 2>&1 ~/.bspwm.log &

@@ -58,6 +58,7 @@ _run xfsettingsd
 case $HOSTNAME in
     red)
         export PRIMARY_MONITOR=eDP-1
+        ;;
     *)
         export PRIMARY_MONITOR="$(xrandr | grep primary | cut -d' ' -f1)"
     ;;
@@ -74,3 +75,17 @@ _run polybar -r bar
 #
 [ $HOSTNAME = "red" ] && _run mons -a
 
+#
+# Lock screen
+#
+
+if [ $HOSTNAME = "red" ]; then
+    $HOME/.cargo/bin/xidlehook \
+        --time 5 \
+        --timer 'light -S 1; slock' \
+        --notify 10 \
+        --notifier  'light -U 10' \
+        --canceller 'light -S 50' \
+        --not-when-fullscreen \
+        --not-when-audio &
+fi
