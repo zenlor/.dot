@@ -1,0 +1,18 @@
+#!/bin/sh
+[ "$TRACE" ] && set -xv
+set -e
+
+HOSTNAME="$(hostname)"
+
+LOCKDIR=/tmp/$UID-$USER/lock
+mkdir -p $LOCKDIR
+
+function _lock() {
+    command=$@
+
+    (
+        flock -n 9 || exit 1
+
+        $command
+    ) 9>$LOCKDIR/$0
+}

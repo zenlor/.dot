@@ -1,0 +1,9 @@
+#!/bin/sh
+source _lib
+_lock conky
+
+if [ $HOSTNAME = "red" ];then
+    exit 0
+fi
+
+conky -c $HOME/.config/bspwm/conkyrc -d
