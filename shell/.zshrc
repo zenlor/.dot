@@ -24,6 +24,9 @@ if ! zgen saved; then
     # completions
     zgen load zsh-users/zsh-completions src
 
+    # autoenv
+    zgen load Tarrasch/zsh-autoenv
+
     # z, like fasd
     zgen load rupa/z
 
