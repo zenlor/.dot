@@ -13,6 +13,7 @@ vnoremap <silent> K :call SearchVisualSelectionWithRg()<CR>
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
+nnoremap <silent> <leader>bb :Buffers<CR>
 
 imap <C-x><C-f> <plug>(fzf-complete-file-rg)
 imap <C-x><C-l> <plug>(fzf-complete-line)
