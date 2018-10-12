@@ -108,3 +108,9 @@ fi
 
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /home/lor/lib/src/git.mobilebridge.io/eventstream/event-sourcery/node_modules/tabtab/.completions/serverless.zsh ]] && . /home/lor/lib/src/git.mobilebridge.io/eventstream/event-sourcery/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /home/lor/lib/src/git.mobilebridge.io/eventstream/event-sourcery/node_modules/tabtab/.completions/sls.zsh ]] && . /home/lor/lib/src/git.mobilebridge.io/eventstream/event-sourcery/node_modules/tabtab/.completions/sls.zsh
