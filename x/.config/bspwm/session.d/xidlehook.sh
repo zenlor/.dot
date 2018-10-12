@@ -1,8 +1,8 @@
 #!/bin/sh
-source _lib
+source `dirname $0`/_lib
 
 # Lock screen for red
-if [ $HOSTNAME = "red" ]; then
+if [ "$HOSTNAME" = "red" ]; then
     _lock $HOME/.cargo/bin/xidlehook \
         --time 5 \
         --timer 'light -S 50; slock' \
@@ -10,6 +10,6 @@ if [ $HOSTNAME = "red" ]; then
         --notifier  'light -S 1' \
         --canceller 'light -S 50' \
         --not-when-fullscreen \
-        --not-when-audio &
+        --not-when-audio
 fi
 

@@ -1,7 +1,7 @@
 #!/bin/sh
-source _lib
+source `dirname $0`/_lib
 
 #
 # Laptop Power management
 #
-[ $HOSTNAME = "red" ] && _lock xfce4-power-management
+[ $HOSTNAME = "red" ] && _lock xfce4-power-management --no-daemon

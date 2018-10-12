@@ -1,3 +1,4 @@
 #!/bin/sh
-source _lib
-_lock xfsettingsd
+source `dirname $0`/_lib
+
+_lock xfsettingsd --no-daemon

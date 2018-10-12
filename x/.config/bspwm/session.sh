@@ -17,7 +17,8 @@ fi
 # AutoStart #
 #############
 
-for i in session.d/*.sh; do
+for i in $HOME/.config/bspwm/session.d/*.sh; do
     echo "executing $i..."
-    /bin/dash $i &
+    cd -P -- "$(dirname -- "$0")"/session.d
+    $i &
 done

@@ -4,6 +4,7 @@ set -e
 
 HOSTNAME="$(hostname)"
 
+NAME=`basename $0`
 LOCKDIR=/tmp/$UID-$USER/lock
 mkdir -p $LOCKDIR
 
@@ -14,5 +15,5 @@ function _lock() {
         flock -n 9 || exit 1
 
         $command
-    ) 9>$LOCKDIR/$0
+    ) 9>$LOCKDIR/$NAME
 }

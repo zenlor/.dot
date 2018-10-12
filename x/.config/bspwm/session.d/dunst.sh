@@ -1,5 +1,4 @@
 #!/bin/sh
-source _lib
-_lock dunst
+source `dirname $0`/_lib
 
-dunst -conf $HOME/.config/dunst/dunstrc
+_lock dunst -conf $HOME/.config/dunst/dunstrc

@@ -1,6 +1,5 @@
 #!/bin/sh
-source _lib
-_lock wallpaper
+source `dirname $0`/_lib
 
 if [ $HOSTNAME = "red" ];then
     exit 0

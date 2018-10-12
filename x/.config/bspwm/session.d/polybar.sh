@@ -1,5 +1,5 @@
 #!/bin/sh
-source _lib
+source `dirname $0`/_lib
 
 #
 # Polybar
@@ -14,4 +14,3 @@ case $HOSTNAME in
     ;;
 esac
 _lock polybar -r bar
-
