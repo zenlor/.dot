@@ -68,9 +68,6 @@ autocmd VimEnter *
 
 filetype plugin indent on
 
-
-
-
 " Custom code & extra configuration
 runtime! rc/*/*.vim
 runtime! rc/*.vim

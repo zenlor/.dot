@@ -1,6 +1,10 @@
+" enable mouse integration
+set mouse=a
+
+" map leader key to <space>
 let mapleader = ' '
+" map local leader key to <comma>
 let maplocalleader = ','
-noremap ; :
 
 " Trigger to preserve indentation on pastes
 set pastetoggle=<F12>
@@ -160,6 +164,12 @@ nnoremap <leader>h :<C-u>h
     imap <C-@> <C-Space>
 " }}}
 
+" Windows {{{
+    map <C-h> <C-w>h
+    map <C-j> <C-w>j
+    map <C-k> <C-w>k
+    map <C-l> <C-w>l
+" }}}
 
 
 nnoremap <silent> <Leader>bs :w<CR>

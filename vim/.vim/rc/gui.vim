@@ -84,7 +84,7 @@ if has('gui_running')
         set novisualbell
 
         " For gvim
-        set guifont=Monospace\ 10
+        Guifont Iosevka Term:h13
 
         " Commenting using Ctrl+/
         map <C-/> gcc
@@ -94,4 +94,8 @@ if has('gui_running')
         inoremap <S-C-CR> <C-O>O
 
     endif
+endif
+
+if exists('g:GuiFont')
+    GuiFont! Iosevka Term:h13
 endif
