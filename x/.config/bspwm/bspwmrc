@@ -147,7 +147,9 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # start sxhkd
 [ -e "/bin/dash" ] && export SXHKD_SHELL=/bin/dash || SXHKD_SHELL=/bin/sh
-flock /tmp/$USER-sxhkd.lock -c sxhkd &
+rm -f /tmp/$USER-sxhkd.lock
+flock -n /tmp/$USER-sxhkd.lock -c sxhkd &
 
 #$HOME/.config/bspwm/autostart 2>&1 ~/.bspwm.log &
-flock /tmp/$USER-session.lock -c $HOME/.config/bspwm/session.sh
+rm -f /tmp/$USER-session.lock
+flock -n /tmp/$USER-session.lock -c $HOME/.config/bspwm/session.sh > $HOME/.cache/bspwm.`date +"%H:%M:%S"`.log 2>&1

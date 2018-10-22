@@ -8,4 +8,4 @@ fi
 #
 # Wallpaper set
 #
-[ -x "$HOME/.config/wallpapers/set" ] && $HOME/.config/wallpapers/set
+exec feh --bg-tile $HOME/.config/wallpapers/pattern.jpg
