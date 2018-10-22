@@ -1,5 +1,4 @@
-#!/bin/zsh
-# Can be sourced by zsh/bash scripts
+# Can be sourced by zsh/bash/sh scripts
 
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
@@ -37,7 +36,7 @@ fi
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
 
 ## Library
-function _is_interactive { [[ $- == *i* ]]; }
+function _is_interactive { [ $- == *i* ]; }
 
 function _is_running {
   for prc in "$@"; do
@@ -46,7 +45,7 @@ function _is_running {
 }
 
 function _source {
-  [[ -f $1 ]] && source "$1"
+  [ -f $1 ] && source "$1"
 }
 
 ## TDM
