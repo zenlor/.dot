@@ -74,6 +74,11 @@ bindkey -v
 KEYTIMEOUT=1
 
 #
+# Prompt
+#
+export PROMPT_ZFS_CHAR="λ"
+
+#
 # Environment settings
 #
 
