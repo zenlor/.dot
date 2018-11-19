@@ -73,7 +73,7 @@ alias l='ls -lah'
 alias git='noglob git'
 
 # xdg-open
-alias open='xdg-open'
+command -v xdg-open &>/dev/null && alias open='xdg-open' || true
 
 # emacs client
 #   no wait
@@ -105,6 +105,12 @@ alias htopu="htop -u $USER"
 if command -v nvim &> /dev/null; then
     alias vim=nvim
 fi
+
+# homebrew gettex
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+# osx support
+[ -x "/usr/libexec/path_helper" ] && eval `/usr/libexec/path_helper -s` || true
 
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

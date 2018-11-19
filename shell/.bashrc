@@ -107,3 +107,5 @@ done
 
 # Try to keep environment pollution down, EPA loves us.
 unset use_color sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
