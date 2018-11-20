@@ -1,73 +1,94 @@
-# Check if zgen is installed
-if [[ ! -d "${ZGEN_DIR}" ]]; then
-    git clone https://github.com/tarjoilija/zgen.git "${ZGEN_DIR}"
-fi
+# zgen {{{
+    # Check if zgen is installed
+    if [[ ! -d "${ZGEN_DIR}" ]]; then
+        git clone https://github.com/tarjoilija/zgen.git "${ZGEN_DIR}"
+    fi
 
-# load zgen
-source "${ZGEN_DIR}/zgen.zsh"
+    # load zgen
+    source "${ZGEN_DIR}/zgen.zsh"
 
-# if the init scipt doesn't exist
-if ! zgen saved; then
+    # if the init scipt doesn't exist
+    if ! zgen saved; then
 
-    # vim things
-    zgen load laurenkt/zsh-vimto
+        # vim things
+        zgen load laurenkt/zsh-vimto
 
-    # completions
-    zgen load zsh-users/zsh-completions src
+        # completions
+        zgen load zsh-users/zsh-completions src
 
-    # autoenv
-    zgen load Tarrasch/zsh-autoenv
+        # autoenv
+        zgen load Tarrasch/zsh-autoenv
 
-    # z
-    zgen load rupa/z
+        # z
+        zgen load rupa/z
 
-    # colorful colors
-    zgen load chrissicool/zsh-256color
+        # colorful colors
+        zgen load chrissicool/zsh-256color
 
-    # colorful command lines
-    zgen load zdharma/fast-syntax-highlighting
+        # colorful command lines
+        zgen load zdharma/fast-syntax-highlighting
 
-    # theme
-    zgen load mreinhardt/sfz-prompt.zsh
+        # theme
+        zgen load mreinhardt/sfz-prompt.zsh
 
-    # save all to init script
-    zgen save
-fi
+        # save all to init script
+        zgen save
+    fi
+# }}}
 
-# IN-Sane defaults
-# no c-s/c-q output freezing
-setopt noflowcontrol
-# allow expansion in prompts
-setopt prompt_subst
-# this is default, but set for share_history
-setopt append_history
-# save each command's beginning timestamp and the duration to the history file
-setopt extended_history
-# display PID when suspending processes as well
-setopt longlistjobs
-# try to avoid the 'zsh: no matches found...'
-setopt nonomatch
-# report the status of backgrounds jobs immediately
-setopt notify
-# whenever a command completion is attempted, make sure the entire command path
-# is hashed first.
-setopt hash_list_all
-# not just at the end
-setopt completeinword
-# use zsh style word splitting
-setopt noshwordsplit
-# allow use of comments in interactive code
-setopt interactivecomments
+# IN-Sane defaults {{{
+    # no c-s/c-q output freezing
+    setopt noflowcontrol
+    # allow expansion in prompts
+    setopt prompt_subst
+    # display PID when suspending processes as well
+    setopt longlistjobs
+    # try to avoid the 'zsh: no matches found...'
+    setopt nonomatch
+    # report the status of backgrounds jobs immediately
+    setopt notify
+    # whenever a command completion is attempted, make sure the entire command path
+    # is hashed first.
+    setopt hash_list_all
+    # not just at the end
+    setopt completeinword
+    # use zsh style word splitting
+    setopt noshwordsplit
+    # allow use of comments in interactive code
+    setopt interactivecomments
 
-## More insanity
-#
-# in order to use #, ~ and ^ for filename generation grep word
-# *~(*.gz|*.bz|*.bz2|*.zip|*.Z) -> searches for word not in compressed files
-# don't forget to quote '^', '~' and '#'!
-setopt extended_glob
+    ## More insanity
+    #
+    # in order to use #, ~ and ^ for filename generation grep word
+    # *~(*.gz|*.bz|*.bz2|*.zip|*.Z) -> searches for word not in compressed files
+    # don't forget to quote '^', '~' and '#'!
+    setopt extended_glob
 
-# don't error out when unset parameters are used
-setopt unset
+    # don't error out when unset parameters are used
+    setopt unset
+# }}}
+
+
+## History {{{
+    # History file configuration
+    [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+    HISTSIZE=50000
+    SAVEHIST=10000
+    # record timestamp of command in HISTFILE
+    setopt extended_history
+    # delete duplicates first when HISTFILE size exceeds HISTSIZE
+    setopt hist_expire_dups_first
+    # ignore duplicated commands history list
+    setopt hist_ignore_dups
+    # ignore commands that start with space
+    setopt hist_ignore_space
+    # show command with history expansion to user before running it
+    setopt hist_verify
+    # add commands to HISTFILE in order of execution
+    setopt inc_append_history
+    # share command history data
+    setopt share_history
+# }}}
 
 ### VIm Mode
 bindkey -v
@@ -76,7 +97,7 @@ KEYTIMEOUT=1
 #
 # Prompt
 #
-export PROMPT_ZFS_CHAR="λ"
+export PROMPT_SFZ_CHAR="λ"
 
 #
 # Environment settings
@@ -87,58 +108,56 @@ if command -v keychain &> /dev/null; then
     eval `keychain --eval --quiet --agents ssh id_rsa id_frenzart.com`
 fi
 
-###########
-# aliases #
-###########
+## Aliases {{{
+    # Enable color support
+    ls --color -d . &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 
-# Enable color support
-ls --color -d . &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+    # Some more basic aliases
+    alias sl=ls
+    alias ll='ls -lh'
+    alias la='ls -lAh'
+    alias l='ls -lah'
 
-# Some more basic aliases
-alias sl=ls
-alias ll='ls -lh'
-alias la='ls -lAh'
-alias l='ls -lah'
+    # Git
+    alias git='noglob git'
 
-# Git
-alias git='noglob git'
+    # xdg-open
+    command -v xdg-open &>/dev/null && alias open='xdg-open' || true
 
-# xdg-open
-command -v xdg-open &>/dev/null && alias open='xdg-open' || true
+    # emacs client
+    #   no wait
+    alias ec='emacsclient -n'
+    #   create new frame
+    alias ecc='emacsclient -n -c'
 
-# emacs client
-#   no wait
-alias ec='emacsclient -n'
-#   create new frame
-alias ecc='emacsclient -n -c'
+    # Simple HTTP server
+    function server() {
+        local port="${1:-8000}"
+        open "http://localhost:${port}/"
+        python -m http.server "$port"
+    }
+    alias server=server
 
-# Simple HTTP server
-function server() {
-    local port="${1:-8000}"
-    open "http://localhost:${port}/"
-    python -m http.server "$port"
-}
-alias server=server
+    # ipaddresses
+    function ipaddresses() {
+        ip addr | awk '/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\./ {sub(/addr:/,""); print $2 }'
+    }
+    alias ipaddresses=ipaddresses
 
-# ipaddresses
-function ipaddresses() {
-    ip addr | awk '/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\./ {sub(/addr:/,""); print $2 }'
-}
-alias ipaddresses=ipaddresses
+    # Pacman
+    alias pac=yay
 
-# Pacman
-alias pac=yay
+    # htop
+    alias htopu="htop -u $USER"
 
-# htop
-alias htopu="htop -u $USER"
-
-# neovim
-if command -v nvim &> /dev/null; then
-    alias vim=nvim
-fi
+    # neovim
+    if command -v nvim &> /dev/null; then
+        alias vim=nvim
+    fi
+# }}}
 
 # homebrew gettex
 export PATH="/usr/local/opt/gettext/bin:$PATH"
