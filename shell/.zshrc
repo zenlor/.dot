@@ -1,39 +1,43 @@
-# zgen {{{
+# zplug {{{
     # Check if zgen is installed
-    if [[ ! -d "${ZGEN_DIR}" ]]; then
-        git clone https://github.com/tarjoilija/zgen.git "${ZGEN_DIR}"
+    if [[ ! -d "${ZPLUG_HOME}" ]]; then
+        git clone https://github.com/zplug/zplug.git "${ZPLUG_HOME}"
     fi
 
     # load zgen
-    source "${ZGEN_DIR}/zgen.zsh"
+    source "${ZPLUG_HOME}/init.zsh"
 
-    # if the init scipt doesn't exist
-    if ! zgen saved; then
+    # vim things
+    zplug "laurenkt/zsh-vimto"
 
-        # vim things
-        zgen load laurenkt/zsh-vimto
+    # completions
+    zplug "zsh-users/zsh-completions"
 
-        # completions
-        zgen load zsh-users/zsh-completions src
+    # autoenv
+    zplug "Tarrasch/zsh-autoenv"
 
-        # autoenv
-        zgen load Tarrasch/zsh-autoenv
+    # z
+    zplug "rupa/z", use:"*.sh"
 
-        # z
-        zgen load rupa/z
+    # colorful colors
+    zplug "chrissicool/zsh-256color"
 
-        # colorful colors
-        zgen load chrissicool/zsh-256color
+    # colorful command lines
+    zplug "zdharma/fast-syntax-highlighting"
 
-        # colorful command lines
-        zgen load zdharma/fast-syntax-highlighting
+    # theme
+    zplug "mreinhardt/sfz-prompt.zsh"
 
-        # theme
-        zgen load mreinhardt/sfz-prompt.zsh
+    # forget me not
+    zplug "larkery/zsh-histdb"
 
-        # save all to init script
-        zgen save
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        zplug install
     fi
+
+    # Then, source plugins and add commands to $PATH
+    zplug load
 # }}}
 
 # IN-Sane defaults {{{
@@ -56,6 +60,8 @@
     setopt noshwordsplit
     # allow use of comments in interactive code
     setopt interactivecomments
+    # automatically cd on plain folder names
+    setopt autocd
 
     ## More insanity
     #
@@ -66,8 +72,27 @@
 
     # don't error out when unset parameters are used
     setopt unset
+
+    # completion menu
+    zstyle ':completion:*' menu select
 # }}}
 
+# Autocorrect {{{
+    # taken from oh-my-zsh
+    alias cp='nocorrect cp'
+    alias ebuild='nocorrect ebuild'
+    alias gist='nocorrect gist'
+    alias heroku='nocorrect heroku'
+    alias hpodder='nocorrect hpodder'
+    alias man='nocorrect man'
+    alias mkdir='nocorrect mkdir'
+    alias mv='nocorrect mv'
+    alias mysql='nocorrect mysql'
+    alias sudo='nocorrect sudo'
+    alias make='nocorrect make'
+
+    setopt correct_all
+# }}}
 
 ## History {{{
     # History file configuration

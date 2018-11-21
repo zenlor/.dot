@@ -4,7 +4,7 @@ unsetopt GLOBAL_RCS
 source ~/.profile
 
 # Move ZDOTDIR from $HOME to reduce dotfile pollution.
-export ZGEN_DIR="$XDG_CACHE_HOME/zgen"
+export ZPLUG_HOME="$XDG_CACHE_HOME/zplug"
 
 # paths
 typeset -gU cdpath fpath mailpath path
