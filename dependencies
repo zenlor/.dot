@@ -22,21 +22,20 @@ firefox
 
 pass
 
-isync
-
 compton
 redshift
-
 wmname
 wmutils-git
 polybar
 bspwm
 sxhkd
 light
+unclutter
+dunst
+xidlehook
+greenclip
 
-parcellite
-
-termite
+alacritty
 
 zsh
 zsh-completions
