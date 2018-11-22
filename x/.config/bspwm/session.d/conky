@@ -5,4 +5,4 @@ if [ $HOSTNAME = "red" ];then
     exit 0
 fi
 
-_lock conky -c $HOME/.config/bspwm/conkyrc -d
+exec conky -c $HOME/.config/bspwm/conkyrc -d

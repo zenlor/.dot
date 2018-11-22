@@ -1,6 +1,4 @@
 #!/bin/sh
-source `dirname $0`/_lib
-
 # Touchscreen
 if [ "$HOSTNAME" = "red" ]; then
     xinput \

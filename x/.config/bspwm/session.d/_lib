@@ -9,11 +9,10 @@ LOCKDIR=/tmp/$UID-$USER/lock
 mkdir -p $LOCKDIR
 
 function _lock() {
-    command=$@
-
     (
         flock -n 9 || exit 1
 
-        $command
+        $@
+        wait
     ) 9>$LOCKDIR/$NAME
 }

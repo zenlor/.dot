@@ -13,4 +13,4 @@ case $HOSTNAME in
         export PRIMARY_MONITOR="$(xrandr | grep primary | cut -d' ' -f1)"
     ;;
 esac
-_lock polybar -r bar
+exec polybar -r bar
