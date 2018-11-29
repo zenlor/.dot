@@ -26,7 +26,7 @@
     zplug "zdharma/fast-syntax-highlighting"
 
     # theme
-    zplug "mreinhardt/sfz-prompt.zsh"
+    zplug "eendroroy/alien-minimal"
 
     # forget me not
     zplug "larkery/zsh-histdb"
@@ -77,6 +77,29 @@
     zstyle ':completion:*' menu select
 # }}}
 
+## History {{{
+    # History file configuration
+    [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
+    HISTSIZE=50000
+    SAVEHIST=10000
+    # record timestamp of command in HISTFILE
+    setopt extended_history
+    # delete duplicates first when HISTFILE size exceeds HISTSIZE
+    setopt hist_expire_dups_first
+    # ignore duplicated commands history list
+    setopt hist_ignore_dups
+    # ignore ALL duplicates
+    setopt hist_ignore_all_dups
+    # ignore commands that start with space
+    setopt hist_ignore_space
+    # show command with history expansion to user before running it
+    setopt hist_verify
+    # add commands to HISTFILE in order of execution
+    setopt inc_append_history
+    # share command history data
+    setopt share_history
+# }}}
+
 # Autocorrect {{{
     # taken from oh-my-zsh
     alias cp='nocorrect cp'
@@ -92,27 +115,6 @@
     alias make='nocorrect make'
 
     setopt correct_all
-# }}}
-
-## History {{{
-    # History file configuration
-    [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
-    HISTSIZE=50000
-    SAVEHIST=10000
-    # record timestamp of command in HISTFILE
-    setopt extended_history
-    # delete duplicates first when HISTFILE size exceeds HISTSIZE
-    setopt hist_expire_dups_first
-    # ignore duplicated commands history list
-    setopt hist_ignore_dups
-    # ignore commands that start with space
-    setopt hist_ignore_space
-    # show command with history expansion to user before running it
-    setopt hist_verify
-    # add commands to HISTFILE in order of execution
-    setopt inc_append_history
-    # share command history data
-    setopt share_history
 # }}}
 
 ### VIm Mode
