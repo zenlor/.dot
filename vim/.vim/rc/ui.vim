@@ -9,7 +9,7 @@ set textwidth=81
 
 " Colors
 set t_Co=256
-colorscheme monochrome
+colorscheme default
 
 " visual bell
 set noerrorbells visualbell t_vb=
