@@ -2,3 +2,4 @@
 (package! systemd)
 (package! evil-mu4e)
 (package! eglot)
+(package! gruvbox-theme)

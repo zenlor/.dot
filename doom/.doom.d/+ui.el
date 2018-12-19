@@ -12,7 +12,7 @@
      :map helm-find-files-map "<DEL>" #'helm-find-files-up-one-level)))
 
 ;; theme
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'gruvbox-light-soft)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 14))
