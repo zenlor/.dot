@@ -313,6 +313,8 @@ menu-1-0 = firefox
 menu-1-0-exec = firefox &
 menu-1-1 = chromium
 menu-1-1-exec = chromium &
+menu-1-2 = telegram
+menu-1-2-exec = telegram-desktop &
 
 menu-2-0 = gimp
 menu-2-0-exec = gimp &
