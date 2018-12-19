@@ -31,6 +31,9 @@
     # forget me not
     zplug "larkery/zsh-histdb"
 
+    # Deer
+    zplug "vifon/deer", use:deer
+
     # Install plugins if there are plugins that have not been installed
     if ! zplug check --verbose; then
         zplug install
@@ -129,6 +132,18 @@ export PROMPT_SFZ_CHAR="λ"
 #
 # Environment settings
 #
+
+# Neovim as $EDITOR
+export EDITOR="nvim"
+
+# Deer {{{
+    # enable deer
+    zle -N deer
+    # C-k
+    bindkey '\ek' deer
+    # height
+    zstyle ':deer:' height 35
+# }}}
 
 # Enable keychain
 if command -v keychain &> /dev/null; then
