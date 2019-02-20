@@ -66,6 +66,10 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'rust-lang/rust.vim'
 " }}}
 
+" theme{{{
+    Plug 'morhetz/gruvbox'
+" }}}
+
 call plug#end()
 
 autocmd VimEnter *
