@@ -130,6 +130,11 @@ KEYTIMEOUT=1
 export PROMPT_SFZ_CHAR="λ"
 
 #
+# Colors
+#
+[ -f "$HOME/.cache/vim/bundle/gruvbox/gruvbox_256palette.sh" ]\
+    && source "$HOME/.cache/vim/bundle/gruvbox/gruvbox_256palette.sh"
+#
 # Environment settings
 #
 
