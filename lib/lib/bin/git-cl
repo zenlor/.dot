@@ -8,3 +8,5 @@ shift
 
 echo "cloning ${REPO} to ${LIBFOLDER}/${TARGET} ..."
 git clone $REPO $LIBFOLDER/$TARGET $@
+
+printf "\n${LIBFOLDER}/${TARGET}\n"
