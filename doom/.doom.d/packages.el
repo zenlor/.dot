@@ -1,5 +1,3 @@
-(package! terraform-mode)
 (package! systemd)
-(package! evil-mu4e)
-(package! eglot)
+; (package! eglot)
 (package! gruvbox-theme)

@@ -8,28 +8,24 @@
        file-templates    ; auto-snippets for empty files
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally
-       snippets          ; my elves. They type so I don't have to
-       spellcheck        ; tasing you for misspelling mispelling
-       syntax-checker    ; tasing you for every semicolon you forget
+       ;;snippets          ; my elves. They type so I don't have to
        workspaces        ; tab emulation, persistence & separate workspaces
 
        :completion
        company           ; the ultimate code completion backend
-       (helm
-         +fuzzy)              ; the *other* search engine for love and life
+       ;;helm             ; the *other* search engine for love and life
        ;;ido              ; the other *other* search engine...
-       ;;ivy              ; a search engine for love and life
+       ivy              ; a search engine for love and life
 
        :ui
        ;;deft              ; notational velocity for Emacs
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
-       doom-modeline     ; a snazzy Atom-inspired mode-line
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        evil-goggles      ; display visual hints when editing in evil
        ;;fci               ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
-       ;;modeline          ; snazzy, Atom-inspired modeline, plus API
+       modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
        treemacs          ; a project drawer, like neotree but cooler
@@ -44,6 +40,7 @@
        window-select     ; visually switch windows
 
        :editor
+       fold              ; (nigh) universal code folding
        ;;(format +onsave)  ; automated prettiness
        lispy             ; vim for lisp, for people who dont like vim
        multiple-cursors  ; editing in many places at once
@@ -55,23 +52,24 @@
          +ranger         ; bringing the goodness of ranger to dired
          +icons          ; colorful icons for dired-mode
         )
-       ediff             ; comparing files in Emacs
        electric          ; smarter, keyword-based electric-indent
-       ;;eshell            ; a consistent, cross-platform shell (WIP)
-       hideshow          ; basic code-folding support
+       eshell            ; a consistent, cross-platform shell (WIP)
        imenu             ; an imenu sidebar and searchable code index
        ;;term              ; terminals in Emacs
        vc                ; version-control and Emacs, sitting in a tree
 
        :tools
        ansible
-       docker
+       ;;docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
+       flycheck          ; tasing you for every semicolon you forget
+       ;;flyspell          ; tasing you for misspelling mispelling
        ;;gist              ; interacting with github gists
+       lsp
        ;;macos             ; MacOS-specific commands
-       ;;make              ; run make tasks from Emacs
        magit             ; a git porcelain for Emacs
+       ;;make              ; run make tasks from Emacs
        ;;password-store    ; password manager for nerds
        ;;pdf               ; pdf enhancements
        ;;prodigy           ; FIXME managing external services & code builders
@@ -80,10 +78,12 @@
        ;;tmux              ; an API for interacting with tmux
        ;;upload            ; map local to remote projects via ssh/ftp
        ;;wakatime
+       ;;vterm             ; another terminals in Emacs
 
        :lang
        ;;assembly          ; assembly for fun or debugging
        ;;(cc +irony +rtags); C/C++/Obj-C madness
+       (cc +lsp)
        clojure           ; java with a lisp
        ;;common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
@@ -95,12 +95,14 @@
        ;;elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;ess               ; emacs speaks statistics
-       ;;go                ; the hipster dialect
+       (go                 ; the hipster dialect
+         +lsp)
        ;;(haskell +intero) ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
-       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       (javascript         ; all(hope(abandon(ye(who(enter(here))))))
+         +lsp)
        ;;julia             ; a better, faster MATLAB
        ;;latex             ; writing papers in Emacs has never been so fun
        ;;ledger            ; an accounting system in Emacs
@@ -118,7 +120,7 @@
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
-       purescript        ; javascript, but functional
+       ;;purescript        ; javascript, but functional
        ;;python            ; beautiful is better than ugly
        ;;qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
@@ -154,7 +156,6 @@
        ;;literate
 
        ;; The default module sets reasonable defaults for Emacs. It also
-       ;; provides a Spacemacs-inspired keybinding scheme, a custom yasnippet
-       ;; library, and additional ex commands for evil-mode. Use it as a
-       ;; reference for your own modules.
-       (default +bindings +evil-commands))
+       ;; provides a Spacemacs-inspired keybinding scheme and a smartparens
+       ;; config. Use it as a reference for your own modules.
+       (default +bindings +smartparens))

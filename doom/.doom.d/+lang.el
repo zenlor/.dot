@@ -29,17 +29,6 @@
 ;;
 
 ;;
-;; Terraform
-;;
-(def-package! terraform-mode
-  :mode "\\.tf$"
-  :mode "\\.tfvars$"
-  :config
-  (custom-set-variables
-   '(terraform-indent-level 4)))
-
-
-;;
 ;; Systemd
 ;;
 (def-package! systemd-mode
@@ -47,16 +36,35 @@
   :config
   (set! :company-backend 'systemd-mode '(systemd-mode-hook)))
 
-;(require 'evil-mu4e)
 
 ;;
 ;; Carp Lang
 ;;
 (add-to-list 'load-path "~/lib/src/github.com/carp-lang/Carp/emacs")
+
 (def-package! carp-mode
   :mode "\\.carp$"
   :init)
 
-(def-package! inf-carp-mode
-  :after 'carp-mode)
 
+;;
+;; Fennel + Love2d
+;;
+(add-to-list 'load-path "~/lib/src/gitlab.com/technomancy/fennel-mode")
+
+(defun run-love ()
+  (interactive)
+  (run-lisp "love ."))
+
+(def-package! fennel-mode
+  :mode "\\.fnl$"
+  :hook (fennel-mode . lispy-mode)
+  :interpreter "fennel"
+  :config
+  ;; By default fennel-mode moves focus to the \*inferior-lisp\* buffer
+  ;; setting `fennel-mode-switch-to-repl-after-reload' to nil prevents this
+  (customize-save-variable 'fennel-mode-switch-to-repl-after-reload nil)
+
+  (map! :localleader
+        (:map fennel-mode-map
+          "'" #'run-love)))

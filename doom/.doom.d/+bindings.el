@@ -47,15 +47,7 @@
 
       (:after clojure-mode
         :localleader
-        :n  "'"  #'cider-jack-in
-        :n  "\"" #'cider-jack-in-clojurescript
-        :n  "B"  #'cider-switch-to-repl-buffer
-        :n  "b"  #'cider-eval-buffer
-        :n  "n"  #'cider-repl-set-ns
-        :n  "j"  #'cider-find-var
-        :n  "d"  #'cider-doc
-        :n  "c"  #'cider-repl-clear-buffer
-        :n  "p"  #'cider-eval-sexp-at-point
-        :n  "r"  #'cider-eval-region
-        :desc "Enlighten mode" :n  "e"  #'cider-enlighten-mode))
+        (:map clojure-mode-map
+              "S" #'cider-repl-set-ns
+              "N"  #'cider-enlighten-mode)))
 
