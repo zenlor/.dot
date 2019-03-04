@@ -94,6 +94,14 @@ if has('gui_running')
         inoremap <S-C-CR> <C-O>O
 
     endif
+
+    if has('win32')
+        set guifont=Consolas:h12   " Win32.
+    elseif has('gui_macvim')
+        set guifont=Iosevka:h14     " OSX.
+    else
+        set guifont=Iosevka\ 13  " Linux.
+    endif
 endif
 
 if exists('g:GuiFont')

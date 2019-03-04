@@ -1,3 +1,10 @@
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname =~ "darwin"
+      set rtp+=/usr/local/opt/fzf
+  endif
+endif
+
 nnoremap <silent> <leader><space> :Files<CR>
 nnoremap <silent> <leader>a :Buffers<CR>
 nnoremap <silent> <leader>A :Windows<CR>
