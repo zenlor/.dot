@@ -44,6 +44,19 @@ call plug#begin('~/.cache/vim/bundle')
 " }}}
 
 " Omnicompletion {{{
+    " Deoplete
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    let g:deoplete#enable_at_startup = 1
+
+    if has('nvim')
+        Plug 'Shougo/deoplete-lsp'
+    endif
 " }}}
 
 " lang {{{
@@ -64,6 +77,9 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Rust
     Plug 'rust-lang/rust.vim'
+
+    " Fennel
+    Plug 'bakpakin/fennel.vim'
 " }}}
 
 " theme{{{
