@@ -155,7 +155,7 @@ fi
 
 # Enable keychain
 if command -v keychain &> /dev/null; then
-    eval `keychain --eval --quiet --agents ssh id_rsa id_frenzart.com`
+    eval `keychain --eval --quiet --agents ssh id_ecdsa id_frenzart.com`
 fi
 
 ## Aliases {{{
