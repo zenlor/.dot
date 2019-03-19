@@ -8,6 +8,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
+set termguicolors
 set t_Co=256
 colorscheme gruvbox
 
