@@ -63,4 +63,6 @@ function _source {
 ## GPG tty fix
 export GPG_TTY=$(tty)
 
+export LC_ALL=en_US.UTF-8
+
 # vim:ft=sh
