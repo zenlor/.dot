@@ -140,6 +140,9 @@ export PROMPT_SFZ_CHAR="λ"
 
 # Neovim as $EDITOR
 export EDITOR="nvim"
+if [ -x 'nvim' ]; then
+    alias vim=nvim
+fi
 
 # Deer {{{
     # enable deer
