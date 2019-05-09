@@ -65,4 +65,6 @@ export GPG_TTY=$(tty)
 
 export LC_ALL=en_US.UTF-8
 
+## Load local configuration
+[ -f "$HOME/.profile.local" ] && source "$HOME/.profile.local"
 # vim:ft=sh
