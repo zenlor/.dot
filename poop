@@ -5,7 +5,12 @@ if ! command -v stow > /dev/null 2>&1;then
     exit 1
 fi
 
-mkdir -p "$HOME/.config" "$HOME/lib/bin" "$HOME/.local/" "$HOME/.cache/"
+mkdir -p \
+    "$HOME/.config" \
+    "$HOME/.config/git" \
+    "$HOME/lib/bin" \
+    "$HOME/.local/" \
+    "$HOME/.cache/"
 
 _pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "*/scripts" -print | sed 's|\./||' )
 case $1 in
