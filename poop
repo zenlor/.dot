@@ -1,24 +1,22 @@
 #!/bin/sh
 
-if [ ! "$(which stow)" ]
-then
+if ! command -v stow > /dev/null 2>&1;then
     echo "stow not found. please install stow"
+    exit 1
 fi
+
+mkdir -p "$HOME/.config" "$HOME/lib/bin" "$HOME/.local/" "$HOME/.cache/"
 
 _pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "*/scripts" -print | sed 's|\./||' )
 case $1 in
     "u"|"uninstall")
         echo "unstowing"
-        echo -n $_pkgs | xargs stow -D
+        echo "$_pkgs" | xargs stow -D
         exit 0
         ;;
     *)
         echo "restowing"
-        echo -n $_pkgs | xargs stow -R
+        echo "$_pkgs" | xargs stow -R
         exit 0
         ;;
 esac
-
-#if [ ! -d "${HOME}/.zgen" ]; then
-#    git clone https://github.com/tarjoilija/zgen.git "${HOME}/.zgen"
-#fi
