@@ -17,8 +17,8 @@
 	status = auto
 [user]
 	name = Lorenzo Giuliani
-	email = lorenzo@frenzart.com
-	signingkey = 8DA5DA1F
+	email = lorenzo.giuliani@myjar.com
+	signingkey = C43DB236
 [core]
 	excludesfile = ~/.gitignore
 	editor = nvim
