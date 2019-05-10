@@ -215,5 +215,8 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 # osx support
 [ -x "/usr/libexec/path_helper" ] && eval `/usr/libexec/path_helper -s` || true
 
+# local environment
+[ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local
+
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
