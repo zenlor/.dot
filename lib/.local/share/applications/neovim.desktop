@@ -2,6 +2,6 @@
 Type=Application
 Version=1.0
 Name=neovim
-Comment=Neovim wrapped in kittens
-Exec=kitty -e "vim %F"
+Comment=Neovim wrapped in alacritty
+Exec=alacritty -e nvim %F
 Categories=Development
