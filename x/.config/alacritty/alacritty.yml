@@ -280,7 +280,7 @@ theme_gruvbox_dark: &theme_gruvbox_dark
 
 # Colors (Tomorrow Night Bright)
 colors:
-  *theme_gruvbox_dark
+  *theme_gruvbox_light
 
 # Visual Bell
 #
