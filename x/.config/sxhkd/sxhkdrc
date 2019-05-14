@@ -20,22 +20,14 @@ super + {o,e,Return}
 XF86Audio{LowerVolume,RaiseVolume}
     vol.sh {down,up}
 
-# XF86AudioPrev
-#     xdotool key --delay 18 --clearmodifiers Left
-# XF86AudioNext
-#     xdotool key --delay 18 --clearmodifiers Right
-# XF86AudioPlay
-#     xdotool key --delay 18 --clearmodifiers Space
-# XF86AudioLowerVolume
-#     xdotool key --delay 18 --clearmodifiers Down &
-# XF86AudioRaiseVolume
-#     xdotool key --delay 18 --clearmodifiers Up &
-
 XF86AudioMute
     vol.sh mute
 
 XF86MonBrightness{Up,Down}
     light {-A,-U} 10
+
+super + shift + l
+    lock.sh
 
 # make sxhkd reload its configuration files:
 super + Escape
