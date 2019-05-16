@@ -2,7 +2,6 @@
 
 exec xidlehook \
   --not-when-fullscreen \
-  --not-when-audio \
   --timer normal 60 \
     'light -S 1' \
     'light -S 50' \
