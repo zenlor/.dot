@@ -10,7 +10,7 @@ export DOTFILES_DATA="$XDG_DATA_HOME/dotfiles"
 export DOTFILES_ASSETS="$DOTFILES/assets"
 
 for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME" "$DOTFILES_DATA"; do
-  [[ -d $dir ]] || mkdir -p "$dir"
+    [ -d $dir ] || mkdir -p "$dir"
 done
 
 ## source osx path_helper
@@ -21,7 +21,7 @@ fi
 ## source system profile
 if [ -d /etc/profile.d ]; then
     for i in /etc/profile.d/*.sh; do
-        source $i
+        . $i
     done
 fi
 
@@ -43,21 +43,21 @@ fi
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
 
 ## Library
-function _is_interactive { [ $- == *i* ]; }
+_is_interactive() { [ $- == *i* ]; }
 
-function _is_running {
+_is_running() {
   for prc in "$@"; do
     pgrep -x "$prc" >/dev/null || return 1
   done
 }
 
-function _source {
+_source() {
   [ -f $1 ] && source "$1"
 }
 
 ## TDM
-[[ "$(tty)" == '/dev/tty1' ]] &&\
-    [[ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ]] &&\
+[ "$(tty)" = '/dev/tty1' ] &&\
+    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
     exec tdm
 
 ## GPG tty fix
