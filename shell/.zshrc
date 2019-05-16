@@ -34,6 +34,9 @@
     # Deer
     zplug "vifon/deer", use:deer
 
+    # git-extras
+    zplug "tj/git-extras", as:command, use:"bin/git-*"
+
     # Install plugins if there are plugins that have not been installed
     if ! zplug check --verbose; then
         zplug install
