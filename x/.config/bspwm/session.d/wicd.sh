@@ -1,5 +1,3 @@
 #!/bin/sh
-
-[ ! "$HOSTNAME" = "red" ] && exit 0
-
-exec wicd-client --tray
+command -v wicd-client >/dev/null 2>&1 \
+    && exec wicd-client --tray
