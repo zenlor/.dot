@@ -1,12 +1,18 @@
-#!/bin/sh
+#!/bin/sh -e
 
 LIBFOLDER=$HOME/lib/src
 REPO=$1
-TARGET=`echo $1 | sed 's|^.*://||' | sed 's|\.git$||' | sed 's|git@||' | sed 's|:|/|'`
+TARGET=$(echo "$1" | sed 's|^.*://||' | sed 's|\.git$||' | sed 's|git@||' | sed 's|:|/|')
+
+if [ -d "${LIBFOLDER}/${TARGET}" ]; then
+    printf "target folder already exists.\n %s/%s" \
+        "${LIBFOLDER}" "${TARGET}"
+    exit 1
+fi
 
 shift
 
 echo "cloning ${REPO} to ${LIBFOLDER}/${TARGET} ..."
-git clone $REPO $LIBFOLDER/$TARGET $@
+git clone "${REPO}" "${LIBFOLDER}/${TARGET}" "$@"
 
-printf "\n${LIBFOLDER}/${TARGET}\n"
+printf "\n%s/%s\n" "${LIBFOLDER}" "${TARGET}"
