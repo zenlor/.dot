@@ -66,8 +66,8 @@ tray-padding = 0
 tray-transparent = false
 tray-scale = 1.0
 
-font-0 = "FontAwesome:size=10;0"
-font-1 = "Iosevka Term Heavy:size=10;0"
+font-0 = "FontAwesome:size=11;0"
+font-1 = "Iosevka:size=11;0"
 
 [module/xwindow]
 ;label-font = 3
