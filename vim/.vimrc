@@ -82,7 +82,7 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'bakpakin/fennel.vim'
 " }}}
 
-" theme{{{
+" theme {{{
     Plug 'morhetz/gruvbox'
 " }}}
 
