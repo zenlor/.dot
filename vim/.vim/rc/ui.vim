@@ -4,7 +4,7 @@ set showcmd          " Show command issued
 set fillchars=vert:\│
 
 set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set listchars=nbsp:☠,tab:│\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
