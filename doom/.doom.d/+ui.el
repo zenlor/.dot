@@ -17,5 +17,5 @@
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 14))
 (setq doom-variable-font (font-spec :family "Iosevka" :size 14))
-(setq doom-unicode-font (font-spec :family "DejaVu Sans Mono" :size 14))
+(setq doom-unicode-font (font-spec :family "Iosevka" :size 14))
 (setq doom-big-font (font-spec :family "Iosevka" :size 16))
