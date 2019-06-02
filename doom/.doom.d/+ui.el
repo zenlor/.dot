@@ -15,7 +15,10 @@
 (setq doom-theme 'gruvbox-light-soft)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka" :size 14))
-(setq doom-variable-font (font-spec :family "Iosevka" :size 14))
-(setq doom-unicode-font (font-spec :family "Iosevka" :size 14))
-(setq doom-big-font (font-spec :family "Iosevka" :size 16))
+(let* ((my-font "Operator Mono")
+       (font-size 16)
+       (font-size-big (+ 4 font-size)))
+  (setq doom-font           (font-spec :family my-font :size font-size))
+  (setq doom-variable-font  (font-spec :family my-font :size font-size))
+  (setq doom-unicode-font   (font-spec :family my-font :size font-size))
+  (setq doom-big-font       (font-spec :family my-font :size font-size-big)))
