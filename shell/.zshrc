@@ -31,9 +31,6 @@
     # forget me not
     zplug "larkery/zsh-histdb"
 
-    # Deer
-    zplug "vifon/deer", use:deer
-
     # git-extras
     zplug "tj/git-extras", as:command, use:"bin/git-*"
 
