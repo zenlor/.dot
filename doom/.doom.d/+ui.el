@@ -15,7 +15,7 @@
 (setq doom-theme 'gruvbox-light-soft)
 
 ;; Fonts
-(let* ((my-font "Operator Mono")
+(let* ((my-font "Operator Mono Book")
        (font-size 16)
        (font-size-big (+ 4 font-size)))
   (setq doom-font           (font-spec :family my-font :size font-size))
