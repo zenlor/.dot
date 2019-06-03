@@ -4,6 +4,6 @@
 (setq +org-present-text-scale 5)
 
 ;; Org
-(setq +org-dir (expand-file-name "~/Documents/Notes/"))
-(setq deft-directory "~/Documents/Notes/")
-
+(let ((org-dir (expand-file-name "~/Documents/Notes/")))
+  (setq org-directory org-dir)
+  (setq deft-directory org-dir))
