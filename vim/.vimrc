@@ -44,19 +44,8 @@ call plug#begin('~/.cache/vim/bundle')
 " }}}
 
 " Omnicompletion {{{
-    " Deoplete
-    if has('nvim')
-        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    else
-        Plug 'Shougo/deoplete.nvim'
-        Plug 'roxma/nvim-yarp'
-        Plug 'roxma/vim-hug-neovim-rpc'
-    endif
-    let g:deoplete#enable_at_startup = 1
-
-    if has('nvim')
-        Plug 'Shougo/deoplete-lsp'
-    endif
+    " coc, Conqueror Of Completion (lsp plugin)
+    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
 " }}}
 
 " lang {{{
@@ -65,6 +54,9 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'guns/vim-clojure-static',         { 'for': 'clojure' }
     Plug 'guns/vim-clojure-highlight',      { 'for': 'clojure' }
     Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
+
+    " Janet
+    Plug 'janet-lang/janet.vim'
 
     " Javascript
     Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
