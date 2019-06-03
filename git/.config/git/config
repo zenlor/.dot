@@ -20,7 +20,7 @@
 	email = lorenzo@frenzart.com
 	signingkey = 8DA5DA1F
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = ~/.config/git/ignore
 	editor = nvim
 	autocrlf = input
 [merge]
