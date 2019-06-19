@@ -32,8 +32,8 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'junegunn/fzf', { 'do': './install --all' }
     Plug 'junegunn/fzf.vim'
 
-    " rooter
-    Plug 'airblade/vim-rooter'
+    " project root finder
+    Plug 'mattn/vim-findroot'
 " }}}
 
 " Vim visuals {{{
@@ -41,19 +41,24 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'junegunn/rainbow_parentheses.vim'
     " Git
     Plug 'airblade/vim-gitgutter'
+    " match parentheses
+    Plug 'andymass/vim-matchup'
 " }}}
 
 " Omnicompletion {{{
-    " coc, Conqueror Of Completion (lsp plugin)
-    Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+    if has('nvim')
+        Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    else
+        Plug 'Shougo/deoplete.nvim'
+        Plug 'roxma/nvim-yarp'
+        Plug 'roxma/vim-hug-neovim-rpc'
+    endif
+    let g:deoplete#enable_at_startup = 1
 " }}}
 
 " lang {{{
     " Clojure
     Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
-    Plug 'guns/vim-clojure-static',         { 'for': 'clojure' }
-    Plug 'guns/vim-clojure-highlight',      { 'for': 'clojure' }
-    Plug 'bhurlow/vim-parinfer',            { 'for': ['clojure', 'scheme', 'lisp'] }
 
     " Janet
     Plug 'janet-lang/janet.vim'
@@ -72,6 +77,12 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Fennel
     Plug 'bakpakin/fennel.vim'
+" }}}
+
+
+" lisps {{{
+   Plug 'eraserhd/parinfer-rust',          { 'for': ['clojure', 'scheme', 'lisp', 'janet', 'fennel'],
+                                           \ 'do': 'cargo build --release' }
 " }}}
 
 " theme {{{
