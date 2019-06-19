@@ -25,7 +25,7 @@
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE tags
-       indent-guides     ; highlighted indent columns
+       ;;indent-guides     ; highlighted indent columns
        modeline          ; snazzy, Atom-inspired modeline, plus API
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
@@ -55,16 +55,16 @@
 
        :emacs
        (dired            ; making dired pretty [functional]
-       +ranger         ; bringing the goodness of ranger to dired
-       +icons          ; colorful icons for dired-mode
-        )
+        +ranger         ; bringing the goodness of ranger to dired
+        +icons)          ; colorful icons for dired-mode
+
        electric          ; smarter, keyword-based electric-indent
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
        eshell            ; a consistent, cross-platform shell (WIP)
        ;;term              ; terminals in Emacs
-       vterm             ; another terminals in Emacs
+       ;;vterm             ; another terminals in Emacs
 
        :tools
        ;;ansible
@@ -118,8 +118,8 @@
        ;;idris             ;
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
        (java +lsp)
-       ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
-       (javascript +lsp)
+       javascript        ; all(hope(abandon(ye(who(enter(here))))))
+       ;;(javascript +lsp)
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        (kotlin +lsp)

@@ -12,13 +12,12 @@
      :map helm-find-files-map "<DEL>" #'helm-find-files-up-one-level)))
 
 ;; theme
-(setq doom-theme 'gruvbox-light-soft)
+(setq doom-theme 'doom-tomorrow-day)
 
 ;; Fonts
-(let* ((my-font "Operator Mono Book")
-       (font-size 16)
-       (font-size-big (+ 4 font-size)))
+(let* ((my-font   "Fira Code")       ;"Operator Mono Book")
+       (font-size 15))
   (setq doom-font           (font-spec :family my-font :size font-size))
   (setq doom-variable-font  (font-spec :family my-font :size font-size))
   (setq doom-unicode-font   (font-spec :family my-font :size font-size))
-  (setq doom-big-font       (font-spec :family my-font :size font-size-big)))
+  (setq doom-big-font       (font-spec :family my-font :size (+ 8 font-size))))

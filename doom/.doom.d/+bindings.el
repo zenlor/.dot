@@ -14,8 +14,6 @@
 
       (:leader
         (:desc "Yank" :n "y" #'counsel-yank-pop)
-        (:desc "buffer" :prefix "b"
-          :desc "Delete buffer" :n "d" #'doom/kill-this-buffer)
         (:prefix "o"
           :desc "mu4e" :n "e" #'mu4e))
 
