@@ -10,8 +10,8 @@ set textwidth=81
 " Colors
 set termguicolors
 set t_Co=256
-colorscheme gruvbox
 set background=light
+colorscheme nofrils-light
 
 " visual bell
 set noerrorbells visualbell t_vb=
