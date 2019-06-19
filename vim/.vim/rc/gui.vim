@@ -84,7 +84,9 @@ if has('gui_running')
         set novisualbell
 
         " For gvim
-        Guifont Iosevka Term:h13
+        if has('nvim')
+            Guifont Fira Mono:h13
+        endif
 
         " Commenting using Ctrl+/
         map <C-/> gcc
@@ -98,9 +100,9 @@ if has('gui_running')
     if has('win32')
         set guifont=Consolas:h12   " Win32.
     elseif has('gui_macvim')
-        set guifont=Iosevka:h14     " OSX.
+        set guifont=Fira\ Mono:h14     " OSX.
     else
-        set guifont=Iosevka\ 13  " Linux.
+        set guifont=Fira\ Mono\ 13  " Linux.
     endif
 endif
 
