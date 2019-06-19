@@ -1,8 +1,4 @@
 #!/bin/sh
 source `dirname $0`_lib
 
-if [ $HOSTNAME = "red" ];then
-    exit 0
-fi
-
 exec conky -c $HOME/.config/bspwm/conkyrc -d

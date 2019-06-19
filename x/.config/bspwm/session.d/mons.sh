@@ -1,3 +1,8 @@
 #!/bin/sh
 # mons daemon
-[ $HOSTNAME = "red" ] && exec mons -a || exit 0
+if xrandr|grep eDP-1
+then
+    exec mons -a
+fi
+
+exit 0
