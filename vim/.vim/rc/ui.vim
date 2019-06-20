@@ -11,7 +11,7 @@ set textwidth=81
 set termguicolors
 set t_Co=256
 set background=light
-colorscheme lightning
+colorscheme cosmic_latte
 
 " visual bell
 set noerrorbells visualbell t_vb=

@@ -86,7 +86,8 @@ call plug#begin('~/.cache/vim/bundle')
 " }}}
 
 " theme {{{
-    Plug 'morhetz/gruvbox'
+    "Plug 'morhetz/gruvbox'
+    Plug 'nightsense/cosmic_latte'
 " }}}
 
 call plug#end()
