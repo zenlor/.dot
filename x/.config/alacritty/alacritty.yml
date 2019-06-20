@@ -315,9 +315,52 @@ theme_gruvbox_dark: &theme_gruvbox_dark
     cyan:    '0x8ec07c'
     white:   '0xebdbb2'
 
+theme_cosmic_latte_light: &theme_cosmic_latte_light
+  #define black_normal #fff8e7
+  #define red___normal #c44756
+  #define green_normal #1f8332
+  #define gold__normal #916d03
+  #define blue__normal #0075c9
+  #define mgnta_normal #a154ae
+  #define cyan__normal #007f8a
+  #define white_normal #485a62
+  #define black_bright #63757e
+  #define red___bright #c44756
+  #define green_bright #1f8332
+  #define gold__bright #916d03
+  #define blue__bright #0075c9
+  #define mgnta_bright #a154ae
+  #define cyan__bright #007f8a
+  #define white_bright #364850
+  primary:
+    background: '0xfff8e7'
+    foreground: '0x485a62'
+
+  # Normal colors
+  normal:
+    black:   '0xfff8e7'
+    red:     '0xc44756'
+    green:   '0x1f8332'
+    yellow:  '0x916d03'
+    blue:    '0x0075c9'
+    magenta: '0xa154ae'
+    cyan:    '0x007f8a'
+    white:   '0x485a62'
+
+  # Bright colors
+  bright:
+    black:   '0x63757e'
+    red:     '0xc44756'
+    green:   '0x1f8332'
+    yellow:  '0x916d03'
+    blue:    '0x0075c9'
+    magenta: '0xa154ae'
+    cyan:    '0x007f8a'
+    white:   '0x364850'
+
 # Colors (Tomorrow Night Bright)
 colors:
-  *theme_pencil_light
+  *theme_cosmic_latte_light
 
 # Visual Bell
 #
