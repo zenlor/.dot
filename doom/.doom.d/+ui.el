@@ -11,8 +11,11 @@
     (map!
      :map helm-find-files-map "<DEL>" #'helm-find-files-up-one-level)))
 
+
+(add-to-list 'load-path "~/.doom.d/themes")
+
 ;; theme
-(setq doom-theme 'doom-tomorrow-day)
+(setq doom-theme 'doom-cosmic-latte-light)
 
 ;; Fonts
 (let* ((my-font   "Fira Code")       ;"Operator Mono Book")
