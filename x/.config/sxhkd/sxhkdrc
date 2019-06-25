@@ -15,7 +15,7 @@ super + @space
     rofi -show drun
 
 super + {o,e,Return}
-    {qutebrowser,thunar,alacritty} # web browser, file browser, terminal
+    {qutebrowser,thunar,sensible-terminal} # web browser, file browser, terminal
 
 XF86Audio{LowerVolume,RaiseVolume}
     vol.sh {down,up}
