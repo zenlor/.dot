@@ -35,7 +35,7 @@ determine the exact padding."
   ;; name        default   256       16
   ((bg         '("#FDF6E3" nil       nil            ))
    (bg-alt     '("#FFFBEA" nil       nil            ))
-   (base0      '("#FFFBF0" "black"   "black"        ))
+   (base0      '("#FFF8E7" "black"   "black"        ))
    (base1      '("#FCF8ED" "#1e1e1e" "brightblack"  ))
    (base2      '("#FCF7E8" "#2e2e2e" "brightblack"  ))
    (base3      '("#F2E6CE" "#262626" "brightblack"  ))
@@ -48,16 +48,16 @@ determine the exact padding."
    (fg-alt     '("#7B8787" "#bfbfbf" "brightwhite"  ))
 
    (grey       base4)
-   (red        '("#dc322f" "#ff6655" "red"          ))
+   (red        '("#ff0056" "#ff0055" "red"          ))
    (orange     '("#cb4b16" "#dd8844" "brightred"    ))
    (green      '("#859900" "#99bb66" "green"        ))
    (teal       '("#35a69c" "#33aa99" "brightgreen"  ))
-   (yellow     '("#b58900" "#ECBE7B" "yellow"       ))
-   (blue       '("#268bd2" "#51afef" "brightblue"   ))
+   (yellow     '("#916d03" "#ECBE7B" "yellow"       ))
+   (blue       '("#0075c9" "#00afef" "brightblue"   ))
    (dark-blue  '("#E1E3E5" "#2257A0" "blue"         ))
-   (magenta    '("#d33682" "#c678dd" "magenta"      ))
+   (magenta    '("#a154ae" "#c678dd" "magenta"      ))
    (violet     '("#6c71c4" "#a9a1e1" "brightmagenta"))
-   (cyan       '("#2aa198" "#46D9FF" "brightcyan"   ))
+   (cyan       '("#007f8a" "#46D9FF" "brightcyan"   ))
    (dark-cyan  '("#D7DDD7" "#5699AF" "cyan"         ))
 
    ;; face categories -- required for all themes
