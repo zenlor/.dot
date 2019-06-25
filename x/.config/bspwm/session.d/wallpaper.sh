@@ -2,4 +2,4 @@
 #
 # Wallpaper set
 #
-exec feh --bg-tile $HOME/.config/wallpapers/pattern.jpg
+exec feh --bg-tile $HOME/.config/wallpapers/endless-shapes.jpg
