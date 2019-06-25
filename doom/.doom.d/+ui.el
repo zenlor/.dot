@@ -18,7 +18,7 @@
 (setq doom-theme 'doom-cosmic-latte-light)
 
 ;; Fonts
-(let* ((my-font   "Fira Code")       ;"Operator Mono Book")
+(let* ((my-font   "Iosevka")
        (font-size 15))
   (setq doom-font           (font-spec :family my-font :size font-size))
   (setq doom-variable-font  (font-spec :family my-font :size font-size))
