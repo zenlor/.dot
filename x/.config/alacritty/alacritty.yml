@@ -203,6 +203,32 @@ theme_tomorrow_night: &theme_tomorrow_night
     cyan:    '0x66cccc'
     white:   '0xdddddd'
 
+theme_iosvkem_light: &theme_iosvkem_light
+ # Default Colors
+ primary:
+   background: '0x1b1d1e'
+   foreground: '0xdddddd'
+ # Normal colors
+ normal:
+   black:   '0x212121'
+   red:     '0xd02b61'
+   green:   '0x60aa00'
+   yellow:  '0xd08928'
+   blue:    '0x57aadd'
+   magenta: '0xb77fdb'
+   cyan:    '0x5699AF'
+   white:   '0xdddddd'
+ # Bright colors
+ bright:
+   black:   '0x212121'
+   red:     '0xda8548'
+   green:   '0x4db5bd'
+   yellow:  '0xbbfc20'
+   blue:    '0x6c9ef8'
+   magenta: '0xa9a1e1'
+   cyan:    '0x00aa80'
+   white:   '0xDFDFDF'
+
 theme_pencil_light: &theme_pencil_light
  # Default Colors
  primary:
@@ -360,7 +386,7 @@ theme_cosmic_latte_light: &theme_cosmic_latte_light
 
 # Colors (Tomorrow Night Bright)
 colors:
-  *theme_cosmic_latte_light
+  *theme_iosvkem_light
 
 # Visual Bell
 #

@@ -15,7 +15,8 @@
 (add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-(setq doom-theme 'doom-cosmic-latte-light)
+;(setq doom-theme 'doom-cosmic-latte-light)
+(setq doom-theme 'doom-Iosvkem)
 
 ;; Fonts
 (let* ((my-font   "Iosevka")
