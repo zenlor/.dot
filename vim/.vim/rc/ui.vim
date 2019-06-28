@@ -11,7 +11,7 @@ set textwidth=81
 set termguicolors
 set t_Co=256
 set background=dark
-colorscheme slate
+colorscheme nofrils-dark
 
 " visual bell
 set noerrorbells visualbell t_vb=
