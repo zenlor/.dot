@@ -386,7 +386,7 @@ theme_cosmic_latte_light: &theme_cosmic_latte_light
 
 # Colors (Tomorrow Night Bright)
 colors:
-  *theme_iosvkem_light
+  *theme_pencil_light
 
 # Visual Bell
 #

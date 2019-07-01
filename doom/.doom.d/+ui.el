@@ -16,7 +16,7 @@
 
 ;; theme
 ;(setq doom-theme 'doom-cosmic-latte-light)
-(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-one-light)
 
 ;; Fonts
 (let* ((my-font   "Iosevka")
