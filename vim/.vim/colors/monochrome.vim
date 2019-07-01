@@ -122,7 +122,7 @@ call s:hi('String', s:sblue)
 call s:hi('Comment', s:cgray, s:default_bg, s:comment_attr)
 call s:hi('Constant')
 call s:hi('Type', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
-call s:hi('Function', ( &background == "dark"? s:white : s:black ))
+call s:hi('Function', ( &background == "dark"? s:white : s:black ), s:default_bg, s:italic)
 call s:hi('Identifier')
 call s:hi('Special')
 call s:hi('MatchParen', s:black, s:lgray)
@@ -200,7 +200,7 @@ call s:hi('pythonEscape', s:sblue)
 " --- JavaScript ---------------------------------------------------------------
 "
 
-call s:hi('javaScriptFunction', s:white, s:default_bg, s:bold)
+call s:hi('javaScriptFunction', s:white, s:default_bg, s:italic)
 
 
 "
