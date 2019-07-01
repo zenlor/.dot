@@ -76,6 +76,9 @@ exec swayidle -w \
     # Exit sway (logs you out of your Wayland session)
     #bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
     bindsym $mod+Shift+e exec $fzf_launcher ~/lib/bin/sway-exit
+
+    # temporary lock the session
+    bindsym $mod+Shift+y exec swaylock -f -c 000000
 #
 # Moving around:
 #
@@ -84,22 +87,12 @@ exec swayidle -w \
     bindsym $mod+$down focus down
     bindsym $mod+$up focus up
     bindsym $mod+$right focus right
-    # Or use $mod+[up|down|left|right]
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
     bindsym $mod+Shift+$left move left
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
-    # Ditto, with arrow keys
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
 #
 # Workspaces:
 #
@@ -200,8 +193,8 @@ bindsym $mod+r mode "resize"
 #THEME#
 #######
 
-gaps inner 6
-gaps outer 0
+# gaps inner 6
+# gaps outer 0
 
 for_window [class="^.*"] border normal 0
 for_window [class=".*"] title_format " >_ %title "
