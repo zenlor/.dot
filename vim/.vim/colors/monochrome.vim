@@ -25,6 +25,7 @@ let s:llgray = ['#f1f1f1', 'NONE']
 
 let s:italic    = 'italic'
 let s:bold      = 'bold'
+let s:bolditalic= 'bold,italic'
 let s:underline = 'underline'
 let s:none      = 'NONE'
 
@@ -75,7 +76,7 @@ endfunction
 call s:hi('Normal')
 call s:hi('Cursor', s:black, s:lgray)
 call s:hi('CursorLine', s:default_lst, s:bgray, s:none)
-call s:hi('CursorLineNr', s:white, s:default_bg, s:bold)
+call s:hi('CursorLineNr', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
 call s:hi('ColorColumn', s:default_fg, s:bgray)
 call s:hi('Search', s:white, s:sblue)
 call s:hi('Visual', s:white, s:sblue)
@@ -95,7 +96,7 @@ call s:hi('LineNr', s:dgray)
 call s:hi('SpecialKey', s:sblue, s:default_bg, s:bold)
 
 " File browsers.
-call s:hi('Directory', s:white, s:default_bg, s:bold)
+call s:hi('Directory', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
 
 " Help.
 call s:hi('helpSpecial')
@@ -107,7 +108,7 @@ call s:hi('Pmenu', s:white, s:sblue)
 call s:hi('PmenuSel', s:sblue, s:white)
 
 " Notes.
-call s:hi('Todo', s:black, s:yellow, s:bold)
+call s:hi('Todo', s:black, s:yellow, s:bolditalic)
 
 " Signs.
 call s:hi('SignColumn')
@@ -200,7 +201,7 @@ call s:hi('pythonEscape', s:sblue)
 " --- JavaScript ---------------------------------------------------------------
 "
 
-call s:hi('javaScriptFunction', s:white, s:default_bg, s:italic)
+call s:hi('javaScriptFunction', ( &background == "dark"? s:white : s:black ), s:default_bg, s:italic)
 
 
 "
@@ -220,9 +221,9 @@ call s:hi('diffRemoved', s:white, s:red)
 " --- Markdown -----------------------------------------------------------------
 "
 
-call s:hi('Title', s:white, s:default_bg, s:bold)
-call s:hi('markdownHeadingDelimiter', s:white, s:default_bg, s:bold)
-call s:hi('markdownHeadingRule', s:white, s:default_bg, s:bold)
+call s:hi('Title', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
+call s:hi('markdownHeadingDelimiter', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
+call s:hi('markdownHeadingRule', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
 call s:hi('markdownLinkText', s:sblue, s:default_bg, s:underline)
 
 
@@ -233,7 +234,7 @@ call s:hi('markdownLinkText', s:sblue, s:default_bg, s:underline)
 call s:hi('gitcommitComment', s:default_fg, s:default_bg, s:none)
 call s:hi('gitcommitOnBranch', s:default_fg, s:default_bg, s:none)
 call s:hi('gitcommitBranch', s:sblue, s:default_bg, s:none)
-call s:hi('gitcommitHeader', s:white, s:default_bg, s:bold)
+call s:hi('gitcommitHeader', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
 call s:hi('gitcommitSelected', s:default_fg, s:default_bg, s:none)
 call s:hi('gitcommitDiscarded', s:default_fg, s:default_bg, s:none)
 call s:hi('gitcommitSelectedType', s:default_fg, s:default_bg, s:none)
