@@ -211,42 +211,30 @@ set $aqua   #689d68
 set $gray   #a89984
 set $darkgray #1d2021
 
+# Colors
 #
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-bar {
-    colors {
-        background $bg
-        statusline $yellow
-        separator $red
-
-        # colour of         border      background  text
-        focused_workspace   #2f343f     #bf616a     #d8dee8
-        active_workspace    #2f343f     #2f343f     #d8dee8
-        inactive_workspace  #2f343f     #2f343f     #d8dee8
-        urgent_workspace    #2f343f     #ebcb8b     #2f343f
-    }
-
-    status_command i3blocks
-    #status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-    position top
-}
-
 # class                 border|     backgr|     text|       indicator|  child_border
 client.focused          $gray       $bg         $yellow     $darkgray   $darkgray
 client.focused_inactive $darkgray   $darkgray   $gray       $darkgray   $darkgray
 client.unfocused        $darkgray   $darkgray   $yellow     $darkgray   $darkgray
 client.urgent           $red        $red        $white      $red        $red
 
+# Font
 #
-# font
 font pango:Misc Tamsyn 8
 
 seat "*" {
     hide_cursor 10000
 }
 
-exec mako --anchor bottom-right > /tmp/mako.log 2>&1
+# Daemons
+# TODO: fix this shi*
+# - bar
+exec waybar > /tmp/waybar-$USER.log 2>&1
+# - notification
+exec mako --anchor bottom-right > /tmp/mako-$USER.log 2>&1
+# - udiskie
+exec udiskie --no-automount --tray > /tmp/udiskie-$USER.log 2>&1
 
+# defaults
 include @sysconfdir@/sway/config.d/*
