@@ -39,10 +39,7 @@ endif
 let s:default_lst = []
 let s:default_str = ''
 
-if !exists("g:monochrome_italic_comments")
-  let g:monochrome_italic_comments = 0
-endif
-let s:comment_attr = g:monochrome_italic_comments ? s:italic : s:none
+let s:comment_attr = s:italic
 
 function! s:hi(...)
     let group = a:1
