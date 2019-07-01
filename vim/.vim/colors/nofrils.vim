@@ -1,7 +1,5 @@
-" Name: No Frils Dark Colorscheme
-" Author: robertmeta (on Github)
-" URL: https://github.com/robertmeta/nofrils
-" (see this url for latest release & screenshots)
+" Name: No Frils Dark+Light
+" Author: zenlor (github), based on the work of robertmeta
 " License: OSI approved MIT license
 
 hi clear
@@ -9,7 +7,7 @@ if exists("syntax_on")
     syntax reset
 endif
 
-let g:colors_name = "nofrils-dark"
+let g:colors_name = "nofrils"
 
 if !exists("g:nofrils_strbackgrounds")
     let g:nofrils_strbackgrounds = 0
@@ -21,10 +19,19 @@ if !exists("g:nofrils_heavylinenumbers")
     let g:nofrils_heavylinenumbers = 0
 endif
 
-set background=dark
+let l:ctermfg=black
+let l:ctermbg=253
+let l:guifg=#010101
+let l:guibg=NONE
+
+if background is# "dark"
+    let l:guifg = #eeeeee
+    let l:ctermfg = NONE
+    let l:ctermbg = #eeeeee
+endif
 
 " Baseline
-hi Normal term=NONE cterm=NONE ctermfg=255 ctermbg=235 gui=NONE guifg=#eeeeee guibg=NONE
+hi Normal term=NONE cterm=NONE ctermfg=l:ctermfg ctermbg=l:ctermbg gui=NONE guifg=l:guifb guibg=l:guibg
 
 " Faded
 hi ColorColumn  term=NONE cterm=NONE ctermfg=NONE  ctermbg=236  gui=NONE   guifg=NONE    guibg=#303030

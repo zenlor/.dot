@@ -34,6 +34,9 @@ call plug#begin('~/.cache/vim/bundle')
 
     " project root finder
     Plug 'mattn/vim-findroot'
+
+    " align easily
+    Plug 'junegunn/vim-easy-align'
 " }}}
 
 " Vim visuals {{{
