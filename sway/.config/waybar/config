@@ -1,6 +1,7 @@
 // vim:ft=json
 
 {
+  "output": "eDP-1",
   "layer": "top",
   "position": "bottom",
 
