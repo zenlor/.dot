@@ -54,7 +54,7 @@ exec swayidle -w \
 ### Key bindings
 #
 # Basics:
-#
+# {{{
     # Start a terminal
     bindsym $mod+Return exec $term
 
@@ -80,9 +80,11 @@ exec swayidle -w \
 
     # temporary lock the session
     bindsym $mod+Shift+y exec swaylock -f -c 000000
+# }}}
+
 #
 # Moving around:
-#
+# {{{
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -94,9 +96,11 @@ exec swayidle -w \
     bindsym $mod+Shift+$down move down
     bindsym $mod+Shift+$up move up
     bindsym $mod+Shift+$right move right
+# }}}
+
 #
 # Workspaces:
-#
+# {{{
     # Switch to workspace
     bindsym $mod+1 workspace 1
     bindsym $mod+2 workspace 2
@@ -121,9 +125,11 @@ exec swayidle -w \
     bindsym $mod+Shift+0 move container to workspace 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+# }}}
+
 #
 # Layout stuff:
-#
+# {{{
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
@@ -146,9 +152,20 @@ exec swayidle -w \
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+# }}}
+#
+# Special Keys
+# {{{
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86MonBrightnessUp exec light -A 5
+    bindsym XF86MonBrightnessDown exec light -U 5
+# }}}
 #
 # Scratchpad:
-#
+# {{{
     # Sway has a "scratchpad", which is a bag of holding for windows.
     # You can send windows there and get them back later.
 
@@ -158,16 +175,18 @@ exec swayidle -w \
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+# }}}
 #
 # Screenshots/video recording
-#
+# {{{
 set $screenshot_file \"$HOME/Pictures/screenshots/$(date '+%Y-%m-%d_%H-%M-%S').png\"
 bindsym Print exec grim -s1 $screenshot_file
 bindsym Alt+Print exec (slurp | grim -g- -s1 $screenshot_file)
+# }}}
 
 #
 # Resizing containers:
-#
+# {{{
 mode "resize" {
     # left will shrink the containers width
     # right will grow the containers width
@@ -189,6 +208,7 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+# }}}
 
 #######
 #THEME#
