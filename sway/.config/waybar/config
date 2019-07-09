@@ -84,6 +84,8 @@
       ]
     },
     "scroll-step": 5,
+    "on-scroll-up": "pulseaudio-ctl up",
+    "on-scroll-down": "pulseaudio-ctl down",
     "on-click": "pamixer -t",
     "on-click-right": "pavucontrol"
   },
