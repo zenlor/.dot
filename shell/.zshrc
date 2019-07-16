@@ -221,5 +221,8 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 # local environment
 [ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local
 
+# ghq
+command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src"
+
 ### END
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
