@@ -11,6 +11,11 @@
           (getenv "HOME") "/.local/bin" ";"
           (getenv "PATH")))
 
+(add-to-list 'exec-path
+                (concat (getenv "HOME") "/.local/bin"))
+(add-to-list 'exec-path
+                (concat (getenv "HOME") "/lib/bin"))
+
 (load! "+bindings")
 ;(load! "+email")
 (load! "+org")
