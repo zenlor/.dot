@@ -38,6 +38,14 @@ if command -v cargo &> /dev/null; then
     export PATH="$PATH:$HOME/.cargo/bin"
 fi
 
+# Microsoft bugs: WSL
+if uname -r|grep -q Microsoft;then
+    export DISPLAY=:0
+    export LIBGL_ALWAYS_INDIRECT=1
+
+    # See https://github.com/Microsoft/BashOnWindows/issues/1887
+    unsetopt BG_NICE
+fi
 
 ## PATH
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
@@ -68,3 +76,5 @@ export LC_ALL=en_US.UTF-8
 ## Load local configuration
 [ -f "$HOME/.profile.local" ] && source "$HOME/.profile.local"
 # vim:ft=sh
+
+export PATH="$HOME/.cargo/bin:$PATH"

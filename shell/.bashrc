@@ -36,7 +36,7 @@ shopt -s histappend
 # the history will halt the shell prompt until it's finished.
 #PROMPT_COMMAND='history -a'
 
-# Change the window title of X terminals 
+# Change the window title of X terminals
 case ${TERM} in
 	[aEkx]term*|rxvt*|gnome*|konsole*|interix)
 		PS1='\[\033]0;\u@\h:\w\007\]'
@@ -107,5 +107,11 @@ done
 
 # Try to keep environment pollution down, EPA loves us.
 unset use_color sh
+
+# WSL
+if uname -r|grep -q Microsoft;then
+    export DISPLAY=:0
+    export LIBGL_ALWAYS_INDIRECT=1
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
