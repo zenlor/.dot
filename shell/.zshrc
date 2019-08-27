@@ -8,31 +8,28 @@
     source "${ZPLUG_HOME}/init.zsh"
 
     # vim things
-    zplug "laurenkt/zsh-vimto"
+    zplug "laurenkt/zsh-vimto", :lazy
 
     # completions
     zplug "zsh-users/zsh-completions"
 
     # autoenv
-    zplug "Tarrasch/zsh-autoenv"
+    # zplug "Tarrasch/zsh-autoenv", :lazy
 
     # z
-    zplug "rupa/z", use:"*.sh"
+    zplug "rupa/z", use:"*.sh", :lazy
 
     # colorful colors
-    zplug "chrissicool/zsh-256color"
+    #zplug "chrissicool/zsh-256color"
 
     # colorful command lines
-    zplug "zdharma/fast-syntax-highlighting"
+    # zplug "zdharma/fast-syntax-highlighting", :lazy
 
     # theme
     zplug "eendroroy/alien-minimal"
 
-    # forget me not
-    zplug "larkery/zsh-histdb"
-
     # git-extras
-    zplug "tj/git-extras", as:command, use:"bin/git-*"
+    # zplug "tj/git-extras", as:command, use:"bin/git-*", :lazy
 
     # Install plugins if there are plugins that have not been installed
     if ! zplug check --verbose; then
