@@ -1,4 +1,3 @@
-set enc=utf-8
 set number           " Line numbers
 set showcmd          " Show command issued
 set fillchars=vert:\│
@@ -10,7 +9,7 @@ set textwidth=81
 " Colors
 set termguicolors
 set t_Co=256
-set background=light
+set background=dark
 colorscheme monochrome
 
 " visual bell

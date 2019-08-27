@@ -3,13 +3,6 @@
 """"""""""""""""""""""""""""""""""""""""
 syntax on
 
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-
-set bomb
-set binary
-
 " Swap files, history & persistence {{{
     " No backup (that's what git is for!) and swapfiles are annoying
     set nobackup
