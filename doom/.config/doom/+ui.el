@@ -19,7 +19,7 @@
 (setq doom-theme 'doom-one-light)
 
 ;; Fonts
-(let* ((my-font   "Fira Code")
+(let* ((my-font   "Luculent")
        (font-size 15))
   (setq doom-font           (font-spec :family my-font :size font-size))
   (setq doom-variable-font  (font-spec :family my-font :size font-size))

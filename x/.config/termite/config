@@ -2,7 +2,7 @@
 allow_bold = true
 audible_bell = false
 dynamic_title = true
-font = Fira Mono 13
+font = Luculent 14
 
 
 [colors]
