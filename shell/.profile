@@ -25,14 +25,14 @@ if [ -d /etc/profile.d ]; then
     done
 fi
 
-# Set GOPATH for Go
+# go: Set GOPATH for Go
 if command -v go &> /dev/null; then
     [ -d "$HOME/lib" ] || mkdir "$HOME/lib"
     export GOPATH="$HOME/lib"
     export PATH="$PATH:$GOPATH/bin"
 fi
 
-# Cargo/Rust PATH
+# rust/cargo: Cargo/Rust PATH
 if command -v cargo &> /dev/null; then
     [ -d "$HOME/.cargo" ] || mkdir -p "$HOME/.cargo/bin"
     export PATH="$PATH:$HOME/.cargo/bin"
@@ -45,6 +45,12 @@ if uname -r|grep -q Microsoft;then
 
     # See https://github.com/Microsoft/BashOnWindows/issues/1887
     unsetopt BG_NICE
+fi
+
+# lua: luarocks PATH
+if command -v luarocks &> /dev/null; then
+    [ -d "$HOME/.luarocks/bin" ] || mkdir -p "$HOME/.luarocks/bin"
+    export PATH="$PATH:$HOME/.luarocks/bin"
 fi
 
 ## PATH
