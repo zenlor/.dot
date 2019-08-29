@@ -20,7 +20,7 @@
 
 ;; Fonts
 (let* ((my-font   "Luculent")
-       (font-size 15))
+       (font-size 18)) ;; HI-DPi screens!! dammit
   (setq doom-font           (font-spec :family my-font :size font-size))
   (setq doom-variable-font  (font-spec :family my-font :size font-size))
   (setq doom-unicode-font   (font-spec :family my-font :size font-size))
