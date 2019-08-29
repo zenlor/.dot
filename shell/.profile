@@ -80,7 +80,10 @@ export GPG_TTY=$(tty)
 export LC_ALL=en_US.UTF-8
 
 ## Load local configuration
-[ -f "$HOME/.profile.local" ] && source "$HOME/.profile.local"
+[ -f "$HOME/.profile.local" ] && source "$HOME/.profile.local" || true
+
+# doom
+[ -f "$HOME/.emacs.d/bin/doom" ] && export PATH="$PATH:$HOME/.emacs.d/bin" || true
 # vim:ft=sh
 
 export PATH="$HOME/.cargo/bin:$PATH"
