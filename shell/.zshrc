@@ -1,43 +1,55 @@
-# zplug {{{
-    # Check if zgen is installed
-    if [[ ! -d "${ZPLUG_HOME}" ]]; then
-        git clone https://github.com/zplug/zplug.git "${ZPLUG_HOME}"
+# zplugin {{{
+    declare -A ZPLGM
+    ZPLGM[HOME_DIR]="$HOME/.cache/zplugin"
+
+    # Check if zplugin is installed
+    if [[ ! -d "${ZPLGM[HOME_DIR]}" ]]; then
+        git clone https://github.com/zdharma/zplugin.git "${ZPLGM[HOME_DIR]}/bin"
     fi
 
-    # load zgen
-    source "${ZPLUG_HOME}/init.zsh"
-
-    # vim things
-    zplug "laurenkt/zsh-vimto", :lazy
+    # load zplugin
+    source "${ZPLGM[HOME_DIR]}/bin/zplugin.zsh"
 
     # completions
-    zplug "zsh-users/zsh-completions"
+    zplugin load "zsh-users/zsh-completions"
 
-    # autoenv
-    # zplug "Tarrasch/zsh-autoenv", :lazy
-
-    # z
-    zplug "rupa/z", use:"*.sh", :lazy
-
-    # colorful colors
-    #zplug "chrissicool/zsh-256color"
+    # vim things
+    zplugin light "laurenkt/zsh-vimto"
 
     # colorful command lines
-    # zplug "zdharma/fast-syntax-highlighting", :lazy
+    zplugin light "zdharma/fast-syntax-highlighting"
 
-    # theme
-    zplug "eendroroy/alien-minimal"
+    # autoenv
+    zplugin light "Tarrasch/zsh-autoenv"
+
+    # FZF
+    zplugin ice from"gh-r" as"program"
+    zplugin load "junegunn/fzf-bin"
+
+    zplugin ice as"completion"
+    zplugin snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
+    zplugin snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 
     # git-extras
     # zplug "tj/git-extras", as:command, use:"bin/git-*", :lazy
+    zplugin ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+    zplugin light tj/git-extras
 
-    # Install plugins if there are plugins that have not been installed
-    if ! zplug check --verbose; then
-        zplug install
-    fi
+    # rupa/z
+    zplugin snippet https://github.com/rupa/z/blob/master/z.sh
 
-    # Then, source plugins and add commands to $PATH
-    zplug load
+    #
+    ## THEME
+    #
+    # colorful colors
+    zplugin light "chrissicool/zsh-256color"
+
+    # alien minimal theme
+    #zplugin load "eendroroy/alien-minimal"
+    # geometry theme
+    #zplugin ice wait"0" lucid atload"prompt_geometry_render"
+    zplugin light geometry-zsh/geometry
+
 # }}}
 
 # IN-Sane defaults {{{
@@ -166,10 +178,12 @@ fi
     alias egrep='egrep --color=auto'
 
     # Some more basic aliases
+    #
+    command -v exa &>/dev/null && alias ls=exa || true
     alias sl=ls
+    alias l=ls
     alias ll='ls -lh'
-    alias la='ls -lAh'
-    alias l='ls -lah'
+    alias la='ls -la'
 
     # Git
     alias git='noglob git'
@@ -216,10 +230,12 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 [ -x "/usr/libexec/path_helper" ] && eval `/usr/libexec/path_helper -s` || true
 
 # local environment
-[ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local
+[ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local || true
 
 # ghq
-command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src"
+command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
+
+# fzf
+
 
 ### END
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
