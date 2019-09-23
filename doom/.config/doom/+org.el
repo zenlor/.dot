@@ -1,5 +1,8 @@
 ;;; ~/.dot/doom/.doom.d/+org.el -*- lexical-binding: t; -*-
 
+(setq langtool-java-classpath
+      "/usr/share/languagetool:/usr/share/java/languagetool/*")
+
 ;; org-tree-slide font
 (setq +org-present-text-scale 5)
 

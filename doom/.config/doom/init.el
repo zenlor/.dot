@@ -133,9 +133,11 @@
        ;;ocaml             ; an objective camel
        (org              ; organize your plain life in plain text
         +dragndrop       ; file drag & drop support
+        +hugo
         +ipython         ; ipython support for babel
         +pandoc          ; pandoc integration into org's exporter
-        +present)        ; using Emacs for presentations
+        +present)         ; using Emacs for presentations
+
        ;;perl              ; write code no one else can comprehend
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
@@ -155,7 +157,7 @@
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
        ;;web               ; the tubes
-       ;;vala              ; GObjective-C
+       vala              ; GObjective-C
 
        :email
        ;;(mu4e +gmail)       ; WIP
@@ -177,7 +179,8 @@
        ;; private packages
        :private
        joker
-       hugo
+       janet
+       ;; hugo
 
        :config
        ;; For literate config users. This will tangle+compile a config.org
