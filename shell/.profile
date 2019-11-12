@@ -5,17 +5,13 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_BIN_HOME=$HOME/.local/bin
 
-export DOTFILES="$(cd $(dirname "${BASH_SOURCE:-${(%):-%x}}") && pwd -P)"
-export DOTFILES_DATA="$XDG_DATA_HOME/dotfiles"
-export DOTFILES_ASSETS="$DOTFILES/assets"
-
 for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME" "$DOTFILES_DATA"; do
-    [ -d $dir ] || mkdir -p "$dir"
+    [ -d "$dir" ] || mkdir -p "$dir"
 done
 
 ## source osx path_helper
 if [ -x /usr/libexec/path_helper ]; then
-    eval `/usr/libexec/path_helper -s`
+    eval $(/usr/libexec/path_helper -s)
 fi
 
 ## source system profile
@@ -87,3 +83,11 @@ export LC_ALL=en_US.UTF-8
 # vim:ft=sh
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# MacOSX pythong
+[ -d "$HOME/Library/Python/3.7/bin" ] && export PATH="$PATH:$HOME/Library/Python/3.7/bin" || true
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*

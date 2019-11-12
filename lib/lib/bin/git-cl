@@ -1,5 +1,10 @@
 #!/bin/sh -e
 
+if [ "" = "$1" ]; then
+    echo "git cl <repository>"
+    exit 1
+fi
+
 LIBFOLDER=$HOME/lib/src
 REPO=$1
 TARGET=$(echo "$1" | sed 's|^.*://||' | sed 's|\.git$||' | sed 's|git@||' | sed 's|:|/|')

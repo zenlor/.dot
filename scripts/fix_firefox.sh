@@ -1,10 +1,14 @@
 #!/bin/sh
 
-BASEDIR=$HOME/.mozilla/firefox
-PROFILE=`grep 'Path=' .mozilla/firefox/profiles.ini | head -n1 | sed 's/Path=//'`
+if uname -r|grep -q Linux;then
 
-# make chrome directory
-mkdir -p $BASEDIR/$PROFILE/chrome
-FILENAME=$BASEDIR/$PROFILE/chrome/userChrome.css
+    BASEDIR=$HOME/.mozilla/firefox
+    PROFILE=`grep 'Path=' .mozilla/firefox/profiles.ini | head -n1 | sed 's/Path=//'`
 
-echo '#contentAreaContextMenu { margin: 10px 0px 0px 10px; }' >>$FILENAME
+    # make chrome directory
+    mkdir -p $BASEDIR/$PROFILE/chrome
+    FILENAME=$BASEDIR/$PROFILE/chrome/userChrome.css
+
+    echo '#contentAreaContextMenu { margin: 10px 0px 0px 10px; }' >>$FILENAME
+
+fi

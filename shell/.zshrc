@@ -52,6 +52,14 @@
 
 # }}}
 
+# Completion {{{
+    for i in `ls $HOME/.zsh/completions`; do
+        source $HOME/.zsh/completions/$i
+    done
+
+    autoload -U compinit && compinit
+# }}}
+
 # IN-Sane defaults {{{
     # no c-s/c-q output freezing
     setopt noflowcontrol
@@ -156,15 +164,6 @@ if [ -x 'nvim' ]; then
     alias vim=nvim
 fi
 
-# Deer {{{
-    # enable deer
-    zle -N deer
-    # C-k
-    bindkey '\ek' deer
-    # height
-    zstyle ':deer:' height 35
-# }}}
-
 # Enable keychain
 if command -v keychain &> /dev/null; then
     eval `keychain --eval --quiet --agents ssh $SSH_AGENT_KEYS`
@@ -212,7 +211,7 @@ fi
     alias ipaddresses=ipaddresses
 
     # Pacman
-    alias pac=yay
+    command -v pacman &>/dev/null && alias pac=yay
 
     # htop
     alias htopu="htop -u $USER"
@@ -236,6 +235,6 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
 
 # fzf
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ### END
