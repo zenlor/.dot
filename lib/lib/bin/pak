@@ -6,16 +6,19 @@ RED='\033[0;31m'
 NC='\033[0m'
 
 help() {
-    printf '\033[?7l' #Disable wrap
-    printf "xbps wrapper\n\n"
-    printf "Help commands:\n"
-    printf "   ${RED}install${NC} - Install a program. Equal to 'xbps-install -S'\n"
-    printf "   ${RED}remove${NC}  - Remove an installed program. Equal to 'xbps-remove'\n"
-    printf "   ${RED}update${NC}  - Update the system. Equal to 'xbps-query \n"
-    printf "   ${RED}search${NC}  - Search for program in repositories. Equal to 'xbps-query -Rs'\n"
-    printf "   ${RED}list${NC}    - List or search for installed programs. Equal to 'xbps-query -l'\n"
-    printf "   ${RED}help${NC}    - Show this message.\n"
-    printf '\033[?7h'
+    printf "
+\033[?7l
+xbps wrapper
+
+
+Help commands:
+   ${RED}install${NC} - Install a program. Equal to 'xbps-install -S'
+   ${RED}remove${NC}  - Remove an installed program. Equal to 'xbps-remove'
+   ${RED}update${NC}  - Update the system. Equal to 'xbps-query'
+   ${RED}search${NC}  - Search for program in repositories. Equal to 'xbps-query -Rs'
+   ${RED}list${NC}    - List or search for installed programs. Equal to 'xbps-query -l'
+   ${RED}help${NC}    - Show this message.
+\033[?7h"
 
     exit
 }
@@ -28,7 +31,7 @@ case $1 in
             shift
             sudo xbps-install -S "$@"
         fi
-        break;;
+        ;;
     r|rm|remove)
         if [ "$2" = "" ]; then
             printf "${RED}Error:${NC} No package selected for uninstallation.\n"
@@ -36,11 +39,11 @@ case $1 in
             shift
             sudo xbps-remove "$@"
         fi
-        break;;
+        ;;
     u|up|update)
         shift
         sudo xbps-install -u "$@"
-        break;;
+        ;;
     s|se|search)
 
         if [ "$2" = "" ]; then
@@ -49,7 +52,7 @@ case $1 in
             shift
             xbps-query -Rs "$@"
         fi
-        break;;
+        ;;
     l|list)
 
         if [ "$2" = "" ]; then
@@ -58,8 +61,8 @@ case $1 in
             shift
             xbps-query -l | grep "$@"
         fi
-        break;;
+        ;;
     *)
         help
-        break;;
+        ;;
 esac

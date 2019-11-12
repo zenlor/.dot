@@ -1,4 +1,6 @@
 #!/bin/sh
+[ "$TRACE" ] && set -x || true
+
 # Copyright (C) 2013-2016 Sören Tempel
 #
 # This program is free software: you can redistribute it and/or modify
@@ -109,7 +111,8 @@ if [ $# -gt 2 ]; then
 fi
 
 case "${1}" in
-  "show")   show   "${2}" ;;
+  "show")  show "${2}" ;;
+  "get")   show "${2}" ;;
   "insert") insert "${2}" ;;
   *) abort "USAGE: tpm COMMAND ENTRY" ;;
 esac
