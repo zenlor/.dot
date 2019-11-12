@@ -129,7 +129,7 @@ nnoremap <leader>h :<C-u>h
 
 " Plugins {{{
     " bufkill
-    nnoremap zx :Bdelete<CR>
+    nnoremap zx :bdelete<CR>
 
     " Tabularize
     nmap <leader>= :Tabularize /
