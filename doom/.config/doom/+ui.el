@@ -19,9 +19,4 @@
 (setq doom-theme 'doom-one-light)
 
 ;; Fonts
-(let* ((my-font   "Luculent")
-       (font-size 18)) ;; HI-DPi screens!! dammit
-  (setq doom-font           (font-spec :family my-font :size font-size))
-  (setq doom-variable-font  (font-spec :family my-font :size font-size))
-  (setq doom-unicode-font   (font-spec :family my-font :size font-size))
-  (setq doom-big-font       (font-spec :family my-font :size (+ 8 font-size))))
+(setq doom-font (font-spec :family "Iosevka" :size 14))
