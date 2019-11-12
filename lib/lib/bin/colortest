@@ -1,8 +1,0 @@
-#!/bin/sh
-
-echo
-for c in 39 {30..37}; do echo -en "\e[${c}m████████\e[0m"; done; echo
-for c in 39 {30..37}; do echo -en "\e[${c}m████████\e[0m"; done; echo
-for c in 49 {90..97}; do echo -en "\e[${c}m████████\e[0m"; done; echo
-for c in 49 {90..97}; do echo -en "\e[${c}m████████\e[0m"; done; echo
-echo

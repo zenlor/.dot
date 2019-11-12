@@ -6,7 +6,7 @@ GIT_REPO="https://github.com/bakpakin/Fennel.git"
 FENNEL_BIN="fennel"
 
 if [ ! -x "$GIT_FOLDER/$FENNEL_BIN" ]; then
-    git clone $GIT_REPO $GIT_FOLDER
+    git clone "$GIT_REPO" "$GIT_FOLDER"
 fi
 
-exec $GIT_FOLDER/$FENNEL_BIN $@
+exec "$GIT_FOLDER/$FENNEL_BIN" $@

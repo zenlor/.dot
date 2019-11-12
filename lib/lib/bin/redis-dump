@@ -2,7 +2,7 @@
 
 PARALLEL=1
 
-while [[ $# > 0 ]]
+while [ $# -gt 0 ]
 do
     key="$1"
 
@@ -17,5 +17,5 @@ do
     shift
 done
 
-redis-cli KEYS * |\
-    xargs -n 1 -P$PARALLEL redis-cli get
+redis-cli KEYS "*" |\
+    xargs -n 1 -P"$PARALLEL" redis-cli get
