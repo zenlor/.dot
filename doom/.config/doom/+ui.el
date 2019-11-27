@@ -16,7 +16,8 @@
 
 ;; theme
 ;(setq doom-theme 'doom-cosmic-latte-light)
-(setq doom-theme 'doom-one-light)
+;(setq doom-theme 'doom-acario-light)
+(setq doom-theme 'doom-moonlight)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 14))
