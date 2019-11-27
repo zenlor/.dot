@@ -31,7 +31,6 @@
     zplugin snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 
     # git-extras
-    # zplug "tj/git-extras", as:command, use:"bin/git-*", :lazy
     zplugin ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
     zplugin light tj/git-extras
 
@@ -53,9 +52,7 @@
 # }}}
 
 # Completion {{{
-    for i in `ls $HOME/.zsh/completions`; do
-        source $HOME/.zsh/completions/$i
-    done
+    fpath+="$HOME/.zsh/completions"
 
     autoload -U compinit && compinit
 # }}}
