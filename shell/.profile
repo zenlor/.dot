@@ -1,13 +1,17 @@
 # Can be sourced by zsh/bash/sh scripts
 
-export XDG_CACHE_HOME=$HOME/.cache
-export XDG_CONFIG_HOME=$HOME/.config
-export XDG_DATA_HOME=$HOME/.local/share
-export XDG_BIN_HOME=$HOME/.local/bin
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_BIN_HOME="$HOME/.local/bin"
 
-for dir in "$XDG_CACHE_HOME" "$XDG_CONFIG_HOME" "$XDG_DATA_HOME" "$XDG_BIN_HOME" "$DOTFILES_DATA"; do
-    [ -d "$dir" ] || mkdir -p "$dir"
-done
+if [ ! -d "$XDG_CACHE_HOME" ]; then
+    mkdir -p \
+        "$XDG_CACHE_HOME" \
+        "$XDG_CONFIG_HOME" \
+        "$XDG_DATA_HOME" \
+        "$XDG_BIN_HOME"
+fi
 
 ## source osx path_helper
 if [ -x /usr/libexec/path_helper ]; then
@@ -21,9 +25,20 @@ if [ -d /etc/profile.d ]; then
     done
 fi
 
+
+## PATH
+export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
+
+## TDM
+[ "$(tty)" = '/dev/tty1' ] &&\
+    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
+    exec tdm
+
+# Applications
+
 # go: Set GOPATH for Go
 if command -v go &> /dev/null; then
-    [ -d "$HOME/lib" ] || mkdir "$HOME/lib"
+    [ -d "$HOME/lib/bin" ] || mkdir -p "$HOME/lib/bin"
     export GOPATH="$HOME/lib"
     export PATH="$PATH:$GOPATH/bin"
 fi
@@ -49,27 +64,6 @@ if command -v luarocks &> /dev/null; then
     export PATH="$PATH:$HOME/.luarocks/bin"
 fi
 
-## PATH
-export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
-
-## Library
-_is_interactive() { [ $- == *i* ]; }
-
-_is_running() {
-  for prc in "$@"; do
-    pgrep -x "$prc" >/dev/null || return 1
-  done
-}
-
-_source() {
-  [ -f $1 ] && source "$1"
-}
-
-## TDM
-[ "$(tty)" = '/dev/tty1' ] &&\
-    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
-    exec tdm
-
 ## GPG tty fix
 export GPG_TTY=$(tty)
 
@@ -80,14 +74,8 @@ export LC_ALL=en_US.UTF-8
 
 # doom
 [ -f "$HOME/.emacs.d/bin/doom" ] && export PATH="$PATH:$HOME/.emacs.d/bin" || true
-# vim:ft=sh
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # MacOSX pythong
 [ -d "$HOME/Library/Python/3.7/bin" ] && export PATH="$PATH:$HOME/Library/Python/3.7/bin" || true
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+# vim:ft=sh
