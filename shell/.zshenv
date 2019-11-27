@@ -3,16 +3,12 @@ unsetopt GLOBAL_RCS
 
 source ~/.profile
 
-# Move ZDOTDIR from $HOME to reduce dotfile pollution.
-export ZPLUG_HOME="$XDG_CACHE_HOME/zplug"
-
 # paths
 typeset -gU cdpath fpath mailpath path
-path=( $XDG_BIN_HOME $DOTFILES/bin $DOTFILES_DATA/*.topic/bin(N) $HOME/lib/bin $HOME/lib/n/bin $path )
+path=( $XDG_BIN_HOME $HOME/lib/bin $HOME/lib/n/bin $path )
 fpath=( $ZDOTDIR/functions $XDG_BIN_HOME $fpath )
 
 # envvars
-export SHELL=$(command -v zsh)
 export LANG=${LANG:-en_US.UTF-8}
 export PAGER=less
 export LESS='-R -i -w -M -z-4'
