@@ -20,7 +20,7 @@
     zplugin light "zdharma/fast-syntax-highlighting"
 
     # autoenv
-    zplugin light "Tarrasch/zsh-autoenv"
+    #zplugin light "Tarrasch/zsh-autoenv"
 
     # FZF
     zplugin ice from"gh-r" as"program"
@@ -44,11 +44,8 @@
     zplugin light "chrissicool/zsh-256color"
 
     # alien minimal theme
-    #zplugin load "eendroroy/alien-minimal"
-    # geometry theme
-    #zplugin ice wait"0" lucid atload"prompt_geometry_render"
-    zplugin light geometry-zsh/geometry
-
+    export AM_ASYNC_L_PROMPT=1
+    zplugin light "eendroroy/alien-minimal"
 # }}}
 
 # Completion {{{
