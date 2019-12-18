@@ -15,9 +15,7 @@
 (add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-;(setq doom-theme 'doom-cosmic-latte-light)
-;(setq doom-theme 'doom-acario-light)
-(setq doom-theme 'doom-moonlight)
+(setq doom-theme 'doom-oceanic-next)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 14))

@@ -35,6 +35,8 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'junegunn/rainbow_parentheses.vim'
     " match parentheses
     Plug 'andymass/vim-matchup'
+    " theme (?)
+    Plug 'xero/sourcerer.vim'
 " }}}
 
 " lang {{{
@@ -55,12 +57,19 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Fennel
     Plug 'bakpakin/fennel.vim'
+
+    " Janet
+    Plug 'bakpakin/janet.vim'
 " }}}
 
 
 " lisps {{{
    Plug 'eraserhd/parinfer-rust',          { 'for': ['clojure', 'scheme', 'lisp', 'janet', 'fennel'],
                                            \ 'do': 'cargo build --release' }
+" }}}
+
+" git {{{
+  Plug 'tpope/vim-fugitive'
 " }}}
 
 call plug#end()

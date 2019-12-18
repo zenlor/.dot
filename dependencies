@@ -20,6 +20,7 @@ neovim
 emacs
 
 docker
+direnv
 
 firefox
 

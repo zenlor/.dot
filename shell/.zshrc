@@ -35,7 +35,11 @@
     zplugin light tj/git-extras
 
     # rupa/z
-    zplugin snippet https://github.com/rupa/z/blob/master/z.sh
+    #zplugin snippet https://github.com/rupa/z/blob/master/z.sh
+    zplugin load agkozak/zsh-z
+
+    # Tarrasch/zsh-autoenv
+    zplugin light "Tarrasch/zsh-autoenv"
 
     #
     ## THEME
@@ -160,7 +164,7 @@ fi
 
 # Enable keychain
 if command -v keychain &> /dev/null; then
-    eval `keychain --eval --quiet --agents ssh $SSH_AGENT_KEYS`
+    eval `keychain --eval --quiet --agents ssh,gpg $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
 fi
 
 ## Aliases {{{
@@ -216,6 +220,11 @@ fi
     fi
 # }}}
 
+# Zsh scripts {{{
+eval `cat $HOME/.zsh/rc/*.zsh`
+# }}}
+
+
 # homebrew gettex
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 
@@ -227,6 +236,7 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 # ghq
 command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
+
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,0 +1,19 @@
+#compdef mwb
+# vim: ft=zsh
+#
+#
+_mwb_params () {
+    local ret=1 expl
+
+
+    # first arg may be a request method
+    (( CURRENT == NORMARG )) &&
+        _wanted sub-command expl 'Command' \
+            compadd profiles creds getimage tf && ret=0
+
+    return $ret
+}
+
+_arguments -n -C -s \
+    '(-h --help)'{-h,--help}'[help menu]' \
+    '*:args:_mwb_params' && return 0

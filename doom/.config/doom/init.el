@@ -116,7 +116,7 @@
        ;;(haskell +intero) ; a language that's lazier than I am
        hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
+       (java +meghanada) ; the poster child for carpal tunnel syndrome
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
@@ -167,12 +167,14 @@
        ;;twitter           ; twitter client https://twitter.com/vnought
        ;;write             ; emacs for writers (fiction, notes, papers, etc.)
 
-       :config
-       ;;literate
-       (default +bindings +smartparens)
 
        ;; Private packages
        :private
        edit-server
        janet
-       joker)
+       joker
+
+       ; configuration
+       :config
+       ;;literate
+       (default +bindings +smartparens))
