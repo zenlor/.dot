@@ -75,7 +75,13 @@ export LC_ALL=en_US.UTF-8
 # doom
 [ -f "$HOME/.emacs.d/bin/doom" ] && export PATH="$PATH:$HOME/.emacs.d/bin" || true
 
-# MacOSX pythong
+# MacOSX python
 [ -d "$HOME/Library/Python/3.7/bin" ] && export PATH="$PATH:$HOME/Library/Python/3.7/bin" || true
+
+# fzf settings
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_CTRL_R_OPTS=""
+export FZF_DEFAULT_OPTS='--no-height --no-reverse'
+export FZF_TMUX=1
 
 # vim:ft=sh
