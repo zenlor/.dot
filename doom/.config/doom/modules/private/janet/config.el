@@ -7,4 +7,6 @@
               :interpreter "janet"
               :hook
               (janet-mode . inf-janet-minor-mode)
-              (janet-mode . parinfer-mode))
+              (janet-mode . parinfer-mode)
+              :config
+              (set-repl-handler! 'janet-mode #'inf-janet))

@@ -278,7 +278,7 @@ Used by this command to determine defaults."
 ;;; Command strings
 ;;; ===============
 
-
+
 (defun inf-janet-proc ()
   "Return the current inferior process.
 See variable `inf-janet-buffer'."
