@@ -9,7 +9,7 @@ set textwidth=81
 " Colors
 set termguicolors
 set t_Co=256
-set background=dark
+set background=light
 colorscheme monochrome
 
 " visual bell

@@ -12,10 +12,11 @@
      :map helm-find-files-map "<DEL>" #'helm-find-files-up-one-level)))
 
 
-(add-to-list 'load-path "~/.doom.d/themes")
+;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-(setq doom-theme 'doom-oceanic-next)
+;(setq doom-theme 'doom-oceanic-next)
+(setq doom-theme 'doom-solarized-light)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 14))
