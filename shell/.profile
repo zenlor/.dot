@@ -81,7 +81,9 @@ export LC_ALL=en_US.UTF-8
 # fzf settings
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_CTRL_R_OPTS=""
-export FZF_DEFAULT_OPTS='--no-height --no-reverse'
+export FZF_DEFAULT_OPTS='--no-height --no-reverse
+--color fg:242,hl:65,fg+:15,bg+:234,hl+:108
+--color info:108,prompt:109,spinner:108,pointer:168,marker:168'
 export FZF_TMUX=1
 
 # vim:ft=sh
