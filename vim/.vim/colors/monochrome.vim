@@ -97,6 +97,7 @@ call s:hi('SpecialKey', s:sblue, s:default_bg, s:bold)
 
 " File browsers.
 call s:hi('Directory', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
+call s:hi('netrwGray', ( &background == "dark"? s:white : s:black ), s:default_bg, s:bold)
 
 " Help.
 call s:hi('helpSpecial')
