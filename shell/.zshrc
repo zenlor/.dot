@@ -55,7 +55,8 @@
 # Completion {{{
     fpath+="$HOME/.zsh/completions"
 
-    autoload -U compinit && compinit
+    autoload -Uz compinit && compinit
+    zinit cdreplay -q
 # }}}
 
 # IN-Sane defaults {{{
