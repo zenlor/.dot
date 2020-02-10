@@ -16,7 +16,7 @@
 
 ;; theme
 ;(setq doom-theme 'doom-oceanic-next)
-(setq doom-theme 'doom-solarized-light)
+(setq doom-theme 'doom-solarized-dark)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka" :size 14))
+(setq doom-font (font-spec :family "Hack" :size 14))
