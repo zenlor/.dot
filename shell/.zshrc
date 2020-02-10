@@ -1,55 +1,55 @@
-# zplugin {{{
-    declare -A ZPLGM
-    ZPLGM[HOME_DIR]="$HOME/.cache/zplugin"
+# zinit {{{
+    declare -A ZINIT
+    ZINIT[HOME_DIR]="$HOME/.cache/zinit"
 
-    # Check if zplugin is installed
-    if [[ ! -d "${ZPLGM[HOME_DIR]}" ]]; then
-        git clone https://github.com/zdharma/zplugin.git "${ZPLGM[HOME_DIR]}/bin"
+    # Check if zinit is installed
+    if [[ ! -d "${ZINIT[HOME_DIR]}" ]]; then
+        git clone https://github.com/zdharma/zinit.git "${ZINIT[HOME_DIR]}/bin"
     fi
 
-    # load zplugin
-    source "${ZPLGM[HOME_DIR]}/bin/zplugin.zsh"
+    # load zinit
+    source "${ZINIT[HOME_DIR]}/bin/zinit.zsh"
 
     # completions
-    zplugin load "zsh-users/zsh-completions"
+    zinit load "zsh-users/zsh-completions"
 
     # vim things
-    zplugin light "laurenkt/zsh-vimto"
+    zinit light "laurenkt/zsh-vimto"
 
     # colorful command lines
-    zplugin light "zdharma/fast-syntax-highlighting"
+    zinit light "zdharma/fast-syntax-highlighting"
 
     # autoenv
-    #zplugin light "Tarrasch/zsh-autoenv"
+    #zinit light "Tarrasch/zsh-autoenv"
 
     # FZF
-    zplugin ice from"gh-r" as"program"
-    zplugin load "junegunn/fzf-bin"
+    zinit ice from"gh-r" as"program"
+    zinit load "junegunn/fzf-bin"
 
-    zplugin ice as"completion"
-    zplugin snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
-    zplugin snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+    zinit ice as"completion"
+    zinit snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
+    zinit snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
 
     # git-extras
-    zplugin ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
-    zplugin light tj/git-extras
+    zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
+    zinit light tj/git-extras
 
     # rupa/z
-    #zplugin snippet https://github.com/rupa/z/blob/master/z.sh
-    zplugin load agkozak/zsh-z
+    #zinit snippet https://github.com/rupa/z/blob/master/z.sh
+    zinit load agkozak/zsh-z
 
     # Tarrasch/zsh-autoenv
-    zplugin light "Tarrasch/zsh-autoenv"
+    zinit light "Tarrasch/zsh-autoenv"
 
     #
     ## THEME
     #
     # colorful colors
-    zplugin light "chrissicool/zsh-256color"
+    zinit light "chrissicool/zsh-256color"
 
     # alien minimal theme
-    export AM_ASYNC_L_PROMPT=1
-    zplugin light "eendroroy/alien-minimal"
+    #export AM_ASYNC_L_PROMPT=1
+    zinit light "eendroroy/alien-minimal"
 # }}}
 
 # Completion {{{

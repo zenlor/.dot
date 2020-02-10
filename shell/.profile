@@ -87,3 +87,5 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse
 export FZF_TMUX=1
 
 # vim:ft=sh
+
+export PATH="$HOME/.cargo/bin:$PATH"
