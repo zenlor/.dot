@@ -7,10 +7,9 @@ set listchars=nbsp:☠,tab:│\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
-set termguicolors
-set t_Co=256
+set notermguicolors t_Co=16
 set background=dark
-colorscheme noctu
+colorscheme wal
 
 " visual bell
 set noerrorbells visualbell t_vb=
@@ -24,9 +23,9 @@ set laststatus=2
 
 " statusline, splits colors
 if has('autocmd')
-    autocmd ColorScheme * hi StatusLine      ctermfg=238  ctermbg=253
-    autocmd ColorScheme * hi StatusLineNC    ctermfg=244  ctermbg=232
-    autocmd ColorScheme * hi VertSplit       ctermfg=244  ctermbg=232 cterm=bold
+    autocmd ColorScheme * hi StatusLine      ctermfg=8  ctermbg=3
+    autocmd ColorScheme * hi StatusLineNC    ctermfg=4  ctermbg=2
+    autocmd ColorScheme * hi VertSplit       ctermfg=4  ctermbg=2 cterm=bold
 endif
 
 " vim:set fdl=0 fdm=marker:
