@@ -60,6 +60,9 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Janet
     Plug 'bakpakin/janet.vim'
+
+    " C
+    Plug 'WolfgangMehner/c-support',       { 'for': 'c' }
 " }}}
 
 

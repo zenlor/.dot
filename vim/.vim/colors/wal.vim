@@ -42,8 +42,8 @@ hi TermCursorNC               ctermbg=3         ctermfg=0
 hi VertSplit                  ctermbg=8         ctermfg=0
 hi Title                      ctermbg=NONE      ctermfg=4
 hi CursorLine                 ctermbg=2         ctermfg=0
-hi LineNr                     ctermbg=NONE      ctermfg=8
-hi CursorLineNr               ctermbg=NONE      ctermfg=8
+hi LineNr                     ctermbg=NONE      ctermfg=11
+hi CursorLineNr               ctermbg=NONE      ctermfg=12
 hi helpLeadBlank              ctermbg=NONE      ctermfg=7
 hi helpNormal                 ctermbg=NONE      ctermfg=7
 hi Visual                     ctermbg=0         ctermfg=15 cterm=reverse term=reverse
@@ -53,7 +53,7 @@ hi PmenuSbar                  ctermbg=6         ctermfg=7
 hi PmenuSel                   ctermbg=4         ctermfg=0
 hi PmenuThumb                 ctermbg=8         ctermfg=8
 hi FoldColumn                 ctermbg=NONE      ctermfg=7
-hi Folded                     ctermbg=NONE      ctermfg=8
+hi Folded                     ctermbg=NONE      ctermfg=7
 hi WildMenu                   ctermbg=2         ctermfg=0
 hi SpecialKey                 ctermbg=NONE      ctermfg=8
 hi DiffAdd                    ctermbg=NONE      ctermfg=2
