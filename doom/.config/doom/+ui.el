@@ -19,4 +19,4 @@
 (setq doom-theme 'doom-solarized-dark)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Hack" :size 14))
+(setq doom-font (font-spec :family "Hack" :size 15))
