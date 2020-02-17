@@ -15,8 +15,7 @@
 ;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-;(setq doom-theme 'doom-oceanic-next)
-(setq doom-theme 'doom-solarized-dark)
+(setq doom-theme 'doom-tomorrow-night)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Hack" :size 15))
