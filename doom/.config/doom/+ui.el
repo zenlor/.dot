@@ -15,7 +15,7 @@
 ;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'doom-horizon)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Hack" :size 15))
