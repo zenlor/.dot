@@ -47,9 +47,8 @@
     # colorful colors
     zinit light "chrissicool/zsh-256color"
 
-    # alien minimal theme
-    #export AM_ASYNC_L_PROMPT=1
-    zinit light "eendroroy/alien-minimal"
+    # subnixr mnml theme
+    zinit light "subnixr/minimal"
 # }}}
 
 # Completion {{{
