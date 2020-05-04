@@ -18,4 +18,4 @@
 (setq doom-theme 'doom-Iosvkem)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka Type" :size 15))
+(setq doom-font (font-spec :family "Iosevka" :size 15))
