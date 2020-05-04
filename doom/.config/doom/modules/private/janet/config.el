@@ -2,7 +2,7 @@
 
 (load! "inf-janet")
 
-(def-package! janet-mode
+(use-package! janet-mode
               :mode "\\.janet\\'"
               :interpreter "janet"
               :hook

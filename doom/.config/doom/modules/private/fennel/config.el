@@ -7,7 +7,7 @@
   (interactive)
   (run-lisp "love ."))
 
-(def-package! fennel-mode
+(use-package! fennel-mode
   :mode "\\.fnl$"
   :hook (fennel-mode . lispy-mode)
   :interpreter "fennel"
