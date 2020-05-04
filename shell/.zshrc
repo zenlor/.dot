@@ -194,6 +194,9 @@ fi
     # xdg-open
     command -v xdg-open &>/dev/null && alias open='xdg-open' || true
 
+    # bc with mathlib (cause I like floats)
+    alias bc='bc -l'
+
     # emacs client
     #   no wait
     alias ec='emacsclient -n'
