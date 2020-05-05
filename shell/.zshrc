@@ -13,9 +13,6 @@
     # completions
     zinit load "zsh-users/zsh-completions"
 
-    # vim things
-    zinit light "laurenkt/zsh-vimto"
-
     # colorful command lines
     zinit light "zdharma/fast-syntax-highlighting"
 
