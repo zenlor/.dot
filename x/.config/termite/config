@@ -2,7 +2,7 @@
 allow_bold = true
 audible_bell = false
 dynamic_title = true
-font = Luculent 14
+font = Iosevka 14
 
 
 [colors]
