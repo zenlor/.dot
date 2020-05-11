@@ -19,20 +19,20 @@ if [ -x /usr/libexec/path_helper ]; then
 fi
 
 ## source system profile
-if [ -d /etc/profile.d ]; then
-    for i in /etc/profile.d/*.sh; do
-        . $i
-    done
-fi
+#if [ -f /etc/profile.d ]; then
+#    for i in /etc/profile.d/*.sh; do
+#        . $i
+#    done
+#fi
 
 
 ## PATH
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
 
 ## TDM
-[ "$(tty)" = '/dev/tty1' ] &&\
-    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
-    exec tdm
+#[ "$(tty)" = '/dev/tty1' ] &&\
+#    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
+#    exec tdm
 
 # Applications
 
@@ -87,7 +87,6 @@ export FZF_CTRL_R_OPTS=""
 export FZF_DEFAULT_OPTS='--no-height --no-reverse
 --color fg:242,hl:65,fg+:15,bg+:234,hl+:108
 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
-export FZF_TMUX=1
 
 # vim:ft=sh
 
