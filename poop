@@ -10,8 +10,16 @@ mkdir -p \
     "$HOME/.config/git" \
     "$HOME/lib/bin" \
     "$HOME/.local/" \
+    "$HOME/.local/bin" \
+    "$HOME/.local/etc" \
+    "$HOME/.local/libexec" \
+    "$HOME/.local/share/fonts" \
     "$HOME/.lein/" \
     "$HOME/.cache/"
+
+if [ ! -f "$HOME/.emacs.d" ]; then
+    git clone https://github.com/hlissner/doom-emacs.git $HOME/.emacs.d
+fi
 
 _pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "*/scripts" -print | sed 's|\./||' )
 case $1 in
