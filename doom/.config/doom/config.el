@@ -17,7 +17,8 @@
                 (concat (getenv "HOME") "/lib/bin"))
 
 ; load private-env if the file exists
-(doom-load-envvars-file "~/.ssh/.env")
+(doom-load-envvars-file
+  "~/.ssh/.env")
 
 (load! "+bindings")
 ;(load! "+email")

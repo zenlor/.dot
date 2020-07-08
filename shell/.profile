@@ -88,6 +88,16 @@ export FZF_DEFAULT_OPTS='--no-height --no-reverse
 --color fg:242,hl:65,fg+:15,bg+:234,hl+:108
 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
 
-# vim:ft=sh
+# keychain
+if command -v keychain &> /dev/null; then
+    eval `keychain --eval --quiet --agents ssh,gpg $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
 
-export PATH="$HOME/.cargo/bin:$PATH"
+    cat <<EOF > ~/.ssh/.env
+SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+SSH_AGENT_PID=$SSH_AGENT_PID
+GPG_AGENT_KEYS=$GPG_AGENT_KEYS
+GPG_AGENT_INFO=$GPG_AGENT_INFO
+EOF
+fi
+
+# vim:ft=sh
