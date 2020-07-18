@@ -62,7 +62,11 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'bakpakin/janet.vim'
 
     " C
-    Plug 'WolfgangMehner/c-support',       { 'for': 'c' }
+    Plug 'WolfgangMehner/c-support',        { 'for': 'c' }
+
+    " Terraform
+    Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
+
 " }}}
 
 
