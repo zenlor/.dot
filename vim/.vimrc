@@ -65,10 +65,10 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'WolfgangMehner/c-support',       { 'for': 'c' }
 " }}}
 
-
 " lisps {{{
-   Plug 'eraserhd/parinfer-rust',          { 'for': ['clojure', 'scheme', 'lisp', 'janet', 'fennel'],
-                                           \ 'do': 'cargo build --release' }
+   Plug 'pyrmont/parinfer-rust',           { 'for': ['clojure', 'scheme', 'lisp', 'janet', 'fennel'],
+                                           \ 'do': 'cargo build --release',
+                                           \ 'branch': 'janet-support'}
 " }}}
 
 " git {{{
