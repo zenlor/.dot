@@ -72,6 +72,6 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
 
 # fzf
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh || true
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh || true
 
 ### END
