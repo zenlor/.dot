@@ -24,8 +24,8 @@
     zinit load "junegunn/fzf-bin"
 
     zinit ice as"completion"
-    zinit snippet https://github.com/junegunn/fzf/blob/master/shell/completion.zsh
-    zinit snippet https://github.com/junegunn/fzf/blob/master/shell/key-bindings.zsh
+    zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
+    zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
 
     # git-extras
     zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
