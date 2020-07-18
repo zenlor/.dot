@@ -15,7 +15,10 @@
 ;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-monokai-pro)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka Extended" :size 15))
+(setq doom-font (font-spec :family "Iosevka Extended" :size 16)
+      doom-variable-pitch-font (font-spec :family "Iosevka Sparkle")
+      doom-unicode-font (font-spec :family "Iosevka Extended")
+      doom-big-font (font-spec :family "Iosevka Extended" :size 22))
