@@ -1,3 +1,20 @@
+if [[ "$TERM" == "dumb" ]]; then
+        unsetopt zle
+        unsetopt prompt_cr
+        unsetopt prompt_subst
+        if whence -w precmd >/dev/null; then
+                unfunction precmd
+        fi
+        if whence -w preexec >/dev/null; then
+                unfunction preexec
+        fi
+        PS1='$ '
+        return
+fi
+
+# tmux
+[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit }
+
 # zinit {{{
     declare -A ZINIT
     ZINIT[HOME_DIR]="$HOME/.cache/zinit"
