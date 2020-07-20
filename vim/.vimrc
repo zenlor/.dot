@@ -16,6 +16,7 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'justinmk/vim-sneak'       " 2-character search motions
     Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
     Plug 'tpope/vim-vinegar'        " vinegar dressing for netrw
+    Plug 'tpope/vim-fugitive'       " git
 
     Plug 'jiangmiao/auto-pairs'
 
@@ -227,7 +228,7 @@ set textwidth=81
 " Colors
 set notermguicolors t_Co=16
 set background=dark
-colorscheme wal
+colorscheme sourcerer
 
 " visual bell
 set noerrorbells visualbell t_vb=
