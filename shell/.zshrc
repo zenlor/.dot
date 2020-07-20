@@ -327,10 +327,27 @@ fi
     fi
 #}}}
 
+###
+### OSX
+###{{{
+if [ -d "/usr/local/opt/cython/bin"  ]; then
+        export PATH="/usr/local/opt/cython/bin:/usr/local/opt/sphinx-doc/bin:$PATH"
+fi
+
+if [ -d "/usr/local/opt/qt/bin"  ]; then
+    export PATH="/usr/local/opt/qt/bin:$PATH"
+    #export LDFLAGS="-L/usr/local/opt/qt/lib"
+    #export CPPFLAGS="-I/usr/local/opt/qt/include"
+    #export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
+fi
+if [ -d "/Users/lgiuliani/Library/Python/3.8/bin"  ]; then
+#            export PATH="/Users/lgiuliani/Library/Python/3.8/bin:$PATH"
+fi
 # osx path support
 [ -x "/usr/libexec/path_helper" ] &&\
     eval `/usr/libexec/path_helper -s`\
     || true
+###}}}
 
 # local environment
 [ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local || true

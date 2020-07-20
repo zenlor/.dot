@@ -5,8 +5,8 @@
 	br = branch
 	type = cat-file -t
 	dump = cat-file -p
-        cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
-        hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches
+	cleanup = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 git branch -d"
+	hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=short --branches
 	pullall = pull --recurse-submodules
 [format]
 	pretty = * %Cblue%h %Cgreen[%ar]%Creset (%an) %s
@@ -35,7 +35,7 @@
 [commit]
 	gpgsign = true
 [gpg]
-    program = gpg2
+	program = gpg2
 [gui]
 	editor = emacs
 	recentrepo = /home/lor/lib/src/git.mobilebridge.io/lorenzo/smallpox
