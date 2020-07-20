@@ -60,8 +60,8 @@ fi
     # colorful colors
     zinit light "chrissicool/zsh-256color"
 
-    # subnixr mnml theme
-    zinit light "subnixr/minimal"
+    # geometry theme
+    zinit light "geometry-zsh/geometry"
 # }}}
 
 #
