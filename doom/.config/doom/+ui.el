@@ -18,7 +18,7 @@
 (setq doom-theme 'doom-sourcerer)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka Extended" :size 16)
+(setq doom-font (font-spec :family "Iosevka" :size 16)
       doom-variable-pitch-font (font-spec :family "Iosevka Sparkle")
-      doom-unicode-font (font-spec :family "Iosevka Extended")
-      doom-big-font (font-spec :family "Iosevka Extended" :size 22))
+      doom-unicode-font (font-spec :family "Iosevka")
+      doom-big-font (font-spec :family "Iosevka" :size 22))
