@@ -72,8 +72,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       ;;spell             ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       spell             ; tasing you for misspelling mispelling
+       ;grammar           ; tasing grammar mistake every you make
 
        :tools
        ansible
@@ -167,6 +167,14 @@
        ;;irc               ; how neckbeards socialize
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
+
+       ;; Private packages
+       :private
+       edit-server
+       janet
+       joker
+       fennel
+       systemd
 
        :config
        ;;literate
