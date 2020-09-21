@@ -44,3 +44,5 @@
 	fontdiff = Iosevka,12,-1,5,50,0,0,0,0,0
 [include]
 	path = local
+[pull]
+	rebase = true

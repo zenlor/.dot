@@ -47,5 +47,7 @@
         :localleader
         (:map clojure-mode-map
               "S" #'cider-repl-set-ns
-              "N"  #'cider-enlighten-mode)))
-
+              "N" #'cider-enlighten-mode
+              "s" #'cider-scratch
+              "b" #'cider-load-buffer
+              "B" #'cider-load-buffer-and-switch-to-repl-buffer)))

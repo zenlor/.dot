@@ -13,6 +13,7 @@ mkdir -p \
     "$HOME/.local/bin" \
     "$HOME/.local/etc" \
     "$HOME/.local/libexec" \
+    "$HOME/.local/share/applications" \
     "$HOME/.local/share/fonts" \
     "$HOME/.lein/" \
     "$HOME/.cache/"

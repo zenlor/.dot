@@ -244,7 +244,7 @@ fi
     function server() {
         local port="${1:-8000}"
         open "http://localhost:${port}/"
-        python -m http.server "$port"
+        python -m SimpleHTTPServer "${port}"
     }
     alias server=server
 
@@ -341,8 +341,8 @@ if [ -d "/usr/local/opt/qt/bin"  ]; then
     #export CPPFLAGS="-I/usr/local/opt/qt/include"
     #export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
 fi
-if [ -d "/Users/lgiuliani/Library/Python/3.8/bin"  ]; then
-#            export PATH="/Users/lgiuliani/Library/Python/3.8/bin:$PATH"
+if [ -d "$HOME/Library/Python/3.8/bin"  ]; then
+    export PATH="/Users/lgiuliani/Library/Python/3.8/bin:$PATH"
 fi
 # osx path support
 [ -x "/usr/libexec/path_helper" ] &&\
@@ -360,3 +360,5 @@ command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
 [ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh || true
 
 ### END
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -1,5 +1,9 @@
 #!/bin/zsh
 
+echo "$(tput setaf 1) C$(tput setaf 2)o$(tput setaf 3)l$(tput setaf 4)o$(tput setaf 5)u$(tput setaf 6)r$(tput setaf 7)s $(tput sgr0)"
+
 for (( i = 0; i < 17; i++ ));
-    do echo "$(tput setaf $i)This is ($i) $(tput sgr0)";
+    do echo -n "$(tput setaf $i) ### $i ### $(tput sgr0)";
 done
+echo ""
+
