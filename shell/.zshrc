@@ -13,7 +13,7 @@ if [[ "$TERM" == "dumb" ]]; then
 fi
 
 # tmux
-[ -z "$TMUX"  ] && { tmux attach || exec tmux new-session && exit }
+[ -z "$TMUX"  ] && [ -v "$SSH_CLIENT" ] && { tmux attach || exec tmux new-session && exit }
 
 # zinit {{{
     declare -A ZINIT
@@ -49,7 +49,8 @@ fi
     zinit light tj/git-extras
 
     # rupa/z
-    zinit load agkozak/zsh-z
+    #zinit load agkozak/zsh-z
+    zinit load "skywind3000/z.lua"
 
     # Tarrasch/zsh-autoenv
     zinit light "Tarrasch/zsh-autoenv"
