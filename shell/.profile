@@ -25,14 +25,21 @@ fi
 #    done
 #fi
 
+# Nix
+if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
+  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+fi
+[ -d $HOME/.nix-defexpr ] && export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH || true
 
 ## PATH
+export PATH=/nix/var/nix/profiles/per-user/$USER/profile/bin:$PATH
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
 
 ## TDM
 #[ "$(tty)" = '/dev/tty1' ] &&\
 #    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
 #    exec tdm
+
 
 # Applications
 
@@ -79,7 +86,7 @@ export LC_ALL=en_US.UTF-8
 [ -f "$HOME/.emacs.d/bin/doom" ] && export PATH="$PATH:$HOME/.emacs.d/bin" || true
 
 # MacOSX python
-[ -d "$HOME/Library/Python/3.7/bin" ] && export PATH="$PATH:$HOME/Library/Python/3.7/bin" || true
+[ -d "$HOME/Library/Python/3.9/bin" ] && export PATH="$PATH:$HOME/Library/Python/3.9/bin" || true
 
 # fzf settings
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"

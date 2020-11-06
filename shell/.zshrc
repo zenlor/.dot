@@ -34,24 +34,25 @@ fi
     zinit light "zdharma/fast-syntax-highlighting"
 
     # autoenv
-    #zinit light "Tarrasch/zsh-autoenv"
+    zinit light "Tarrasch/zsh-autoenv"
 
     # FZF
     zinit ice from"gh-r" as"program"
     zinit load "junegunn/fzf-bin"
+    zinit load "unixorn/fzf-zsh-plugin"
 
-    zinit ice as"completion"
-    zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/completion.zsh
-    zinit snippet https://raw.githubusercontent.com/junegunn/fzf/master/shell/key-bindings.zsh
+    zinit light Aloxaf/fzf-tab
+
 
     # git-extras
     zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
     zinit light tj/git-extras
     zinit light unixorn/git-extra-commands
+    zinit light ytakahashi/igit
 
     # rupa/z
-    #zinit load agkozak/zsh-z
-    zinit load "skywind3000/z.lua"
+    zinit load agkozak/zsh-z
+    #zinit load "skywind3000/z.lua"
 
     # Tarrasch/zsh-autoenv
     zinit light "Tarrasch/zsh-autoenv"
@@ -65,6 +66,7 @@ fi
     # geometry theme
     zinit light "geometry-zsh/geometry"
 # }}}
+#
 
 #
 # Environment settings
@@ -354,12 +356,11 @@ fi
 # local environment
 [ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local || true
 
+# fzf
+if [ -f "$HOME/.fzf.zsh" ]; then
+    source $HOME/.fzf.zsh
+    enable-fzf-tab
+fi
+
 # ghq
 command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
-
-# fzf
-[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh || true
-
-### END
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
