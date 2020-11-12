@@ -273,6 +273,18 @@ fi
 # local environment
 [ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local || true
 
+# keychain
+if command -v keychain &> /dev/null; then
+    eval `keychain --eval --quiet --agents ssh,gpg $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
+
+    cat <<EOF > ~/.ssh/.env
+SSH_AUTH_SOCK=$SSH_AUTH_SOCK
+SSH_AGENT_PID=$SSH_AGENT_PID
+GPG_AGENT_KEYS=$GPG_AGENT_KEYS
+GPG_AGENT_INFO=$GPG_AGENT_INFO
+EOF
+fi
+
 # fzf
 if [ -f "$HOME/.fzf.zsh" ]; then
     source $HOME/.fzf.zsh

@@ -68,7 +68,8 @@ call plug#begin('~/.cache/vim/bundle')
     " Terraform
     Plug 'hashivim/vim-terraform',          { 'for': 'terraform' }
 
-    "
+    " Nix
+    Plug 'LnL7/vim-nix',                    { 'for': 'nix' }
 " }}}
 
 " lisps {{{

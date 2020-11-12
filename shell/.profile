@@ -65,7 +65,8 @@ if uname -r|grep -q Microsoft;then
     unsetopt BG_NICE
 # Microsoft bugs: WSL2
 elif uname -r|grep -q microsoft;then
-    export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+    #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+    export DISPLAY="$(route -n | grep 0.0.0.0 | awk '{print $2;exit;}')":0.0
 fi
 
 # lua: luarocks PATH
@@ -94,17 +95,5 @@ export FZF_CTRL_R_OPTS=""
 export FZF_DEFAULT_OPTS='--no-height --no-reverse
 --color fg:242,hl:65,fg+:15,bg+:234,hl+:108
 --color info:108,prompt:109,spinner:108,pointer:168,marker:168'
-
-# keychain
-if command -v keychain &> /dev/null; then
-    eval `keychain --eval --quiet --agents ssh,gpg $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
-
-    cat <<EOF > ~/.ssh/.env
-SSH_AUTH_SOCK=$SSH_AUTH_SOCK
-SSH_AGENT_PID=$SSH_AGENT_PID
-GPG_AGENT_KEYS=$GPG_AGENT_KEYS
-GPG_AGENT_INFO=$GPG_AGENT_INFO
-EOF
-fi
 
 # vim:ft=sh
