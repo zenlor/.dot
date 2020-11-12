@@ -48,8 +48,8 @@ fi
     zinit light ytakahashi/igit
 
     # rupa/z
-    zinit load agkozak/zsh-z
-    #zinit load "skywind3000/z.lua"
+    #zinit load agkozak/zsh-z
+    zinit load "skywind3000/z.lua"
 
     # Tarrasch/zsh-autoenv
     zinit light "Tarrasch/zsh-autoenv"
@@ -209,7 +209,6 @@ fi
     alias make='nocorrect make'
 
     setopt correct_all
-    # }}}
 
     # Enable color support
     ls --color -d . &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
@@ -260,94 +259,15 @@ fi
     # htop
     alias htopu="htop -u $USER"
 
-    # neovim
-    if command -v nvim &> /dev/null; then
-        alias vim=nvim
-    fi
     # }}}
 
     # Editor {{{
     # Neovim as $EDITOR
-    export EDITOR="nvim"
-    if [ -x 'nvim' ]; then
-        alias vim=nvim
-    fi
+        export EDITOR="nvim"
+        if [ -x 'nvim' ]; then
+            alias vim=nvim
+        fi
     #}}}
-###}}}
-
-###
-### pipenv
-###
-#{{{
-# Environment file for all projects.
-#  - (de)activates Python virtualenvs (.venv) from pipenv
-    if [[ $autoenv_event == 'enter' ]]; then
-    autoenv_source_parent
-
-    _my_autoenv_venv_chpwd() {
-        if [[ -z "$_ZSH_ACTIVATED_VIRTUALENV" && -n "$VIRTUAL_ENV" ]]; then
-        return
-        fi
-
-        setopt localoptions extendedglob
-        local -a venv
-        venv='(./(../)#.venv(NY1:A))'
-
-        if [[ -n "$_ZSH_ACTIVATED_VIRTUALENV" && -n "$VIRTUAL_ENV" ]]; then
-        if ! (( $#venv )) || [[ "$_ZSH_ACTIVATED_VIRTUALENV" != "$venv[1]" ]]; then
-            unset _ZSH_ACTIVATED_VIRTUALENV
-            echo "De-activating virtualenv: ${(D)VIRTUAL_ENV}" >&2
-
-            # Simulate "deactivate", but handle $PATH better (remove VIRTUAL_ENV).
-            if ! autoenv_remove_path $VIRTUAL_ENV/bin; then
-            echo "warning: ${VIRTUAL_ENV}/bin not found in \$PATH" >&2
-            fi
-
-            # NOTE: does not handle PYTHONHOME/_OLD_VIRTUAL_PYTHONHOME
-            unset _OLD_VIRTUAL_PYTHONHOME
-            # NOTE: does not handle PS1/_OLD_VIRTUAL_PS1
-            unset _OLD_VIRTUAL_PS1
-            unset VIRTUAL_ENV
-        fi
-        fi
-
-        if [[ -z "$VIRTUAL_ENV" ]]; then
-        if (( $#venv )); then
-            echo "Activating virtualenv: ${(D)venv}" >&2
-            export VIRTUAL_ENV=$venv[1]
-            autoenv_prepend_path $VIRTUAL_ENV/bin
-            _ZSH_ACTIVATED_VIRTUALENV="$venv[1]"
-        fi
-        fi
-    }
-    autoload -U add-zsh-hook
-    add-zsh-hook chpwd _my_autoenv_venv_chpwd
-    _my_autoenv_venv_chpwd
-    else
-    add-zsh-hook -d chpwd _my_autoenv_venv_chpwd
-    fi
-#}}}
-
-###
-### OSX
-###{{{
-if [ -d "/usr/local/opt/cython/bin"  ]; then
-        export PATH="/usr/local/opt/cython/bin:/usr/local/opt/sphinx-doc/bin:$PATH"
-fi
-
-if [ -d "/usr/local/opt/qt/bin"  ]; then
-    export PATH="/usr/local/opt/qt/bin:$PATH"
-    #export LDFLAGS="-L/usr/local/opt/qt/lib"
-    #export CPPFLAGS="-I/usr/local/opt/qt/include"
-    #export PKG_CONFIG_PATH="/usr/local/opt/qt/lib/pkgconfig"
-fi
-if [ -d "$HOME/Library/Python/3.8/bin"  ]; then
-    export PATH="/Users/lgiuliani/Library/Python/3.8/bin:$PATH"
-fi
-# osx path support
-[ -x "/usr/libexec/path_helper" ] &&\
-    eval `/usr/libexec/path_helper -s`\
-    || true
 ###}}}
 
 # local environment
@@ -357,6 +277,3 @@ fi
 if [ -f "$HOME/.fzf.zsh" ]; then
     source $HOME/.fzf.zsh
 fi
-
-# ghq
-command -v ghq &>/dev/null && export GHQ_ROOT="${HOME}/lib/src" || true
