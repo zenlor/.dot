@@ -39,10 +39,7 @@ fi
     # FZF
     zinit ice from"gh-r" as"program"
     zinit load "junegunn/fzf-bin"
-    zinit load "unixorn/fzf-zsh-plugin"
-
-    zinit light Aloxaf/fzf-tab
-
+    zinit light "unixorn/fzf-zsh-plugin"
 
     # git-extras
     zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
@@ -359,7 +356,6 @@ fi
 # fzf
 if [ -f "$HOME/.fzf.zsh" ]; then
     source $HOME/.fzf.zsh
-    enable-fzf-tab
 fi
 
 # ghq
