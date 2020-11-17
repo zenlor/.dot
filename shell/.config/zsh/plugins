@@ -42,13 +42,18 @@ miniplug plugin 'chrissicool/zsh-256color'
 miniplug plugin 'jedahan/geometry-hydrate'
 miniplug theme 'geometry-zsh/geometry'
 
+# load geometry plugins before geometry itself
+export GEOMETRY_PROMPT_PLUGINS=(hydrate)
+
+# Finally
 # load all plugins
 miniplug load
 
+# Configure substring search
 # Set keystrokes for substring searching
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up
 bindkey "$terminfo[kcud1]" history-substring-search-down
 
-# Load me last
+# load local completions last
 GENCOMPL_FPATH=$HOME/.config/zsh/complete

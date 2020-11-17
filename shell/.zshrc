@@ -200,6 +200,8 @@ if [ -d ~/.config/zsh/completions ]; then
     done
 fi
 
+autoload -U compinit && compinit
+
 # Load zmv
 if [[ ! -f ~/.config/zsh/no-zmv ]]; then
     autoload -U zmv
