@@ -1,279 +1,37 @@
-if [[ "$TERM" == "dumb" ]]; then
-        unsetopt zle
-        unsetopt prompt_cr
-        unsetopt prompt_subst
-        if whence -w precmd >/dev/null; then
-                unfunction precmd
-        fi
-        if whence -w preexec >/dev/null; then
-                unfunction preexec
-        fi
-        PS1='$ '
-        return
-fi
+export COMPLETION_WAITING_DOTS="true"
 
-# tmux
-[ -z "$TMUX"  ] && [ -v "$SSH_CLIENT" ] && { tmux attach || exec tmux new-session && exit }
+# Correct spelling for commands
+setopt correct
 
-# zinit {{{
-    declare -A ZINIT
-    ZINIT[HOME_DIR]="$HOME/.cache/zinit"
+# turn off the infernal correctall for filenames
+unsetopt correctall
 
-    # Check if zinit is installed
-    if [[ ! -d "${ZINIT[HOME_DIR]}" ]]; then
-        git clone https://github.com/zdharma/zinit.git "${ZINIT[HOME_DIR]}/bin"
+# Base PATH
+PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
+
+# Conditional PATH additions
+for path_candidate in \
+    /opt/local/sbin \
+    /Applications/Xcode.app/Contents/Developer/usr/bin \
+    /opt/local/bin \
+    /usr/local/share/npm/bin \
+    ~/.cabal/bin \
+    ~/.cargo/bin \
+    ~/.rbenv/bin \
+    ~/bin \
+    ~/lib/bin
+do
+    if [ -d ${path_candidate} ]; then
+        export PATH="${PATH}:${path_candidate}"
     fi
+done
 
-    # load zinit
-    source "${ZINIT[HOME_DIR]}/bin/zinit.zsh"
+# Yes, these are a pain to customize. Fortunately, Geoff Greer made an online
+# tool that makes it easy to customize your color scheme and keep them in sync
+# across Linux and OS X/*BSD at http://geoff.greer.fm/lscolors/
+export LSCOLORS='Exfxcxdxbxegedabagacad'
+export LS_COLORS='di=1;34;40:ln=35;40:so=32;40:pi=33;40:ex=31;40:bd=34;46:cd=34;43:su=0;41:sg=0;46:tw=0;42:ow=0;43:'
 
-    # completions
-    zinit load "zsh-users/zsh-completions"
-
-    # colorful command lines
-    zinit light "zdharma/fast-syntax-highlighting"
-
-    # autoenv
-    zinit light "Tarrasch/zsh-autoenv"
-
-    # FZF
-    zinit ice from"gh-r" as"program"
-    zinit load "junegunn/fzf-bin"
-    zinit light "unixorn/fzf-zsh-plugin"
-
-    # git-extras
-    zinit ice as"program" pick"$ZPFX/bin/git-*" make"PREFIX=$ZPFX"
-    zinit light tj/git-extras
-    zinit light unixorn/git-extra-commands
-    zinit light ytakahashi/igit
-
-    # rupa/z
-    #zinit load agkozak/zsh-z
-    zinit load "skywind3000/z.lua"
-
-    # Tarrasch/zsh-autoenv
-    zinit light "Tarrasch/zsh-autoenv"
-
-    #
-    ## THEME
-    #
-    # colorful colors
-    zinit light "chrissicool/zsh-256color"
-
-    # geometry theme
-    zinit light "geometry-zsh/geometry"
-# }}}
-#
-
-#
-# Environment settings
-#
-
-###
-### Defaults
-###
-
-# Completion {{{
-    fpath+="$HOME/.zsh/completions"
-
-    autoload -Uz compinit && compinit
-    zinit cdreplay -q
-# }}}
-
-# IN-Sane defaults {{{
-    # no c-s/c-q output freezing
-    setopt noflowcontrol
-    # allow expansion in prompts
-    setopt prompt_subst
-    # display PID when suspending processes as well
-    setopt longlistjobs
-    # try to avoid the 'zsh: no matches found...'
-    setopt nonomatch
-    # report the status of backgrounds jobs immediately
-    setopt notify
-    # whenever a command completion is attempted, make sure the entire command path
-    # is hashed first.
-    setopt hash_list_all
-    # not just at the end
-    setopt completeinword
-    # use zsh style word splitting
-    setopt noshwordsplit
-    # allow use of comments in interactive code
-    setopt interactivecomments
-    # automatically cd on plain folder names
-    setopt autocd
-
-    ## More insanity
-    #
-    # in order to use #, ~ and ^ for filename generation grep word
-    # *~(*.gz|*.bz|*.bz2|*.zip|*.Z) -> searches for word not in compressed files
-    # don't forget to quote '^', '~' and '#'!
-    setopt extended_glob
-
-    # don't error out when unset parameters are used
-    setopt unset
-
-    # completion menu
-    zstyle ':completion:*' menu select
-
-    # Case insensitive completion
-    zstyle ':completion:*' matcher-list 'm:{a-zA-Z-_}={A-Za-z_-}' 'r:|=*' 'l:|=* r:|=*'
-# }}}
-
-## History {{{
-    # History file configuration
-    [ -z "$HISTFILE" ] && HISTFILE="$HOME/.zsh_history"
-    HISTSIZE=50000
-    SAVEHIST=10000
-    # record timestamp of command in HISTFILE
-    setopt extended_history
-    # delete duplicates first when HISTFILE size exceeds HISTSIZE
-    setopt hist_expire_dups_first
-    # ignore duplicated commands history list
-    setopt hist_ignore_dups
-    # ignore ALL duplicates
-    setopt hist_ignore_all_dups
-    # ignore commands that start with space
-    setopt hist_ignore_space
-    # show command with history expansion to user before running it
-    setopt hist_verify
-    # add commands to HISTFILE in order of execution
-    setopt inc_append_history
-    # share command history data
-    setopt share_history
-# }}}
-
-## Up/Down history search with context {{{
-    autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
-
-    zle -N up-line-or-beginning-search
-    zle -N down-line-or-beginning-search
-
-    bindkey '^[[A'  up-line-or-beginning-search    # Arrow up
-    bindkey '^[OA'  up-line-or-beginning-search
-    bindkey '^[[B'  down-line-or-beginning-search  # Arrow down
-    bindkey '^[OB'  down-line-or-beginning-search#
-#}}}
-
-###
-### Vi-mode
-### {{{
-    bindkey -v
-
-    # Don't take 0.4s to change modes
-    export KEYTIMEOUT=1
-
-    # Default color settings
-    if [ -z "$VIMTO_COLOR_NORMAL_TEXT" ]; then VIMTO_COLOR_NORMAL_TEXT=black; fi
-    if [ -z "$VIMTO_COLOR_NORMAL_BACKGROUND" ]; then VIMTO_COLOR_NORMAL_BACKGROUND=white; fi
-
-    function zle-keymap-select zle-line-init {
-        # If it's not tmux then can use normal sequences
-        if [[ -z "${TMUX}" ]]; then
-            local vicmd_seq="\e[2 q"
-            local viins_seq="\e[0 q"
-        else
-            # In tmux, escape sequences to pass to terminal need to be
-            # surrounded in a DSC sequence and double-escaped:
-            # ESC P tmux; {text} ESC \
-            # <http://linsam.homelinux.com/tmux/tmuxcodes.pdf>
-            local vicmd_seq="\ePtmux;\e\e[2 q\e\\"
-            local viins_seq="\ePtmux;\e\e[0 q\e\\"
-        fi
-    }
-
-    # Fix backspace not working after returning from cmd mode
-    bindkey '^?' backward-delete-char
-    bindkey '^h' backward-delete-char
-
-    # Re-enable incremental search from emacs mode (it's useful)
-    bindkey '^r' history-incremental-search-backward
-    # homebrew gettex
-    export PATH="/usr/local/opt/gettext/bin:$PATH"
-#}}}
-
-###
-### Aliases
-### {{{
-    # Autocorrect nocorrects
-    alias cp='nocorrect cp'
-    alias ebuild='nocorrect ebuild'
-    alias gist='nocorrect gist'
-    alias heroku='nocorrect heroku'
-    alias hpodder='nocorrect hpodder'
-    alias man='nocorrect man'
-    alias mkdir='nocorrect mkdir'
-    alias mv='nocorrect mv'
-    alias mysql='nocorrect mysql'
-    alias sudo='nocorrect sudo'
-    alias make='nocorrect make'
-
-    setopt correct_all
-
-    # Enable color support
-    ls --color -d . &> /dev/null && alias ls='ls --color=auto' || alias ls='ls -G'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-
-    # Some more basic aliases
-    #
-    command -v exa &>/dev/null && alias ls=exa || true
-    alias sl=ls
-    alias l=ls
-    alias ll='ls -lh'
-    alias la='ls -la'
-
-    # Git
-    alias git='noglob git'
-
-    # xdg-open if exists
-    command -v xdg-open &>/dev/null && alias open='xdg-open' || true
-
-    # bc with mathlib (cause I like floats)
-    alias bc='bc -l'
-
-    # emacs client
-    #   no wait
-    alias ec='emacsclient -n'
-    #   create new frame
-    alias ecc='emacsclient -n -c'
-
-    # Simple HTTP server
-    function server() {
-        local port="${1:-8000}"
-        open "http://localhost:${port}/"
-        python -m SimpleHTTPServer "${port}"
-    }
-    alias server=server
-
-    # ipaddresses
-    function ipaddresses() {
-        ip addr | awk '/[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\./ {sub(/addr:/,""); print $2 }'
-    }
-    alias ipaddresses=ipaddresses
-
-    # Pacman
-    command -v pacman &>/dev/null && alias pac=yay
-
-    # htop
-    alias htopu="htop -u $USER"
-
-    # }}}
-
-    # Editor {{{
-    # Neovim as $EDITOR
-        export EDITOR="nvim"
-        if [ -x 'nvim' ]; then
-            alias vim=nvim
-        fi
-    #}}}
-###}}}
-
-# local environment
-[ -f "$HOME/.zshrc.local" ] && source ~/.zshrc.local || true
-
-# keychain
 if command -v keychain &> /dev/null; then
     eval `keychain --eval --quiet --agents ssh,gpg $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
 
@@ -285,7 +43,194 @@ GPG_AGENT_INFO=$GPG_AGENT_INFO
 EOF
 fi
 
-# fzf
-if [ -f "$HOME/.fzf.zsh" ]; then
-    source $HOME/.fzf.zsh
+# Now that we have $PATH set up and ssh keys loaded, configure zgen.
+
+# start zgen
+if [ -f ~/.config/zsh/plugins ]; then
+    source ~/.config/zsh/plugins
+fi
+# end zgen
+
+# set some history options
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt hist_ignore_all_dups
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks
+setopt hist_save_no_dups
+setopt hist_verify
+setopt INC_APPEND_HISTORY
+unsetopt HIST_BEEP
+
+# Share your history across all your terminal windows
+setopt share_history
+#setopt noclobber
+
+# Keep a ton of history. You can reset these without editing .zshrc by
+# adding a file to ~/.zshrc.d.
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh_history
+export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+
+# set some options about directories
+setopt pushd_ignore_dups
+#setopt pushd_silent
+setopt AUTO_CD  # If a command is issued that can’t be executed as a normal command,
+# and the command is the name of a directory, perform the cd command
+# to that directory.
+
+# Add some completions settings
+setopt ALWAYS_TO_END     # Move cursor to the end of a completed word.
+setopt AUTO_LIST         # Automatically list choices on ambiguous completion.
+setopt AUTO_MENU         # Show completion menu on a successive tab press.
+setopt AUTO_PARAM_SLASH  # If completed parameter is a directory, add a trailing slash.
+setopt COMPLETE_IN_WORD  # Complete from both ends of a word.
+unsetopt MENU_COMPLETE   # Do not autoselect the first completion entry.
+
+# Miscellaneous settings
+setopt INTERACTIVE_COMMENTS  # Enable comments in interactive shell.
+
+# Long running processes should return time after they complete. Specified
+# in seconds.
+REPORTTIME=2
+TIMEFMT="%U user %S system %P cpu %*Es total"
+
+# Expand aliases inline - see http://blog.patshead.com/2012/11/automatically-expaning-zsh-global-aliases---simplified.html
+globalias() {
+    if [[ $LBUFFER =~ ' [A-Z0-9]+$' ]]; then
+        zle _expand_alias
+        zle expand-word
+    fi
+    zle self-insert
+}
+
+zle -N globalias
+
+bindkey " " globalias
+bindkey "^ " magic-space           # control-space to bypass completion
+bindkey -M isearch " " magic-space # normal space during searches
+
+# Customize to your needs...
+# Stuff that works on bash or zsh
+if [ -r ~/.sh_aliases ]; then
+    source ~/.sh_aliases
+fi
+
+# Stuff only tested on zsh, or explicitly zsh-specific
+if [ -r ~/.config/zsh/aliases ]; then
+    source ~/.config/zsh/aliases
+fi
+
+if [ -r ~/.zsh_functions ]; then
+    source ~/.zsh_functions
+fi
+
+export LOCATE_PATH=/var/db/locate.database
+
+# Load AWS credentials
+if [ -f ~/.aws/aws_variables ]; then
+    source ~/.aws/aws_variables
+fi
+
+# JAVA setup - needed for iam-* tools
+if [ -d /Library/Java/Home ];then
+    export JAVA_HOME=/Library/Java/Home
+fi
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    # Load macOS-specific aliases
+    [ -f ~/.osx_aliases ] && source ~/.osx_aliases
+    if [ -d ~/.osx_aliases.d ]; then
+        for alias_file in ~/.osx_aliases.d/*
+        do
+            source "$alias_file"
+        done
+    fi
+
+  # Apple renamed the OS, so...
+  [ -f ~/.macos_aliases ] && source ~/.macos_aliases
+  if [ -d ~/.macos_aliases.d ]; then
+      for alias_file in ~/.macos_aliases.d/*
+      do
+          source "$alias_file"
+      done
+  fi
+fi
+
+# deal with screen, if we're using it - courtesy MacOSXHints.com
+# Login greeting ------------------
+if [ "$TERM" = "screen" -a ! "$SHOWED_SCREEN_MESSAGE" = "true" ]; then
+    detached_screens=$(screen -list | grep Detached)
+    if [ ! -z "$detached_screens" ]; then
+        echo "+---------------------------------------+"
+        echo "| Detached screens are available:       |"
+        echo "$detached_screens"
+        echo "+---------------------------------------+"
+    fi
+fi
+
+if [ -f /usr/local/etc/grc.bashrc ]; then
+    source "$(brew --prefix)/etc/grc.bashrc"
+
+    function ping5(){
+        grc --color=auto ping -c 5 "$@"
+    }
+else
+    alias ping5='ping -c 5'
+fi
+
+# Speed up autocomplete, force prefix mapping
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle -e ':completion:*:default' list-colors 'reply=("${PREFIX:+=(#bi)($PREFIX:t)*==34=34}:${(s.:.)LS_COLORS}")';
+
+# Load any custom zsh completions we've installed
+if [ -d ~/.config/zsh/completions ]; then
+    for completion in ~/.config/zsh/completions/*
+    do
+        source "$completion"
+    done
+fi
+
+# Load zmv
+if [[ ! -f ~/.config/zsh/no-zmv ]]; then
+    autoload -U zmv
+fi
+
+# Make it easy to append your own customizations that override the above by
+# loading all files from the ~/.config/zsh/rc.d directory
+mkdir -p ~/.config/zsh/rc.d
+if [ -n "$(/bin/ls ~/.config/zsh/rc.d)" ]; then
+    for dotfile in ~/.config/zsh/rc.d/*
+    do
+        if [ -r "${dotfile}" ]; then
+            source "${dotfile}"
+        fi
+    done
+fi
+
+# remove dupes from $PATH using a zsh builtin
+# https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
+typeset -aU path;
+
+# If desk is installed, load the Hook for desk activation
+[[ -n "$DESK_ENV" ]] && source "$DESK_ENV"
+
+
+# Fix bracketed paste issue
+# Closes #73
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+
+# Load iTerm shell integrations if found.
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [[ -z "$DONT_PRINT_SSH_KEY_LIST" ]]; then
+    echo
+    echo "Current SSH Keys:"
+    ssh-add -l
+    echo
 fi

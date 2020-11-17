@@ -18,28 +18,22 @@ if [ -x /usr/libexec/path_helper ]; then
     eval $(/usr/libexec/path_helper -s)
 fi
 
-## source system profile
-#if [ -f /etc/profile.d ]; then
-#    for i in /etc/profile.d/*.sh; do
-#        . $i
-#    done
-#fi
+if [ -d /etc/profile.d ]; then
+    # source system profile
+    for i in /etc/profile.d/*.sh; do
+        source $i
+    done
+fi
 
 # Nix
 if [ -e '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh' ]; then
-  . '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
 fi
 [ -d $HOME/.nix-defexpr ] && export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH || true
 
 ## PATH
 export PATH=/nix/var/nix/profiles/per-user/$USER/profile/bin:$PATH
 export PATH=$HOME/lib/n/bin:$HOME/lib/bin:$HOME/.local/bin:$PATH
-
-## TDM
-#[ "$(tty)" = '/dev/tty1' ] &&\
-#    [ -z "$DISPLAY$SSH_TTY$(pgrep xinit)" ] &&\
-#    exec tdm
-
 
 # Applications
 
@@ -63,7 +57,7 @@ if uname -r|grep -q Microsoft;then
 
     # See https://github.com/Microsoft/BashOnWindows/issues/1887
     unsetopt BG_NICE
-# Microsoft bugs: WSL2
+    # Microsoft bugs: WSL2
 elif uname -r|grep -q microsoft;then
     #export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
     export DISPLAY="$(route -n | grep 0.0.0.0 | awk '{print $2;exit;}')":0.0
