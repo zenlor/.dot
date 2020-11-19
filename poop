@@ -8,6 +8,7 @@ fi
 mkdir -p \
     "$HOME/.config" \
     "$HOME/.config/git" \
+    "$HOME/.config/zsh" \
     "$HOME/lib/bin" \
     "$HOME/.local/" \
     "$HOME/.local/bin" \
