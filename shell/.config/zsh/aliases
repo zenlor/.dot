@@ -4,23 +4,10 @@ if [[ -d ~/lib/src ]]; then
 fi
 
 # yes, these tests are ugly. They do however, work.
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    # do OS X specific things
-
-    alias top="TERM=vt100 top"
-else
-    alias cputop="top -o cpu"
-    alias l-d="ls -lad"
-    alias l="ls -la"
-    alias ll="ls -la"
-fi
-
-if [[ "$(uname -s)" == "Linux" ]]; then
-    # we're on linux
-    alias l-d="ls -lFad"
-    alias l="ls -laF"
-    alias ll="ls -lFa"
-fi
+alias cputop="top -o cpu"
+alias l-d="ls -lad"
+alias l="ls -la"
+alias ll="ls -la"
 
 export CVS_RSH=ssh
 
