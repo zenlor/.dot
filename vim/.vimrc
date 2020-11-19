@@ -29,6 +29,14 @@ call plug#begin('~/.cache/vim/bundle')
 
     " align easily
     Plug 'junegunn/vim-easy-align'
+
+    if has('nvim')
+        " Aniseed to use fennel as lua plugin
+        Plug 'Olical/aniseed', { 'tag': 'v3.11.0' }
+
+        " repl
+        Plug 'Olical/conjure', {'tag': 'v4.8.0'}
+    endif
 " }}}
 
 " Vim visuals {{{
@@ -70,12 +78,6 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Nix
     Plug 'LnL7/vim-nix',                    { 'for': 'nix' }
-" }}}
-
-" lisps {{{
-   Plug 'pyrmont/parinfer-rust',           { 'for': ['clojure', 'scheme', 'lisp', 'janet', 'fennel'],
-                                           \ 'do': 'cargo build --release',
-                                           \ 'branch': 'janet-support'}
 " }}}
 
 " git {{{
