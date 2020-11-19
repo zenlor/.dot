@@ -179,6 +179,14 @@
        ;;(rss +org)        ; emacs as an RSS reader
        ;;twitter           ; twitter client https://twitter.com/vnought
 
+       ;; Private packages
+       :private
+       edit-server
+       janet
+       joker
+       fennel
+       systemd
+
        :config
        ;;literate
        (default +bindings +smartparens))
