@@ -6,7 +6,7 @@ fi
 # yes, these tests are ugly. They do however, work.
 alias cputop="top -o cpu"
 alias l-d="ls -lad"
-alias l="ls -la"
+alias l="ls -l"
 alias ll="ls -la"
 
 export CVS_RSH=ssh
@@ -46,6 +46,9 @@ if command -v nvim &> /dev/null; then
 fi
 
 export VISUAL=${EDITOR}
+
+# emacs
+alias ec="emacsclient -n"
 
 # Clean up files that have the wrong line endings
 alias mac2unix="tr '\015' '\012'"

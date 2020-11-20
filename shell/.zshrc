@@ -18,6 +18,7 @@ for path_candidate in \
     ~/.cabal/bin \
     ~/.cargo/bin \
     ~/.rbenv/bin \
+    ~/.local/bin \
     ~/bin \
     ~/lib/bin
 do

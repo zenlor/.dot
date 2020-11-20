@@ -13,6 +13,10 @@ source ~/.cache/miniplug.zsh
 # zsh-users
 miniplug plugin 'zsh-users/zsh-syntax-highlighting'
 miniplug plugin 'zsh-users/zsh-history-substring-search'
+miniplug plugin 'zdharma/fast-syntax-highlighting'
+
+# z
+miniplug plugin 'skywind3000/z.lua'
 
 # macosx stuff
 miniplug plugin 'unixorn/tumult.plugin.zsh'
