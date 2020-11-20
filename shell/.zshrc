@@ -214,7 +214,3 @@ fi
 # remove dupes from $PATH using a zsh builtin
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path;
-
-# Fix bracketed paste issue
-# Closes #73
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)

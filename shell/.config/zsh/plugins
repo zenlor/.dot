@@ -61,3 +61,7 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # load local completions last
 GENCOMPL_FPATH=$HOME/.config/zsh/complete
+
+# Fix bracketed paste issue
+# Closes #73
+ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
