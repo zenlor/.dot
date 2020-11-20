@@ -177,16 +177,6 @@ if [ "$TERM" = "screen" -a ! "$SHOWED_SCREEN_MESSAGE" = "true" ]; then
     fi
 fi
 
-if [ -f /usr/local/etc/grc.bashrc ]; then
-    source "$(brew --prefix)/etc/grc.bashrc"
-
-    function ping5(){
-        grc --color=auto ping -c 5 "$@"
-    }
-else
-    alias ping5='ping -c 5'
-fi
-
 # Speed up autocomplete, force prefix mapping
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
@@ -224,13 +214,6 @@ fi
 # https://til.hashrocket.com/posts/7evpdebn7g-remove-duplicates-in-zsh-path
 typeset -aU path;
 
-# If desk is installed, load the Hook for desk activation
-[[ -n "$DESK_ENV" ]] && source "$DESK_ENV"
-
-
 # Fix bracketed paste issue
 # Closes #73
 ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
-
-# Load iTerm shell integrations if found.
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
