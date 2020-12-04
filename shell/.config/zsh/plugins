@@ -10,9 +10,10 @@ if [[ ! -f ~/.cache/miniplug.zsh ]]; then
 fi
 source ~/.cache/miniplug.zsh
 
-# zsh-users
-miniplug plugin 'zsh-users/zsh-syntax-highlighting'
-miniplug plugin 'zsh-users/zsh-history-substring-search'
+# autosuggest
+miniplug plugin 'zsh-users/zsh-autosuggestions'
+
+# syntax hilight
 miniplug plugin 'zdharma/fast-syntax-highlighting'
 
 # z
@@ -23,9 +24,6 @@ miniplug plugin 'unixorn/tumult.plugin.zsh'
 
 # git extra aliases and commands
 miniplug plugin 'unixorn/git-extra-commands'
-
-# fzf
-miniplug plugin 'unixorn/fzf-zsh-plugin'
 
 # sysadmin's toolkit.
 miniplug plugin 'skx/sysadmin-util'
@@ -38,9 +36,6 @@ miniplug plugin 'zsh-users/zsh-completions' src
 # you'll have to explicitly generate a completion, but it's still quite cool.
 miniplug plugin 'RobSis/zsh-completion-generator'
 
-# Add Fish-like autosuggestions to your ZSH.
-miniplug plugin 'zsh-users/zsh-autosuggestions'
-
 # themes and colors
 miniplug plugin 'chrissicool/zsh-256color'
 miniplug plugin 'jedahan/geometry-hydrate'
@@ -52,12 +47,6 @@ export GEOMETRY_PROMPT_PLUGINS=(hydrate)
 # Finally
 # load all plugins
 miniplug load
-
-# Configure substring search
-# Set keystrokes for substring searching
-zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
 
 # load local completions last
 GENCOMPL_FPATH=$HOME/.config/zsh/complete
