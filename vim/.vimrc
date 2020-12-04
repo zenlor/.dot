@@ -5,7 +5,6 @@ filetype off
 call plug#begin('~/.cache/vim/bundle')
 
 " Essentials {{{
-    "Plug 'Shougo/vimproc', { 'do': 'make' }
     Plug 'editorconfig/editorconfig-vim'
 " }}}
 
@@ -78,6 +77,9 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Nix
     Plug 'LnL7/vim-nix',                    { 'for': 'nix' }
+
+    " Groovy ... for jenkins
+    Plug 'jovandeginste/vim-groovy',        { 'for': 'groovy' }
 " }}}
 
 " git {{{

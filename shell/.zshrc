@@ -18,6 +18,7 @@ for path_candidate in \
     ~/.cabal/bin \
     ~/.cargo/bin \
     ~/.rbenv/bin \
+    ~/Library/Python/3.9/bin \
     ~/.local/bin \
     ~/bin \
     ~/lib/bin
@@ -146,38 +147,6 @@ if [ -d /Library/Java/Home ];then
     export JAVA_HOME=/Library/Java/Home
 fi
 
-if [[ "$(uname -s)" == "Darwin" ]]; then
-    # Load macOS-specific aliases
-    [ -f ~/.osx_aliases ] && source ~/.osx_aliases
-    if [ -d ~/.osx_aliases.d ]; then
-        for alias_file in ~/.osx_aliases.d/*
-        do
-            source "$alias_file"
-        done
-    fi
-
-  # Apple renamed the OS, so...
-  [ -f ~/.macos_aliases ] && source ~/.macos_aliases
-  if [ -d ~/.macos_aliases.d ]; then
-      for alias_file in ~/.macos_aliases.d/*
-      do
-          source "$alias_file"
-      done
-  fi
-fi
-
-# deal with screen, if we're using it - courtesy MacOSXHints.com
-# Login greeting ------------------
-if [ "$TERM" = "screen" -a ! "$SHOWED_SCREEN_MESSAGE" = "true" ]; then
-    detached_screens=$(screen -list | grep Detached)
-    if [ ! -z "$detached_screens" ]; then
-        echo "+---------------------------------------+"
-        echo "| Detached screens are available:       |"
-        echo "$detached_screens"
-        echo "+---------------------------------------+"
-    fi
-fi
-
 # Speed up autocomplete, force prefix mapping
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*' use-cache on
@@ -193,11 +162,6 @@ if [ -d ~/.config/zsh/completions ]; then
 fi
 
 autoload -U compinit && compinit
-
-# Load zmv
-if [[ ! -f ~/.config/zsh/no-zmv ]]; then
-    autoload -U zmv
-fi
 
 # Make it easy to append your own customizations that override the above by
 # loading all files from the ~/.config/zsh/rc.d directory
