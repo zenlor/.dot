@@ -21,6 +21,3 @@ fi
 # Fix backspace not working after returning from cmd mode
 bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
-
-# Re-enable incremental search from emacs mode (it's useful)
-bindkey '^r' history-incremental-search-backward
