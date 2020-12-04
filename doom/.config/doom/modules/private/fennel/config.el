@@ -1,7 +1,7 @@
 ;;
 ;; Fennel + Love2d
 ;;
-;(add-to-list 'load-path "~/lib/src/gitlab.com/technomancy/fennel-mode")
+                                        ;(add-to-list 'load-path "~/lib/src/gitlab.com/technomancy/fennel-mode")
 
 (defun run-love ()
   (interactive)
@@ -9,7 +9,11 @@
 
 (use-package! fennel-mode
   :mode "\\.fnl$"
-  :hook (fennel-mode . lispy-mode)
+  :hook
+  (when (featurep! :editor lispy)
+    (fennel-mode . lispy-mode))
+  (when (featurep! :editor parinfer)
+    (fennel-mode . parinfer-mode))
   :interpreter "fennel"
   :config
   ;; By default fennel-mode moves focus to the \*inferior-lisp\* buffer
@@ -18,6 +22,4 @@
 
   (map! :localleader
         (:map fennel-mode-map
-          "'" #'run-love)))
-
-
+         "'" #'run-love)))
