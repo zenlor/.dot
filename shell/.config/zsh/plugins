@@ -28,6 +28,9 @@ miniplug plugin 'unixorn/git-extra-commands'
 # sysadmin's toolkit.
 miniplug plugin 'skx/sysadmin-util'
 
+# git commdodity commands
+miniplug plugin 'unixorn/git-extra-commands'
+
 # Load more completion files for zsh from the zsh-lovers github repo.
 miniplug plugin 'zsh-users/zsh-completions' src
 

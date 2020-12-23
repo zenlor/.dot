@@ -13,7 +13,8 @@ for path_candidate in \
     ~/Library/Python/3.9/bin \
     ~/.local/bin \
     ~/bin \
-    ~/lib/bin
+    ~/lib/bin \
+    ~/.emacs.d/bin
 do
     if [ -d ${path_candidate} ]; then
         export PATH="${PATH}:${path_candidate}"
