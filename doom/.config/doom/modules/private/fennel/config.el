@@ -9,11 +9,6 @@
 
 (use-package! fennel-mode
   :mode "\\.fnl$"
-  :hook
-  (when (featurep! :editor lispy)
-    (fennel-mode . lispy-mode))
-  (when (featurep! :editor parinfer)
-    (fennel-mode . parinfer-mode))
   :interpreter "fennel"
   :config
   ;; By default fennel-mode moves focus to the \*inferior-lisp\* buffer
@@ -22,4 +17,9 @@
 
   (map! :localleader
         (:map fennel-mode-map
-         "'" #'run-love)))
+         "'" #'run-love))
+
+  (when (featurep! :editor lispy)
+    (fennel-mode . lispy-mode))
+  (when (featurep! :editor parinfer)
+    (fennel-mode . parinfer-mode)))
