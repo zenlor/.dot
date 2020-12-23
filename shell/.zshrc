@@ -1,11 +1,3 @@
-export COMPLETION_WAITING_DOTS="true"
-
-# Correct spelling for commands
-setopt correct
-
-# turn off the infernal correctall for filenames
-unsetopt correctall
-
 # Base PATH
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
 
@@ -28,8 +20,21 @@ do
     fi
 done
 
+# nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
 if [[ -f ~/.profile.local ]]; then
     source ~/.profile.local
+fi
+
+# After the path we can check if this is a dumb terminal
+if [[ "$TERM" == "dumb" ]]; then
+    unset zle_bracketed_paste
+    unset zle
+    PS1='$ '
+    return
 fi
 
 # Yes, these are a pain to customize. Fortunately, Geoff Greer made an online
@@ -57,6 +62,12 @@ if [ -f ~/.config/zsh/plugins ]; then
     source ~/.config/zsh/plugins
 fi
 # end zgen
+
+export COMPLETION_WAITING_DOTS="true"
+# Correct spelling for commands
+setopt correct
+# turn off the infernal correctall for filenames
+unsetopt correctall
 
 # set some history options
 setopt append_history
