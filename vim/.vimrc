@@ -290,6 +290,8 @@ noremap <silent> <leader>? :nohlsearch<CR>
 
 nnoremap <leader>h :<C-u>h
 
+nnoremap <ESC><ESC> :nohl<CR>
+
 " Navigation {{{
     " Normalize all the navigation keys to move by row/col despite any wrapped text
     noremap j gj
