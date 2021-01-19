@@ -32,8 +32,8 @@ fi
 
 # After the path we can check if this is a dumb terminal
 if [[ "$TERM" == "dumb" ]]; then
-    unset zle_bracketed_paste
-    unset zle
+    unsetopt zle_bracketed_paste
+    unsetopt zle
     PS1='$ '
     return
 fi
