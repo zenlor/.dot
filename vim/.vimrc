@@ -61,13 +61,16 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'honza/dockerfile.vim'
 
     " Rust
-    Plug 'rust-lang/rust.vim'
+    Plug 'rust-lang/rust.vim',              { 'for': 'rust' }
+
+    " Lua
+    Plug 'wolfgangmehner/lua-support',      { 'for': 'lua' }
 
     " Fennel
-    Plug 'bakpakin/fennel.vim'
+    Plug 'bakpakin/fennel.vim',             { 'for': 'fennel' }
 
     " Janet
-    Plug 'bakpakin/janet.vim'
+    Plug 'bakpakin/janet.vim',              { 'for': 'janet' }
 
     " C
     Plug 'WolfgangMehner/c-support',        { 'for': 'c' }
