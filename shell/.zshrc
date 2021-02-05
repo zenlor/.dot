@@ -1,3 +1,7 @@
+# Lang
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 # Base PATH
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
 
@@ -32,7 +36,6 @@ fi
 
 # After the path we can check if this is a dumb terminal
 if [[ "$TERM" == "dumb" ]]; then
-    unsetopt zle_bracketed_paste
     unsetopt zle
     PS1='$ '
     return
