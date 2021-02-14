@@ -45,6 +45,10 @@ if command -v nvim &> /dev/null; then
     export EDITOR="$(which nvim)"
 fi
 
+if command -v yay&>/dev/null; then
+    alias pac="$(which yay)"
+fi
+
 export VISUAL=${EDITOR}
 
 # emacs
