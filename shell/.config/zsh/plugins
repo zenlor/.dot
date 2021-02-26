@@ -39,6 +39,8 @@ miniplug plugin 'zsh-users/zsh-completions' src
 # you'll have to explicitly generate a completion, but it's still quite cool.
 miniplug plugin 'RobSis/zsh-completion-generator'
 
+miniplug plugin 'zpm-zsh/autoenv'
+
 # themes and colors
 miniplug plugin 'chrissicool/zsh-256color'
 miniplug plugin 'jedahan/geometry-hydrate'
