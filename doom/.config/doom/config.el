@@ -7,8 +7,8 @@
 
 (setenv "PATH"
         (concat
-          (getenv "HOME") "/lib/bin" ";"
-          (getenv "HOME") "/.local/bin" ";"
+          (getenv "HOME") "/lib/bin" ":"
+          (getenv "HOME") "/.local/bin" ":"
           (getenv "PATH")))
 
 (add-to-list 'exec-path
