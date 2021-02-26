@@ -18,7 +18,8 @@ for path_candidate in \
     ~/.local/bin \
     ~/bin \
     ~/lib/bin \
-    ~/.emacs.d/bin
+    ~/.emacs.d/bin \
+    ~/.nix-profile/bin
 do
     if [ -d ${path_candidate} ]; then
         export PATH="${PATH}:${path_candidate}"
