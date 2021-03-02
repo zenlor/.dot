@@ -1,61 +1,50 @@
 #!/bin/zsh
 
-# zgen setup
-export MINIPLUG_HOME=~/.cache/miniplug
+declare -A ZINIT
+ZINIT[HOME_DIR]=$HOME/.cache/zinit
 
-# auto-download zgen
-if [[ ! -f ~/.cache/miniplug.zsh ]]; then
-    curl -sL https://git.sr.ht/~yerinalexey/miniplug/blob/master/miniplug.zsh \
-        -o ~/.cache/miniplug.zsh
+if [[ ! -d $ZINIT[HOME_DIR]/bin ]]; then
+    git clone https://github.com/zdharma/zinit $ZINIT[HOME_DIR]/bin
 fi
-source ~/.cache/miniplug.zsh
+source ~/.cache/zinit/bin/zinit.zsh
 
-# autosuggest
-miniplug plugin 'zsh-users/zsh-autosuggestions'
+zinit for \
+    light-mode  zsh-users/zsh-autosuggestions \
+    light-mode  zdharma/fast-syntax-highlighting \
+                zdharma/history-search-multi-word \
+                skywind3000/z.lua \
+                zsh-users/zsh-completions \
+                zpm-zsh/autoenv \
+                zpm-zsh/ls \
+                zpm-zsh/helpers \
+                mdumitru/fancy-ctrl-z \
+                \
+                zpm-zsh/material-colors \
+                zpm-zsh/pretty-time \
+                zpm-zsh/pr-is-root \
+                zpm-zsh/pr-user \
+                zpm-zsh/pr-return \
+                zpm-zsh/pr-exec-time \
+                zpm-zsh/pr-git \
+                zpm-zsh/pr-cwd \
+                zpm-zsh/pr-2 \
+                zpm-zsh/pr-eol \
+                zpm-zsh/pr-zcalc \
+                zpm-zsh/pr-correct \
+                zpm-zsh/colors \
+                zpm-zsh/colorize \
+    light-mode  zpm-zsh/minimal-theme
 
-# syntax hilight
-miniplug plugin 'zdharma/fast-syntax-highlighting'
+zplugin pack"default+keys" for fzf
 
-# z
-miniplug plugin 'skywind3000/z.lua'
+zinit as"null" wait"3" lucid for \
+    Fakerr/git-recall \
+    paulirish/git-open \
+    paulirish/git-recent \
+    davidosomething/git-my \
+    unixorn/git-extra-commands \
+    make"PREFIX=$ZPFX install"  iwata/git-now \
+    make"PREFIX=$ZPFX"          tj/git-extras
 
-# macosx stuff
-miniplug plugin 'unixorn/tumult.plugin.zsh'
-
-# git extra aliases and commands
-miniplug plugin 'unixorn/git-extra-commands'
-
-# sysadmin's toolkit.
-miniplug plugin 'skx/sysadmin-util'
-
-# git commdodity commands
-miniplug plugin 'unixorn/git-extra-commands'
-
-# Load more completion files for zsh from the zsh-lovers github repo.
-miniplug plugin 'zsh-users/zsh-completions' src
-
-# Very cool plugin that generates zsh completion functions for commands
-# if they have getopt-style help text. It doesn't generate them on the fly,
-# you'll have to explicitly generate a completion, but it's still quite cool.
-miniplug plugin 'RobSis/zsh-completion-generator'
-
-miniplug plugin 'zpm-zsh/autoenv'
-
-# themes and colors
-miniplug plugin 'chrissicool/zsh-256color'
-miniplug plugin 'jedahan/geometry-hydrate'
-miniplug theme 'geometry-zsh/geometry'
-
-# load geometry plugins before geometry itself
-export GEOMETRY_PROMPT_PLUGINS=(hydrate)
-
-# Finally
-# load all plugins
-miniplug load
-
-# load local completions last
-GENCOMPL_FPATH=$HOME/.config/zsh/complete
-
-# Fix bracketed paste issue
-# Closes #73
-ZSH_AUTOSUGGEST_CLEAR_WIDGETS+=(bracketed-paste)
+autoload -Uz _zinit
+(( ${+_comps}  )) && _comps[zinit]=_zinit
