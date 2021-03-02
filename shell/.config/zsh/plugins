@@ -8,9 +8,15 @@ if [[ ! -d $ZINIT[HOME_DIR]/bin ]]; then
 fi
 source ~/.cache/zinit/bin/zinit.zsh
 
+zinit wait lucid light-mode for \
+    atinit"zicompinit; zicdreplay" \
+        zdharma/fast-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions
+
 zinit for \
-    light-mode  zsh-users/zsh-autosuggestions \
-    light-mode  zdharma/fast-syntax-highlighting \
                 zdharma/history-search-multi-word \
                 skywind3000/z.lua \
                 zsh-users/zsh-completions \
