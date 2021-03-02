@@ -21,6 +21,7 @@ zinit for \
                 skywind3000/z.lua \
                 zsh-users/zsh-completions \
                 zpm-zsh/autoenv \
+      atinit"zicompinit; zicdreplay" \
                 zpm-zsh/ls \
                 zpm-zsh/helpers \
                 mdumitru/fancy-ctrl-z \
