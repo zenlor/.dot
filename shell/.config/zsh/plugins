@@ -55,3 +55,4 @@ zinit as"null" wait"3" lucid for \
 
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
+autoload -Uz compinit && compinit

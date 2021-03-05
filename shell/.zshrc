@@ -31,6 +31,10 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
+if [ -d $HOME/.nix-profile/share/zsh/site-fuctions ]; then
+    fpath=($HOME/.nix-profile/share/zsh/site-fuctions $fpath)
+fi
+
 if [[ -f ~/.config/zsh/plugins ]]; then
     source ~/.config/zsh/plugins
 fi
@@ -45,6 +49,8 @@ if [[ "$TERM" == "dumb" ]]; then
     PS1='$ '
     return
 fi
+
+setopt autocd
 
 # Yes, these are a pain to customize. Fortunately, Geoff Greer made an online
 # tool that makes it easy to customize your color scheme and keep them in sync
