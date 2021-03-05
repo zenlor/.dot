@@ -83,6 +83,9 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Groovy ... for jenkins
     Plug 'jovandeginste/vim-groovy',        { 'for': 'groovy' }
+
+    " Python
+    Plug 'hynek/vim-python-pep8-indent',    { 'for': 'python' }
 " }}}
 
 " git {{{
