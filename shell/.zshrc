@@ -65,6 +65,8 @@ setopt correct
 # turn off the infernal correctall for filenames
 unsetopt correctall
 
+zstyle ':completion:*' matcher-list 'r:[[:ascii:]]||[[:ascii:]]=** r:|=* m:{a-z\-}={A-Z\_}'
+
 # set some history options
 setopt append_history
 setopt extended_history
