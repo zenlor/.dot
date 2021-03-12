@@ -16,33 +16,22 @@ zinit wait lucid light-mode for \
     blockf atpull'zinit creinstall -q .' \
         zsh-users/zsh-completions
 
+
+# skywind3000/z.lua
+
 zinit for \
                 zdharma/history-search-multi-word \
-                skywind3000/z.lua \
+                rupa/z \
                 zsh-users/zsh-completions \
                 zpm-zsh/autoenv \
       atinit"zicompinit; zicdreplay" \
                 zpm-zsh/ls \
                 zpm-zsh/helpers \
                 mdumitru/fancy-ctrl-z \
-                \
-                zpm-zsh/material-colors \
-                zpm-zsh/pretty-time \
-                zpm-zsh/pr-is-root \
-                zpm-zsh/pr-user \
-                zpm-zsh/pr-return \
-                zpm-zsh/pr-exec-time \
-                zpm-zsh/pr-git \
-                zpm-zsh/pr-cwd \
-                zpm-zsh/pr-2 \
-                zpm-zsh/pr-eol \
-                zpm-zsh/pr-zcalc \
-                zpm-zsh/pr-correct \
-                zpm-zsh/colors \
-                zpm-zsh/colorize \
-    light-mode  zpm-zsh/minimal-theme
+                eendroroy/alien-minimal
 
-zplugin pack"default+keys" for fzf
+
+# zplugin pack"default+keys" for fzf
 
 zinit as"null" wait"3" lucid for \
     Fakerr/git-recall \
@@ -53,6 +42,13 @@ zinit as"null" wait"3" lucid for \
     make"PREFIX=$ZPFX install"  iwata/git-now \
     make"PREFIX=$ZPFX"          tj/git-extras
 
+
+if [ -d $HOME/.nix-profile/share/zsh/site-fuctions ]; then
+    fpath=($HOME/.nix-profile/share/zsh/site-fuctions $fpath)
+fi
+
 autoload -Uz _zinit
 (( ${+_comps}  )) && _comps[zinit]=_zinit
 autoload -Uz compinit && compinit
+
+zinit cdreplay -q
