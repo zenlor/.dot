@@ -43,8 +43,8 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'junegunn/rainbow_parentheses.vim'
     " match parentheses
     Plug 'andymass/vim-matchup'
-    " theme (?)
-    Plug 'xero/sourcerer.vim'
+    " theme
+    Plug 'axvr/photon.vim'
 " }}}
 
 " lang {{{
@@ -86,6 +86,9 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Python
     Plug 'hynek/vim-python-pep8-indent',    { 'for': 'python' }
+
+    " Markdown
+    Plug 'tpope/vim-markdown'
 " }}}
 
 " git {{{
@@ -253,7 +256,8 @@ set textwidth=81
 " Colors
 set notermguicolors t_Co=16
 set background=dark
-colorscheme sourcerer
+"colorscheme sourcerer
+colorscheme photon
 
 " visual bell
 set noerrorbells visualbell t_vb=
@@ -732,6 +736,8 @@ endif
 """ }}}
 
 """ Prose {{{
+let g:markdown_fenced_languages = ['coffee', 'css', 'terraform', 'tf=terraform', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml']
+
 if has("autocmd")
   " For all text files set 'textwidth' to 78 characters.
   autocmd FileType text,markdown setlocal textwidth=78
