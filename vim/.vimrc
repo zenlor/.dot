@@ -48,6 +48,13 @@ call plug#begin('~/.cache/vim/bundle')
 " }}}
 
 " lang {{{
+
+    " LSP client
+    Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': 'bash install.sh',
+        \ }
+
     " Clojure
     Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
 
