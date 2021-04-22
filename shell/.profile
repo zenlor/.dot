@@ -74,6 +74,9 @@ export GPG_TTY=$(tty)
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+if [ -f /etc/keymap/us.bmap.gz ]; then
+    export KEYMAP=/etc/keymap/us.bmap.gz
+fi
 
 ## Load local configuration
 [ -f "$HOME/.profile.local" ] && source "$HOME/.profile.local" || true
