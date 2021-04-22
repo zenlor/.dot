@@ -36,7 +36,7 @@ zinit as"null" wait"3" lucid for \
     paulirish/git-open \
     paulirish/git-recent \
     davidosomething/git-my \
-    unixorn/git-extra-commands \
+    as"program" pick"$ZPFX/bin/git-*" unixorn/git-extra-commands \
     make"PREFIX=$ZPFX install"  iwata/git-now \
     make"PREFIX=$ZPFX"          tj/git-extras
 
