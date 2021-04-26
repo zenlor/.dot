@@ -19,6 +19,6 @@
 
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 16)
-      doom-variable-pitch-font (font-spec :family "Iosevka Sparkle")
+      doom-variable-pitch-font (font-spec :family "Iosevka Aile")
       doom-unicode-font (font-spec :family "Iosevka")
       doom-big-font (font-spec :family "Iosevka" :size 22))
