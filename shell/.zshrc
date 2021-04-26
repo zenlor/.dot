@@ -76,10 +76,3 @@ fi
 if [ -d /Library/Java/Home ];then
     export JAVA_HOME=/Library/Java/Home
 fi
-
-set_mfa(){
-    export AWS_PROFILE='MFA'
-}
-unset_mfa(){
-    unset AWS_PROFILE
-}
