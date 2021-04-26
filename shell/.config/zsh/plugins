@@ -1,52 +1,54 @@
 #!/bin/zsh
 
-declare -A ZINIT
-ZINIT[HOME_DIR]=$HOME/.cache/zinit
-
-if [[ ! -d $ZINIT[HOME_DIR]/bin ]]; then
-    git clone https://github.com/zdharma/zinit $ZINIT[HOME_DIR]/bin
-fi
-source ~/.cache/zinit/bin/zinit.zsh
-
-zinit wait lucid light-mode for \
-    atinit"zicompinit; zicdreplay" \
-        zdharma/fast-syntax-highlighting \
-    blockf atpull'zinit creinstall -q .' \
-        zsh-users/zsh-completions
-
-
-# skywind3000/z.lua
-
-zinit for \
-                zdharma/history-search-multi-word \
-                rupa/z \
-                zsh-users/zsh-completions \
-                zpm-zsh/autoenv \
-      atinit"zicompinit; zicdreplay" \
-                zpm-zsh/ls \
-                zpm-zsh/helpers \
-                mdumitru/fancy-ctrl-z \
-                eendroroy/alien-minimal
-
-
-# zplugin pack"default+keys" for fzf
-
-zinit as"null" wait"3" lucid for \
-    Fakerr/git-recall \
-    paulirish/git-open \
-    paulirish/git-recent \
-    davidosomething/git-my \
-    as"program" pick"$ZPFX/bin/git-*" unixorn/git-extra-commands \
-    make"PREFIX=$ZPFX install"  iwata/git-now \
-    make"PREFIX=$ZPFX"          tj/git-extras
-
-
-if [ -d $HOME/.nix-profile/share/zsh/site-fuctions ]; then
-    fpath=($HOME/.nix-profile/share/zsh/site-fuctions $fpath)
-fi
-
-autoload -Uz _zinit
-(( ${+_comps}  )) && _comps[zinit]=_zinit
 autoload -Uz compinit && compinit
 
-zinit cdreplay -q
+# zgenom stores the clones plugins & themes in $ZGEN_DIR when it
+# is set. Otherwise it stuffs everything in the source tree, which
+# is unclean.
+ZGENOM_HOME=$HOME/.cache/zgenom
+ZGEN_DIR=$HOME/.cache/zgenom_store
+
+# echo "ZGEN_DIR: $ZGEN_DIR"
+
+if [[ ! -d $ZGENOM_HOME ]]; then
+  git clone --depth=1 https://github.com/jandamm/zgenom.git $ZGENOM_HOME
+fi
+
+if [[ ! -f "$ZGENOM_HOME/zgenom.zsh" ]]; then
+  echo "Can't find zgenom.zsh"
+else
+  # echo "Loading zgenom"
+  source "$ZGENOM_HOME/zgenom.zsh"
+fi
+
+if ! zgen saved; then
+    zgen loadall <<EOF
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-completions
+
+zdharma/history-search-multi-word
+rupa/z
+zsh-users/zsh-completions
+zpm-zsh/autoenv
+
+zpm-zsh/ls
+zpm-zsh/helpers
+mdumitru/fancy-ctrl-z
+eendroroy/alien-minimal
+
+Fakerr/git-recall
+paulirish/git-open
+paulirish/git-recent
+davidosomething/git-my
+unixorn/git-extra-commands
+iwata/git-now
+EOF
+
+    # tj/git-extras
+fi
+
+
+
+if [[ -d $HOME/.nix-profile/share/zsh/site-fuctions ]]; then
+    fpath=($HOME/.nix-profile/share/zsh/site-fuctions $fpath)
+fi
