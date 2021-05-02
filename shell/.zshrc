@@ -43,17 +43,6 @@ if [[ "$TERM" == "dumb" ]]; then
     return
 fi
 
-if command -v keychain &> /dev/null; then
-    eval `keychain --eval --quiet --agents ssh,gpg $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
-
-    cat <<EOF > ~/.ssh/.env
-SSH_AUTH_SOCK=$SSH_AUTH_SOCK
-SSH_AGENT_PID=$SSH_AGENT_PID
-GPG_AGENT_KEYS=$GPG_AGENT_KEYS
-GPG_AGENT_INFO=$GPG_AGENT_INFO
-EOF
-fi
-
 if [[ -f ~/.config/zsh/plugins ]]; then
     source ~/.config/zsh/plugins
 fi
