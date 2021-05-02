@@ -14,6 +14,7 @@ for path_candidate in \
     ~/.cabal/bin \
     ~/.cargo/bin \
     ~/.rbenv/bin \
+    ~/.luarocks/bin \
     ~/Library/Python/3.9/bin \
     ~/.local/bin \
     ~/bin \
@@ -63,8 +64,8 @@ done
 
 # Customize to your needs...
 # Stuff that works on bash or zsh
-if [ -r ~/.sh_aliases ]; then
-    source ~/.sh_aliases
+if [ -r ~/.config/zsh/aliases ]; then
+    source ~/.config/zsh/aliases
 fi
 
 # Load AWS credentials

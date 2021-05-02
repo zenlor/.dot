@@ -1,7 +1,8 @@
 ;;
 ;; Fennel + Love2d
 ;;
-                                        ;(add-to-list 'load-path "~/lib/src/gitlab.com/technomancy/fennel-mode")
+;(add-to-list 'load-path "~/lib/src/gitlab.com/technomancy/fennel-mode")
+
 
 (defun run-love ()
   (interactive)
@@ -15,11 +16,15 @@
   ;; setting `fennel-mode-switch-to-repl-after-reload' to nil prevents this
   (customize-save-variable 'fennel-mode-switch-to-repl-after-reload nil)
 
+  ;; (customize-save-variable 'fennel-program
+  ;;   (concat (executable-find "fennel") " --correlate --repl"))
+
+
   (map! :localleader
         (:map fennel-mode-map
          "'" #'run-love))
 
   (when (featurep! :editor lispy)
-    (fennel-mode . lispy-mode))
+    (add-hook 'fennel-mode 'lispy-mode))
   (when (featurep! :editor parinfer)
-    (fennel-mode . parinfer-mode)))
+    (add-hook 'fennel-mode 'parinfer-mode)))

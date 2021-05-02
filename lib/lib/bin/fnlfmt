@@ -1,0 +1,16 @@
+#!/bin/sh
+set -e
+
+GIT_REPO="https://git.sr.ht/~technomancy/fnlfmt"
+GIT_FOLDER="$HOME/lib/src/git.sr.ht/~/technomancy/fnlfmt"
+ENTRYPOINT="cli.fnl"
+
+if [ ! -x "$GIT_FOLDER/$ENTRYPOINT" ]; then
+    if [ -d $GIT_FOLDER ]; then
+        git -C $GIT_FOLDER pull
+    else
+        git clone "$GIT_REPO" "$GIT_FOLDER"
+    fi
+fi
+
+exec fennel "$START_FILE" $@

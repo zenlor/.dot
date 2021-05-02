@@ -9,12 +9,15 @@
         (concat
           (getenv "HOME") "/lib/bin" ":"
           (getenv "HOME") "/.local/bin" ":"
+          (getenv "HOME") "/.luarocks/bin" ":"
           (getenv "PATH")))
 
 (add-to-list 'exec-path
                 (concat (getenv "HOME") "/.local/bin"))
 (add-to-list 'exec-path
                 (concat (getenv "HOME") "/lib/bin"))
+(add-to-list 'exec-path
+                (concat (getenv "HOME") "/.luarocks/bin"))
 
 (load! "+bindings")
 ;(load! "+email")
