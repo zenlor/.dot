@@ -2,6 +2,7 @@
 
 autoload -Uz compinit && compinit
 
+
 # zgenom stores the clones plugins & themes in $ZGEN_DIR when it
 # is set. Otherwise it stuffs everything in the source tree, which
 # is unclean.
