@@ -15,7 +15,7 @@
 ;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-(setq doom-theme 'doom-snazzy)
+(setq doom-theme 'doom-Iosvkem)
 
 ;; Fonts
 (setq doom-font (font-spec :family "Iosevka" :size 16)
