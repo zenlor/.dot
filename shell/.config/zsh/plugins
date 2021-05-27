@@ -35,7 +35,7 @@ zpm-zsh/autoenv
 zpm-zsh/ls
 zpm-zsh/helpers
 mdumitru/fancy-ctrl-z
-eendroroy/alien-minimal
+zenlor/sfz-prompt.zsh
 
 Fakerr/git-recall
 paulirish/git-open
@@ -44,8 +44,6 @@ davidosomething/git-my
 unixorn/git-extra-commands
 iwata/git-now
 EOF
-
-    # tj/git-extras
 fi
 
 
