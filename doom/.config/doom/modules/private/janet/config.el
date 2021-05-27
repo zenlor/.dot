@@ -5,10 +5,9 @@
 (use-package! janet-mode
   :mode "\\.janet\\'"
   :interpreter "janet"
-  :hook (janet-mode . inf-janet-minor-mode)
+  :hook ((inf-janet-minor-mode
+          parinfer-mode
+          lispy-mode
+          ) . janet-mode)
   :config
-  (when (featurep! :editor parinfer)
-    (janet-mode . parinfer-mode))
-  ;(when (featurep! :editor lispy)
-  ;  (janet-mode . lispy-mode))
   (set-repl-handler! 'janet-mode #'inf-janet))
