@@ -42,3 +42,7 @@ function x-create-branch() {
     git checkout -b "$branch_name"
   fi
 }
+
+function http-server() {
+    python3 -m http.server
+}
