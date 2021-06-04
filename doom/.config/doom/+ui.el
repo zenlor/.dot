@@ -15,10 +15,10 @@
 ;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
-(setq doom-theme 'doom-Iosvkem)
+(setq doom-theme 'doom-laserwave)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka" :size 16)
+(setq doom-font (font-spec :family "Iosevka" :size 18)
       doom-variable-pitch-font (font-spec :family "Iosevka Aile")
       doom-unicode-font (font-spec :family "Iosevka")
       doom-big-font (font-spec :family "Iosevka" :size 22))
