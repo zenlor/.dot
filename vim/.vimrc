@@ -748,7 +748,7 @@ endif
 """ }}}
 
 """ Prose {{{
-let g:markdown_fenced_languages = ['css', 'terraform', 'tf=terraform', 'javascript', 'js=javascript', 'ruby', 'sass', 'xml']
+let g:markdown_fenced_languages = ['css', 'terraform', 'tf=terraform', 'javascript', 'js=javascript', 'shell=sh', 'sass', 'xml']
 
 if has("autocmd")
   " For all text files set 'textwidth' to 78 characters.
