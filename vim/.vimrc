@@ -44,7 +44,7 @@ call plug#begin('~/.cache/vim/bundle')
     " match parentheses
     Plug 'andymass/vim-matchup'
     " theme
-    Plug 'axvr/photon.vim'
+    Plug 'xero/sourcerer.vim'
 " }}}
 
 " lang {{{
@@ -268,7 +268,7 @@ set textwidth=81
 set notermguicolors t_Co=16
 set background=dark
 " colorscheme sourcerer
-" colorscheme photon
+colorscheme photon
 
 " visual bell
 set noerrorbells visualbell t_vb=
