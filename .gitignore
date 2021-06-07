@@ -21,3 +21,4 @@ weechat/.weechat/urlserver_list.txt
 *.pyc
 .DS_Store
 /doom/.config/doom/custom.el
+apps/.config/gitui/*.old
