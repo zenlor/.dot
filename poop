@@ -19,11 +19,19 @@ mkdir -p \
     "$HOME/.lein/" \
     "$HOME/.cache/"
 
-if [ ! -f "$HOME/.emacs.d" ]; then
+if [ ! -d "$HOME/.emacs.d" ]; then
     git clone https://github.com/hlissner/doom-emacs.git $HOME/.emacs.d
 fi
 
-_pkgs=$(find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "*/scripts" -print | sed 's|\./||' )
+if [ "Darwin" = "$(uname)" ]; then
+    _pkgs="apps doom git lib macosx scripts shell tmux vim"
+elif uname -r|grep -q microsoft;then
+    _pkgs="apps doom git lib macosx scripts shell tmux vim"
+else
+    _pkgs=`find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "*/scripts" -print | sed 's|\./||'`
+fi
+
+
 case $1 in
     "u"|"uninstall")
         echo "unstowing"
