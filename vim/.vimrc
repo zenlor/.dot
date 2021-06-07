@@ -267,8 +267,7 @@ set textwidth=81
 " Colors
 set notermguicolors t_Co=16
 set background=dark
-" colorscheme sourcerer
-colorscheme photon
+colorscheme sourcerer
 
 " visual bell
 set noerrorbells visualbell t_vb=
