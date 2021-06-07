@@ -26,9 +26,9 @@ fi
 if [ "Darwin" = "$(uname)" ]; then
     _pkgs="apps doom git lib macosx scripts shell tmux vim"
 elif uname -r|grep -q microsoft;then
-    _pkgs="apps doom git lib macosx scripts shell tmux vim"
+    _pkgs="apps doom git lib scripts shell tmux vim"
 else
-    _pkgs=`find . -maxdepth 1 -type d ! -path "*/system" ! -path "*/.git" ! -path "." ! -path "*/scripts" -print | sed 's|\./||'`
+    _pkgs="apps doom git lib scripts shell tmux vim email weechat sway"
 fi
 
 
