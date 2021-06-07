@@ -2,6 +2,11 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+# start tmux
+if [ "$TMUX" = "" ]; then
+    tmux attach || tmux
+fi
+
 # Base PATH
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
 
