@@ -2,11 +2,6 @@
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# start tmux
-if [ "$TMUX" = "" ]; then
-    tmux attach || tmux
-fi
-
 # Base PATH
 PATH="$PATH:/usr/local/bin:/usr/local/sbin:/sbin:/usr/sbin:/bin:/usr/bin"
 
@@ -16,6 +11,7 @@ for path_candidate in \
     /Applications/Xcode.app/Contents/Developer/usr/bin \
     /opt/local/bin \
     /usr/local/share/npm/bin \
+    /usr/local/opt/binutils/bin \
     ~/.cabal/bin \
     ~/.cargo/bin \
     ~/.rbenv/bin \
@@ -35,6 +31,12 @@ done
 # nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
+# start tmux
+# must be started after path settings
+if [ "$TMUX" = "" ]; then
+    tmux attach || tmux
 fi
 
 if [[ -f ~/.profile.local ]]; then
