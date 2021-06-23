@@ -16,6 +16,8 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'tpope/vim-surround'       " manipulation of surrounding delimiters
     Plug 'tpope/vim-vinegar'        " vinegar dressing for netrw
     Plug 'tpope/vim-fugitive'       " git
+    Plug 'tpope/vim-sleuth'         " find the right setup
+    Plug 'tpope/vim-eunuch'         " use the tools
 
     Plug 'jiangmiao/auto-pairs'
 
