@@ -24,6 +24,7 @@ fi
 
 if ! zgen saved; then
     zgen loadall <<EOF
+Aloxaf/fzf-tab
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-completions
 

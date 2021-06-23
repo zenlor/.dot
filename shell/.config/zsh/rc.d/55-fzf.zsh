@@ -29,4 +29,6 @@ if [[ $- == *i* ]]; then
         #     export MANPATH="$MANPATH:~/.cache/fzf/man"
         # fi
     fi
+
+    enable-fzf-tab
 fi
