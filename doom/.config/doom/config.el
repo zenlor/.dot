@@ -19,6 +19,9 @@
 (add-to-list 'exec-path
                 (concat (getenv "HOME") "/.luarocks/bin"))
 
+;(doom-load-envars-file
+;  (concat (getenv "HOME") "/.emacs.d/.local/env"))
+
 (load! "+bindings")
 ;(load! "+email")
 (load! "+org")
