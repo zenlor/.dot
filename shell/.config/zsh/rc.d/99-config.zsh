@@ -22,6 +22,9 @@ if [[ ${TERM} != 'dumb' ]]; then
     # Don't beep on ambiguous completions.
     setopt NO_LIST_BEEP
 
+    # Append history everywhere, I need that ssh IP addesses
+    setopt inc_append_history
+
     #
     # Completion module options
     #
