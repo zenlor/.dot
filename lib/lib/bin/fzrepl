@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if [ "_$1" == "_" ]; then
+    echo "USAGE: $0 <file.json>"
+    exit 0
+fi
+
+echo '' |\
+    fzf --print-query --preview "cat $1 | jq {q}"
