@@ -59,10 +59,11 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Clojure
     Plug 'tpope/vim-fireplace',             { 'for': 'clojure' }
+    Plug 'venantius/vim-cljfmt',            { 'for': 'clojure' }
 
     " *lisp
-    Plug 'eraserhd/parinfer-rust', {'do':
-                \  'cargo build --release'}
+    Plug 'eraserhd/parinfer-rust',          { 'do': 'cargo build --release',
+                                            \ 'for': ['clojure','scheme','lisp']}
 
     " Javascript
     Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
