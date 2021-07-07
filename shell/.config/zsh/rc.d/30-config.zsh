@@ -24,6 +24,7 @@ if [[ ${TERM} != 'dumb' ]]; then
 
     # Append history everywhere, I need that ssh IP addesses
     setopt inc_append_history
+    setopt share_history
 
     #
     # Completion module options
