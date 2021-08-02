@@ -288,6 +288,11 @@ if has('autocmd')
     autocmd ColorScheme * hi StatusLineNC    ctermfg=4  ctermbg=2
     autocmd ColorScheme * hi VertSplit       ctermfg=4  ctermbg=2 cterm=bold
 endif
+
+" netrw
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+
 " }}}
 
 """
