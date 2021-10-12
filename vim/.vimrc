@@ -193,6 +193,22 @@ augroup vimrc-remember-cursor-position
     au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 augroup END
 
+function! s:MkNonExDir(file, buf)
+    if empty(getbufvar(a:buf, '&buftype')) && a:file!~#'\v^\w+\:\/'
+        let dir=fnamemodify(a:file, ':h')
+        if !isdirectory(dir)
+            call mkdir(dir, 'p')
+        endif
+    endif
+endfunction
+augroup BWCCreateDir
+    autocmd!
+    autocmd BufWritePre * :call s:MkNonExDir(expand('<afile>'), +expand('<abuf>'))
+augroup END
+
+let g:intendLine_char = '⦙'
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " Movement & search {{{
     set nostartofline
     set sidescrolloff=5
@@ -270,7 +286,7 @@ set textwidth=81
 " Colors
 set notermguicolors t_Co=16
 set background=dark
-colorscheme sourcerer
+"colorscheme 256_noir
 
 " visual bell
 set noerrorbells visualbell t_vb=
