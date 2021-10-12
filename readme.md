@@ -16,3 +16,10 @@ Load the extended file:
 	#include ".extend.Xresources"
 	#endif
 
+# WSL2
+
+Microsoft has no idea ...
+
+```
+New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
+```
