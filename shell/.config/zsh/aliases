@@ -8,6 +8,7 @@ alias cputop="top -o cpu"
 alias l-d="ls -lad"
 alias l="ls -l"
 alias ll="ls -la"
+alias sl="ls"
 
 export CVS_RSH=ssh
 
