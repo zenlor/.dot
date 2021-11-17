@@ -63,7 +63,7 @@ call plug#begin('~/.cache/vim/bundle')
 
     " *lisp
     Plug 'eraserhd/parinfer-rust',          { 'do': 'cargo build --release',
-                                            \ 'for': ['clojure','scheme','lisp']}
+                                            \ 'for': ['clojure','scheme','lisp', 'janet']}
 
     " Javascript
     Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
