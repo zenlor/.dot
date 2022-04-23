@@ -66,7 +66,7 @@ call plug#begin('~/.cache/vim/bundle')
                                             \ 'for': ['clojure','scheme','lisp', 'janet']}
 
     " Javascript
-    Plug 'pangloss/vim-javascript',         { 'for': 'javascript' }
+    Plug 'pangloss/vim-javascript',         { 'for': ['html', 'javascript'] }
 
     " Go
     Plug 'fatih/vim-go',                    { 'for': 'go', 'do': ':GoInstallBinaries' }
@@ -307,7 +307,6 @@ endif
 
 " netrw
 let g:netrw_banner = 0
-let g:netrw_liststyle = 3
 
 " }}}
 
