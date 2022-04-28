@@ -1,7 +1,7 @@
 
 
 if command -v keychain &> /dev/null; then
-    eval `keychain --eval --quiet \
+    eval `keychain --eval --quiet --nogui \
         --agents ssh,gpg \
         id_ecdsa id_frenzart.com id_rsa 42AA4CF527632EE24A9A75FF34AEDF1F8DA5DA1F`
 

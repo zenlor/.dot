@@ -2,6 +2,7 @@
 
 autoload -Uz compinit && compinit
 
+export PROMPT_LEAN_TMUX="™ "
 
 # zgenom stores the clones plugins & themes in $ZGEN_DIR when it
 # is set. Otherwise it stuffs everything in the source tree, which
@@ -45,8 +46,6 @@ unixorn/git-extra-commands
 iwata/git-now
 EOF
 fi
-
-
 
 if [[ -d $HOME/.nix-profile/share/zsh/site-fuctions ]]; then
     fpath=($HOME/.nix-profile/share/zsh/site-fuctions $fpath)
