@@ -11,11 +11,9 @@
     (map!
      :map helm-find-files-map "<DEL>" #'helm-find-files-up-one-level)))
 
-; (after! vertico
-;         (define-key vertico-map "<DEL>" #'vertico-directory-up))))
+(after! vertico
+        (define-key vertico-map "<DEL>" #'vertico-directory-up))
 
-
-;;(add-to-list 'load-path "~/.doom.d/themes")
 
 ;; theme
 ;(setq doom-theme 'doom-monokai-spectrum)
