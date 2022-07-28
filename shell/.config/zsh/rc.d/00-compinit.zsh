@@ -3,6 +3,8 @@
 DISABLE_UPDATE_PROMPT=true
 
 # Perform compinit only once a day.
+autoload bashcompinit
+autoload -Uz compinit
 autoload -Uz compinit
 
 setopt EXTENDEDGLOB
@@ -14,4 +16,5 @@ for dump in $ZSH_COMPDUMP(#qN.m1); do
     echo "Initializing Completions..."
 done
 unsetopt EXTENDEDGLOB
-compinit -C
+
+compinit -C && bashcompinit

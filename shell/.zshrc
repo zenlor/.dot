@@ -33,6 +33,10 @@ if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then
     . $HOME/.nix-profile/etc/profile.d/nix.sh
 fi
 
+if [ -d $HOME/.nix-profile/share/zsh/site-functions ]; then
+    fpath=($HOME/.nix-profile/share/zsh/site-functions $fpath)
+fi
+
 # start tmux
 # must be started after path settings
 if [ "$TMUX" = "" ]; then
@@ -73,3 +77,5 @@ fi
 if [ -d /Library/Java/Home ];then
     export JAVA_HOME=/Library/Java/Home
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
