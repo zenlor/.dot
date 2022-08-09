@@ -12,6 +12,10 @@
           (getenv "HOME") "/.luarocks/bin" ":"
           (getenv "PATH")))
 
+; ~/.ssh/.env created by `keychain'
+(doom-load-envvars-file
+ (concat (getenv "HOME") "/.ssh/.env") 'noerror)
+
 (add-to-list 'exec-path
                 (concat (getenv "HOME") "/.local/bin"))
 (add-to-list 'exec-path
