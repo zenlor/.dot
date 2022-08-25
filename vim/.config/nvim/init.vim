@@ -47,6 +47,7 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'andymass/vim-matchup'
     " theme
     Plug 'xero/sourcerer.vim'
+    Plug 'chriskempson/base16-vim'
 " }}}
 
 " lang {{{
@@ -285,9 +286,10 @@ set listchars=nbsp:☠,tab:│\ ,trail:-,extends:>,precedes:<,nbsp:+
 set textwidth=81
 
 " Colors
-set notermguicolors t_Co=16
+set termguicolors
 set background=dark
-"colorscheme 256_noir
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-chalk
 
 " visual bell
 set noerrorbells visualbell t_vb=
