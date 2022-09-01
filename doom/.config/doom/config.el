@@ -14,7 +14,7 @@
 
 ; ~/.ssh/.env created by `keychain'
 (doom-load-envvars-file
- (concat (getenv "HOME") "/.ssh/.env") 'noerror)
+ (concat xdg-config "/doom/env") 'noerror)
 
 (add-to-list 'exec-path
                 (concat (getenv "HOME") "/.local/bin"))

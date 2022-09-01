@@ -9,11 +9,12 @@ if command -v keychain &> /dev/null; then
 #        --agents ssh,gpg \
 #        $SSH_AGENT_KEYS $GPG_AGENT_KEYS`
 
-    cat <<EOF >! ~/.ssh/.env
-SSH_AUTH_SOCK=$SSH_AUTH_SOCK
-SSH_AGENT_PID=$SSH_AGENT_PID
-GPG_AGENT_KEYS=$GPG_AGENT_KEYS
-GPG_AGENT_INFO=$GPG_AGENT_INFO
+# Doom emacs envars
+    cat <<EOF >! ~/.config/doom/env
+("SSH_AUTH_SOCK=$SSH_AUTH_SOCK"
+ "SSH_AGENT_PID=$SSH_AGENT_PID"
+ "GPG_AGENT_KEYS=$GPG_AGENT_KEYS"
+ "GPG_AGENT_INFO=$GPG_AGENT_INFO")
 EOF
 fi
 
