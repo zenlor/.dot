@@ -22,3 +22,4 @@ weechat/.weechat/urlserver_list.txt
 .DS_Store
 /doom/.config/doom/custom.el
 apps/.config/gitui/*.old
+/doom/.config/doom/env
