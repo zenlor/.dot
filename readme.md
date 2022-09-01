@@ -23,3 +23,10 @@ Microsoft has no idea ...
 ```
 New-NetFirewallRule -DisplayName "WSL" -Direction Inbound  -InterfaceAlias "vEthernet (WSL)"  -Action Allow
 ```
+# MacOS
+
+Use:
+- [nix](https://nixos.org)
+- [nix-darwin](https://github.com/LnL7/nix-darwin)
+
+Simple getting started guide: https://davidmyno.rs/blog/an-introduction-to-nix

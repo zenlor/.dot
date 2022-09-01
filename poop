@@ -24,11 +24,11 @@ if [ ! -d "$HOME/.emacs.d" ]; then
 fi
 
 if [ "Darwin" = "$(uname)" ]; then
-    _pkgs="apps doom git lib macosx shell tmux vim gpg"
+    _pkgs="apps doom git lib macosx shell tmux vim gpg home-manager"
 elif uname -r|grep -q microsoft;then
-    _pkgs="apps doom git lib shell tmux vim gpg"
+    _pkgs="apps doom git lib shell tmux vim gpg home-manager"
 else
-    _pkgs="apps doom git lib shell tmux vim email weechat sway gpg"
+    _pkgs="apps doom git lib shell tmux vim email weechat sway gpg home-manager"
 fi
 
 
