@@ -42,6 +42,7 @@ if command -v go &> /dev/null; then
     [ -d "$HOME/lib/bin" ] || mkdir -p "$HOME/lib/bin"
     export GOPATH="$HOME/lib"
     export PATH="$PATH:$GOPATH/bin"
+    export PATH="$PATH:$HOME/lib/src/bin" # go install
 fi
 
 # rust/cargo: Cargo/Rust PATH
