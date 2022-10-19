@@ -44,6 +44,7 @@ paulirish/git-recent
 davidosomething/git-my
 unixorn/git-extra-commands
 iwata/git-now
+chisui/zsh-nix-shell
 EOF
 fi
 
