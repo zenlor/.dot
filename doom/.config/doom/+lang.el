@@ -23,3 +23,8 @@
 
 ;; Markdown command
 (setq markdown-command "marked")
+
+;; Clojure+Cider
+(map! :localleader
+      (:map (clojure-mode-map clojurescript-mode-map clojurec-mode-map)
+       "e g" #'cider-pprint-eval-last-sexp-to-comment))

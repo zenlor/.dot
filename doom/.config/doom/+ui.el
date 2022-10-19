@@ -21,7 +21,7 @@
 (setq doom-theme 'doom-old-hope)
 
 ;; Fonts
-(setq doom-font (font-spec :family "Iosevka" :size 18)
+(setq doom-font (font-spec :family "Iosevka" :size 20)
       doom-variable-pitch-font (font-spec :family "Iosevka Aile")
       doom-unicode-font (font-spec :family "Iosevka")
-      doom-big-font (font-spec :family "Iosevka" :size 24))
+      doom-big-font (font-spec :family "Iosevka" :size 28))
