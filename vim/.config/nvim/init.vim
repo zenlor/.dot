@@ -103,6 +103,7 @@ call plug#begin('~/.cache/vim/bundle')
 
     " Markdown
     Plug 'tpope/vim-markdown'
+    Plug 'chazmcgarvey/vim-mermaid',        { 'for': 'mmd' }
 " }}}
 
 " git {{{
