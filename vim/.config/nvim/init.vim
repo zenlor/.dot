@@ -79,7 +79,9 @@ call plug#begin('~/.cache/vim/bundle')
     Plug 'rust-lang/rust.vim',              { 'for': 'rust' }
 
     " Lua
-    Plug 'wolfgangmehner/lua-support',      { 'for': 'lua' }
+    Plug 'xolox/vim-misc',                  { 'for': 'lua' }
+    Plug 'xolox/vim-lua-ftplugin',          { 'for': 'lua' }
+    "Plug 'wolfgangmehner/lua-support',      { 'for': 'lua' }
 
     " Fennel
     Plug 'bakpakin/fennel.vim',             { 'for': 'fennel' }
