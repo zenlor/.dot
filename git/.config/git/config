@@ -1,7 +1,9 @@
 [alias]
+	l = "log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 	co = checkout
 	ci = commit
 	st = status
+	sw = switch
 	br = branch
 	type = cat-file -t
 	dump = cat-file -p
@@ -35,13 +37,7 @@
 [commit]
 	gpgsign = true
 [gpg]
-	program = gpg
-[gui]
-	editor = emacs
-	recentrepo = /home/lor/lib/src/git.mobilebridge.io/lorenzo/smallpox
-[cola]
-	spellcheck = false
-	fontdiff = Iosevka,12,-1,5,50,0,0,0,0,0
+	format = ssh
 [include]
 	path = local
 [pull]
